@@ -31,7 +31,6 @@ function Subscribe() {
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ padding: "1vw" }}
             type="email"
             placeholder="Email"
           />

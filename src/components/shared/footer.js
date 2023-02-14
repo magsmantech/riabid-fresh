@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/logo-text.svg";
+import ln from "../../assets/logo-new.svg";
 import {
   FaFacebookF,
   FaTwitter,
@@ -16,16 +16,17 @@ function footer() {
     <div class='footerBg'>
     <footer>  
       <div className='row'>
-        <div className="col-4">
-          <h2>Art for homes & organizations</h2>
-          <p>
-          We can talk in detail and analyze your needs. Our program for art house lovers, interior designers, hotels and architect companies can provide structured outlines according to your demands. 
-          </p>
-          <a href="#" className='download'>download.pdf</a>          
-        
+        <div className="col-6">
+          <div className="maxWidth">
+            <h2>Art for homes & organizations</h2>
+            <p>
+            We can talk in detail and analyze your needs. Our program for art house lovers, interior designers, hotels and architect companies can provide structured outlines according to your demands. 
+            </p>
+            <a href="#" className='download'>download.pdf</a>          
+          </div>
         </div>
         <div className='col-2'>
-        <p>Newsletter</p>
+        <h4>Newsletter</h4>
         <p>Ria Bid is a fundraising online auction oriented towards buying and selling Georgian art.</p>
           <Subscribe></Subscribe>
         </div>
@@ -38,12 +39,12 @@ function footer() {
 
             <div className="col-2">
               <h4>Contacts</h4>
-              <p>Email: help@riabid.ge</p>
-              <p>Phone: +995 599-200-535</p>
+              <p>Email: help@riabid.ge<br/>
+              Phone: +995 599-200-535</p>
             </div>
         </div>
         <div className="secondLine">
-          Logo 
+        <img className="logo" src={ln} alt="logo" /> 
           <ul>
             <li><Link href="#">Info</Link></li>
             <li><Link href="#">Delivery</Link></li>
@@ -55,13 +56,14 @@ function footer() {
              
           <div className="social-list">
               <a href="https://instagram.com/ria.bid?igshid=1zjuzuv6w5pf">
-                <FaInstagram size="2em" />
+                <FaInstagram size="14px" />
+              </a>
+           
+              <a href="https://www.pinterest.com/ria_bid/">
+                <FaPinterest size="14px" />
               </a>
               <a href="https://twitter.com/bid_ria/">
-                <FaTwitter size="2em" />
-              </a>
-              <a href="https://www.pinterest.com/ria_bid/">
-                <FaPinterest size="2em" />
+                <FaTwitter size="14px" />
               </a>
             </div>
         </div>
