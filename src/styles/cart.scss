@@ -1,0 +1,75 @@
+.grid-container-cart {
+  display: flex;
+  flex-direction: column;
+  .item {
+    img {
+      margin-right: 1.09vw;
+      width: 15vw;
+      height: 20vw;
+      object-fit: cover;
+      @media screen and (max-width: 768px) {
+        width: 50vw;
+        height: 50vw;
+      }
+    }
+    .mob-flex {
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+    .bet-mob {
+      @media screen and (max-width: 768px) {
+        justify-content: flex-end;
+      }
+    }
+    h3 {
+      font-size: 1.5vw;
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+    }
+    p {
+      color: #cecece;
+    }
+    .price {
+      color: #000;
+      font-size: 1vw;
+      @media screen and (max-width: 768px) {
+        font-size: 5vw;
+      }
+    }
+    padding: 1vw 0;
+    border-bottom: 1px solid #b7b7b7;
+  }
+  .full {
+    align-self: flex-end;
+    @media screen and (max-width: 768px) {
+      align-self: center;
+      width: 100%;
+    }
+    h3,
+    a {
+      padding: 1vw 0 0.5vw 0;
+    }
+    h3 {
+      font-size: 1.5vw;
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+    }
+    button {
+      color: #fff;
+      background-color: #fbb03b;
+      border-radius: 1vw;
+      @media screen and (max-width: 768px) {
+        border-radius: 5vw;
+        padding: 3vw;
+      }
+      border: none;
+      cursor: pointer;
+
+      text-align: center;
+      padding: 1vw;
+    }
+  }
+}

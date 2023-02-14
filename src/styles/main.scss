@@ -1,0 +1,155 @@
+@media screen and (max-width: 600px) {
+  #main .info-section .info-wrapper .info-row{
+    display:block;
+    text-align: left;
+    .info-head{
+      float:left;
+    }
+    .info-description{
+      text-align: left;
+    }
+  }
+}
+
+.info-section {
+  background-color: #f4f2f1;
+}
+.info-wrapper {
+  padding: 15px 0 20px;
+  text-align: center;
+  padding-top:90px;
+  padding-bottom:90px;
+}
+.info-row {
+  display: flex;
+}
+.info-col {
+  display: block;
+  -webkit-flex: 0 0 33.33333333%;
+  flex: 0 0 33.33333333%;
+  max-width: 33.33333333%;
+  padding: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+  
+  @media only screen and (max-width: 500px) {
+    padding-left:0px!important;
+  }
+}
+.info-a {
+  display: block;
+  font-size:14px;
+  margin: 5px 0;
+  text-decoration: none;
+  text-align: center;
+}
+.info-head {
+  display: -webkit-flex;
+  -webkit-align-items: baseline;
+  -webkit-justify-content: center;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.info-head span {
+  font-weight: 500;
+}
+.info-icon {
+  margin-right: 15px;
+}
+.info-icon svg {
+  width: 1em;
+  height: 1em;
+  font-size: 24px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+.info-description {
+  display: block;
+  margin-top: 10px;
+  font-weight: 400;
+font-size: 14px;
+}
+
+.russia-section {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: red;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.collection-title {
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 250;
+  margin-top: 52px;
+  margin-bottom:52px;
+  text-transform: uppercase;
+  div{
+    font-weight:400;
+  }
+}
+
+.logos div{
+  filter:grayscale(1);
+  transition:all 500ms ease-in-out;
+}
+
+.logos div:hover{
+  filter:grayscale(0);
+}
+
+@media only screen and (min-width: 768px) {
+  .collection-title {
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .collection-title {
+    margin-top:24px;
+    margin-bottom:24px;
+  }
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  .item {
+    width: 100%;
+    padding: 0.5em;
+    &.br {
+      border-bottom: 0.5px solid black;
+    }
+  }
+}
+
+.contact-heading {
+  font-weight: 500;
+  text-align: center;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.contact-details {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.contact-details p {
+  padding: 3px;
+}
+.contact-details b {
+  font-weight: 400;
+}
+
+.map-image {
+  margin-top: 33px;
+  width: 95%;
+  text-align: center;
+  border-radius: 15px;
+}

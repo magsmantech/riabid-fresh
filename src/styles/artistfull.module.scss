@@ -1,0 +1,151 @@
+@mixin button-styles {
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  width: 198px;
+  background-color: #fbb03b;
+  border: none;
+  border-radius: 36px;
+  font-weight: 500;
+  font-size: 20px;
+  color: white;
+
+}
+.inbio{
+  position:relative;
+
+
+}
+.bioContainer {
+  overflow:hidden;
+  .bioImage {
+    width: 488px;
+    @media screen and (max-width: 1000px){
+      width:382px;
+    }
+    float:left;
+    margin-right:32px;
+  }
+  h1 {
+    font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 32px;
+color: #FBB03B;
+  }
+  .nameMobile {
+    display: none;
+  }
+  
+  button {
+    display: none;
+    z-index: 2;
+  }
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    @media(max-width: 600px) {
+      height:auto;
+      margin-top:24px;
+      overflow:hidden;
+      clear:both;
+      display:block;
+
+    }
+    
+
+    .label {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 20px;     
+      display:block;
+      margin-top:51px;
+      @media(max-width: 600px) {
+        margin-top:32px;
+      }
+      margin-bottom:32px;
+      color: #000000;
+    }
+  
+    .description {
+      font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* or 150% */
+
+font-feature-settings: 'salt' on;
+
+/* Text / Primary */
+
+color: #111827;
+  
+    }
+
+  }
+}
+
+@media(max-width: 600px) {
+ 
+  .bioContainer {
+    grid-template-columns: 1fr;
+    grid-gap: 24px;
+    position: relative;
+    .bioImage {
+      max-height: auto;
+      width:100%;
+      margin-top:32px;
+    }
+    h1 {
+      font-size: 26px;
+      color: #fbb03b;
+      margin: 0;
+    }
+    .nameMobile {
+      display: flex;
+    }
+    .nameDesktop {
+      display: none;
+    }
+    .textContainer{
+      // height: min-content;      
+
+      .label {
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+      
+      .description {
+        font-size: 18px;
+        overflow: hidden;
+        transition: height 0.2s ease-in-out;
+        position: relative;
+        
+    
+      }
+      
+    }
+    
+    .buttonReadMore {
+      @include button-styles;
+      display: flex;
+      position: absolute;
+      bottom: -27px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .buttonReadLess {
+      @include button-styles;
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 110%);
+    }
+  }
+
+}

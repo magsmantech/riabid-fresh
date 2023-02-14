@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "MonumentGrotesk-Regular";
+    src: url("../fonts/MonumentGrotesk-Regular.ttf");
+    }
+@font-face {
+    font-family: "MonumentGrotesk-Medium";
+    src: url("../fonts/MonumentGrotesk-Medium.ttf");
+}
+@font-face {
+	src: url('../fonts/LoosLCGeo-Variable-Web.woff2') format('woff2-variations');
+	font-family:'Loos Normal';
+}

@@ -1,0 +1,79 @@
+.card {
+  a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+  }
+  img {
+    align-self: center;
+    width: 100%;
+    max-height: 475px;
+  }
+  .name {
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-size: 20px;
+    font-weight: 200;
+  }
+  .price {
+    font-size: 17px;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+  }
+  .content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    .first-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      .sale {
+        margin-left: 5px;
+        color: #cecece;
+        font-size: 15px;
+        font-weight: 300;
+        text-decoration: line-through;
+        display: inline-flex;
+        align-items: center;
+      }
+      .bidCount {
+        margin-left: 5px;
+        color: #cecece;
+        font-size: 15px;
+        font-weight: 300;
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+    .time {
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and(min-width: 420px) {
+  .card {
+    img {
+      width: 80%;
+    }
+  }
+}
+// @media screen and(min-width: 1224px) {
+//   .card {
+//     img {
+//       width: 33%;
+//     }
+//   }
+// }
+// @media screen and(min-width: 1824px) {
+//   .card {
+//     img {
+//       width: 20%;
+//     }
+//   }
+// }

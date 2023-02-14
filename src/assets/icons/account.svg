@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_389" data-name="Group 389" transform="translate(-202 -465)">
+    <rect id="Rectangle_723" data-name="Rectangle 723" width="24" height="24" transform="translate(202 465)" fill="none" opacity="0"/>
+    <g id="Iconly_Light-outline_Filter" data-name="Iconly/Light-outline/Filter" transform="translate(202 465)">
+      <g id="Filter" transform="translate(2 2.5)">
+        <path id="Filter-2" data-name="Filter" d="M12.475,15.286A3.763,3.763,0,1,1,16.237,19,3.742,3.742,0,0,1,12.475,15.286Zm1.765,0a2,2,0,1,0,2-1.972A1.987,1.987,0,0,0,14.24,15.286ZM.883,16.157a.871.871,0,1,1,0-1.742H8.117a.871.871,0,1,1,0,1.742ZM0,3.713A3.742,3.742,0,0,1,3.762,0,3.743,3.743,0,0,1,7.525,3.713,3.743,3.743,0,0,1,3.762,7.428,3.742,3.742,0,0,1,0,3.713Zm1.765,0a2,2,0,1,0,2-1.972A1.987,1.987,0,0,0,1.765,3.713Zm10.118.871a.871.871,0,1,1,0-1.741h7.235a.871.871,0,1,1,0,1.741Z" fill="#200e32"/>
+      </g>
+    </g>
+  </g>
+</svg>

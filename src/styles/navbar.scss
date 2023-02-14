@@ -1,0 +1,36 @@
+.logo-container{
+  .logo{
+      width:48px;
+      height:16px;      
+      margin-top:12px;
+      margin-left:12px;  
+  }
+}
+nav{
+  height:32px;
+  a.nav-link{
+    font-family: 'MonumentGrotesk-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000000;
+    padding:12px 31px 3px !important;
+  }
+
+
+  .searchIcon{
+    margin-right:37px;
+    position: relative;
+    top:-3px;
+  }
+  .frameIcon{
+    margin-right:8px;
+  }
+  .cart-btn{
+    margin-right:8px;
+  }
+}

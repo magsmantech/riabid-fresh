@@ -1,0 +1,95 @@
+.artists-container {
+  padding: 30px 38px;
+  border: 1px solid #e6e6e6;
+  .add {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    img {
+      margin-right: 10px;
+    }
+  }
+  .artists-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+    .artist-item {
+      padding: 12px;
+      border: 1px solid #e6e6e6;
+      display: flex;
+      justify-content: space-between;
+      .name {
+        font-size: 15px;
+      }
+      .country {
+        font-size: 17px;
+        color: #7f7f7f;
+      }
+      img {
+        width: 3.5vw;
+        object-fit: contain;
+        margin-right: 14px;
+        @media screen and (max-width: 768px) {
+          width: 10vw;
+        }
+      }
+      button {
+        align-self: center;
+      }
+    }
+  }
+}
+
+.letters {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    overflow-x: scroll;
+    width: 100%;
+    margin: auto;
+    justify-content: flex-start;
+  }
+  button {
+    background: none;
+    border: none;
+  }
+  .letter {
+    cursor: pointer;
+    padding: 7px 19px;
+    box-sizing: border-box;
+    font-size: 17px;
+    font-weight: 200;
+    &.active {
+      border: 1px solid #000;
+      border-radius: 2px;
+    }
+  }
+}
+
+.artist-container {
+  margin: 4rem 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+  .letter {
+    padding-top: 2rem;
+    font-size: 20px;
+    font-weight: 200;
+  }
+  .artist {
+    font-size: 17px;
+    font-weight: 400;
+    color: #000;
+    @media screen and (max-width: 500px) {
+      margin-left:20px;
+    }
+  }
+}

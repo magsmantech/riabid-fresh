@@ -1,0 +1,104 @@
+.auctions {
+  &.shop {
+    .grid-container-auctions {
+      grid-gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-gap: 3rem;
+      }
+    }
+  }
+
+  .grid-container-auctions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 0.2%;
+    @media screen and (max-width: 1440px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-gap: 3rem;
+    }
+    .product {
+      margin-bottom:4em;
+      @media screen and (max-width: 1440px) {
+        max-width: 95%;
+        margin-bottom:45px;
+      }
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+      .img {
+        overflow: hidden;
+
+        img {
+          transition: all 150ms;
+          width: 100%;
+          @media screen and (max-width: 768px) {
+            height: auto;
+          }
+        }
+      }
+      .title {
+        font-size: 1rem;
+        font-weight: 200;
+        color: #000;
+      }
+      .title2 {
+        font-size: 1.2rem;
+        font-weight: 200;
+        color: #000;
+      }
+      .price,
+      .time {
+        font-size: 1.5rem;
+        &.gray {
+          bottom:30px;
+          @media screen and (max-width: 768px) {
+            bottom:40px;
+          }
+          margin-left: 0.5em;
+          color: #cecece;
+        }
+      }
+      .time.gray{
+        position: absolute;
+        bottom: -20px;
+        left: 45px;
+      }
+      @media screen and (max-width: 768px) {
+        .time.gray{
+        bottom:-20px;
+        }
+      }
+      .auc-red {
+      color: #ff0000;
+      font-weight: 400;
+      bottom:-24px;
+      }
+      .clc {
+        height:2em;
+        margin-top:0.1em;
+        margin-left: 0.6em;
+      }
+      .time {
+        // text-align: center;
+        font-size: 1rem;
+        &.gray {
+          color: #cecece;
+        }
+      }
+    }
+  }
+  .extra-margins{
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}

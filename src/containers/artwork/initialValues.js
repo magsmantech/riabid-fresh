@@ -1,0 +1,16 @@
+export const initialValues = {
+  artist_id: "",
+  title: "",
+  product_type: "",
+  buy_it_now: "",
+  description: "",
+  year: "",
+  height: "",
+  width: "",
+  depth: "",
+  units: "2",
+  medium: "",
+  category: "",
+  selectedFile: "",
+  request_price: "0",
+};

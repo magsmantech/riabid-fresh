@@ -1,0 +1,31 @@
+.grid-container-text {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  padding: 4rem 0;
+  gap: 1%;
+  align-items: center;
+  grid-template-areas:
+    "first second"
+    "third forth";
+  overflow: hidden;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "first" "second" "third"
+      "forth";
+  }
+  .first {
+    grid-area: first;
+  }
+  .second {
+    grid-area: second;
+  }
+  .third {
+    grid-area: third;
+  }
+  .forth {
+    grid-area: forth;
+  }
+}

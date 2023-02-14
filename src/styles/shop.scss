@@ -1,0 +1,35 @@
+#shop {
+  padding-top: 62px;
+  margin-bottom: 100px;
+
+  .product{
+    margin-right:auto;
+    margin-left:auto;
+  }
+}
+
+
+.shop-grid {
+  @media screen and (max-width: 768px) {
+    // grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.filter-container {
+  margin-right: 2.08vw;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  .cont {
+    border: 1px solid #e6e6e6;
+    margin-bottom: 0.83vw;
+    padding: 1vw 1.5vw;
+    h2 {
+      margin-bottom: 1vw;
+      font-weight: 200;
+    }
+  }
+}

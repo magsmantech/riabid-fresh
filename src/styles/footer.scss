@@ -1,0 +1,148 @@
+.footerBg{
+  padding-left:10px;
+  padding-right:10px;
+}
+footer {
+  margin-top:64px;
+  width: 100%;
+  border-top:1px solid #000;
+
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //   background-color: rgb(230, 230, 230);
+  .top {
+    display: flex;
+    flex-direction: column;
+    padding-top: 48px;
+    padding-bottom: 55px;
+
+    .col {
+      margin-bottom: 55px;
+      img,
+      h4 {
+        margin-bottom: 16px;
+      }
+      h4 {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      p {
+        font-weight:400;
+        margin-bottom: 30px;
+        font-size: 14px;
+        color:#374151;
+      }
+      .social-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        color: #c5c5c5;
+        a {
+
+          margin-right: 16px;
+          &:hover {
+            color:#c5c5c5;
+          }
+        }
+      }
+      ul {
+        list-style: none;
+        li {
+          margin-bottom:16px;
+          a {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #374151;
+            &:hover {
+              font-weight: 500;
+            }
+          }
+        }
+        :last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .col-wrapper {
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .bottom {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 35px;
+    padding-bottom: 40px;
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: #374151;
+    }
+  }
+
+  .hr-comp {
+    height: 0.5px;
+    width: 100%;
+    background-color: #ebebeb;
+    border-radius: 0.2px;
+  }
+}
+
+
+@media screen and(min-width: 668px) {
+  footer {
+    .top {
+      .col1 {
+        .social-list {
+          width: 50%;
+        }
+      }
+      .col-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .col {
+        }
+      }
+    }
+  }
+}
+@media screen and(min-width: 1124px) {
+  footer {
+    .top {
+      flex-direction: row;
+      justify-content: space-between;
+      .col1 {
+        width: 50%;
+        p {
+          width: 90%;
+        }
+      }
+      .col-wrapper {
+        width: 35%;
+      }
+    }
+    .hr {
+      width: 100%;
+    }
+  }
+}
+@media screen and(min-width: 1824px) {
+}
+
+
+@media screen and(max-width: 420px) {
+  footer .top .col{
+    float:left;
+  }
+  footer .top{
+    padding-bottom:0px;
+  }
+  footer .top .col:last-child{
+    margin-left:50px;
+  }
+}

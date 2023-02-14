@@ -1,0 +1,25 @@
+.special_projects{
+  padding-top:64px;
+  padding-left:10px;
+  a{
+    text-decoration: none;
+  }
+  h3{
+    font-family: 'MonumentGrotesk-Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    color: #000000;
+  }
+  .action-wrapper{
+    display:none;
+  }
+}
+.slickFull{
+  img{
+    width:100%;
+  }
+
+}
+.slick-list{padding:0 20% 0 0 !important;}

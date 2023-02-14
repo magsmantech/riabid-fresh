@@ -1,0 +1,128 @@
+.galleries {
+  ul.breadcrumb {
+    padding: 10px 16px 10px 0;
+    list-style: none;
+
+    li {
+      display: inline;
+      font-size: 18px;
+
+      a {
+        color: #b2b2b2;
+        text-decoration: none;
+        &:hover {
+          color: #01447e;
+        }
+      }
+    }
+    li + li {
+      &:before {
+        padding: 8px;
+        color: #b2b2b2;
+        content: "/\00a0";
+      }
+    }
+  }
+
+  .grid-container-galleries {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5%;
+    margin: 3em 0;
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-gap: 1%;
+    }
+    .product {
+      .img {
+        overflow: hidden;
+        height: 100%;
+        img {
+          transition: all 150ms;
+          width: 100%;
+          height: 18vw;
+          object-fit: contain;
+        }
+      }
+      .title {
+        font-size: 2rem;
+        font-weight: 300;
+        color: #000;
+      }
+      .location,
+      .time {
+        font-size: 1.5rem;
+        font-weight: 100;
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+.full-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-gap: 5%;
+  }
+  .text {
+    h1 {
+      font-size: 2.29vw;
+      @media screen and (max-width: 768px) {
+        font-size: 6vw;
+      }
+    }
+    p {
+      text-align: justify;
+      font-size: 1vw;
+      @media screen and (max-width: 768px) {
+        font-size: 4vw;
+      }
+    }
+    h1:first-child{
+      margin-bottom: 15px;
+    }
+    strong, b{
+      font-weight: 400;
+    }
+
+    ul, ol{
+      margin-left: 30px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    s{
+      text-decoration: line-through;
+    }
+  }
+  .pictures {
+    position: relative;
+    .top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+    }
+    .bot {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+      position: relative;
+    }
+    .bot-new {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+      position: relative;
+      @media screen and (min-width: 700px) {
+        margin-left: 25px;
+      }
+      @media screen and (min-width: 1000px) {
+        margin-left: 40px;
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+@import 'fonts.css';
+ul{
+    list-style:none;
+}
+.trendMenu{
+    margin-top:62px;
+    overflow:hidden;
+    padding-left:10px;
+    height:38px;
+    li{
+        float:left;
+        width:50%;
+        a,span{    
+            text-decoration: none;
+            font-family: 'MonumentGrotesk-Medium';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 32px;
+            color: #000000;
+            opacity: 0.2;
+
+        }
+    }
+    li.active{
+        a,span{
+            opacity:1;
+        }
+        span{
+            font-size:16px;
+            span{
+                text-decoration:underline;
+            }
+        }
+    }
+}
+.trendMenu.fullWidth{
+    width:100%;
+    li{
+        width:100%;
+    }
+}
+.productBlock{
+    overflow:hidden;
+    margin-bottom:24px;
+    img.productImage{
+        width:100%;
+        margin-bottom:10px;
+    }
+    img.frame{
+        width:14px;
+        height:14px;
+    }
+    div.frame{
+        float:left;
+        padding-left:48px;
+        width:109px;
+    }
+    div.author{
+        float:left;
+        p{
+            font-family: 'MonumentGrotesk-Medium';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            color: #000000;
+            margin:0px;
+        }
+        p.size{
+            font-family: 'MonumentGrotesk-Medium';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #CCCCCC;
+        }
+    }
+    span.price{
+        float:right;
+        font-family: 'MonumentGrotesk-Medium';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #000000;
+        min-width:109px;
+    }
+}
+.content{
+    padding-left:10px;
+    padding-right:10px;
+}
+.productPaginate{
+    a{
+        min-width:109px;
+        text-align: left;
+        font-family: 'MonumentGrotesk-Medium';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        text-decoration:none;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #000000;
+        border-bottom:1px solid #000;
+        display:inline-block;
+        transition: all 2s ease;
+        padding:10px 38px;
+    }
+    a:hover{
+        min-width:100%;
+    }
+    .prevPage a{
+        float:left;
+    }
+    .centerPage{
+        text-align: center;
+        a{
+            text-align: center;
+        }
+    } 
+    .nextPage a{
+        float: right;
+        text-align: right;
+    }
+}
+.allMenu{
+    li{
+        width:16%;
+        text-align: center;
+    }
+    li:first-child{
+        text-align: left;
+        width:10%;
+    }
+    li:last-child{
+        width:10%;
+        text-align: right;
+    }
+}
+.logos{
+    padding-left:10px;
+    padding-top:64px;
+    img{
+        height:52px;
+    }
+    .slick-slide{
+        height:52px;
+        padding:0px;
+    }
+}

@@ -1,0 +1,190 @@
+// pallete
+
+$prim: #fbb03b;
+$sec: #ff0000;
+$black: #000000;
+
+//fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+
+$pop: "Poppins";
+
+* {
+  font-family: $pop;
+  :active {
+    outline: none;
+  }
+}
+
+//container
+
+// .container {
+//   margin-right: auto;
+//   margin-left: auto;
+//   width: 95%;
+//   background-color: white;
+//   border-radius: 3px;
+//   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+//   margin-bottom: 25px;
+// }
+
+// @media screen and (min-width: 768px) {
+//   .container {
+//     width: 700px;
+//   }
+// }
+
+// @media screen and (min-width: 992px) {
+//   .container {
+//     width: 820px;
+//   }
+// }
+
+// @media screen and (min-width: 1200px) {
+//   .container {
+//     width: 920px;
+//   }
+// }
+
+// @media screen and (min-width: 2560px) {
+//   .dif-container {
+//     margin-right: auto;
+//     margin-left: auto;
+//     max-width: 2560px;
+//   }
+// }
+
+//buttons
+
+.btn-signup {
+  cursor: pointer;
+  width: 100%;
+  height: 73px;
+  background-color: $prim;
+  border: none;
+  border-radius: 40px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.btn-signin {
+  cursor: pointer;
+  width: 148px;
+  height: 45px;
+  background-color: transparent;
+  border: 2px solid $prim;
+  border-radius: 6px;
+  color: $prim;
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn-placebid {
+  cursor: pointer;
+  width: 168px;
+  height: 60px;
+  border:0px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 100ms all ease;
+
+
+    a {
+      font-weight:bold;
+      color: rgb(251, 176, 59);
+    }
+
+}
+.main-input {
+  font-size: 18px;
+  padding: 25px 50px;
+  border-radius: 40px;
+  outline: none;
+  border: 1px solid #d8d8d8;
+  margin: 1rem 0;
+}
+.btn-buy {
+  cursor: pointer;
+  width: 168px;
+  height: 60px;
+  background-color: transparent;
+  border: 2px solid $sec;
+  border-radius: 40px;
+  color: $sec;
+  font-weight: 500;
+  font-size: 16px;
+}
+.btn-create {
+  cursor: pointer;
+  width: 148px;
+  height: 45px;
+  background-color: $sec;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn-artist {
+  cursor: pointer;
+  width: 148px;
+  height: 44px;
+  background-color: BLACK;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 400;
+  font-size: 17px;
+}
+.btn-fb {
+  cursor: pointer;
+  width: 220px;
+  height: 74px;
+  background-color: #3b5998;
+  border: none;
+  border-radius: 40px;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+}
+.btn-gmail {
+  cursor: pointer;
+  width: 220px;
+  height: 74px;
+  background-color: transparent;
+  border: 1px solid #fc0d1b;
+  border-radius: 40px;
+  color: #fc0d1b;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+//container
+
+.container {
+  width: 100%;
+  padding-left: 33px;
+  padding-right: 33px;
+}
+
+@media screen and(min-width: 768px) {
+  .container {
+    width: 80%;
+    padding: 0;
+    margin: auto;
+  }
+}
+@media screen and(min-width: 1224px) {
+  .container {
+    width: 80%;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and(min-width: 1440px) {
+  .container {
+    width: 1440px;
+  }
+}
