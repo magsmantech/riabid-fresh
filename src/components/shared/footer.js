@@ -17,7 +17,7 @@ function footer() {
     <footer>  
       <div className='row'>
         <div className="col-4">
-          <p>Art for homes & organizations</p>
+          <h2>Art for homes & organizations</h2>
           <p>
           We can talk in detail and analyze your needs. Our program for art house lovers, interior designers, hotels and architect companies can provide structured outlines according to your demands. 
           </p>
