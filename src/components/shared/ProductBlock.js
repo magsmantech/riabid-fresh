@@ -1,6 +1,4 @@
 import React, { useRef, useState } from "react";
-import frameIcon from "../../assets/icons/frame.svg";
-
 function ProductBlock({  
   data
 }) {
@@ -9,11 +7,8 @@ function ProductBlock({
                 return <div className="productBlock" key={i}>
                     <img src={item.image} className="productImage" />
                     <div className='frame'>
-                        <img
-                            className="frameIcon"
-                            src={frameIcon}
-                            alt="search-btn"
-                        />
+                        <span className="frameIcon"></span>
+                        <span className="frametext">fave</span>
                     </div>
                     <div className="author">
                         <p>{item.display_name}</p>

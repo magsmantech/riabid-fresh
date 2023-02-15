@@ -12,10 +12,7 @@ import arrowbl from "../../assets/icons/arrow-black.svg";
 import search from "../../assets/icons/search.svg";
 import searchDark from "../../assets/icons/search-dark.svg";
 import frameIcon from "../../assets/icons/frame.svg";
-import cart from "../../assets/cart-light.svg";
-import cartDark from "../../assets/icons/cart-dark.svg";
-import user from "../../assets/icons/user.svg";
-import userDark from "../../assets/icons/user-dark.svg";
+import chat from "../../assets/icons/chat.svg";
 import favorites from "../../assets/icons/favorites.svg";
 import hamburgerDark from "../../assets/icons/hamburger-dark.svg";
 import { userProvider } from "../../store/store";
@@ -67,7 +64,7 @@ function Navbar() {
   const searchRef = useRef(null);
  
   return (   
-
+    <>
     <nav class="navbar navbar-expand-lg">
     <Link className="logo-container navbar-brand" href="/">
           <img className="logo" src={ln} alt="logo" />
@@ -126,21 +123,26 @@ function Navbar() {
           </Link>
           <Link  to="#" >
             <img
-              className="cart-btn frameIcon"
+              className="frameIcon"
               src={frameIcon}
               alt="search-btn"
             />
           </Link>
           <Link to="/cart">
-              <img className="cart-btn" src={cartDark} alt="search-btn" />
+              <span class='cart-btn'></span>
             </Link>
 
             <Link to="#" onClick={() => setAuthActive(!authActive)}>
-              <img className="user-btn" src={userDark} alt="user-btn" />
+              <span class='user-btn'></span>
             </Link>
   </div>
 </nav>
-
+<img
+              className="chatIcon"
+              src={chat}
+              alt="chat-btn"
+            />
+</>
   );
 }
 

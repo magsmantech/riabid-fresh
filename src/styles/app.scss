@@ -6,7 +6,7 @@ ul{
     margin-top:62px;
     overflow:hidden;
     padding-left:10px;
-    height:38px;
+    height:43px;
     li{
         float:left;
         width:50%;
@@ -16,7 +16,6 @@ ul{
             font-style: normal;
             font-weight: 400;
             font-size: 32px;
-            line-height: 32px;
             color: #000000;
             opacity: 0.2;
 
@@ -47,14 +46,50 @@ ul{
         width:100%;
         margin-bottom:10px;
     }
-    img.frame{
-        width:14px;
-        height:14px;
-    }
+    
     div.frame{
         float:left;
-        padding-left:48px;
         width:109px;
+        cursor:pointer;
+        height:55px;
+        position:relative;
+        text-align: center;
+        cursor:pointer;
+        span.frameIcon{
+            width:14px;
+            height:14px;
+            display:inline-block;
+            margin:auto;
+            cursor:pointer;
+            background:url('../assets/icons/frame.svg');            
+            transition: all 0.3s ease;
+        }
+        .frametext{
+            font-family: 'MonumentGrotesk-Medium';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+            display:block;
+            opacity:0;
+            position:absolute;
+            bottom:0;
+            width:100%;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+       
+    }
+    div.frame:hover{
+        span.frameIcon{
+            background:url('../assets/icons/frameHover.svg');
+        }
+        .frametext{
+            opacity:1;
+        }
     }
     div.author{
         float:left;
@@ -107,7 +142,7 @@ ul{
         color: #000000;
         border-bottom:1px solid #000;
         display:inline-block;
-        transition: all 2s ease;
+        transition: all 0.7s ease;
         padding:10px 38px;
     }
     a:hover{

@@ -19,6 +19,17 @@
       color: #000000;
       text-align: left;
     }
+    .text{
+      display:inline-block;
+      font-family: 'MonumentGrotesk-Medium';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      font-feature-settings: 'salt' on;
+      color: #000000;
+
+    }
   }
   .img{
     position:relative;
@@ -44,6 +55,7 @@
       font-size: 12px;
       line-height: 16px;
       color: #FFFFFF;
+      font-feature-settings: 'salt' on;
       }
     }
  
@@ -53,6 +65,9 @@
     width:calc(50% - 5px);
     height:calc(50vh - 16px);
     position:relative;
+    .text{
+      width: 200px;
+    }
   }
   a{
     font-family: 'MonumentGrotesk-Medium';
@@ -94,6 +109,9 @@
   }
   .delivery{
     float:right;
+    span.text{
+      max-width:125px;
+    }
     span.icon{
       background:url('../assets/icons/delivery.svg') no-repeat;
     }

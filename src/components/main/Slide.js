@@ -22,14 +22,14 @@ function Slide({ img, text, btn, author, action }) {
         <div className="cert">
           <Link href="#" className='certificate' style={{height:height}}>
             <span className='icon'></span>
-            Certificate of Authenticity applied on Recommended Artworks
+            <span className='text'>Certificate of Authenticity applied on Recommended Artworks</span>
 
             <span className="learnMore">Learn More</span>
           </Link>
 
           <Link href="#" className='delivery' style={{height:height}}>
             <span className='icon'></span>
-            Fast Delivery from 5-7 days by Georgian Post
+            <span className='text'>Fast Delivery from 5-7 days by Georgian Post</span>
             <span className="learnMore">Learn More</span>
           </Link>
         </div>

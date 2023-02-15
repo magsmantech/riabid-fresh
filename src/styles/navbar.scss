@@ -2,8 +2,8 @@
   .logo{
       width:48px;
       height:16px;      
-      margin-top:12px;
-      margin-left:12px;  
+      margin-top:10px;
+      margin-left:10px;  
   }
 }
 nav{
@@ -17,14 +17,13 @@ nav{
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;
     align-items: center;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #000000;
-    padding:11px 31px 4px !important;
+    padding:8px 31px 5px !important;
+    font-feature-settings: 'salt' on;
   }
-
 
   .searchIcon{
     margin-right:37px;
@@ -35,9 +34,39 @@ nav{
     margin-right:8px;
   }
   .cart-btn{
+    position: relative;
+    top:4px;
     margin-right:8px;
+    display:inline-block;
+    width:14px;
+    height:14px;
+    background:url('../assets/icons/cart-dark.svg');
+  }
+  .cart-btn:hover{
+    background:url('../assets/icons/cart-dark-hover.svg');
+  }
+  .user-btn{
+    position: relative;
+    top:4px;
+    margin-right:20px;
+    display:inline-block;
+    width:14px;
+    height:14px;
+    background:url('../assets/icons/user-dark.svg');
+  }
+  .user-btn:hover{
+    background:url('../assets/icons/userHover.svg');
   }
 }
 section{
   padding-top:32px;
+}
+.chatIcon{
+  position:fixed;
+  cursor:pointer;
+  bottom:11px;
+  right:28px;
+  z-index:1;
+  width:48px;
+  height:48px;
 }

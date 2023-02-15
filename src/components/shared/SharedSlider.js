@@ -48,7 +48,7 @@ const categories = [
   var settings = {
     draggable:true,
     dots: false,
-    infinite: false,
+    infinite: true,
     arrows:false,
     speed: 500,
     centerMode:true,

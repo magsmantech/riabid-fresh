@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import Slider from "./Slider";
-import Tracker from "./Tracker";
 
 function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
