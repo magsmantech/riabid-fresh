@@ -10,6 +10,7 @@ import { getAuctions } from "../services/auctionsService";
 import { getArtworks } from "../services/artistsService";
 import Loading from "./loading";
 import styles from '../styles/artistfull.module.scss'
+import ProductBlock from "../components/shared/ProductBlock";
 
 import { getBiography } from "../services/dashboardService";
 
@@ -35,9 +36,6 @@ function ArtistsFull(props) {
     }
   );
 
-  const selected_just_for_you = data
-
-
   useEffect(()=>{
     setBioLoading(true)
     getBiography(props.match.params.index)
@@ -62,68 +60,77 @@ function ArtistsFull(props) {
     bioImage = bioData.data.image;
     bioName = bioData.data.artist_name
     bioDescription = bioData.data.description;
-    // console.log(bioDescription.length)
-    // if (bioDescription.length > 150) {
-    //   console.log(descEl.current.style)
-    // }
-  }
 
-  const _extend = () => {
-    setExtended(true);
-    console.log(descEl.current.style);
-    descEl.current.style.height = "min-content";
-  }
-  const _collapse = () => {
-    setExtended(false)
-    descEl.current.style.height = "140px";
   }
 
   return (
     <div>
-    <section id="shop" className="container">
-      <ul className="breadcrumb">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/auctions">Artist</Link>
-        </li>
-        <li>{data?.data[0]?.display_name}</li>
-      </ul>
+    <section className="artistFullPage">
+ 
 
       {bioData && bioData.data && !bioError && !bioLoading &&
-        <div className={styles.bioContainer}>
+        <div className="bio">
 
-          <h1 className={styles.nameMobile}>{bioName}</h1>
-          <img src={bioImage} className={styles.bioImage}/>
-          <div className={styles.textContainer}>
-            <h1 className={styles.nameDesktop}>{bioName}</h1>
-            <div className={styles.label}>Bio: </div>
-            <div ref={descEl} className={styles.description}>
+          <h1 className="name">{bioName}</h1>
+          <div className="bioText">        
+            <div ref={descEl} >
               {bioDescription}
-              {!extended && <div className={styles.gradient}></div>}
             </div>
           </div>
+
+          <img src={bioImage} className="bioImg"/>
+         
       
         </div>
       }
 
     </section>
           
-    <div className="grid-container-auctions inbio">
+      <div className="ibioArtworks">
+
+      <h2>artworks</h2>
+
+      <div className="row" >
+
+            <div className='col-4'>
+
+            {data.data ? (
+                    <ProductBlock
+                    start={0}
+                    limit={2}
+                    data={data.data}
+                    />
+                    ) : null}
+
+            </div>
+            
+            <div className='col-4'>
+
+            {data.data ? (
+                    <ProductBlock
+                    start={2}
+                    limit={2}
+                    data={data.data}
+                    />
+                    ) : null}
+
+            </div>
+            
+            <div className='col-4'>
+
+            {data.data ? (
+                    <ProductBlock
+                    start={4}
+                    limit={2}
+                    data={data.data}
+                    />
+                    ) : null}
+            </div>
 
 
-{data.data.length ? (
-  <SharedSlider
-    slidesToShow={4}
-    data={selected_just_for_you.data}
-    link="/"
-    title={"ALL WORKS BY "+bioName}
-  />
-) : (
-  <h2>There are no artworks for current artist</h2>
-)}
-</div>
+        </div>
+
+      </div>
     </div>
   );
 }

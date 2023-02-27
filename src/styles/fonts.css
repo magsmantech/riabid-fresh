@@ -10,3 +10,8 @@
 	src: url('../fonts/LoosLCGeo-Variable-Web.woff2') format('woff2-variations');
 	font-family:'Loos Normal';
 }
+
+@font-face {
+	src: url('../fonts/pragmatica-regular.ttf');
+	font-family:'Pragmatica';
+}

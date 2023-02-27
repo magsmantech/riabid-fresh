@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
+
 function ProductBlock({  
-  data
+  data,
+  start,
+  limit
 }) {
   return (
-    data.slice(0,2).map(function(item, i){
+    data.slice(start,start+limit).map(function(item, i){
                 return <div className="productBlock" key={i}>
-                    <img src={item.image} className="productImage" />
+                    <img src={item.front_thumbnail} className="productImage"/>
                     <div className='frame'>
                         <span className="frameIcon"></span>
                         <span className="frametext">fave</span>
@@ -15,9 +18,9 @@ function ProductBlock({
                         <p>{item.title}</p>
                         <p className='size'>{item.width} x {item.height} cm</p>
                     </div>
-                    <span className="price">
-                        {item.buy_it_now} ₾
-                    </span>
+                    {item.price_usd != 0 && <span className="price">
+                        {item.price_usd} ₾ 
+                    </span> }
                 </div>
               })
         

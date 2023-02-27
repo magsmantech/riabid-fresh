@@ -16,16 +16,19 @@ function Artists(props) {
   const [alpha, setAlpha] = useState(false);
   
 
-  const [letter, setLetter] = useState("");
+  const [search, setSearch] = useState("");
   const { isLoading, error, data } = useQuery("artists", getArtists, {
     refetchOnWindowFocus: false,
   });
 
+  function handleChange(event) {
+    setSearch(event.target.value);
+  }
   if (isLoading) return <Loading></Loading>;
 
   if (error) return "An error has occurred: " + error.message;
 
-  let formatted_data = data.data.reduce((r, e) => {
+  let formatted_data = data.data.filter((item) => item.display_name.toLowerCase().includes(search.toLowerCase()) || search == "").reduce((r, e) => {
     // get first letter of name of current element
 
     let group = e.display_name[0];
@@ -38,8 +41,8 @@ function Artists(props) {
   }, {});
 
   const new_array = [];
+  console.log(Object.keys(formatted_data))
   const filtered = Object.keys(formatted_data)
-    .filter((key) => key == letter || letter == "")
     .reduce((obj, key) => {
       obj[key] = formatted_data[key];
       new_array.push(obj[key]);
@@ -48,26 +51,31 @@ function Artists(props) {
 
     let sortData = new_array.sort((a, b) => (a.group < b.group ? -1 : 1))
 
-   
-  
-  const getPrivilegedIcon = (privileged) => (
-    privileged ? ( 
-    // <img src={Star} alt="privileged-icon" style={{
-    //   width: '20px',
-    //   height: '20px',
-    //   position: 'absolute',
-    //   zIndex: 5,
-    //   right: '10px',
-    //   top: '-10px'
-    // }}></img> ) : 
-    <FaStar size="20px" style={{
-      position: "absolute", top: '50%', left: '-25px', color: "#fcba03", zIndex: 5,
-      transform: 'translateY(-50%)',
-    }}/>) : 
-    null
-  )
+   let length = data.data.length; // 207
+   let group_length = sortData.length; // 24
+
+   let row = [[],[],[],[],[],[]];
+   let i = 0;
+   let max = length / 6;
+   let already_length =0;
+   sortData.map(item => {  
+
+    row[i].push(item);
+    already_length += item.children.length;
+    if(already_length >= max){
+      i+=1;
+      already_length = 0;
+    }
+   });
   return (
-    <section id="shop" className="container">
+    <>
+    
+    <h1 className="pageHeading">Artists</h1>
+    <div className="searchFArtist">
+      <button className="search"></button>
+      <input className="search"  onKeyUp={handleChange} placeholder="Search" />
+    </div>
+    <section className="artistsPage">
       <MetaTags>
         <title>ARTISTS: Browse Artists | Contemporary Georgian artists</title>
         <meta
@@ -79,57 +87,28 @@ function Artists(props) {
           content="Georgian painters,Georgia contemporary art, designer,  decorative art,Discover Contemporary Artists, Georgia's Contemporary Artists, artists from Tbilisi,contemporary artists from Georgia,Georgian artist works,"
         />
       </MetaTags>
-      <div className="contact-container">
-        <div className="bread" style={{ gridArea: "beard" }}>
-          {/* home / shop */}
-        </div>
-        <div className="letters flex">
-          {letter == "" ? (
-            <button className="letter active">ALL</button>
-          ) : (
-            <button onClick={() => setLetter("")} className="letter">
-              ALL
-            </button>
-          )}
-          {sortData.map((key) =>
-            letter == key.group ? (
-              <button className="letter active">{key.group}</button>
-            ) : (
-              <button
-                key={key.group}
-                onClick={() => setLetter(key.group)}
-                className="letter"
-              >
-                {key.group}
-              </button>
-            )
-          )}
-        </div>
-        <div className="artist-container">
-          {sortData.map((key) => (
-            <div key={key.group}>
-              <p key={key.group} className="letter">
-                {key.group}
-              </p>
-              {formatted_data[key.group].children.map((item) =>
-                (
-                  <Link
-                    style={{ color: item.has_artwork? "#d43e3e": '#000', position: "relative" }}
-                    key={item.id}
-                    to={"/artists/" + item.id}
-                    className="artist"
-                  >
-                    {item.display_name}
-                    {getPrivilegedIcon(item.privileged)}
-                    <br></br>
-                  </Link>
-                )
-              )}
-            </div>
+      <div className="row">
+          {row.map((item) => (
+              <div className="col-2">
+                 {item.map((key) => (
+                   <div key={key.group} className="group">              
+                  {formatted_data[key.group].children.map((item) =>
+                    (
+                      <Link
+                        key={item.id}
+                        to={"/artists/" + item.id}
+                        className="artist"
+                      >
+                        {item.display_name}
+                        <br></br>
+                      </Link>
+                    )
+                  )}
+                </div> ))}
+              </div>
           ))}
-        </div>
       </div>
-    </section>
+    </section></>
   );
 }
 

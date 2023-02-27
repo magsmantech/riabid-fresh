@@ -12,8 +12,9 @@ import { Link } from "react-router-dom";
 import Subscribe from "./Subscribe";
 
 function footer() {
+  console.log('footer mounted')
   return (
-    <div class='footerBg'>
+    <div className='footerBg'>
     <footer>  
       <div className='row'>
         <div className="col-6">
@@ -22,7 +23,7 @@ function footer() {
             <p>
             We can talk in detail and analyze your needs. Our program for art house lovers, interior designers, hotels and architect companies can provide structured outlines according to your demands. 
             </p>
-            <a href="#" className='download'>download.pdf</a>          
+            <a to="#" className='download'>download.pdf</a>          
           </div>
         </div>
         <div className='col-2'>
@@ -46,23 +47,23 @@ function footer() {
         <div className="secondLine">
         <img className="logo" src={ln} alt="logo" /> 
           <ul>
-            <li><Link href="#">Info</Link></li>
-            <li><Link href="#">Delivery</Link></li>
-            <li><Link href="#">Terms & Conditions</Link></li>
-            <li><Link href="#">Privacy Policy</Link></li>
-            <li><Link href="#">Additional Information</Link></li>
+            <li><Link to="#">Info</Link></li>
+            <li><Link to="#">Delivery</Link></li>
+            <li><Link to="#">Terms & Conditions</Link></li>
+            <li><Link to="#">Privacy Policy</Link></li>
+            <li><Link to="#">Additional Information</Link></li>
           </ul>
 
              
           <div className="social-list">
-              <a href="https://instagram.com/ria.bid?igshid=1zjuzuv6w5pf">
+              <a to="https://instagram.com/ria.bid?igshid=1zjuzuv6w5pf">
                 <FaInstagram size="14px" />
               </a>
            
-              <a href="https://www.pinterest.com/ria_bid/">
+              <a to="https://www.pinterest.com/ria_bid/">
                 <FaPinterest size="14px" />
               </a>
-              <a href="https://twitter.com/bid_ria/">
+              <a to="https://twitter.com/bid_ria/">
                 <FaTwitter size="14px" />
               </a>
             </div>
