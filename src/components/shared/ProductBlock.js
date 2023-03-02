@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ProductBlock({  
   data,
@@ -8,7 +9,7 @@ function ProductBlock({
   return (
     data.slice(start,start+limit).map(function(item, i){
                 return <div className="productBlock" key={i}>
-                    <img src={item.front_thumbnail} className="productImage"/>
+                    <Link to={`/store/${item.id}`}><img src={item.front_thumbnail} className="productImage"/></Link>
                     <div className='frame'>
                         <span className="frameIcon"></span>
                         <span className="frametext">fave</span>

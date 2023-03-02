@@ -11,12 +11,14 @@ import { getArtworks } from "../services/artistsService";
 import Loading from "./loading";
 import styles from '../styles/artistfull.module.scss'
 import ProductBlock from "../components/shared/ProductBlock";
-
+import axios from '../lib/axios';
 import { getBiography } from "../services/dashboardService";
 
 const queryClient = new QueryClient();
 
 function ArtistsFull(props) {
+  const myGrid = React.useRef(null);
+  const [data, setData] = React.useState(false);
   const [filter, setFilter] = React.useState(false);
   const [extended, setExtended] = React.useState(false);
   const [showButtons, setShowButtons] = React.useState(true);
@@ -28,13 +30,6 @@ function ArtistsFull(props) {
 
   const descEl = React.useRef(null);
  
-  const { isLoading, error, data } = useQuery(
-    "artist",
-    () => getArtworks(props.match.params.index),
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
 
   useEffect(()=>{
     setBioLoading(true)
@@ -49,9 +44,23 @@ function ArtistsFull(props) {
       });
   }, []);
 
-  if (isLoading) return <Loading></Loading>;
+  function handlePagination(e,page){
+    e.preventDefault();   
+        axios.get("artists/artworks-paginated/"+props.match.params.index+"/?limit=6&page="+page)
+          .then((res) => {
+                let data = res.data;
+                setData(data);
+          });
+  }
 
-  if (error) return "An error has occurred: " + error.message;
+  useEffect(function(){
+    axios.get('artists/artworks-paginated/'+props.match.params.index+'/?limit=6')
+      .then((res) => {
+            let data = res.data;
+            setData(data);
+      });
+  },[])
+
 
   let bioImage = '';
   let bioName = '';
@@ -90,7 +99,7 @@ function ArtistsFull(props) {
 
       <h2>artworks</h2>
 
-      <div className="row" >
+      <div className="row" ref={myGrid} >
 
             <div className='col-4'>
 
@@ -129,6 +138,20 @@ function ArtistsFull(props) {
 
 
         </div>
+
+
+        
+        <div className="row productPaginate">
+                <div className='col-4 prevPage'>
+                    <a to="#" onClick={e => { if(data.current_page -1 < data.last_page && data.current_page -1 != 0 ){  handlePagination(e,data.current_page-1);} myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'}) }}>PREV</a>
+                </div>
+                <div className='col-4 centerPage'>
+
+                </div>
+                <div className='col-4 nextPage'>
+                <a to="#" onClick={e => { if(data.current_page +1 < data.last_page){ handlePagination(e,data.current_page+1); } myGrid.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
+                </div>
+            </div>
 
       </div>
     </div>

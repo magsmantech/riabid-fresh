@@ -22,9 +22,11 @@ export default function RangeSlider({ min, max, value, setValue }) {
     setValue(newValue);
   };
 
+
   return (
     <div className={classes.root}>
       <IOSSlider
+        
         value={value}
         min={min}
         max={max}

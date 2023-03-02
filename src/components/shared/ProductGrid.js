@@ -35,7 +35,6 @@ export default function ProductGrid(){
     function handleCategory(e,category,page){
       e.preventDefault();      
       setCategory(category);
-      console.log(category);
       let urld;
       if (category == 0){
         urld = "artworks-paginated?limit=8&page="+page;

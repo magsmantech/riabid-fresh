@@ -39,6 +39,24 @@ ul{
         width:100%;
     }
 }
+span.frameIcon{
+    width:14px;
+    height:14px;
+    display:inline-block;
+    margin:auto;
+    cursor:pointer;
+    background:url('../assets/icons/frame.svg');            
+    transition: all 0.3s ease;
+}
+span.shareIcon{
+    width:14px;
+    height:14px;
+    display:inline-block;
+    margin:auto;
+    cursor:pointer;          
+    transition: all 0.3s ease;
+    background:url('../assets/icons/share.png');            
+}
 .productBlock{
     overflow:hidden;
     margin-bottom:24px;
@@ -55,15 +73,7 @@ ul{
         position:relative;
         text-align: center;
         cursor:pointer;
-        span.frameIcon{
-            width:14px;
-            height:14px;
-            display:inline-block;
-            margin:auto;
-            cursor:pointer;
-            background:url('../assets/icons/frame.svg');            
-            transition: all 0.3s ease;
-        }
+        
         .frametext{
             font-family: 'MonumentGrotesk-Medium';
             font-style: normal;
@@ -299,6 +309,333 @@ color: #000000;
 }
 .ibioArtworks{
     padding-left:10px;
+    padding-right:10px;   
+}
+.shopSearching{
+    padding-left:10px;
+    padding-top:38px;
+    gap:10px;
     padding-right:10px;
-    
+    display:flex;
+    justify-content: space-between;
+    align-items: end;
+    ul{
+        padding:0px;
+        margin:0px;
+    }
+    li{
+        font-family: 'Loos Normal';
+        font-style: normal;
+        font-weight: 400;
+        cursor:pointer;
+        font-size: 32px;
+        line-height: 32px;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        opacity: 0.1;
+    }
+    li.active{
+        opacity:1;
+    }
+    .searchBox{
+        border-bottom:1px solid #000;
+        padding-right:20px;
+        padding-bottom:9px;
+        width:20%;
+    }
+    .searchTitle{
+        width:40%;
+        input{
+            position:relative;
+            top:7px;
+            border:0px;
+            font-family: 'Loos Normal';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 32px;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+            opacity: 0.2;
+        }
+
+        button{
+            position:relative;
+            top:7px;
+            width:24px;
+            height:24px;
+            background:url('../assets/icons/searchIcon.svg')no-repeat;
+            border:0px;
+            margin-right:15px;
+        }
+    }
+}
+.MuiSlider-thumb{
+    border-radius:0px!important;
+    width:1px!important;
+    height:15px!important;
+    margin-left:0px!important;
+    margin-right:0px!important;
+    border-right:0px!important;
+    margin-top:-7.5px!important;
+}
+.MuiSlider-markLabel{
+    top:-25px!important;
+    font-family: 'Loos Normal'!important;
+    font-style: normal;
+    font-weight: 400!important;
+    font-size: 32px!important;
+    line-height: 32px!important;
+    font-feature-settings: 'salt' on;
+    color: #000000;
+}
+.MuiSlider-marked{
+    margin-bottom:0px!important;
+    padding-bottom:0px!important;
+    top:16px!important;
+}
+.MuiSlider-rail,.MuiSlider-track{
+    height:1px !important;
+}
+.searchYears{
+    padding-left:40px;
+    padding-right:40px!important;
+}
+.searchPrice{
+    input{
+        border:0px;
+        font-family: 'Loos Normal';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 32px;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        opacity: 0.2;
+        position: relative;
+        top:7px;
+    }
+}
+.searchBox.clear{
+    padding-bottom:0px;
+    button{
+        font-family:'MonumentGrotesk-Regular';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 41px;
+        text-align: center;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        display:block;
+        width:109px!important;
+        height:41px;
+        border:0px;
+        cursor:pointer;
+        background:0px;
+        border-top:1px solid black;
+    }
+    width:109px!important;
+}
+.shopG{
+    padding-top:23px;
+}
+.productShow{
+    padding-top:72px;
+    padding-left:10px;
+    padding-right:10px;
+    .prod{
+        display:flex;
+        align-items: center;
+    }
+    .main-pic{
+        height:calc(100vh - 70px);
+    }
+    .picsNum{
+        width:109px;
+        text-align: center;
+        font-family: 'MonumentGrotesk-Regular';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        margin-right:10px;
+        .borderT{
+            width:100%;
+            display:block;
+            height:1px;
+            border-top:1px solid black;
+            margin-top:8px;
+            margin-bottom:8px;
+        }
+    }
+    .prodPic{
+        margin-right:9px;
+        width:calc(100% - 477px);
+        text-align: center;
+    }
+    .prodDetails{
+        width:348px;
+        height:calc(100vh - 70px);
+        .title{
+            position:relative;
+            height:50%;
+            ul{
+                padding:0px;
+                margin:0px;
+                position: absolute;
+                bottom:0;
+                padding-bottom:9px;
+                width:100%;
+                border-bottom:1px solid black;
+                li{
+                    float:left;
+                    width:50%;
+                    a{
+                        text-decoration: none;
+                        font-family: 'MonumentGrotesk-Regular';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 16px;
+                        font-feature-settings: 'salt' on;
+                        color: #000000;
+                        display:block;
+                        span{
+                            float:left;
+                            margin-right:9px;
+                        }
+                    }
+                }
+            }
+        }
+        p{
+            font-family: 'MonumentGrotesk-Regular';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+            margin-bottom:4px;
+        }
+        h1{
+            font-family: 'Loos Normal';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 32px;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+            text-align: left;
+            margin-bottom:12px;
+        }
+        .size{
+            float:left;
+            width:50%;
+        }
+        .size{
+            p{
+                margin-bottom:0px;
+            }
+        }
+        .orig{
+            margin-top:16px;
+        }
+    }
+
+    .description{
+        height:50%;
+        padding-top:8px;
+        position:relative;
+        .text{
+            font-family: 'MonumentGrotesk-Regular';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+        }
+        ul{
+            padding:0px;
+            margin:0px;
+            position:absolute;
+            bottom:0;
+            width:100%;
+            li{
+                float:left;
+            }
+            li:first-child{
+                text-align: center;
+                width:30%;
+                margin-right:10px;
+            }
+            li:last-child{
+                width:calc(70% - 10px);
+                button{
+                    background:transparent;
+                    border:0px;
+                    font-family: 'MonumentGrotesk-Regular';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 16px;
+                    text-align: center;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    font-feature-settings: 'salt' on;
+                    color: #000000;
+                    border-top:1px solid black;
+                    border-bottom:1px solid black;
+                    cursor:pointer;
+                    width:100%;
+                    display:block;
+                    padding-top:12px;
+                    padding-bottom:12px;
+                }
+            }
+            .price{
+                font-family: 'MonumentGrotesk-Regular';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 16px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                margin-bottom:0px;
+                font-feature-settings: 'salt' on;
+                color: #000000;
+                padding-top:13px;
+                padding-bottom:12px;
+                border-bottom:1px solid black;
+                .currency{
+                    position: relative;
+                    top:1px;
+                    margin-right:5px;
+                }
+            }
+        }
+    }
+}
+h1.related{
+    text-align: left;
+    font-family: 'Pragmatica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    font-feature-settings: 'salt' on;
+    padding-top:64px;
+    color: #000000;
+    margin-bottom:10px;
+}
+.paddingLeft{
+    padding-right:10px;
+    padding-left:10px;
 }

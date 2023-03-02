@@ -62,9 +62,9 @@ function Navbar() {
                 className="nav-link"
                   to={`/store`}
                   activeClassName="active-item"
-                  style={{
-                    color: pathName == "/store" ? "#fbb03b " : "black",
-                  }}
+                  // style={{
+                  //   color: pathName == "/store" ? "#fbb03b " : "black",
+                  // }}
                 >
                   ARTWORKS
                 </NavLink>
@@ -74,9 +74,9 @@ function Navbar() {
                 className="nav-link"
                   to={`/galleries`}
                   activeClassName="active-item"
-                  style={{
-                    color: pathName == "/galleries" ? "#fbb03b " : "black",
-                  }}
+                  // style={{
+                  //   color: pathName == "/galleries" ? "#fbb03b " : "black",
+                  // }}
                 >
                   GALLERIES
                 </NavLink>
