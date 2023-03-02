@@ -243,6 +243,17 @@ ul{
     .group{
         margin-bottom:24px;
     }
+    a{
+        font-family: 'MonumentGrotesk-Regular';
+        font-weight: 400;
+font-size: 16px;
+line-height: 20px;
+
+font-feature-settings: 'salt' on;
+
+
+color: #000000;
+    }
 }
 .artistFullPage{
     padding-left:10px;
@@ -259,7 +270,7 @@ ul{
             font-feature-settings: 'salt' on;
             color: #000000;
         }
-        .bioText{
+        .bioText div{
             font-family: 'MonumentGrotesk-Regular';
             font-style: normal;
             font-weight: 400;

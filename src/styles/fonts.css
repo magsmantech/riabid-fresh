@@ -1,14 +1,20 @@
 @font-face {
     font-family: "MonumentGrotesk-Regular";
-    src: url("../fonts/MonumentGrotesk-Regular.ttf");
+    src: url('../fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2'), url('../fonts/ABCMonumentGrotesk-Regular.woff') format('woff');
     }
+    @font-face {
+        font-family: "MonumentGrotesk-Medium";
+        src: url('../fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2'), url('../fonts/ABCMonumentGrotesk-Regular.woff') format('woff');
+        }
+
 @font-face {
-    font-family: "MonumentGrotesk-Medium";
-    src: url("../fonts/MonumentGrotesk-Medium.ttf");
-}
-@font-face {
-	src: url('../fonts/LoosLCGeo-Variable-Web.woff2') format('woff2-variations');
 	font-family:'Loos Normal';
+    src: url('../fonts/loos_regular.eot');
+src: url('../fonts/loos_regular.eot#iefix') format('embedded-opentype'), url('../fonts/loos_regular.woff2') format('woff2'), url('../fonts/loos_regular.woff') format('woff'), url('../fonts/loos_regular.ttf') format('truetype');
+
+          font-weight: normal;
+          font-style: normal;
+        
 }
 
 @font-face {
