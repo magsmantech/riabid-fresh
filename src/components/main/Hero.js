@@ -44,8 +44,8 @@ function Hero() {
 
         {coverData.length > 0 && 
           <div className="author">
-            <p>Keti Shapatava</p>
-            <p>Lighthouse</p>
+            <p>{coverData[0].author}</p>
+            <p>{coverData[0].category}</p>
             <p>{coverData[0].year}</p>
           </div> }
         </div>

@@ -20,7 +20,7 @@ function Galleries(props) {
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <section id="shop" className="container galleries">
+    <section className='paddingLeft'>
       <MetaTags>
         <title>Art Galleries on Ria Bid</title>
         <meta
@@ -32,37 +32,23 @@ function Galleries(props) {
           content="art gallery, art online, galleries, sell art, decorative art,Discover Contemporary Artists, contemporary artists from Georgia,georgian contemporary artists,"
         />
       </MetaTags>
-      <ul className="breadcrumb">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/auctions">Galleries</Link>
-        </li>
-      </ul>
-      <div className="grid-container-galleries">
+   
+      <div className="galleryPage">
         {data.data
           .filter((item) => item.is_hidden === 0)
           .map((item) => (
-            <div key={item.id} className="product flex column">
-              <Link
-                to={"/galleries/" + item.id}
-                style={{ display: "flex", flexDirection: "column" }}
-              >
-                <div className="img">
-                  <img src={item.legal_image}></img>
-                </div>
-
+            <div key={item.id} className="galleryItem">
+            
                 <p className="title">{item.gallery_title}</p>
-              </Link>
-              <div className="flex space-between">
-                <div className="flex">
+           
+                <div className="text">
+                  <p className="desc">{item.gallery_description}</p>
                   <p className="location">{item.location}</p>
                 </div>
                 <Link to={"/galleries/" + item.id}>
-                  <button className="main-button">View Gallery</button>
+                  <button className="custom-button">VIEW GALLERY</button>
                 </Link>
-              </div>
+             
             </div>
           ))}
         {data.data.filter((item) => item.is_hidden === 0).length === 0

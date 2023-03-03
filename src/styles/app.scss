@@ -440,6 +440,8 @@ color: #000000;
     width:109px!important;
 }
 .shopG{
+    padding-left:10px;
+    padding-right:10px;
     padding-top:23px;
 }
 .productShow{
@@ -638,4 +640,62 @@ h1.related{
 .paddingLeft{
     padding-right:10px;
     padding-left:10px;
+}
+.galleryPage{
+    padding-top:55px;
+    .galleryItem{
+        border-top:1px solid black;
+      
+        display:flex;
+        justify-content: space-between;
+        .text{
+            padding-top:19px;
+            width:50%;
+        }
+        .title{
+            padding-top:19px;
+            font-family: 'Loos Normal';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 72px;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+            width:30%;
+        }
+        p{
+            font-family: 'ABC Monument Grotesk Unlicensed Trial';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;            
+            font-feature-settings: 'salt' on;
+            color: #000000;
+        }
+        p.location{
+            margin-top:20px;
+        }
+        a{
+            text-decoration: none;
+        }
+        .custom-button{
+            border:0px;
+            background:transparent;
+            display:block;
+
+            font-family: 'MonumentGrotesk-Regular';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 43px;
+            text-align: center;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+            width:227px;
+            border-bottom:1px solid black;
+            height:40px;
+        }
+    }
 }
