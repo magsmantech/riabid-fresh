@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import {
   getArtworks,
@@ -15,6 +15,8 @@ import Pagination from "./Pagination";
 import { FaStar } from "react-icons/fa";
 import { getCollection } from "../services/collectionService";
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import { MetaTags } from "react-meta-tags";
+import ProductBlock from "../components/shared/ProductBlock";
 
 function Collection(props) {
   const categories = [
@@ -36,7 +38,7 @@ function Collection(props) {
   ];
   const [filter, setFilter] = useState(false);
   const [sort, setSort] = useState(false);
-
+  const myGrid = useRef(null);
   const { isLoading, error, data } = useQuery(
     "collection" + props.match.params.id,
     () => getCollection(props.match.params.id),
@@ -76,113 +78,62 @@ function Collection(props) {
     ) : null;
 
   return (
-    <section id="shop" className="container galleries">
-      <ul className="breadcrumb">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="#">Collections</Link>
-        </li>
-        <li>
-          <Link to={"/collections/" + data.data.id}>
-            {data.data.collection_name}
-          </Link>
-        </li>
-      </ul>
-      <div className="full-gallery">
-        <div className="text">
+    <section className="galleryShow paddingLeft">
+     <MetaTags>
+        <title>Art Collection on Ria Bid</title>
+        <meta
+          name="description"
+          content="Browse digital galleries.Travel digital art."
+        />
+        <meta
+          name="keywords"
+          content="art gallery, art online, galleries, sell art, decorative art,Discover Contemporary Artists, contemporary artists from Georgia,georgian contemporary artists,"
+        />
+      </MetaTags>
+      <div className="fullgaller">
+        <div className='titlePage'>
           <h1>{data.data.collection_name}</h1>
-          {ReactHtmlParser(data.data.description)}
+            <div className="pictures">
+             <img className="galPic" src={data.data.image}></img>
+          </div>
         </div>
-        <div className="pictures">
-          <img className="bot-new" src={data.data.image}></img>
+      
+        <div className="text">        
+          <p>{ReactHtmlParser(data.data.description)}</p>
         </div>
       </div>
-      <section id="shop" className="container auctions shop">
-        <div className="flex space-between">
-          <ul className="breadcrumb">
-            <li>
-              <Link to="/store">
-                {data.data.collection_name} Collection Artworks (
-                {data.data.artworks.length})
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <div className="grid-container-auctions">
-            {data.data.artworks.map((item) => (
-              <div key={item.id} className="product flex column">
-                <Link to={"/store/" + item.id} style={{ position: "relative" }}>
-                  {item.is_sold ? (
-                    <div className="sold">
-                      <img src={sold}></img>
-                    </div>
-                  ) : null}
-                  <div className="img">
-                    {getPrivilegedIcon(item.privileged)}
-                    <img
-                      src={item.thumbnail}
-                    ></img>
-                  </div>
-                </Link>
-                <Link to={"/store/" + item.id} style={{ position: "relative" }}>
-                  <p className="title">
-                    <i>{item.title}</i>
-                  </p>
-                </Link>
-                <Link to={"/artists/" + item.artist_id} className="title2">
-                  {item.display_name}
-                </Link>
-                {item.current_bid ? (
-                  <div className="flex space-between">
-                    <div className="flex">
-                      <p className="price">₾{item.current_bid}</p>
-                      <p className="price gray">₾{item.buy_it_now}</p>
-                    </div>
-                    <p className="time gray"></p>
-                  </div>
-                ) : (
-                  <div className="flex space-between">
-                    <div className="flex">
-                      <p className="price">
-                        {item.is_geo
-                          ? `₾${item.buy_it_now}`
-                          : `$${item.price_usd}`}
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div></div>
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={
-              data.data.artworks
-                .filter(
-                  (item) =>
-                    item.buy_it_now >= filterPrice[0] &&
-                    item.buy_it_now <= filterPrice[1]
-                )
-                .filter(
-                  (item) =>
-                    item.year >= filterYear[0] && item.year <= filterYear[1]
-                )
-                .filter(
-                  (item) => item.product_type == filterType || filterType == ""
-                )
-                .filter(
-                  (item) =>
-                    categoryType.includes(item.category_id?.toString()) ||
-                    categoryType.length === 0
-                ).length
-            }
-            currentPage={currentPage}
-            paginate={paginate}
-          ></Pagination>
+
+      <section >
+        <h1 className="galleryArtworks">collection artworks</h1>
+      <div className="row" ref={myGrid} >
+            <div className='col-md-4'>
+            {data.data.artworks ? (
+                    <ProductBlock
+                    start={0}
+                    limit={2}
+                    data={data.data.artworks}
+                    />
+                    ) : null}
+            </div>
+            <div className='col-md-4'>
+            {data.data.artworks ? (
+                    <ProductBlock
+                    start={2}
+                    limit={2}
+                    data={data.data.artworks}
+                    />
+                    ) : null}
+            </div>
+            <div className='col-md-4'>
+            {data.data.artworks ? (
+                    <ProductBlock
+                    start={4}
+                    limit={2}
+                    data={data.data.artworks}
+                    />
+                    ) : null}
+            </div>
+       
         </div>
       </section>
     </section>

@@ -22,6 +22,9 @@ function ProductBlock({
                     {item.price_usd != 0 && <span className="price">
                         {item.price_usd} ₾ 
                     </span> }
+                    {item.request_price ? (             
+                      <span className="price">Contact for Price</span>                 
+                     ):''}
                 </div>
               })
         

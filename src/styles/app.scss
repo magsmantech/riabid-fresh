@@ -664,7 +664,7 @@ h1.related{
             width:30%;
         }
         p{
-            font-family: 'ABC Monument Grotesk Unlicensed Trial';
+            font-family: 'MonumentGrotesk-Regular';
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
@@ -698,4 +698,79 @@ h1.related{
             height:40px;
         }
     }
+}
+.galleryShow{
+    padding-top:56px;
+    h1{
+        font-family: 'Loos Normal';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 72px;
+        line-height: 72px;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        text-align: left;
+    }
+    h1.galleryArtworks{
+        margin-top:61px;
+        font-family: 'MonumentGrotesk-Medium';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 32px;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        margin-bottom:10px;
+    }
+    .galPic{
+        margin-top:162px;
+        width: 100%;
+    }
+    .text{
+        p{
+            font-family: 'MonumentGrotesk-Medium';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            font-feature-settings: 'salt' on;
+            color: #000000;
+        }
+    }
+}
+.fullgaller{
+    display:flex;
+    .titlePage{
+        width:30%;
+    }
+    .text{
+        margin-left:88px;
+        position:relative;
+        width:40%;
+    }
+    .location{
+        position:absolute;
+        bottom:0;
+    }
+}
+
+h1.not_found{
+    font-family: 'Loos Normal';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 144px;
+    line-height: 181px;
+    text-align: center;
+    font-feature-settings: 'salt' on;
+    color: #000000;
+}
+p.no_page{
+    font-family: 'Loos Normal';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1px;
+    text-align: center;
+    font-feature-settings: 'salt' on;
+    color: #000000;
 }
