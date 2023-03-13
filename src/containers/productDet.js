@@ -200,8 +200,8 @@ export default function ProductDet(props) {
           </div>
           <div className="prodDetails">
             <div className="title">
-              <p>Created in {artwork.year}</p>
-              <p>by {artwork.display_name}</p>
+              <p className="withoutMargin">Created in {artwork.year}</p>
+              <p className="withoutMargin">by {artwork.display_name}</p>
               <h1>{artwork.title}</h1>
               <div className="size">
                 <p>Oil on canvas</p>
