@@ -45,6 +45,7 @@ footer {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
+    margin-bottom:16px;
     color: #000000;
   }
   .secondLine{
@@ -60,7 +61,6 @@ footer {
       padding:0px;
       margin:0px;
       float:left;
-      margin-left:70px;
       position: relative;
       top:-3px;
       li{
@@ -81,7 +81,6 @@ footer {
   .social-list{
     position: relative;
     top:-5px;
-    float:right;
     margin-right:100px;
     a{
       margin-right:16px;

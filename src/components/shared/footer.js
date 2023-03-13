@@ -17,7 +17,7 @@ function footer() {
     <div className='footerBg'>
     <footer>  
       <div className='row'>
-        <div className="col-6">
+        <div className="col-5">
           <div className="maxWidth">
             <h2>Art for homes & organizations</h2>
             <p>
@@ -26,16 +26,20 @@ function footer() {
             <a to="#" className='download'>download.pdf</a>          
           </div>
         </div>
-        <div className='col-2'>
-        <h4>Newsletter</h4>
-        <p>Ria Bid is a fundraising online auction oriented towards buying and selling Georgian art.</p>
-          <Subscribe></Subscribe>
+        <div className='col-3'>
+          <div className="newsletterForm">
+            <h4>Newsletter</h4>
+            <p>Ria Bid is a fundraising online auction oriented towards buying and selling Georgian art.</p>
+              <Subscribe></Subscribe>
+            </div>
         </div>
       
             <div className="col-2">
-              <h4>Come see us</h4>
-              <p>If you would like to see an artwork in person, visit our Gallery Showroom</p>
-              <p>5 Besiki Street , Tbilisi 0108</p>
+              <div className="comeSee">
+                <h4>Come see us</h4>
+                <p>If you would like to see an artwork in person, visit our Gallery Showroom</p>
+                <p>5 Besiki Street , Tbilisi 0108</p>
+              </div>
             </div>
 
             <div className="col-2">
@@ -45,7 +49,11 @@ function footer() {
             </div>
         </div>
         <div className="secondLine">
+          <div className="row">
+            <div className="col-1">
         <img className="logo" src={ln} alt="logo" /> 
+        </div>
+        <div className="col-4">
           <ul>
             <li><Link to="#">Info</Link></li>
             <li><Link to="#">Delivery</Link></li>
@@ -53,8 +61,10 @@ function footer() {
             <li><Link to="#">Privacy Policy</Link></li>
             <li><Link to="#">Additional Information</Link></li>
           </ul>
+          </div>
+          <div className='col-5'></div>
 
-             
+          <div className='col-2'>
           <div className="social-list">
               <a to="https://instagram.com/ria.bid?igshid=1zjuzuv6w5pf">
                 <FaInstagram size="14px" />
@@ -66,6 +76,9 @@ function footer() {
               <a to="https://twitter.com/bid_ria/">
                 <FaTwitter size="14px" />
               </a>
+            </div>
+            </div>
+
             </div>
         </div>
     </footer>

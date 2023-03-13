@@ -76,7 +76,7 @@ export default function ProductGrid(){
                            
             })
     }
-    return (
+    return (<>
         <div className="row" ref={myGrid} >
             <div className='col-4'>
             <ul className="trendMenu">
@@ -125,6 +125,7 @@ export default function ProductGrid(){
                
             </div>
 
+            </div>
 
             <div className="row productPaginate">
                 <div className='col-4 prevPage'>
@@ -195,9 +196,6 @@ export default function ProductGrid(){
                 <div className='col-4 nextPage'>
                 <a to="#" onClick={e => { if(category_products.current_page +1 < category_products.last_page){ handleCategory(e,category,category_products.current_page+1); } myCats.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
                 </div>
-            </div>
-
-
-        </div>
+            </div></>
     )
 }
