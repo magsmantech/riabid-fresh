@@ -15,6 +15,9 @@ export default function ProductGrid(){
     const [grid, setGrid] = useState(2);  
     const myGrid = useRef(null);
     const myCats = useRef(null);
+
+
+ 
     
       useEffect(function(){
           axios.get('dashboard/curator-artworks?limit=6')
@@ -31,6 +34,25 @@ export default function ProductGrid(){
                   setCategoryProducts(data);
             });
         },[])
+
+        useEffect(() => {
+       
+          window.addEventListener('wheel', scrolling,false)
+    
+          return () => {
+            window.removeEventListener('wheel', scrolling)
+          }
+        }, [])
+        function scrolling() {      
+       
+          var sticky = document.getElementById("galP").offsetTop;
+    
+          if (document.body.scrollTop > sticky-117) {
+            document.getElementById("forStickyPos").classList.add("sticky");
+          } else {
+            document.getElementById("forStickyPos").classList.remove("sticky");
+          }
+        }
 
     function handleCategory(e,category,page){
       e.preventDefault();      
@@ -77,13 +99,22 @@ export default function ProductGrid(){
             })
     }
     return (<>
-        <div className="row" ref={myGrid} >
-            <div className='col-4'>
-            <ul className="trendMenu">
-                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => handleType(e,0,1)} >trending</a></li>
-                <li className={grid == 1 ? "active" : ""}><a href="#" onClick={e => handleType(e,1,1)} >featured</a></li>
+    <div className="row" id='forStickyPos'>
+      <div className="col-4">
+      <ul className="trendMenu">
+                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >trending</a></li>
+                <li className={grid == 1 ? "active" : ""}><a href="#" onClick={e => {handleType(e,1,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >featured</a></li>
             </ul>
-                
+      </div>
+      <div className='col-4'>
+        <ul className="trendMenu fullWidth">
+                <li className={grid == 2 ? "active" : ""}><a href="#" onClick={e => {handleType(e,2,1); myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >curators <span>choice made by <span classname='author'>{curator.name} {curator.lastname}</span></span></a></li>
+            </ul>
+      </div>
+   
+    </div>
+        <div className="row" ref={myGrid} id="galP" >
+            <div className='col-4'>
                     {artworks.data ? (
                     <ProductBlock
                     start={0}
@@ -94,10 +125,7 @@ export default function ProductGrid(){
                              
             </div>
             <div className='col-4'>
-            <ul className="trendMenu fullWidth">
-                <li className={grid == 2 ? "active" : ""}><a href="#" onClick={e => handleType(e,2,1)} >curators <span>choice made by <span classname='author'>{curator.name} {curator.lastname}</span></span></a></li>
-            </ul>
-
+        
           
                     {artworks.data.length ? (
                     <ProductBlock
@@ -111,9 +139,7 @@ export default function ProductGrid(){
               
             </div>
             <div className='col-4'>
-            <ul className="trendMenu fullWidth">
-            
-            </ul>          
+               
            
                     {artworks.data.length ? (
                     <ProductBlock

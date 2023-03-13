@@ -165,6 +165,23 @@ span.shareIcon{
     padding-left:10px;
     padding-right:10px;
 }
+#forStickyPos.row{
+    position:absolute;
+    width:100%;
+}
+#forStickyPos.row.sticky{
+    width:100%;
+    z-index: 10;
+    position:fixed;
+    top:30px;
+    background-color: white;
+    .trendMenu{
+        margin-top:0px;
+    }
+}
+#galP{
+    padding-top:117px;
+}
 .productPaginate{
     a{
         min-width:109px;

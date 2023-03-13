@@ -14,7 +14,7 @@ function Hero() {
   React.useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize)
-  })
+  },[])
   function handleResize() {
     setHeight(document.getElementById('slideImg').clientHeight - document.getElementById('headingTitle').clientHeight-7);
   }
