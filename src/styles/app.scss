@@ -7,7 +7,7 @@ ul{
     overflow:hidden;
     padding-left:0px;
     height:43px;
-    li{
+    li,div{
         float:left;
         width:50%;
         a,span{    
@@ -27,6 +27,7 @@ ul{
             }
         }
     }
+
     li.active{
         a,span{
             opacity:1;
@@ -171,6 +172,7 @@ span.shareIcon{
 #forStickyPos.row{
     position:absolute;
     width:100%;
+    padding-right:5px;
 }
 #forStickyPos.row.sticky{
     width:100%;
@@ -223,24 +225,25 @@ span.shareIcon{
     }
 }
 .allMenu{
-    li{
-        width:16%;
+    li,div{
+        width:15%;
         text-align: center;
     }
-    li:first-child{
+
+    li:first-child,div:first-child{
         text-align: left;
-        width:10%;
+        width:8%;
     }
-    li:last-child{
-        width:10%;
+    li:last-child,div:last-child{
         text-align: right;
+        width:17%;
     }
 }
 .logos{
     padding-left:10px;
     padding-top:64px;
     img{
-        height:52px;
+        max-height:52px;
     }
     .slick-slide{
         height:52px;
@@ -1287,5 +1290,125 @@ p.no_page{
         font-feature-settings: 'salt' on;
         color: #000000;
 
+    }
+}
+@media only screen and (max-width: 1230px) {
+    .slide .cert a .text{
+        max-width:160px;
+    }
+}
+@media only screen and (max-width: 1070px) {
+    .trendMenu li a, .trendMenu li span, .trendMenu div a, .trendMenu div span{
+        font-size:24px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .slide .cert a .text{
+        max-width:200px;
+    }
+    .trendMenu li span{
+        display:none;
+    }
+    .removeLg{
+        display:none;
+    }
+    .productBlock div.frame{
+        width:53px;
+        height:60px;
+    }
+    .productBlock div.author{
+        max-width: calc(100% - 162px);
+    }
+}
+@media only screen and (max-width: 767px) {
+    .centerPos{
+        text-align: center;
+    }
+    .lastPos{
+        text-align: right;
+    }
+    .hideLast{
+        display:none;
+    }
+    .trendMenu{
+        height:auto;
+    }
+    .allMenu div{
+        width:20%!important;
+        text-align: left;
+    }
+    .footerPaddingRight{
+        padding-right:61px;
+    }
+    .footerLineMargin{
+        margin-bottom:20px;
+    }
+    footer a.download{
+        float:right;
+    }
+    footer .secondLine{
+        margin-top:30px!important;
+        position: relative;
+        .social-list{
+            position:absolute;
+            right:0;
+            top:15px;            
+            a:last-child{
+                margin-right:0px;
+            }
+        }
+        ul.footerMenu{
+            margin-top:16px;
+            li{
+                margin-bottom:8px;
+            }
+            a{
+                padding:0px 12px 0px 0px;
+            }
+        }
+    }
+    .newsletterForm,.comeSee{
+        max-width: 95%;
+        h4{
+            float:left;
+            width:114px;
+        }
+        .newsletterDiv,.seeText{
+            width:calc(100% - 114px);
+            float:right;
+        }
+        .subscribe{
+            margin-top:10px;
+            input,button{
+                width:100%;
+                position:relative;
+            }
+            button{
+                top:-1px;
+            }
+        }
+    }
+    .newsletterForm{
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .productBlock span.price{
+        min-width:70px;
+    }
+    .productBlock div.author{
+        min-height:55px;
+    }
+    .productBlock div.frame {
+        width: 70px;
+        height: 45px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .slide .cert a .text{
+        max-width:161px;
     }
 }

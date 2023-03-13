@@ -12,11 +12,25 @@ export default function ProductGrid(){
     const [category_products,setCategoryProducts] = useState({'data':[]});
     const [url,setUrl] = useState('');
     const [category,setCategory] = useState(0);
-    const [grid, setGrid] = useState(2);  
+    const [grid, setGrid] = useState(2);
+    const [show, setShow] = useState(3);  
     const myGrid = useRef(null);
     const myCats = useRef(null);
+    
 
-
+    React.useEffect(() => {
+      handleResize();
+      window.addEventListener('resize', handleResize)
+      return () =>{
+        window.removeEventListener('resize', handleResize)
+      }
+    },[])
+    function handleResize() {
+      if(window.innerWidth > 991)
+        setShow(3);
+      else 
+        setShow(4);
+    }
  
     
       useEffect(function(){
@@ -28,7 +42,7 @@ export default function ProductGrid(){
                   setUrl("/curator/"+curator.id)
             });
 
-            axios.get('artworks-paginated?limit=16')
+            axios.get('artworks-paginated?limit=12')
             .then((res) => {
                   let data = res.data;
                   setCategoryProducts(data);
@@ -58,10 +72,11 @@ export default function ProductGrid(){
       e.preventDefault();      
       setCategory(category);
       let urld;
+      let limit = 12;
       if (category == 0){
-        urld = "artworks-paginated?limit=16&page="+page;
+        urld = "artworks-paginated?limit="+limit+"&page="+page;
       }else{
-        urld = "categories/"+category+"/artworks?limit=16&page="+page;
+        urld = "categories/"+category+"/artworks?limit="+limit+"&page="+page;
       }
           axios.get(urld)
             .then((res) => {
@@ -99,37 +114,37 @@ export default function ProductGrid(){
     }
     return (<>
     <div className="row" id='forStickyPos'>
-      <div className="col-4">
+      <div className="col-8 col-md-4">
       <ul className="trendMenu">
                 <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >trending</a></li>
-                <li className={grid == 1 ? "active" : ""}><a href="#" onClick={e => {handleType(e,1,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >featured</a></li>
+                <li className={grid == 1 ? "active centerPos" : "centerPos"}><a href="#" onClick={e => {handleType(e,1,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >featured</a></li>
             </ul>
       </div>
-      <div className='col-4'>
+      <div className='col-4 col-md-4'>
         <ul className="trendMenu fullWidth">
-                <li className={grid == 2 ? "active" : ""}><a href="#" onClick={e => {handleType(e,2,1); myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >curators <span>choice made by <span classname='author'>{curator.name} {curator.lastname}</span></span></a></li>
+                <li className={grid == 2 ? "active lastPos" : "lastPos"}><a href="#" onClick={e => {handleType(e,2,1); myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >curators <span>choice made by <span classname='author'>{curator.name} {curator.lastname}</span></span></a></li>
             </ul>
       </div>
    
     </div>
         <div className="row" ref={myGrid} id="galP" >
-            <div className='col-4'>
+            <div className='col-6 col-md-4'>
                     {artworks.data ? (
                     <ProductBlock
                     start={0}
-                    limit={2}
+                    limit={show==3 ? 2 : 3}
                     data={artworks.data}
                     />
                     ) : null}
                              
             </div>
-            <div className='col-4'>
+            <div className='col-6 col-md-4'>
         
           
                     {artworks.data.length ? (
                     <ProductBlock
-                    start={2}
-                    limit={2}
+                    start={show==3 ? 2 : 3}
+                    limit={show==3 ? 2 : 3}
                     data={artworks.data}
                     />
                     ) : null}
@@ -137,7 +152,7 @@ export default function ProductGrid(){
                
               
             </div>
-            <div className='col-4'>
+            <div className='col-md-4 hideLast'>
                
            
                     {artworks.data.length ? (
@@ -167,45 +182,45 @@ export default function ProductGrid(){
 
         <div className="row" ref={myCats}>
         <div className='col-12'>
-          <ul className="trendMenu allMenu">
-            <li className={category == 0 ? "active" : ""}><Link to="/store" onClick={(e)=>{handleCategory(e,0,1)}}>all art</Link></li>
+          <div className="trendMenu allMenu">
+            <div className={category == 0 ? "trendBlock active" : "trendBlock"}><Link to="/store" onClick={(e)=>{handleCategory(e,0,1)}}>all art</Link></div>
             {cats.map(item => {
-              return <li className={category == item.id ? "active" : ""}><Link to="#" onClick={(e)=>{handleCategory(e,item.id,1)}}>{item.title}</Link></li>
+              return <div className={category == item.id ? "trendBlock active" : "trendBlock"}><Link to="#" onClick={(e)=>{handleCategory(e,item.id,1)}}>{item.title}</Link></div>
             })}
-          </ul>
+          </div>
         </div>
-        <div className='col-3'>
+        <div className='col-6 col-lg-3 col-md-4'>
          {category_products.data.length ? (
                     <ProductBlock
                     start={0}
-                    limit={4}
+                    limit={show}
                     data={category_products.data}
                     />
                     ) : null}
         </div>
-        <div className='col-3'>
+        <div className='col-6 col-lg-3 col-md-4'>
         {category_products.data.length ? (
                     <ProductBlock
-                    start={4}
-                    limit={4}
+                    start={show}
+                    limit={show}
                     data={category_products.data}
                     />
                     ) : null}          
         </div>
-        <div className='col-3'>
+        <div className='col-lg-3 col-md-4 hideLast'>
         {category_products.data.length ? (
                     <ProductBlock
-                    start={8}
-                    limit={4}
+                    start={2*show}
+                    limit={show}
                     data={category_products.data}
                     />
                     ) : null}        
         </div>
-        <div className='col-3'>
+        <div className='col-lg-3 removeLg'>
         {category_products.data.length ? (
                     <ProductBlock
-                    start={12}
-                    limit={4}
+                    start={3*show}
+                    limit={show}
                     data={category_products.data}
                     />
                     ) : null}        

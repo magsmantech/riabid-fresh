@@ -21,6 +21,7 @@ function Navbar() {
       window.location.href ='/search?search=' + searchTerm;    
    }
 
+   const [mobileShow, setMobileShow] = useState(false);
    const [name, setName] = useState("");
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -97,11 +98,8 @@ const [email, setEmail] = useState("");
     <Link className="logo-container navbar-brand" to="/">
           <img className="logo" src={ln} alt="logo" />
     </Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
 
-  <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+  <div className={mobileShow ? "collapse navbar-collapse justify-content-center show" : "collapse navbar-collapse justify-content-center"} >
     <ul className="navbar-nav mr-auto"> 
       <li className="nav-item">
                 <NavLink
@@ -141,7 +139,7 @@ const [email, setEmail] = useState("");
               </li>   
     </ul>
   </div>
-  <div className="ml-auto">
+  <div className="ml-auto groupItems">
   <Link to="#">
             <img
               className="searchIcon"
@@ -166,6 +164,8 @@ const [email, setEmail] = useState("");
                   } ></span>
             </Link>
   </div>
+
+  <button className="mobile_menu" onClick={(e)=>{setMobileShow(!mobileShow)}}>MENU</button>
 </nav>
 <div className={
                   authActive

@@ -55,6 +55,20 @@ function Main() {
       slidesToScroll: 1,
       accessibility: true,
       className: "press-slide",
+      responsive:[
+        {     
+          breakpoint:992,   
+          settings:{
+            slidesToShow:3
+          }
+      },
+      {     
+        breakpoint:768,   
+        settings:{
+          slidesToShow:2
+        }
+    },
+      ]
     };
     const pressResult = useQuery("press", getPress, {
       refetchOnWindowFocus: false,

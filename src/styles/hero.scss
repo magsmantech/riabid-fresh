@@ -118,3 +118,27 @@
     }
   }
 }
+.slide{
+  display:flex;
+}
+@media only screen and (max-width: 991px) {
+  .slide{
+    flex-direction: column-reverse;
+    .cap,.img{
+      width:100%;
+    }
+    .img img{
+      height:auto;
+    }
+    .cap{
+      h1{
+        min-height:auto;
+        margin-top:16px;
+        margin-bottom:16px;
+      }
+    }
+    .img .author{
+      display:none;
+    }
+  }
+}

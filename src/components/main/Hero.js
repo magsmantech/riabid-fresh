@@ -9,14 +9,18 @@ function Hero() {
     refetchOnWindowFocus: false,
   });
   const coverData = coverImages.data ? coverImages.data.data : [];
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState(162);
 
   React.useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize)
+    return () =>{
+      window.removeEventListener('resize', handleResize)
+    }
   },[])
   function handleResize() {
-    setHeight(document.getElementById('slideImg').clientHeight - document.getElementById('headingTitle').clientHeight-7);
+    if(window.innerWidth > 991)
+      setHeight(document.getElementById('slideImg').clientHeight - document.getElementById('headingTitle').clientHeight-7);
   }
   return (
     <div className="hero-wrapper">      

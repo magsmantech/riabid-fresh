@@ -55,6 +55,13 @@ const categories = [
     slidesToShow: 2,
     slidesToScroll: 2,
     initialSlide: 1,
+    responsive:[{     
+      breakpoint:768,   
+      settings:{
+        slidesToShow:1
+      }
+  }
+  ]
   };
   
   
