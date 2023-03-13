@@ -119,12 +119,14 @@ span.shareIcon{
     }
 
     div.author{
+        position: relative;
+        top:-4px;
         float:left;
         p{
             font-family: 'MonumentGrotesk-Medium';
             font-style: normal;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 12px;
             line-height: 20px;
             color: #000000;
             margin:0px;
