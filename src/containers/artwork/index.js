@@ -11,7 +11,9 @@ import plus from "../../assets/icons/plus.svg";
 import { useMutation, useQuery } from "react-query";
 import { getArtists, getArtWith } from "../../services/artistsService";
 import { addArtwork, updateArtwork } from "../../services/dashboardService";
+import addArtworkIcon from "../../assets/icons/addArtwork.svg";
 import DashboardMenu from "../../components/shared/dashboard-menu";
+import DashboardHeader from "../../components/dashboardHeader";
 import Loading from "../loading";
 import { toast } from "react-toastify";
 import { getArtwork } from "../../services/artworksService";
@@ -25,15 +27,16 @@ import PrimarySelect from "../shared/PrimarySelect";
 import { validationSchema } from "./validationSchema";
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
+import addIcon from "../../assets/icons/addIcon.png";
 
 function EditArtwork(props) {
   var { account_type } = jwt_decode(getJwt());
   const { id } = useParams();
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState([null,null,null,null]);
 
   const [imageRef, setImageRef] = useState(null);
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState([null,null,null,null]);
   const [last, setLast] = useState(null);
   const [crop, setCrop] = useState({
     unit: 'px',
@@ -84,21 +87,7 @@ function EditArtwork(props) {
       formData.append("image1", selectedFile[0]);
       formData.append("image2", selectedFile[1]);
       formData.append("image3", selectedFile[2]);
-      formData.append("image4", selectedFile[3]);
-      formData.append("image4", selectedFile[3]);
-                          
-                        const croppedImageUrl = getCroppedImg(crop,'newFile.jpeg');
-             
-                          const fileReaderl = new FileReader()
-                          fileReaderl.onloadend = () => {
-                            setLast(fileReaderl.result)
-                          }   
-                           
-                            fileReaderl.readAsDataURL(croppedImageUrl)
-                          
-              
-                        formData.append("thumbnail",croppedImageUrl);
-                
+      formData.append("image4", selectedFile[3]);                                         
     }
     id
       ? updateMutation.mutate({ id, data: formData })
@@ -110,8 +99,6 @@ function EditArtwork(props) {
     validationSchema: validationSchema,
   });
 
-
-    
 
   const updateMutation = useMutation(id ? updateArtwork : addArtwork, {
     onMutate: (variables) => {
@@ -166,36 +153,6 @@ function EditArtwork(props) {
     return new File([u8arr], filename, { type: mime })
 }
 
-const getCroppedImg = (crop, fileName)=>{
-  let image = document.getElementById('preview')
-
-  
-      const canvas = document.createElement('canvas');
-        const scaleX = image.naturalWidth / image.width;
-        const scaleY = image.naturalHeight / image.height;
-        const ctx = canvas.getContext('2d');
-    
-        canvas.width = crop.width;
-        canvas.height = crop.height;
-    
-
-  ctx.drawImage(
-    image,
-    crop.x * scaleX,
-    crop.y * scaleY,
-    crop.width * scaleX,
-    crop.height * scaleY,
-    0,
-    0,
-    crop.width,
-    crop.height
-  );
-  let croppedImgUrl = canvas.toDataURL('image/jpeg',1)
-
-  let fl = dataURLtoFile(croppedImgUrl, fileName);
-  return fl
-}
-
   useEffect(() => {
     if (!isLoading && id)
       formik.setValues({
@@ -210,70 +167,283 @@ const getCroppedImg = (crop, fileName)=>{
 
 
   return (
-    <section id="shop" className="container">
-      <div className="dashboard-container">
-        <div className="flex column sidebar">
-          <DashboardMenu />
+    <section className='paddingLeft'>
+      
+      <DashboardHeader></DashboardHeader>
+
+      <div className='row'>
+        <div className='col-12'>
+          <ul class="trendMenu allMenu inProfile">
+            <li className="active"><a href="/dashboard">artworks</a></li>
+            <li  ><a href="/dashboard" >favorites</a></li>
+            <li ><a href="/dashboard">order history</a></li>
+            <li ><a href="/dashboard">details</a></li>
+          </ul>
         </div>
-        <div className="flex column  contact-container dashboard">
-          <h2 style={{ marginBottom: "1vw" }}>
-            {id ? "Edit Artwork" : "Add Artwork"}
-          </h2>
-          <form
+      </div>
+
+        <div className="addPage">
+            <div className="pics">
+                  <div className="picBox">
+                    <div className="labelName">Main image</div>
+                    <div className="picture">
+                    <div className="pics">
+                    <a href="#" >
+                      <img src={preview[0] ? preview[0] : addArtworkIcon} />
+                     
+      
+              <input
+                onChange={(e) => {
+                selectedFile[0] = e.target.files[0];
+                    setSelectedFile(selectedFile)                        
+                    const file = e.target.files[0]
+                    const fileReader = new FileReader()
+                    fileReader.onloadend = () => {
+                      let pr = [...preview];
+                      pr[0] = fileReader.result;
+                      setPreview(pr)
+                    }   
+                    if(file) {         
+                        fileReader.readAsDataURL(file)
+                    }                  
+                }}
+                type="file"
+                name="images"
+              />
+     
+            
+                    </a>
+                    </div>
+                  </div>  
+                </div>  
+
+                <div className="picBox addonImages">
+                    <div className="labelName">More images</div>
+                    <div className="picture">
+                      <div className="pics">
+                        <a href="#">
+                          <img src={preview[1] ? preview[1] : addIcon} />
+                          <input
+                onChange={(e) => {
+                selectedFile[1] = e.target.files[0];
+                    setSelectedFile(selectedFile)                        
+                    const file = e.target.files[0]
+                    const fileReader = new FileReader()
+                    fileReader.onloadend = () => {
+                      let pr = [...preview];
+                      pr[1] = fileReader.result;
+                      setPreview(pr)
+                    }   
+                    if(file) {         
+                        fileReader.readAsDataURL(file)
+                    }                  
+                }}
+                type="file"
+                name="images"
+              />
+                        </a>
+
+                        <a href="#">
+                          <img src={preview[2] ? preview[2] : addIcon} />
+                          <input
+                onChange={(e) => {
+                selectedFile[2] = e.target.files[0];
+                    setSelectedFile(selectedFile)                        
+                    const file = e.target.files[0]
+                    const fileReader = new FileReader()
+                    fileReader.onloadend = () => {
+                      let pr = [...preview];
+                      pr[2] = fileReader.result;
+                      setPreview(pr)
+                    }   
+                    if(file) {         
+                        fileReader.readAsDataURL(file)
+                    }                  
+                }}
+                type="file"
+                name="images"
+              />
+                        </a>
+
+                        <a href="#" className="lastM">
+                          <img src={preview[3] ? preview[3] : addIcon} />
+                          <input
+                onChange={(e) => {
+                selectedFile[3] = e.target.files[0];
+                    setSelectedFile(selectedFile)                        
+                    const file = e.target.files[0]
+                    const fileReader = new FileReader()
+                    fileReader.onloadend = () => {
+                      let pr = [...preview];
+                      pr[3] = fileReader.result;
+                      setPreview(pr)
+                    }   
+                    if(file) {         
+                        fileReader.readAsDataURL(file)
+                    }                  
+                }}
+                type="file"
+                name="images"
+              />
+                        </a>
+                    </div>
+                    <div className="labelName smallSize" >Please upload high-quality photos of the work's front and back with no frames.</div>
+                  </div>  
+                  
+                </div>              
+            </div>
+            <form
             encType="multipart/form-data"
             onSubmit={formik.handleSubmit}
-            className="contact-form dashboard"
+            className="submitArtwork dashboard"
           >
-            <PrimarySelect
-              formik={formik}
-              id="artist_id"
-              data={artists.data}
-              placeholder="Choose Artist"
-            />
+        <div className="firstForm">
+          <div className="row">
+            <div className='col-md-6'>
+              <div className="labelName noMargin">Artist</div>
+              <div className="col-md-10">
+              <PrimarySelect
+                formik={formik}
+                id="artist_id"
+                data={artists.data}
+                placeholder="Choose Artist"
+              />
+              </div>
+          </div>
+          <div className='col-md-6'>
+             
+          </div>
 
-            <PrimarySelect
+
+          <div className='col-md-6'>
+              <div className="labelName">Artwork</div>
+              <div className="col-md-10">
+              <PrimaryInput formik={formik} id="title" placeholder="Add title or write Untitled" />
+              </div>
+          </div>
+
+          <div className='col-md-6'>
+              <div className="labelName">Year</div>
+              <div className="col-md-12">
+              <PrimaryInput formik={formik} id="year" placeholder="Year" />
+              </div>
+          </div>
+
+          <div className='col-md-12'>
+              <div className="labelName">Description</div>
+              <div className="col-md-12">
+                <textarea
+                value={formik.values.description}
+                onChange={formik.handleChange}
+                rows="5"
+                type="text"
+                name="description"
+                placeholder="Description"
+              ></textarea>
+              </div>
+          </div>
+
+
+          <div className='col-md-6'>
+          <div className="labelName">Category</div>
+              <div className="col-md-12">
+              <PrimarySelect
               formik={formik}
               id="category_id"
               data={categories}
               placeholder="Choose Category"
             />
-
-            <PrimaryInput formik={formik} id="title" placeholder="Title" />
-            <PrimaryInput formik={formik} id="medium" placeholder="Medium" />
-            <PrimaryInput
+              </div>
+          </div>
+          <div className='col-md-6'>
+          <div className="labelName">Materials</div>
+              <div className="col-md-12">
+              <PrimarySelect
               formik={formik}
-              id="height"
-              placeholder="Height"
-              type="number"
-              step="0.01"
+              id="product_type"
+              data={product_types}
+              placeholder="Product type"
             />
-            <PrimaryInput
+              </div>
+          </div>
+
+
+          <div className='col-md-12'>
+          <div className="labelName relative">Sizes</div>
+          <div className='row'>
+              <div className="col-md-3 relative">
+              <PrimaryInput
               formik={formik}
               id="width"
               placeholder="Width"
               type="number"
               step="0.01"
             />
-            <PrimaryInput
+            <label className='cm'>cm</label>
+              </div>
+              <div className="col-md-3 relative">
+              <PrimaryInput
+              formik={formik}
+              id="height"
+              placeholder="Height"
+              type="number"
+              step="0.01"
+            />
+           <label className='cm'>cm</label>
+              </div>
+              <div className="col-md-3 relative">
+              <PrimaryInput
               formik={formik}
               id="depth"
               placeholder="Depth"
               type="number"
               step="0.01"
             />
-            <div style={{ position: "relative" }}>
-              <PrimaryInput
-                formik={formik}
-                id="buy_it_now"
-                placeholder="Price GEL"
-                disabled={formik.values.request_price === 1 ? true : false}
-              />
+            <label className='cm'>cm</label>
+              </div>
+              <div className="col-md-3 relative">
+              <PrimaryInput formik={formik} id="medium" placeholder="Medium" />
+              <label className='cm'>cm</label>
+              </div>
 
-              <p style={{ position: "absolute", right: 0 }}>
-                Final Price: {formik.values.buy_it_now * 1.25} GEL
-              </p>
-              <p>+ Riabid commission 25%</p>
-            </div>
+              </div>
+          </div>
+
+          <div className='col-md-12'>
+          <div className="labelName">Price</div>
+          <div className='row'>
+              <div className="col-md-3">
+               
+                <PrimaryInput
+                  formik={formik}
+                  id="buy_it_now"
+                  placeholder="Price GEL"
+                  disabled={formik.values.request_price === 1 ? true : false}
+                />
+                 <label className='cm'>GEL</label>
+               
+          </div>
+          <div className='col-md-9 relative'>
+          <p className='fees'>+25% riabid fees
+
+            <span>{formik.values.buy_it_now * 1.25} GEL</span>
+
+            <label className='cm totalText'>Total</label>
+          </p>
+        
+          </div>
+        
+              </div>
+          </div>
+
+
+          </div>
+
+           
+           
+          
+          
+            
             <div
               className="flex"
               style={{
@@ -306,87 +476,21 @@ const getCroppedImg = (crop, fileName)=>{
                 ></input>
               ) : null}
             </div>
-            <PrimaryInput formik={formik} id="year" placeholder="Year" />
+         
 
-            <textarea
-              value={formik.values.description}
-              onChange={formik.handleChange}
-              rows="5"
-              type="text"
-              name="description"
-              placeholder="Description"
-            ></textarea>
-            <PrimarySelect
-              formik={formik}
-              id="product_type"
-              data={product_types}
-              placeholder="Product type"
-            />
-
-            {!id && (
-              <div class='photos'>
-              <input
-                onChange={(e) => {
-                  setSelectedFile(e.target.files)
-                  if(!preview){
-                    const file = e.target.files[0]
-                    const fileReader = new FileReader()
-                    fileReader.onloadend = () => {
-                      setPreview(fileReader.result)
-                    }   
-                    if(file) {         
-                        fileReader.readAsDataURL(file)
-                    }
-                  }
-                }}
-                type="file"
-                name="images[]"
-                multiple
-                rows="10"
-              ></input>
-              
-               {preview && (<ReactCrop crop={crop} onChange={c => {
-                
-
-                let minAspect = 280/270;
-                let maxAspect = 280/270;
-                  const newCrop = c;
-             
-                   if (!maxAspect || !minAspect) setCrop(newCrop);
-                   else if (c.width / c.height > maxAspect) {
-                     setCrop({ ...newCrop, height: newCrop.width / maxAspect });
-                   } else if (newCrop.width / newCrop.height < minAspect) {
-                     setCrop({ ...newCrop, height: newCrop.width / minAspect });
-                   } else setCrop(newCrop);
-
-
-                   const croppedImageUrl = getCroppedImg(crop,'newFile.jpeg');
-             
-                   const fileReaderl = new FileReader()
-                   fileReaderl.onloadend = () => {
-                     setLast(fileReaderl.result)
-                   }   
-                    
-                     fileReaderl.readAsDataURL(croppedImageUrl)
-
-                }}><img src={preview} alt='preview' id='preview'/></ReactCrop>)}
-
-
-
-
-
-
-              </div>
-            )}
+       
             
-            <input
-              style={{ cursor: "pointer" }}
-              type="submit"
-              value={id ? "Update Artwork" : "Add Artwork"}
-            ></input>
-          </form>
+
+           
+            
+          
         </div>
-      </div>
+        <button
+            className="submitArtworkButton"
+              type="submit"
+            >{id ? "UPDATE ARTWORK" : "SUBMIT ARTWORK"}</button>
+          </form></div>
+     
     </section>
   );
 }

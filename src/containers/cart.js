@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { Link } from "react-router-dom";
 import cardImg from "../assets/dummy/cart-dummy.png";
@@ -6,8 +6,18 @@ import { getBag } from "../services/bagService";
 import { createOrder, removeItem } from "../services/dashboardService";
 import Loading from "./loading";
 import { toast } from "react-toastify";
+import ProductBlock from "../components/shared/ProductBlock";
+import { editAddress, getAddress } from "../services/dashboardService";
 
 export default function Cart() {
+  const [title, setName] = useState("");
+  const [address_1, setAddressOne] = useState("");
+  const [address_2, setAddressTwo] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [phone, setPhone] = useState("");
+  const [iban, setIban] = useState("");
   const queryClient = useQueryClient();
   const orderMutation = useMutation(createOrder, {
     onMutate: (variables) => {
@@ -52,85 +62,112 @@ export default function Cart() {
 
   if (error) return "An error has occurred: " + error.message;
   return (
-    <section id="shop" className="container auctions">
-      <ul class="breadcrumb">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/cart">Cart</Link>
-        </li>
-      </ul>
-      <div className="grid-container-cart">
-        {data.data.bag.length
-          ? data.data.bag.map((item) => (
-              <div key={item.id} className="item flex space-between">
-                <div className="flex mob-flex">
-                  <img
-                    src={item.image.replace(
-                      "https://api.riabid.ge/storage/artworks/",
-                      "https://api.riabid.ge/storage/artworks/thumbnail_"
-                    )}
-                  ></img>
-                  <div className="flex column">
-                    <h3>{item.title}</h3>
-                    <p>Product ID: {item.artwork_id}</p>
-                  </div>
-                </div>
-                <div className="flex column space-between bet-mob">
-                  <button
-                    style={{
-                      border: "none",
-                      backgroundColor: "transparent",
-                      cursor: "pointer",
-                      color: "red",
-                    }}
-                    onClick={() => removeMutation.mutate(item.id)}
-                  >
-                    Remove
-                  </button>
-                  <p className="price">
-                    {item.on_auction
-                      ? item.current_bid + "₾"
-                      : item.is_geo
-                      ? `₾${item.buy_it_now}`
-                      : `$${item.price_usd}`}
-                  </p>
-                </div>
-              </div>
-            ))
-          : "Your cart is empty"}
+    <section className="cartPage paddingLeft">
+      <div className="row">
+        <div className="col-md-3">
+          <h1>Cart</h1>
 
-        <div className="full flex column">
-          {data.data.address ? (
-            <p>
-              Address: {data.data.address.address_1}{" "}
-              {data.data.address.address_2}
-            </p>
-          ) : null}
-          {data.data.address ? (
-            <p>Country: {data.data.address.country}</p>
-          ) : null}
-          {data.data.address ? <p>City: {data.data.address.city}</p> : null}
-          {data.data.address ? <p>Mobile: {data.data.address.mobile}</p> : null}
-          {data.data.address ? null : (
-            <Link
-              to="/dashboard/addaddress"
-              style={{ color: "red", fontWeight: 400 }}
-            >
-              Please add address to your account
-            </Link>
-          )}
-          {data.data.is_geo ? null : <p>Shipping 35$</p>}
-          <h3>
-            Full Amount:{" "}
-            {data.data.is_geo
-              ? `₾${data.data.total}`
-              : `$${data.data.total_usd}`}
-          </h3>
-          <button onClick={() => orderMutation.mutate()}>Pay Now</button>
+          <div className="shipInfo">
+ 
+                  <div className="form">
+                  
+            <input
+              value={title}
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              name="full_name"
+              placeholder={"Full Name"}
+            ></input>
+            <input
+              value={address_1}
+              onChange={(e) => setAddressOne(e.target.value)}
+              type="text"
+              name="address_one"
+              placeholder={"Address Line 1"}
+            ></input>
+            <input
+              value={address_2}
+              onChange={(e) => setAddressTwo(e.target.value)}
+              type="text"
+              name="address_two"
+              placeholder={"Address Line 2"}
+            ></input>
+            <input
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              type="text"
+              name="country"
+              placeholder={"Country"}
+            ></input>
+            <input
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              type="text"
+              name="city"
+              placeholder={"City"}
+            ></input>
+            <input
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+              type="text"
+              name="zip"
+              placeholder={"Zip/Postal Code"}
+            ></input>
+            <input
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              type="text"
+              name="phone"
+              placeholder={"Phone Number"}
+            ></input>
+            <input
+              value={iban}
+              onChange={(e) => setIban(e.target.value)}
+              type="text"
+              name="iban"
+              placeholder={"IBAN number"}
+            ></input>
+
+           
+        
+                    </div>
+
+                    <div className="checkout">
+                      <h1>checkout</h1>
+                      <p>artworks <span>{data.data.is_geo
+                    ? `${data.data.total} ₾`
+                    : `${data.data.total_usd-35} $`}</span></p>
+                      <p>shipping <span>{data.data.is_geo
+                    ? `0 ₾`
+                    : `35 $`}</span></p>
+
+                    <p className="total_amount">total amount <span>{data.data.is_geo
+                    ? `${data.data.total} ₾`
+                    : `${data.data.total_usd} $`}</span></p>
+
+                      <button className='payNow' onClick={() => orderMutation.mutate()}>PAY NOW</button>
+                    </div>
+                 
+          </div>
+        </div>
+        <div className='col-md-9'>
+          <div className='row'>
+           
+            {data.data.bag ? (
+                      <ProductBlock
+                      start={0}
+                      limit={2}
+                      data={data.data.bag}
+                      col={4}
+                      remove={true}
+                      />
+                      ) : null}
+       
+           
+          </div>
         </div>
       </div>
+     
     </section>
   );
 }

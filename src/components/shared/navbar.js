@@ -149,7 +149,7 @@ const [email, setEmail] = useState("");
               alt="search-btn"
             />
           </Link>
-          <Link  to="#" >
+          <Link  to="/dashboard/favorites" >
             <img
               className="frameIcon"
               src={frameIcon}

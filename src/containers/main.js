@@ -39,7 +39,6 @@ import {
 const queryClient = new QueryClient();
 
 function Main() {
-  console.log("main mounted")
   const collectionsResult = useQuery("collections", getCollections, {
     refetchOnWindowFocus: false,
   });
@@ -79,7 +78,7 @@ function Main() {
         />
       </MetaTags>
       <Hero />
-      <div className="content">
+      <div className="content productGrid">
         <ProductGrid />
       </div>
       <div className='special_projects'>
