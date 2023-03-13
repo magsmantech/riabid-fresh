@@ -213,13 +213,13 @@ export default function ProductGrid(){
         </div>
       </div>
       <div className="row productPaginate">
-                <div className='col-4 prevPage'>
+                <div className='col-3 prevPage'>
                     <a to="#" onClick={e => { if(category_products.current_page -1 < category_products.last_page && category_products.current_page -1 != 0 ){ console.log('clicked'); handleCategory(e,category,category_products.current_page-1);} myCats.current.scrollIntoView({behavior: 'smooth', block: 'center'}) }}>PREV</a>
                 </div>
-                <div className='col-4 centerPage'>
+                <div className='col-6 centerPage'>
                 <Link to="/store">ALL ARTWORKS</Link>
                 </div>
-                <div className='col-4 nextPage'>
+                <div className='col-3 nextPage '>
                 <a to="#" onClick={e => { if(category_products.current_page +1 < category_products.last_page){ handleCategory(e,category,category_products.current_page+1); } myCats.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
                 </div>
             </div></>
