@@ -28,7 +28,7 @@ export default function ProductGrid(){
                   setUrl("/curator/"+curator.id)
             });
 
-            axios.get('artworks-paginated?limit=8')
+            axios.get('artworks-paginated?limit=16')
             .then((res) => {
                   let data = res.data;
                   setCategoryProducts(data);
@@ -59,9 +59,9 @@ export default function ProductGrid(){
       setCategory(category);
       let urld;
       if (category == 0){
-        urld = "artworks-paginated?limit=8&page="+page;
+        urld = "artworks-paginated?limit=16&page="+page;
       }else{
-        urld = "categories/"+category+"/artworks?limit=8&page="+page;
+        urld = "categories/"+category+"/artworks?limit=16&page="+page;
       }
           axios.get(urld)
             .then((res) => {
@@ -88,7 +88,6 @@ export default function ProductGrid(){
             .then((res) => {
                   if(type == 2){
                     let {artworks} = res.data.data;
-                    console.log(artworks);
                     setArtworks(artworks);      
                   }
                   else{
@@ -179,7 +178,7 @@ export default function ProductGrid(){
          {category_products.data.length ? (
                     <ProductBlock
                     start={0}
-                    limit={2}
+                    limit={4}
                     data={category_products.data}
                     />
                     ) : null}
@@ -187,8 +186,8 @@ export default function ProductGrid(){
         <div className='col-3'>
         {category_products.data.length ? (
                     <ProductBlock
-                    start={2}
-                    limit={2}
+                    start={4}
+                    limit={4}
                     data={category_products.data}
                     />
                     ) : null}          
@@ -196,8 +195,8 @@ export default function ProductGrid(){
         <div className='col-3'>
         {category_products.data.length ? (
                     <ProductBlock
-                    start={4}
-                    limit={2}
+                    start={8}
+                    limit={4}
                     data={category_products.data}
                     />
                     ) : null}        
@@ -205,8 +204,8 @@ export default function ProductGrid(){
         <div className='col-3'>
         {category_products.data.length ? (
                     <ProductBlock
-                    start={6}
-                    limit={2}
+                    start={12}
+                    limit={4}
                     data={category_products.data}
                     />
                     ) : null}        
