@@ -302,6 +302,7 @@ span.shareIcon{
         margin-bottom:24px;
     }
     a{
+        text-decoration: none;
         font-family: 'MonumentGrotesk-Regular';
         font-weight: 400;
 font-size: 16px;
@@ -372,6 +373,7 @@ color: #000000;
         margin:0px;
     }
     li{
+        margin-top:16px;
         font-family: 'Loos Normal';
         font-style: normal;
         font-weight: 400;
@@ -381,6 +383,9 @@ color: #000000;
         font-feature-settings: 'salt' on;
         color: #000000;
         opacity: 0.1;
+    }
+    li:first-child{
+        margin-top:0px;
     }
     li.active{
         opacity:1;
@@ -404,7 +409,9 @@ color: #000000;
             line-height: 32px;
             font-feature-settings: 'salt' on;
             color: #000000;
-            opacity: 0.2;
+        }
+        input::placeholder{
+            opacity:0.2;
         }
 
         button{
@@ -482,10 +489,19 @@ color: #000000;
         height:41px;
         border:0px;
         cursor:pointer;
-        background:0px;
+        background:transparent;
+        transition: all 0.5s;
         border-top:1px solid black;
     }
+    button:hover{
+        background-color:black!important;
+        color:white;
+    }
     width:109px!important;
+}
+.marginsRight{
+    margin-right:0px;
+    margin-left:0px;
 }
 .shopG{
     padding-left:10px;

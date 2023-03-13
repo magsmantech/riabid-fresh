@@ -113,8 +113,7 @@ function Shop(props) {
       <div className="searchBox searchPrice">
           <input placeholder="Price" />
       </div>
-      <div className="searchBox clear">
-        <button onClick={() => {window.location.reload();}}>Clear</button>
+      <div className="searchBox clear"><button onClick={() => {window.location.reload();}}>Clear</button>
       </div>
     </div>
     <div className="row shopG" ref={myGrid} >
@@ -155,19 +154,19 @@ function Shop(props) {
                     ) : null}
             </div>
 
-            <div className="row productPaginate">
-                <div className='col-4 prevPage'>
+    </div>
+     
+    <div className="row productPaginate marginsRight">
+                <div className='col-3 prevPage'>
                     <a to="#" onClick={e => { if(data.current_page -1 < data.last_page && data.current_page -1 != 0 ){  handlePagination(e,data.current_page-1);} myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'}) }}>PREV</a>
                 </div>
-                <div className='col-4 centerPage'>
+                <div className='col-6 centerPage'>
 
                 </div>
-                <div className='col-4 nextPage'>
+                <div className='col-3 nextPage'>
                 <a to="#" onClick={e => { if(data.current_page +1 < data.last_page){ handlePagination(e,data.current_page+1); } myGrid.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
                 </div>
             </div>
-    </div>
-     
        </>
   );
 }
