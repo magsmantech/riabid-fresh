@@ -713,12 +713,12 @@ h1.related{
     padding-top:55px;
     .galleryItem{
         border-top:1px solid black;
-      
+        padding-bottom:72px;      
         display:flex;
         justify-content: space-between;
         .text{
             padding-top:19px;
-            width:50%;
+            width:33.33%;
         }
         .title{
             padding-top:19px;
@@ -729,7 +729,7 @@ h1.related{
             line-height: 72px;
             font-feature-settings: 'salt' on;
             color: #000000;
-            width:30%;
+            width:33.33%;
         }
         p{
             font-family: 'MonumentGrotesk-Regular';
@@ -744,6 +744,7 @@ h1.related{
             margin-top:20px;
         }
         a{
+            width:16.66%;
             text-decoration: none;
         }
         .custom-button{
@@ -761,9 +762,14 @@ h1.related{
             text-transform: uppercase;
             font-feature-settings: 'salt' on;
             color: #000000;
-            width:227px;
+            width:100%;
             border-bottom:1px solid black;
             height:40px;
+            transition:all 0.5s;
+        }
+        .custom-button:hover{
+            background:black;
+            color:white;
         }
     }
 }
