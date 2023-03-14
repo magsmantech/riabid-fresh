@@ -83,6 +83,9 @@ function ProductBlock({
 
   return (
       data.length > 0 ? data.slice(start,start+limit).map(function(item, i){
+                let frameMax = '';
+                if(item.price_usd == 0 && !item.request_price)
+                  frameMax = 'forTop';
                 return <div className={col ? "col-md-"+col : ""} key={i}><div className="productBlock" >
                     {edit && <Link
                           to={"/dashboard/editartwork/" + item.id}
@@ -90,7 +93,8 @@ function ProductBlock({
                     {(edit || remove) && <img src={removeIcon} className='remove' onClick={() =>{if(!remove) { deleteMutation.mutate(item.id) } else { removeMutation.mutate(item.id) }}}/>}
 
                     <Link to={`/store/${item.id}`}><img src={item.front_thumbnail} className="productImage"/></Link>
-                    <div className={favorite ? "frame active" : "frame"} onClick={() => favoritesMutation.mutate(item.id)}>
+                    
+                    <div className={favorite ? "frame active "+frameMax : "frame "+frameMax } onClick={() => favoritesMutation.mutate(item.id)}>
                         <span className="frameIcon"></span>
                         <span className="frametext">save</span>
                     </div>

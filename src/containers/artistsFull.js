@@ -26,9 +26,27 @@ function ArtistsFull(props) {
   const [bioData, setBioData] = useState(null);
   const [bioError, setBioError] = useState(null);
   const [bioLoading, setBioLoading] = useState(false);
-
+  const [bioLenght, setbioLenght] = useState(60);
+  const [showMore, setShowMore] = useState(false);
+  const [show, setShow] = useState(3); 
 
   const descEl = React.useRef(null);
+
+
+  React.useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize)
+    return () =>{
+      window.removeEventListener('resize', handleResize)
+    }
+  },[])
+
+  function handleResize() {
+    if(window.innerWidth > 768)
+      setShow(2);
+    else 
+      setShow(3);
+  }
  
 
   useEffect(()=>{
@@ -77,20 +95,31 @@ function ArtistsFull(props) {
     <section className="artistFullPage">
  
 
-      {bioData && bioData.data && !bioError && !bioLoading &&
+      {bioData && bioData.data && !bioError && !bioLoading && <>
         <div className="bio">
 
           <h1 className="name">{bioName}</h1>
-          <div className="bioText">        
+          <div className="bioText smallHide">        
             <div ref={descEl} >
               {bioDescription}
             </div>
           </div>
 
-          <img src={bioImage} className="bioImg"/>
+          {bioImage && <img src={bioImage} className="bioImg"/>}
          
       
         </div>
+
+      <div className="bioText fullWidth">        
+        <div >
+          {bioDescription && bioDescription.length > bioLenght ? bioDescription.substring(0,bioLenght)+'...' : bioDescription}
+        </div>
+
+        <div className={showMore ? 'active' : 'hidden'}>
+            {bioDescription && bioDescription.substring(bioLenght)}
+        </div>
+        {bioDescription && bioDescription.length > bioLenght ? <button className={!showMore ? "showMore" : "showMore hidden"} onClick={(e)=>{setShowMore(!showMore)}}>Learn More</button> : ""}
+      </div></>
       }
 
     </section>
@@ -101,36 +130,36 @@ function ArtistsFull(props) {
 
       <div className="row" ref={myGrid} >
 
-            <div className='col-4'>
+            <div className='col-6 col-md-4'>
 
             {data.data ? (
                     <ProductBlock
                     start={0}
-                    limit={2}
+                    limit={show}
                     data={data.data}
                     />
                     ) : null}
 
             </div>
             
-            <div className='col-4'>
+            <div className='col-6 col-md-4'>
 
             {data.data ? (
                     <ProductBlock
-                    start={2}
-                    limit={2}
+                    start={show}
+                    limit={show}
                     data={data.data}
                     />
                     ) : null}
 
             </div>
             
-            <div className='col-4'>
+            <div className='col-6 col-md-4'>
 
             {data.data ? (
                     <ProductBlock
-                    start={4}
-                    limit={2}
+                    start={2*show}
+                    limit={show}
                     data={data.data}
                     />
                     ) : null}

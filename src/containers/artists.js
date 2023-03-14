@@ -89,7 +89,7 @@ function Artists(props) {
       </MetaTags>
       <div className="row">
           {row.map((item) => (
-              <div className="col-2">
+              <div className="col-4 col-md-2">
                  {item.map((key) => (
                    <div key={key.group} className="group">              
                   {formatted_data[key.group].children.map((item) =>
