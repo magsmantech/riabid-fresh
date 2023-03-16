@@ -9,8 +9,9 @@ import ProductBlock from "../components/shared/ProductBlock";
 import MetaTags from "react-meta-tags";
 
 function Shop(props) {
-
+  const [limitColumn, setLimitColumn] = useState(4);
   const [filter, setFilter] = useState(false);
+  const [search, setSearch] = useState('');
   const [sort, setSort] = useState(false);
   const [data, setData] = useState({'data':[]});
   const [filterType, setFilterType] = useState(0);  
@@ -59,19 +60,20 @@ function Shop(props) {
     {'label':"Painting",'value':1}
   ];
 
-  // useEffect(function(){
-  //   console.log(filterYear)
-  // },[filterYear])
+  
   function finishSlider(){
     console.log('finished')
   }
 
   function handlePagination(e,page){
     e.preventDefault();   
-        axios.get("artworks-paginated?limit=16&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories[]="+filterType+"&page="+page)
+        axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories[]="+filterType+"&page="+page)
           .then((res) => {
                 let data = res.data;
                 setData(data);
+                if (data.data.length < 16){
+                  setLimitColumn(parseInt(data.data.length / 4))
+                }
           });
   }
   
@@ -99,8 +101,9 @@ function Shop(props) {
         </ul>
       </div>
       <div className="searchBox searchTitle">
-        <button className="search"></button>
-        <input className="search" placeholder="Search" />
+        <button className="search" onClick={handlePagination}></button>
+        <input className="search" value={search}
+                  onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
       </div>
       <div className="searchBox searchYears">
         <RangeSlider
@@ -121,7 +124,7 @@ function Shop(props) {
             {data.data ? (
                     <ProductBlock
                     start={0}
-                    limit={4}
+                    limit={limitColumn}
                     data={data.data}
                     />
                     ) : null}
@@ -129,8 +132,8 @@ function Shop(props) {
             <div className='col-3'>
             {data.data ? (
                     <ProductBlock
-                    start={4}
-                    limit={4}
+                    start={limitColumn}
+                    limit={limitColumn}
                     data={data.data}
                     />
                     ) : null}
@@ -138,8 +141,8 @@ function Shop(props) {
             <div className='col-3'>
             {data.data ? (
                     <ProductBlock
-                    start={8}
-                    limit={4}
+                    start={2*limitColumn}
+                    limit={limitColumn}
                     data={data.data}
                     />
                     ) : null}
@@ -147,8 +150,8 @@ function Shop(props) {
             <div className='col-3'>
             {data.data ? (
                     <ProductBlock
-                    start={12}
-                    limit={4}
+                    start={3*limitColumn}
+                    limit={limitColumn}
                     data={data.data}
                     />
                     ) : null}

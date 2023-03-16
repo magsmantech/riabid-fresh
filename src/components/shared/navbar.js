@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import ln from "../../assets/logo-new.svg";
-import searchDark from "../../assets/icons/search-dark.svg";
-import frameIcon from "../../assets/icons/frame.svg";
 import chat from "../../assets/icons/chat.svg";
 import { userProvider } from "../../store/store";
 import { logout } from "../../services/authService";
@@ -14,11 +12,11 @@ function Navbar() {
   console.log('navbar mounted');
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      window.location.href ='/search?search=' + searchTerm;
+      window.location.href ='/search?search=' + searchValue;
     }
    }
   const redirect = (e) => { 
-      window.location.href ='/search?search=' + searchTerm;    
+      window.location.href ='/search?search=' + searchValue;    
    }
 
    const [mobileShow, setMobileShow] = useState(false);
@@ -35,7 +33,6 @@ const [email, setEmail] = useState("");
   const [navActive, setNavActive] = useState(false);
   const [authActive, setAuthActive] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [vW, setVW] = useState(0);
   const [regMode, setRegMode] = useState(2);
@@ -140,25 +137,17 @@ const [email, setEmail] = useState("");
     </ul>
   </div>
   <div className="ml-auto groupItems">
-  <Link to="#">
-            <img
-              className="searchIcon"
-              src={searchDark}
-              alt="search-btn"
-            />
-          </Link>
-          <Link  to="/dashboard/favorites" >
-            <img
-              className="frameIcon"
-              src={frameIcon}
-              alt="search-btn"
-            />
+
+            <span className="searchIcon" onClick={(e) =>{  e.preventDefault(); setSearchActive(!searchActive); setAuthActive(false);  }}></span>
+      
+          <Link  to="/dashboard/favorites" >           
+            <span className="frameIcon"></span>
           </Link>
           <Link to="/cart">
               <span className='cart-btn'></span>
             </Link>
 
-            <Link to="/dashboard" onClick={(e) =>{ if(!currentUser.isAuthenticated){ e.preventDefault(); setAuthActive(!authActive)}  }}>
+            <Link to="/dashboard" onClick={(e) =>{ if(!currentUser.isAuthenticated){ e.preventDefault(); setAuthActive(!authActive);setSearchActive(false);}  }}>
               <span className={
                     authActive ? "user-btn active" : "user-btn"
                   } ></span>
@@ -168,17 +157,63 @@ const [email, setEmail] = useState("");
   <button className="mobile_menu" onClick={(e)=>{setMobileShow(!mobileShow)}}>MENU</button>
 </nav>
 <div className={
-                  authActive
+                  authActive || searchActive
                     ? "headerBg active"
                     : "headerBg"
                 }
               ></div>
+
+
+<div className={
+                  searchActive
+                    ? "loginHeader active"
+                    : "loginHeader"
+                }
+              >
+                <div className="row">
+                  <div className="col-md-2">
+<ul>
+  <li></li>
+  <li className='active' >Search</li> 
+  <li></li>
+</ul>
+</div>
+
+
+<div className="offset-md-3 col-md-6 regPage searchPage active">       
+              <input
+                  type="text"
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  name="search"
+                  id="search"
+                  placeholder="Search"
+                />     
+                </div>       
+            <div className='col-md-1'>
+            <button
+            className="search"
+            onClick={(e) => {
+              redirect(e);
+            }}
+            >
+              Search
+            </button>
+            </div>
+
+</div>
+</div>
+
+
+
 <div className={
                   authActive
                     ? "loginHeader active"
                     : "loginHeader"
                 }
               >
+                <div className="row">
+                  <div className='col-md-5'>
 <ul>
   <li className={
                   regMode == 1
@@ -192,12 +227,12 @@ const [email, setEmail] = useState("");
                 } onClick={(e)=>setRegMode(2)}>Sign up</li>
   <li>Or continue with <a href="#">Google</a> <a href="#">Apple</a> <a href="#">Facebook</a></li>
 </ul>
+</div>
 
-
-<div className="regPage active">
+<div className="regPage active col-md-6">
 
           <div className="regInputs">
-            <div className="inputs">
+            <div className={regMode == 1 ? "inputs loginInputs" : "inputs"}>
             <input
                 type="text"
                 onChange={(e) => setName(e.target.value)}
@@ -229,14 +264,18 @@ const [email, setEmail] = useState("");
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
               />
-              </div>
               <p className={
                   regMode == 1
                     ? "noVisible"
                     : "inputActive"
                 }>By clicking Sign Up you agree to RIABID’S Terms of Use and Privacy Policy and to receiving emails from RIABID</p>
+              </div>
+              
         </div>
 
+</div>
+<div className="col-md-1">
+  
 <button
             className={
               regMode == 2
@@ -267,7 +306,7 @@ const [email, setEmail] = useState("");
               Log in
             </button>
 </div>
-
+</div>
 </div>
 
 

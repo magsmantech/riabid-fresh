@@ -34,7 +34,7 @@ export default function ProductGrid(){
  
     
       useEffect(function(){
-          axios.get('dashboard/curator-artworks?limit=6')
+          axios.get('dashboard/curator-artworks?limit=7')
             .then((res) => {
                   let {artworks,curator} = res.data.data;
                   setCurator({'id':curator.id, 'name':curator.name,'lastname':curator.lastname})
@@ -90,13 +90,13 @@ export default function ProductGrid(){
         setGrid(type);
         let url;
         if (type == 0){
-            url = 'categories/trending/artworks?limit=6&page='+page;
+            url = 'categories/trending/artworks?limit=7&page='+page;
             setUrl("/store?page=trending")
         }else if(type == 1){
-            url = 'categories/featured/artworks?limit=6&page='+page
+            url = 'categories/featured/artworks?limit=7&page='+page
             setUrl("/store?page=featured")
         }else{
-            url = 'dashboard/curator-artworks?limit=6&page='+page;
+            url = 'dashboard/curator-artworks?limit=7&page='+page;
             setUrl("/curator/"+curator.id);
         }
         axios.get(url)
@@ -128,10 +128,20 @@ export default function ProductGrid(){
    
     </div>
         <div className="row" ref={myGrid} id="galP" >
-            <div className='col-6 col-md-4'>
+            <div className='col-12 forMobileBigArt'>
                     {artworks.data ? (
                     <ProductBlock
                     start={0}
+                    limit={1}
+                    data={artworks.data}
+                    />
+                    ) : null}
+                             
+            </div>
+            <div className='col-6 col-md-4'>
+                    {artworks.data ? (
+                    <ProductBlock
+                    start={show==3 ? 0 : 1}
                     limit={show==3 ? 2 : 3}
                     data={artworks.data}
                     />
@@ -143,8 +153,8 @@ export default function ProductGrid(){
           
                     {artworks.data.length ? (
                     <ProductBlock
-                    start={show==3 ? 2 : 3}
-                    limit={show==3 ? 2 : 3}
+                    start={show==3 ? 2 : 4}
+                    limit={show==3 ? 2 : 4}
                     data={artworks.data}
                     />
                     ) : null}

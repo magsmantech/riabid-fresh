@@ -419,7 +419,7 @@ color: #000000;
         width:40%;
         input{
             position:relative;
-            top:7px;
+            top:82px;
             border:0px;
             font-family: 'Loos Normal';
             font-style: normal;
@@ -435,7 +435,7 @@ color: #000000;
 
         button{
             position:relative;
-            top:7px;
+      
             width:24px;
             height:24px;
             background:url('../assets/icons/searchIcon.svg')no-repeat;
@@ -1317,6 +1317,9 @@ p.no_page{
         color: #000000;
     }
 }
+.forMobileBigArt{
+    display:none;
+}
 @media only screen and (max-width: 1230px) {
     .slide .cert a .text{
         max-width:160px;
@@ -1357,6 +1360,9 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .forMobileBigArt{
+        display:block;
+    }
     .centerPos{
         text-align: center;
     }

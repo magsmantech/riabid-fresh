@@ -64,7 +64,7 @@ function ArtistsFull(props) {
 
   function handlePagination(e,page){
     e.preventDefault();   
-        axios.get("artists/artworks-paginated/"+props.match.params.index+"/?limit=6&page="+page)
+        axios.get("artists/artworks-paginated/"+props.match.params.index+"/?limit=7&page="+page)
           .then((res) => {
                 let data = res.data;
                 setData(data);
@@ -72,7 +72,7 @@ function ArtistsFull(props) {
   }
 
   useEffect(function(){
-    axios.get('artists/artworks-paginated/'+props.match.params.index+'/?limit=6')
+    axios.get('artists/artworks-paginated/'+props.match.params.index+'/?limit=7')
       .then((res) => {
             let data = res.data;
             setData(data);
@@ -130,12 +130,23 @@ function ArtistsFull(props) {
 
       <div className="row" ref={myGrid} >
 
-            <div className='col-6 col-md-4'>
-
-            {data.data ? (
+      <div className='col-12 forMobileBigArt'>
+                    {data.data ? (
                     <ProductBlock
                     start={0}
-                    limit={show}
+                    limit={1}
+                    data={data.data}
+                    />
+                    ) : null}
+                             
+            </div>
+
+            <div className='col-6 col-md-4'>
+
+            {data.data ? (
+                    <ProductBlock
+                    start={show == 3 ? 1 : 0}
+                    limit={show == 3 ? 3 : 2}
                     data={data.data}
                     />
                     ) : null}
@@ -146,15 +157,15 @@ function ArtistsFull(props) {
 
             {data.data ? (
                     <ProductBlock
-                    start={show}
-                    limit={show}
+                    start={show == 3 ? 4 : 2}
+                    limit={show == 3 ? 3 : 2}
                     data={data.data}
                     />
                     ) : null}
 
             </div>
             
-            <div className='col-6 col-md-4'>
+            <div className='hideLast col-md-4'>
 
             {data.data ? (
                     <ProductBlock
