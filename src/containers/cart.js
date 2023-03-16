@@ -8,8 +8,10 @@ import Loading from "./loading";
 import { toast } from "react-toastify";
 import ProductBlock from "../components/shared/ProductBlock";
 import { editAddress, getAddress } from "../services/dashboardService";
+import { getMyBiography, addBiography, updateBiography } from "../services/dashboardService";
 
 export default function Cart() {
+  
   const [title, setName] = useState("");
   const [address_1, setAddressOne] = useState("");
   const [address_2, setAddressTwo] = useState("");
@@ -19,6 +21,12 @@ export default function Cart() {
   const [phone, setPhone] = useState("");
   const [iban, setIban] = useState("");
   const queryClient = useQueryClient();
+
+  let bio = useQuery("bio", getMyBiography, {refetchOnWindowFocus: false,});
+  if (!title && bio.data){
+    setName(bio.data.data.artist_name);
+  }
+
   const orderMutation = useMutation(createOrder, {
     onMutate: (variables) => {
       return { id: 1 };
@@ -31,8 +39,7 @@ export default function Cart() {
         progress: undefined,
         hideProgressBar: true,
       });
-      window.location.href =
-        "https://api.riabid.ge/payorder/" + data.data.order_id;
+      window.location.href = "https://api.riabid.ge/payorder/" + data.data.order_id;
     },
     onSettled: (data, error, variables, context) => {
       // Error or success... doesn't matter!

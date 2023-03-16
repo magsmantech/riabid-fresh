@@ -538,6 +538,7 @@ color: #000000;
     }
     .main-pic{
         height:calc(100vh - 70px);
+        max-width: 100%;
     }
     .picsNum{
         width:8.3%;
@@ -562,7 +563,7 @@ color: #000000;
     }
     .prodPic{
         margin-right:9px;
-        width:calc(100% - 477px);
+        width:66.64%;
         text-align: center;
     }
     .prodDetails{
@@ -686,8 +687,8 @@ color: #000000;
                     cursor:pointer;
                     width:100%;
                     display:block;
-                    padding-top:12px;
-                    padding-bottom:12px;
+                    padding-top:13px;
+                    padding-bottom:13px;
                 }
             }
             .price{
@@ -895,9 +896,10 @@ p.no_page{
             color: #000000;
             max-width: 300px;
             text-align: left;
+            width:33.32%;
         }
         textarea{
-            width:467px;
+            width:33.32%;
             height:192px;
             resize:none;
             border:0px;
@@ -1321,6 +1323,9 @@ p.no_page{
 .forMobileBigArt{
     display:none;
 }
+.picsNum.mobile{
+    display:none;
+}
 @media only screen and (max-width: 1230px) {
     .slide .cert a .text{
         max-width:160px;
@@ -1349,6 +1354,9 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 991px) {
+    .hideLg{
+        display: none;
+    }
     .hide_2{
         display:none;
     }
@@ -1374,6 +1382,91 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .profile .profileBioUp{
+        flex-direction: column;
+        h1,textarea{
+            width:100%;
+        }
+        .bUpdate{
+            margin-top:20px;
+        }
+    }
+    .picsNum.mobile{
+        display:block;
+        position:absolute;
+        top:10px;
+        right:0;
+        width:50px;
+        span{
+            float:left;
+            color:black;
+            font-family: 'MonumentGrotesk-Regular';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 16px;
+text-align: center;
+font-feature-settings: 'salt' on;
+        }
+        .borderT{
+            border-top:0px;
+            border-left:1px solid black;
+            margin-left:19px;
+            margin-right:19px;
+            position:relative;
+            top:-12px;
+            width:1px;
+            height:24px;
+        }
+    }
+    .productShow .prod{
+        flex-direction: column;
+    }
+    .picsNum{
+        display:none;
+    }
+    .productShow{
+        padding-top:35px;
+        padding-left:0px;
+        padding-right:0px;
+        .prodPic{
+            margin-right:0px;
+            width:100%;
+            .main-pic{
+                width:100%;
+                height:auto;
+            }
+        }
+        .prodDetails{
+            padding-left:10px;
+            margin-top:12px;
+            padding-right:10px;
+            width:100%;
+            height:auto;
+            .title ul{
+                padding-top:53px;
+                overflow:hidden;
+                position: relative;
+            }
+        }
+        .description{
+            ul{
+                position:relative;
+                overflow:hidden;
+                margin-top:64px;
+                .price{
+                    border-top:1px solid black;
+                }
+            }
+        }
+    }
+    h1.related{
+        display:none;
+    }
+    .relatedSection{
+        padding-top:0px;
+    }
+  
     .shopSearching{
         flex-direction:column;
         align-items:start;
@@ -1470,6 +1563,13 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 550px) {
+    .inProfile a{
+        font-size:18px!important;
+    }
+    .addArtwork a{
+        padding-top:50px;
+        padding-bottom:50px;
+    }
     .allMenu div{
         width:auto!important;
         padding-right:7px;

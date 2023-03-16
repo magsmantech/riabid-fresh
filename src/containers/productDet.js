@@ -203,7 +203,14 @@ export default function ProductDet(props) {
           </div>
           <div className="prodDetails">
             <div className="title">
-              <p className="withoutMargin">Created in {artwork.year}</p>
+              <p className="withoutMargin">Created in {artwork.year}
+              
+              <div className="picsNum mobile">
+                <span>1</span>
+                  <span className="borderT"></span>
+                  <span>1</span>
+          </div>
+              </p>
               <p className="withoutMargin">by {artwork.display_name}</p>
               <h1>{artwork.title}</h1>
               <div className="size">
@@ -246,7 +253,7 @@ export default function ProductDet(props) {
       </div>
     </section>
 
-    <section>
+    <section className="relatedSection">
       
     
 

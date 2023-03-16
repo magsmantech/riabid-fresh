@@ -33,13 +33,11 @@ function Dashboard(props) {
   const [filter, setFilter] = React.useState(false);
   const queryClient = useQueryClient();
   var { user_id } = jwt_decode(getJwt());
-  
+  const [limitColumn, setLimitColumn] = useState(3);
+  const [limitRow, setLimitRow] = useState(4);
 
   const [artworkData, setArtworkData] = useState([]);
   const [cat, setCat] = useState(1);
-
-
-
 
   const [title, setName] = useState("");
   const [address_1, setAddressOne] = useState("");
@@ -70,24 +68,27 @@ function Dashboard(props) {
   });
 
   useEffect(function(){
+   
     axios.get('artworks/my-artworks')
       .then((res) => {
             let data = res.data;
-            console.log(data);
             setArtworkData(data.unsold);
+      
       });
+      handleResize();
+      window.addEventListener('resize', handleResize)
   },[])
 
 
-
-
-
-
-
-
-
-
-
+  function handleResize() {
+    if(window.innerWidth > 991){
+      setLimitRow(4);
+    }
+    else {
+      setLimitRow(2);
+    }
+ 
+  }
   function setCategory(e,category){
     e.preventDefault();
     setCat(category);
@@ -108,18 +109,18 @@ function Dashboard(props) {
 
     axios.get(url)
             .then((res) => {
-              if(category == 1)
-                setArtworkData(res.data.unsold);  
+              if(category == 1){
+                setArtworkData(res.data.unsold);                 
+              }
               if(category == 2){
-                setArtworkData(res.data);  
+                setArtworkData(res.data);                  
               }
               if(category == 3){
-                setArtworkData(res.data);  
+                setArtworkData(res.data);                  
               }
               if(category == 4){
-                console.log(res.data);
-                setArtworkData(res.data);  
-              }
+                setArtworkData(res.data);                 
+              }             
             })
 
   }
@@ -163,7 +164,7 @@ function Dashboard(props) {
       </div>
 
 
-      {cat != 4 && <div className='col-3'>
+      {cat != 4 && <div className='col-6 col-lg-3'>
        {cat == 1 && <div className="productBlock addArtwork">
             
               <a href="/dashboard/addartwork">
@@ -175,7 +176,7 @@ function Dashboard(props) {
               {artworkData ? (
                     <ProductBlock
                     start={0}
-                    limit={1}
+                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
                     favorite={cat==2 ? true : false}
@@ -185,12 +186,12 @@ function Dashboard(props) {
       </div>}
 
       
-      {cat != 4  && <div className='col-3'>
+      {cat != 4  && <div className='col-6 col-lg-3'>
            
               {artworkData ? (
                     <ProductBlock
-                    start={1}
-                    limit={2}
+                    start={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
+                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
                     />
@@ -198,12 +199,12 @@ function Dashboard(props) {
       </div>}
 
          
-      {cat != 4 && <div className='col-3'>
+      {cat != 4 && <div className='col-6 col-lg-3 hideLg'>
             
               {artworkData ? (
                     <ProductBlock
-                    start={3}
-                    limit={2}
+                    start={limitRow == 2 ? 2*(artworkData.length / 2) : 2*(artworkData.length / 4)}
+                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
                     />
@@ -211,12 +212,12 @@ function Dashboard(props) {
 
       </div>}
 
-      {cat != 4 && <div className='col-3'>
+      {cat != 4 && <div className='col-6 col-lg-3 hideLg'>
          
               {artworkData ? (
                     <ProductBlock
-                    start={5}
-                    limit={2}
+                    start={limitRow == 2 ? 3*(artworkData.length / 2) : 3*(artworkData.length / 4)}
+                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
                     />
