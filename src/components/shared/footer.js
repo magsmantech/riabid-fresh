@@ -60,10 +60,10 @@ function footer() {
         </div>
         <div className="col-9 col-md-8">
           <ul className="footerMenu">
-            <li><Link to="#">Info</Link></li>
-            <li><Link to="#">Delivery</Link></li>
-            <li><Link to="#">Terms & Conditions</Link></li>
-            <li><Link to="#">Privacy Policy</Link></li>
+            <li><Link to="/text">Info</Link></li>
+            <li><Link to="/delivery">Delivery</Link></li>
+            <li><Link to="/terms">Terms & Conditions</Link></li>
+            <li><Link to="/terms">Privacy Policy</Link></li>
             <li><Link to="#">Additional Information</Link></li>
           </ul>
           </div>

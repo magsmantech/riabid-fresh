@@ -57,7 +57,7 @@ function GalleriesFull(props) {
       <section >
         <h1 className="galleryArtworks">gallery artworks</h1>
       <div className="row" ref={myGrid} >
-            <div className='col-md-3'>
+            <div className='col-6 col-md-3'>
             {data.data.artworks ? (
                     <ProductBlock
                     start={0}
@@ -66,7 +66,7 @@ function GalleriesFull(props) {
                     />
                     ) : null}
             </div>
-            <div className='col-md-3'>
+            <div className='col-6 col-md-3'>
             {data.data.artworks ? (
                     <ProductBlock
                     start={2}
@@ -75,7 +75,7 @@ function GalleriesFull(props) {
                     />
                     ) : null}
             </div>
-            <div className='col-md-3'>
+            <div className='col-6 col-md-3'>
             {data.data.artworks ? (
                     <ProductBlock
                     start={4}
@@ -84,7 +84,7 @@ function GalleriesFull(props) {
                     />
                     ) : null}
             </div>
-            <div className='col-md-3'>
+            <div className='col-6 col-md-3'>
             {data.data.artworks ? (
                     <ProductBlock
                     start={6}

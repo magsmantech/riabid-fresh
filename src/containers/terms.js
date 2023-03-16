@@ -3,7 +3,7 @@ import { MetaTags } from "react-meta-tags";
 
 export default function Terms() {
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
+    <div className="container" >
       <MetaTags>
         <title>Terms and Conditions - Subscription Agreement</title>
         <meta

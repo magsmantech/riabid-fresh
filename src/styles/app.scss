@@ -1326,7 +1326,20 @@ p.no_page{
 .picsNum.mobile{
     display:none;
 }
+.grid-container-text .first, .grid-container-text .first p, .grid-container-text .first li{
+    font-family: 'MonumentGrotesk-Regular';
+    font-style: normal;
+    font-weight: 400;
+    background:transparent;
+    font-size: 12px;
+    line-height: 16px;
+    font-feature-settings: 'salt' on;
+    color: #000000;
+}
 @media only screen and (max-width: 1230px) {
+    .fullgaller .text{
+        width:55%;
+    }
     .slide .cert a .text{
         max-width:160px;
     }
@@ -1343,6 +1356,9 @@ p.no_page{
 }
 
 @media only screen and (max-width: 1070px) {
+    .fullgaller .location{
+        position: relative;
+    }
     .bioText.smallHide{
         display: none;
     }
@@ -1354,6 +1370,10 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 991px) {
+    .galleryPage .galleryItem .title{
+        font-size:46px;
+        line-height:46px;
+    }
     .hideLg{
         display: none;
     }
@@ -1382,6 +1402,27 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .fullgaller{
+        flex-direction: column;
+    }
+    .fullgaller .titlePage{
+        width:100%;
+        text-align: center;
+    }
+    .fullgaller .text{
+        width:100%;
+        margin-left:0px;
+    }
+    .galleryShow .galPic{
+        margin-top:20px;
+        margin-bottom: 20px;
+    }
+    .galleryPage .galleryItem{
+        flex-direction: column;
+        .title,.text, a{
+            width:100%;
+        }
+    }
     .profile .profileBioUp{
         flex-direction: column;
         h1,textarea{
