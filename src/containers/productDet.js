@@ -54,6 +54,7 @@ export default function ProductDet(props) {
   const [bidAmount, setBidAmount] = useState();
   const [comment, setComment] = useState("");
   const [isGift, setIsGift] = useState(0);
+  const [limitColumn, setLimitColumn] = useState(2);
   const addMutation = useMutation(addBag, {
     onMutate: (variables) => {
       return { id: 1 };
@@ -153,12 +154,14 @@ export default function ProductDet(props) {
           axios.get('artists/artworks-paginated/'+data.artwork.artist_id+'/?limit=8')
           .then((res) => {
                 let data = res.data;
-                console.log(data)
                 setOther(data.data);
+                if (data.data.length < 8){
+                  setLimitColumn(parseInt(data.data.length / 4))
+                }
           });
     });
  
-  },[])
+  },[props.match.params.index])
 
 
   const images = artwork.images ? JSON.parse(artwork.images) : {};
@@ -262,45 +265,45 @@ export default function ProductDet(props) {
    
 
      <div className="row "  >
-            <div className='col-3'>
+            <div className='col-6 col-lg-3'>
                          
                     {other_work ? (
                     <ProductBlock
                     start={0}
-                    limit={2}
+                    limit={limitColumn}
                     data={other_work}
                     />
                     ) : null}
                              
             </div>
-            <div className='col-3'>
+            <div className='col-6 col-lg-3'>
                          
                          {other_work ? (
                          <ProductBlock
-                         start={2}
-                         limit={2}
+                         start={limitColumn}
+                         limit={limitColumn}
                          data={other_work}
                          />
                          ) : null}
                                   
                  </div>
-                 <div className='col-3'>
+                 <div className='col-6 col-lg-3'>
                          
                          {other_work ? (
                          <ProductBlock
-                         start={4}
-                         limit={2}
+                         start={2*limitColumn}
+                         limit={limitColumn}
                          data={other_work}
                          />
                          ) : null}
                                   
                  </div>
-                 <div className='col-3'>
+                 <div className='col-6 col-lg-3'>
                          
                          {other_work ? (
                          <ProductBlock
-                         start={6}
-                         limit={2}
+                         start={3*limitColumn}
+                         limit={limitColumn}
                          data={other_work}
                          />
                          ) : null}

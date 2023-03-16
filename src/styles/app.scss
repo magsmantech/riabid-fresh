@@ -428,6 +428,7 @@ color: #000000;
             line-height: 32px;
             font-feature-settings: 'salt' on;
             color: #000000;
+            width:calc(100% - 40px);
         }
         input::placeholder{
             opacity:0.2;
@@ -1331,6 +1332,9 @@ p.no_page{
         display:block;
         margin-top:33px;
     }
+    .MuiSlider-markLabel{
+        font-size:24px!important;
+    }
 }
 
 @media only screen and (max-width: 1070px) {
@@ -1340,8 +1344,14 @@ p.no_page{
     .trendMenu li a, .trendMenu li span, .trendMenu div a, .trendMenu div span{
         font-size:24px;
     }
+    .searchYears{
+        padding-left:12px;
+    }
 }
 @media only screen and (max-width: 991px) {
+    .hide_2{
+        display:none;
+    }
     .slide .cert a .text{
         max-width:200px;
     }
@@ -1358,8 +1368,33 @@ p.no_page{
     .productBlock div.author{
         max-width: calc(100% - 162px);
     }
+    .shopSearching li{
+        font-size:24px;
+        line-height:24px;
+    }
 }
 @media only screen and (max-width: 767px) {
+    .shopSearching{
+        flex-direction:column;
+        align-items:start;
+    }
+    .shopSearching .searchBox{
+        width:100%;
+    }
+    .shopSearching{
+        button.search{
+            margin-top:10px;
+        }
+        .searchTitle input{
+            top:10px;
+        }
+        .searchYears{
+            margin-top:20px;
+        }
+        .searchTitle{
+            overflow:hidden;
+        }
+    }
     .forMobileBigArt{
         display:block;
     }

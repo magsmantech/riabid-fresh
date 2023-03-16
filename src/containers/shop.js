@@ -120,7 +120,7 @@ function Shop(props) {
       </div>
     </div>
     <div className="row shopG" ref={myGrid} >
-            <div className='col-3'>
+            <div className='col-6 col-lg-3'>
             {data.data ? (
                     <ProductBlock
                     start={0}
@@ -129,7 +129,7 @@ function Shop(props) {
                     />
                     ) : null}
             </div>
-            <div className='col-3'>
+            <div className='col-6 col-lg-3'>
             {data.data ? (
                     <ProductBlock
                     start={limitColumn}
@@ -138,7 +138,7 @@ function Shop(props) {
                     />
                     ) : null}
             </div>
-            <div className='col-3'>
+            <div className='col-6 col-lg-3'>
             {data.data ? (
                     <ProductBlock
                     start={2*limitColumn}
@@ -147,7 +147,7 @@ function Shop(props) {
                     />
                     ) : null}
             </div>
-            <div className='col-3'>
+            <div className='col-6 col-lg-3'>
             {data.data ? (
                     <ProductBlock
                     start={3*limitColumn}
