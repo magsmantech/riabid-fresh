@@ -13,24 +13,24 @@ export default function ProductGrid(){
     const [url,setUrl] = useState('');
     const [category,setCategory] = useState(0);
     const [grid, setGrid] = useState(2);
-    const [show, setShow] = useState(3);  
+    const [show, setShow] = useState(4);  
     const myGrid = useRef(null);
     const myCats = useRef(null);
     
 
-    React.useEffect(() => {
-      handleResize();
-      window.addEventListener('resize', handleResize)
-      return () =>{
-        window.removeEventListener('resize', handleResize)
-      }
-    },[])
-    function handleResize() {
-      if(window.innerWidth > 991)
-        setShow(3);
-      else 
-        setShow(4);
-    }
+    // React.useEffect(() => {
+    //   handleResize();
+    //   window.addEventListener('resize', handleResize)
+    //   return () =>{
+    //     window.removeEventListener('resize', handleResize)
+    //   }
+    // },[])
+    // function handleResize() {
+    //   if(window.innerWidth > 991)
+    //     setShow(3);
+    //   else 
+    //     setShow(4);
+    // }
  
     
       useEffect(function(){
@@ -42,7 +42,7 @@ export default function ProductGrid(){
                   setUrl("/curator/"+curator.id)
             });
 
-            axios.get('artworks-paginated?limit=12')
+            axios.get('artworks-paginated?limit=16')
             .then((res) => {
                   let data = res.data;
                   setCategoryProducts(data);
@@ -82,7 +82,7 @@ export default function ProductGrid(){
       e.preventDefault();      
       setCategory(category);
       let urld;
-      let limit = 12;
+      let limit = 16;
       if (category == 0){
         urld = "artworks-paginated?limit="+limit+"&page="+page;
       }else{
@@ -151,8 +151,8 @@ export default function ProductGrid(){
             <div className='col-6 col-md-4'>
                     {artworks.data ? (
                     <ProductBlock
-                    start={show==3 ? 0 : 1}
-                    limit={show==3 ? 2 : 3}
+                    start={show==4 ? 0 : 1}
+                    limit={show==4 ? 2 : 3}
                     data={artworks.data}
                     />
                     ) : null}
@@ -163,8 +163,8 @@ export default function ProductGrid(){
           
                     {artworks.data.length ? (
                     <ProductBlock
-                    start={show==3 ? 2 : 4}
-                    limit={show==3 ? 2 : 4}
+                    start={show==4 ? 2 : 4}
+                    limit={show==4 ? 2 : 4}
                     data={artworks.data}
                     />
                     ) : null}
