@@ -172,12 +172,13 @@ span.shareIcon{
     padding-left:10px;
     padding-right:10px;
 }
-#forStickyPos.row{
+#forStickyPos.row, #forStick2.row{
     position:absolute;
     width:100%;
     padding-right:5px;
 }
-#forStickyPos.row.sticky{
+
+#forStickyPos.row.sticky, #forStick2.row.sticky{
     width:100%;
     z-index: 10;
     position:fixed;
@@ -186,6 +187,15 @@ span.shareIcon{
     .trendMenu{
         margin-top:0px;
     }
+}
+.trendBlock.active{
+    a{
+        color:black!important;
+        opacity:1;
+    }
+}
+.stSecond{
+    padding-top:110px;
 }
 #galP{
     padding-top:117px;

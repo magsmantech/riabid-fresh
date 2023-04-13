@@ -60,11 +60,21 @@ export default function ProductGrid(){
         function scrolling() {      
        
           var sticky = document.getElementById("galP").offsetTop;
+          var sticky2 = document.getElementById("galP2").offsetTop;
+          
     
-          if (document.body.scrollTop > sticky-117) {
-            document.getElementById("forStickyPos").classList.add("sticky");
+          if (document.body.scrollTop > sticky-55) {
+
+            if(document.body.scrollTop > sticky2-55){              
+              document.getElementById("forStick2").classList.add("sticky");
+              document.getElementById("forStickyPos").classList.remove("sticky");
+            }else{
+              document.getElementById("forStickyPos").classList.add("sticky");
+              document.getElementById("forStick2").classList.remove("sticky");
+            }            
           } else {
             document.getElementById("forStickyPos").classList.remove("sticky");
+            document.getElementById("forStick2").classList.remove("sticky");
           }
         }
 
@@ -189,16 +199,18 @@ export default function ProductGrid(){
                 </div>
             </div>
 
-
-        <div className="row" ref={myCats}>
-        <div className='col-12'>
-          <div className="trendMenu allMenu">
-            <div className={category == 0 ? "trendBlock active" : "trendBlock"}><Link to="/store" onClick={(e)=>{handleCategory(e,0,1)}}>all art</Link></div>
-            {cats.map(item => {
-              return <div className={category == item.id ? "trendBlock active" : "trendBlock"}><Link to="#" onClick={(e)=>{handleCategory(e,item.id,1)}}>{item.title}</Link></div>
-            })}
+        <div className="row" id="forStick2">
+          <div className='col-12'>
+            <div className="trendMenu allMenu">
+              <div className={category == 0 ? "trendBlock active" : "trendBlock"}><Link to="/store" onClick={(e)=>{handleCategory(e,0,1)}}>all art</Link></div>
+              {cats.map(item => {
+                return <div className={category == item.id ? "trendBlock active" : "trendBlock"}><Link to="#" onClick={(e)=>{handleCategory(e,item.id,1);myCats.current.scrollIntoView({behavior: 'smooth'})}}>{item.title}</Link></div>
+              })}
+            </div>
           </div>
         </div>
+        <div className="row stSecond" id="galP2" ref={myCats}>
+        
         <div className='col-6 col-lg-3 col-md-4'>
          {category_products.data.length ? (
                     <ProductBlock
