@@ -137,7 +137,7 @@ export default function ProductGrid(){
       </div>
    
     </div>
-        <div className="row" ref={myGrid} id="galP" >
+        <div className="row for3Col" ref={myGrid} id="galP" >
             <div className='col-12 forMobileBigArt'>
                     {artworks.data ? (
                     <ProductBlock
