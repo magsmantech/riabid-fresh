@@ -2,6 +2,9 @@
 ul{
     list-style:none;
 }
+.row{
+    --bs-gutter-x:10px!important;
+}
 .trendMenu{
     margin-top:62px;
     overflow:hidden;
