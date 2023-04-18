@@ -92,11 +92,11 @@ const [email, setEmail] = useState("");
   return (   
     <>
     <nav className="navbar navbar-expand-lg">
-    <Link className="logo-container navbar-brand" to="/">
+    <Link className="logo-container navbar-brand col-md-5" to="/">
           <img className="logo" src={ln} alt="logo" />
     </Link>
 
-  <div className={mobileShow ? "collapse navbar-collapse justify-content-center show" : "collapse navbar-collapse justify-content-center"} >
+  <div className={mobileShow ? "collapse navbar-collapse show" : "collapse navbar-collapse"} >
     <ul className="navbar-nav mr-auto"> 
       <li className="nav-item">
                 <NavLink

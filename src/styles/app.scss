@@ -913,7 +913,8 @@ h1.related{
     }
     .galPic{
         margin-top:162px;
-        width: 100%;
+        max-width: 80%;
+        opacity:0;
     }
     .text{
         p{
@@ -930,10 +931,9 @@ h1.related{
 .fullgaller{
     display:flex;
     .titlePage{
-        width:30%;
+        width:41.66%;
     }
     .text{
-        margin-left:88px;
         position:relative;
         width:40%;
     }
@@ -1104,6 +1104,16 @@ p.no_page{
 }
 .allMenu.inProfile li:first-child,.allMenu.inProfile li:last-child{
     width:20%;
+}
+.navbar-brand{
+    margin-right:0px;
+}
+.navbar-nav{
+    li:first-child{
+        a{
+            padding-left:0px!important;
+        }
+    }
 }
 .addPage{
     display: flex;
