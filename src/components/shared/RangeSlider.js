@@ -19,12 +19,18 @@ export default function RangeSlider({ min, max, value, setValue }) {
   const classes = useStyles();
 
   const handleChange = (event, newValue) => {
+    console.log(newValue)
     setValue(newValue);
   };
 
-
   return (
     <div className={classes.root}>
+
+      <div className="slider_values">
+        <span className="start">{ value && parseInt(value[0]) > min ? value[0] : min }</span>
+        <span className="end">{ value && parseInt(value[1]) < max ? value[1] : max }</span>
+      </div>
+
       <IOSSlider
         
         value={value}
