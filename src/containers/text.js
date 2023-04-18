@@ -7,7 +7,7 @@ function Text(props) {
   const [filter, setFilter] = React.useState(false);
 
   return (
-    <section id="shop" className="container">
+    <section className="textPage">
       <MetaTags>
         <title>Ria Bid | About us</title>
         <meta
@@ -19,12 +19,13 @@ function Text(props) {
           content="contemporary, art, georgian, georgian arts, design, contemporary, modern,fine art,auctions,artists,georgian artists,online auctions,prints,artworks,buy art,photographs,buy art,artwork for sale,decorative art,Artwork made by the contemporary artists in the GeorgiansGeorgia contemporary art,art from georgia,Georgia's Contemporary Artists,contemporary artists from Georgia,Georgian artist works prices,where i cen see georgian artists?,"
         />
       </MetaTags>
-      <div className="bread" style={{ gridArea: "beard" }}>
-        {/* home / shop */}
+   
+      <div className="row">
+        <div className='col-md-5'>
+        <h1>About Us</h1>
       </div>
-      <h1>About Us</h1>
-      <div className="grid-container-text">
-        <div className="first">
+      <div className="col-md-5">
+        <div className="text">
           Ria Bid is a fundraising online auction oriented towards buying and
           selling Georgian art . Ria Bid features Georgia’s famous art salons,
           private collections, artist , sellers - all in one place. Served as a
@@ -37,6 +38,7 @@ function Text(props) {
           collectors, students, and educators to discover, learn about, and
           collect art inside and outside Georgia.
         </div>
+      </div>
       </div>
     </section>
   );

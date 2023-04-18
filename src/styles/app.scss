@@ -591,6 +591,30 @@ color: #000000;
     padding-right:10px;
     padding-top:23px;
 }
+.textPage{
+    padding-top:88px;
+    padding-left:8px;
+    h1{
+        font-family: 'Loos Normal';
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: -1px;
+        font-size: 72px;
+        line-height: 72px;        
+        font-feature-settings: 'salt' on;        
+        color: #000000;
+        text-align: left;
+    }
+    .text, .text p, .text li{
+        font-family: 'MonumentGrotesk-Regular';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+    }
+}
 .productShow{
     padding-top:72px;
     padding-left:10px;
@@ -1678,6 +1702,7 @@ font-feature-settings: 'salt' on;
 footer .secondLine ul li a:hover{
     text-decoration: underline;
 }
+
 @media only screen and (max-width: 550px) {
     .inProfile a{
         font-size:18px!important;

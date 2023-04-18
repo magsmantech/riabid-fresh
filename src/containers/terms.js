@@ -3,7 +3,7 @@ import { MetaTags } from "react-meta-tags";
 
 export default function Terms() {
   return (
-    <div className="container" >
+    <div className="textPage" >
       <MetaTags>
         <title>Terms and Conditions - Subscription Agreement</title>
         <meta
@@ -15,48 +15,27 @@ export default function Terms() {
           content="contemporary, art, georgian, georgian arts, design, contemporary, modern,fine art,auctions,artists,georgian artists,online auctions,prints,artworks,buy art,photographs,buy art,artwork for sale,decorative art,Artwork made by the contemporary artists in the GeorgiansGeorgia contemporary art,art from georgia,Georgia's Contemporary Artists,contemporary artists from Georgia,Georgian artist works prices,where i cen see georgian artists?,"
         />
       </MetaTags>
-      <div className="WordSection1">
-        <b>
-          <span
-            style={{
-              fontSize: "12pt",
-              lineHeight: "107%",
-              fontFamily: '"Arial", sans-serif',
-              color: "black",
-            }}
-          >
-            <br clear="all" style={{ pageBreakBefore: "always" }} />{" "}
-          </span>
-        </b>
-        <p className="MsoNormal">
-          <b>
-            <span
-              style={{
-                fontSize: "12pt",
-                lineHeight: "107%",
-                fontFamily: '"Arial", sans-serif',
-                color: "black",
-              }}
-            >
-              &nbsp;
-            </span>
-          </b>
-        </p>
+      <div className="row">
+        <div className='col-md-5'>
+          <h1>Terms & Conditions</h1>
+        </div>
+        <div className='col-md-5'>
+        <div className="text">
+     
         <h1 align="center" style={{ textAlign: "center" }}>
-          <a name="_Toc73815231">
-            <b>
+         
+         
               <span
                 style={{
                   fontSize: "12pt",
-                  lineHeight: "107%",
                   fontFamily: '"Arial", sans-serif',
                   color: "black",
                 }}
               >
                 INTRODUCTION
               </span>
-            </b>
-          </a>
+           
+      
         </h1>
         <p className="MsoNormal">
           <b>
@@ -6227,6 +6206,9 @@ export default function Terms() {
           </span>
         </p>
       </div>
+        </div>
+      </div>
+     
     </div>
   );
 }

@@ -8,7 +8,7 @@ function Delivery(props) {
   const [filter, setFilter] = React.useState(false);
 
   return (
-    <section id="shop" className="container">
+    <section className="textPage">
       <MetaTags>
         <title>Delivery on Ria Bid</title>
         <meta
@@ -20,12 +20,12 @@ function Delivery(props) {
           content="contemporary, art, georgian, georgian arts, design, contemporary, modern,fine art,auctions,artists,georgian artists,online auctions,prints,artworks,buy art,photographs,buy art,artwork for sale,decorative art,Artwork made by the contemporary artists in the GeorgiansGeorgia contemporary art,art from georgia,Georgia's Contemporary Artists,contemporary artists from Georgia,Georgian artist works prices,where i cen see georgian artists?,"
         />
       </MetaTags>
-      <div className="bread" style={{ gridArea: "beard" }}>
-        {/* home / shop */}
-      </div>
-      <h1>Delivery</h1>
-      <div className="grid-container-text">
-        <div className="first">
+      <div className="row">
+        <div className='col-md-5'>
+        <h1>Delivery</h1>
+        </div>
+        <div className='col-md-5'>
+        <div className="text">
           <p>
             WE DELIVER WITHIN GEORGIA AND WORLDWIDE. PLEASE NOTE, FOR ORDERS
             OUTSIDE OF GEORGIA YOU MAY BE REQUIRED TO PAY INTERNATIONAL CUSTOMS
@@ -51,6 +51,7 @@ function Delivery(props) {
           <p>Average delivery time once payment has cleared our account:</p>
           <p>Within GE: 2-5 working days</p>
           <p>International Delivery: 6-14 working days</p>
+        </div>
         </div>
       </div>
     </section>
