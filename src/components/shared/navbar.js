@@ -161,6 +161,7 @@ const [email, setEmail] = useState("");
                     ? "headerBg active"
                     : "headerBg"
                 }
+                onClick={(e) => { setAuthActive(false);setSearchActive(false);} }
               ></div>
 
 
