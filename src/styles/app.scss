@@ -87,7 +87,8 @@ span.shareIcon{
     
     div.frame{
         float:left;
-        width:109px;
+        width:50px;
+        margin-right:10px;
         cursor:pointer;
         height:55px;
         position:relative;
@@ -127,7 +128,7 @@ span.shareIcon{
         top:-4px;
         float:left;
         max-width:calc(100% - 230px);
-        p{
+        p,a{
             font-family: 'MonumentGrotesk-Regular';
             font-style: normal;
             font-weight: 400;
@@ -135,6 +136,12 @@ span.shareIcon{
             line-height: 20px;
             color: #000000;
             margin:0px;
+        }
+        a{
+            text-decoration:none;
+        }
+        a:hover{
+            text-decoration:underline;
         }
         p.size{
             font-family: 'MonumentGrotesk-Regular';
@@ -195,6 +202,12 @@ span.shareIcon{
     a{
         color:black!important;
         opacity:1;
+    }
+}
+.for3Col{
+    div.frame{
+        margin-right:0px;
+        width:109px;
     }
 }
 .for3Col .productBlock div.author p{
@@ -369,6 +382,7 @@ color: #000000;
         justify-content: space-between;
         h1{
             font-family: 'Loos Normal';
+            letter-spacing: -1px;
             font-style: normal;
             font-weight: 400;
             font-size: 72px;
@@ -666,6 +680,7 @@ color: #000000;
         h1{
             margin-top:4px;
             font-family: 'Loos Normal';
+            letter-spacing: -1px;
             font-style: normal;
             font-weight: 400;
             font-size: 32px;
@@ -847,6 +862,7 @@ h1.related{
     padding-top:56px;
     h1{
         font-family: 'Loos Normal';
+        letter-spacing: -1px;
         font-style: normal;
         font-weight: 400;
         font-size: 72px;
@@ -900,6 +916,7 @@ h1.related{
 
 h1.not_found{
     font-family: 'Loos Normal';
+    letter-spacing: -1px;
     font-style: normal;
     font-weight: 400;
     font-size: 144px;
@@ -938,6 +955,7 @@ p.no_page{
         h1{
             font-family: 'Loos Normal';
             font-style: normal;
+            letter-spacing: -1px;
             font-weight: 400;
             font-size: 72px;
             line-height: 72px;
@@ -1251,6 +1269,7 @@ p.no_page{
     padding-top:74px;
     h1{
         font-family: 'Loos Normal';
+        letter-spacing: -1px;
         font-style: normal;
         font-weight: 400;
         font-size: 72px;
@@ -1629,6 +1648,7 @@ font-feature-settings: 'salt' on;
                 padding:0px 12px 0px 0px;
             }
         }
+    
     }
     .newsletterForm,.comeSee{
         max-width: 95%;
@@ -1654,6 +1674,9 @@ font-feature-settings: 'salt' on;
     .newsletterForm{
         max-width: 100%;
     }
+}
+footer .secondLine ul li a:hover{
+    text-decoration: underline;
 }
 @media only screen and (max-width: 550px) {
     .inProfile a{

@@ -99,7 +99,7 @@ function ProductBlock({
                         <span className="frametext">save</span>
                     </div>
                     <div className="author">
-                        <p>{item.display_name}</p>
+                        <Link to={`/artists/${item.artist_id}`}>{item.display_name}</Link>
                         <p>{item.title}</p>
                         <p className='size'>{item.width} x {item.height} cm</p>
                     </div>
