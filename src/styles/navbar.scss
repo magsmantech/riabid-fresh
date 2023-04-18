@@ -225,6 +225,11 @@ section{
   text-transform: uppercase;
   font-feature-settings: 'salt' on;
   color: #000000;
+  transition:0.5s all;
+}
+.loginHeader button.register:hover, .loginHeader button.search:hover{
+  color:white;
+  background:black;
 }
 .regPage.active{
   display:block;
@@ -294,6 +299,9 @@ section{
     padding-bottom:15px;
     position:absolute; 
     padding-right:10px;    
+  }
+  .loginHeader.active{
+    max-height:360px;
   }
   .regPage{
     padding-top:0px;

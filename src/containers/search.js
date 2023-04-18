@@ -9,10 +9,12 @@ import Loading from "./loading";
 import queryString from "query-string";
 import SharedSlider from "../components/shared/SharedSlider";
 import { MetaTags } from "react-meta-tags";
+import ProductBlock from "../components/shared/ProductBlock";
 
 function Search(props) {
   const [filter, setFilter] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+
   const [letter, setLetter] = useState("");
   let params = queryString.parse(props.location.search);
   const { isLoading, error, data } = useQuery(
@@ -61,12 +63,8 @@ function Search(props) {
       </section>
     );
 
-  if (isLoading) return <Loading></Loading>;
-
-  if (error) return "An error has occurred: " + error.message;
-
   return (
-    <section id="shop" className="container auctions">
+    <section>
       <MetaTags>
         <title>Search Results for {params.search} | RiaBid</title>
         <meta
@@ -78,63 +76,87 @@ function Search(props) {
           content="contemporary, art, georgian, georgian arts, design, contemporary, modern,fine art,auctions,artists,georgian artists,online auctions,prints,artworks,buy art,photographs,buy art,artwork for sale,decorative art,Artwork made by the contemporary artists in the GeorgiansGeorgia contemporary art,art from georgia,Georgia's Contemporary Artists,contemporary artists from Georgia,Georgian artist works prices,where i cen see georgian artists?,"
         />
       </MetaTags>
-      <h1 style={{ marginBottom: "10px", fontWeight: 300 }}>Artworks</h1>
-      <div className="grid-container-auctions">
-        {data.data.artworks.map((item) => (
-          <div key={item.id} className="product flex column">
-            <Link to={"/store/" + item.id}>
-              <div className="img">
-                <div className='group'>
-                <img
-                  src={item.thumbnail}
-                ></img>
-                </div>
-              </div>
-              <div class='title_tag'>
-              <p className="title">
-                <i>{item.title}</i>
-              </p>
-              <p className="title2">{item.display_name}</p>
-              </div>
-            </Link>
-            <div className="flex space-between price_tag">
-              <div className="flex">
-                <p className="price">
-                  {item.is_geo ? `₾${item.buy_it_now}` : `$${item.price_usd}`}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
+
+    <div className="searchPage">
+      <div className="row">
+        <div className="col-md-4">
+          <h1>Search Results for {params.search}</h1>
+        </div>
       </div>
 
-      <div className="contact-container">
-        <h1
-          style={{ marginBottom: "10px", marginTop: "20px", fontWeight: 300 }}
-        >
-          Artists
-        </h1>
-        <div className="artist-container">
-          {data.data.artists.map((item) =>
+      <div className="row">
+        <div className="col-md-12">
+          <h2>artists</h2>
+        </div>
+        {data && data.data && data.data.artists ? data.data.artists.map((item) =>
             item.has_artwork ? (
-              <Link
+              <div className="col-md-2"><Link
                 style={{ color: "#d43e3e" }}
                 key={item.id}
                 to={"/artists/" + item.id}
                 className="artist"
               >
                 {item.display_name}
-                <br></br>
-              </Link>
+              </Link></div>
             ) : (
-              <Link key={item.id} to={"/artists/" + item.id} className="artist">
+              <div className="col-md-2"><Link key={item.id} to={"/artists/" + item.id} className="artist">
                 {item.display_name}
-                <br></br>
-              </Link>
+              </Link></div>
             )
-          )}
+          ) : '' }
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+            <h2 className="searchArtworks">artworks</h2>
         </div>
       </div>
+        <div className="row "  >
+            <div className='col-6 col-lg-3'>                         
+                    {data?.data?.artworks ? (
+                    <ProductBlock
+                    start={0}
+                    limit={parseInt((data?.data?.artworks.length)%4)}
+                    data={data?.data?.artworks}
+                    />
+                    ) : null}
+                             
+            </div>
+            <div className='col-6 col-lg-3'>
+                         
+                         {data?.data?.artworks ? (
+                         <ProductBlock
+                         start={parseInt(data?.data?.artworks.length%4)}
+                         limit={parseInt(data?.data?.artworks.length%4)}
+                         data={data?.data?.artworks}
+                         />
+                         ) : null}
+                                  
+                 </div>
+                 <div className='col-6 col-lg-3'>
+                         
+                         {data?.data?.artworks ? (
+                         <ProductBlock
+                         start={2*(parseInt(data?.data?.artworks.length%4))}
+                         limit={parseInt(data?.data?.artworks.length%4)}
+                         data={data.data.artworks}
+                         />
+                         ) : null}
+                                  
+                 </div>
+                 <div className='col-6 col-lg-3'>
+                         
+                         {data?.data?.artworks ? (
+                         <ProductBlock
+                         start={3*(parseInt(data?.data?.artworks.length%4))}
+                         limit={parseInt(data?.data?.artworks.length%4)}
+                         data={data.data.artworks}
+                         />
+                         ) : null}
+                                  
+                 </div>
+          </div>
+    </div>
+  
     </section>
   );
 }

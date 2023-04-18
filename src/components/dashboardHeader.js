@@ -93,14 +93,17 @@ export default function DashboardHeader(){
 
     return     <form onSubmit={_handleSubmit}>
     <div className="profile">
-      <div className="profileBioUp">
-        <h1>{name}</h1>
-
-
+      <div className="row profileBioUp">
+        <div className='col-md-5'>
+          <h1>{name}</h1>
+        </div>
+        <div className='col-md-4'>
         <textarea name="text" placeholder="Add Your Bio" onChange={(e)=> setText(e.target.value)}
                 value={text}
               ></textarea>
-
+      </div>
+      <div className='col-md-1'></div>
+      <div className='col-md-2'>
       <div className="bUpdate">
         <div className="img">
           
@@ -110,6 +113,9 @@ export default function DashboardHeader(){
 
         <button className="updateBio">UPDATE INFO</button>
         </div>
+
+      </div>
+      
       </div>
     </div>
       </form>

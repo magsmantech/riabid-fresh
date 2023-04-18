@@ -274,6 +274,49 @@ span.shareIcon{
         width:17%;
     }
 }
+.searchPage{
+    padding-top:74px;
+    padding-left:8px;
+    padding-right:8px;
+    h1{
+        font-family: 'Loos Normal';
+        letter-spacing: -1px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 72px;
+        text-align: left;
+        line-height: 72px;
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        margin-bottom:160px;
+    }
+    h2{
+        font-family: 'Pragmatica';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 24px;        
+        font-feature-settings: 'salt' on;
+        color: #000000;
+        margin-bottom:31px;
+    }
+    .searchArtworks{
+        margin-top:96px;
+    }
+    a{
+        font-family: 'MonumentGrotesk-Regular';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        font-feature-settings: 'salt' on;
+        color: #000000!important;
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration:underline;
+    }
+}
 .logos{
     padding-left:10px;
     padding-top:64px;
@@ -284,7 +327,9 @@ span.shareIcon{
         height:52px;
         padding:0px;
     }
+
 }
+
 .passiveGrid{
     display:none;
 }
@@ -979,8 +1024,7 @@ p.no_page{
         }
     }
     .profileBioUp{
-        display:flex;
-        justify-content: space-between;
+        
         h1{
             font-family: 'Loos Normal';
             font-style: normal;
@@ -995,7 +1039,7 @@ p.no_page{
             width:33.32%;
         }
         textarea{
-            width:33.32%;
+            width:100%;
             height:192px;
             resize:none;
             border:0px;
@@ -1028,6 +1072,16 @@ p.no_page{
         }
     }
 }
+.square a:before{
+    padding-top:30%;
+    display:block;
+    content:' ';
+}
+.square a:after{
+    padding-top:40%;
+    display:block;
+    content:' ';
+}
 .addArtwork{
     background:#F7F7F7;
     text-align: center;
@@ -1035,8 +1089,6 @@ p.no_page{
     a{
         text-decoration:none;
         display:block;
-        padding-top:100px;
-        padding-bottom:100px;
         span{
             position:absolute;
             bottom:12px;
@@ -1761,5 +1813,11 @@ footer .secondLine ul li a:hover{
 @media only screen and (max-width: 500px) {
     .slide .cert a .text{
         max-width:161px;
+    }
+    .square a:before{
+        padding-top:5%;
+    }
+    .square a:after{
+        padding-top:5%;
     }
 }

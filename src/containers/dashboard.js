@@ -165,7 +165,7 @@ function Dashboard(props) {
 
 
       {cat != 4 && <div className='col-6 col-lg-3'>
-       {cat == 1 && <div className="productBlock addArtwork">
+       {cat == 1 && <div className="productBlock addArtwork square">
             
               <a href="/dashboard/addartwork">
                 <img src={addArtwork} />
