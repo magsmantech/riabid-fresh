@@ -140,7 +140,7 @@ const [email, setEmail] = useState("");
 
             <span className="searchIcon" onClick={(e) =>{  e.preventDefault(); setSearchActive(!searchActive); setAuthActive(false);  }}></span>
       
-          <Link  to="/dashboard/favorites" >           
+          <Link  to="/dashboard?tab=4" >           
             <span className="frameIcon"></span>
           </Link>
           <Link to="/cart">

@@ -66,6 +66,7 @@ function Dashboard(props) {
       // Error or success... doesn't matter!
     },
   });
+  const queryString = require('query-string');
 
   useEffect(function(){
    
@@ -78,6 +79,13 @@ function Dashboard(props) {
       handleResize();
       window.addEventListener('resize', handleResize)
   },[])
+
+  useEffect(function(){
+    const parsed = queryString.parse(props.location.search);
+    if(parsed.tab){
+      setCat(4);
+    }
+  },[props.location.search])
 
 
   function handleResize() {

@@ -44,7 +44,7 @@ function Hero() {
           </div>
         </div>
         <div className="img">
-          <img src={coverData.length > 0 && coverData[0].image_link} id="slideImg"/>
+          <Link to='/store'><img src={coverData.length > 0 && coverData[0].image_link} id="slideImg"/></Link>
 
         {coverData.length > 0 && 
           <div className="author">

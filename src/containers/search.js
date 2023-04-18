@@ -115,7 +115,7 @@ function Search(props) {
                     {data?.data?.artworks ? (
                     <ProductBlock
                     start={0}
-                    limit={parseInt((data?.data?.artworks.length)%4)}
+                    limit={Math.round((data?.data?.artworks.length)/4)}
                     data={data?.data?.artworks}
                     />
                     ) : null}
@@ -125,8 +125,8 @@ function Search(props) {
                          
                          {data?.data?.artworks ? (
                          <ProductBlock
-                         start={parseInt(data?.data?.artworks.length%4)}
-                         limit={parseInt(data?.data?.artworks.length%4)}
+                         start={Math.round(data?.data?.artworks.length/4)}
+                         limit={Math.round(data?.data?.artworks.length/4)}
                          data={data?.data?.artworks}
                          />
                          ) : null}
@@ -136,8 +136,8 @@ function Search(props) {
                          
                          {data?.data?.artworks ? (
                          <ProductBlock
-                         start={2*(parseInt(data?.data?.artworks.length%4))}
-                         limit={parseInt(data?.data?.artworks.length%4)}
+                         start={2*(Math.round(data?.data?.artworks.length/4))}
+                         limit={Math.round(data?.data?.artworks.length/4)}
                          data={data.data.artworks}
                          />
                          ) : null}
@@ -147,8 +147,8 @@ function Search(props) {
                          
                          {data?.data?.artworks ? (
                          <ProductBlock
-                         start={3*(parseInt(data?.data?.artworks.length%4))}
-                         limit={parseInt(data?.data?.artworks.length%4)}
+                         start={3*(Math.round(data?.data?.artworks.length/4))}
+                         limit={Math.round(data?.data?.artworks.length/4)}
                          data={data.data.artworks}
                          />
                          ) : null}
