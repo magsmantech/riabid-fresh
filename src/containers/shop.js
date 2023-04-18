@@ -57,7 +57,8 @@ function Shop(props) {
     {'label':"Sculpture",'value':2},
     {'label':'Mixed Media','value':5},
     {'label':"Photography",'value':3},
-    {'label':"Painting",'value':1}
+    {'label':"Painting",'value':1},
+    {'label':"all",'value':0}
   ];
 
   

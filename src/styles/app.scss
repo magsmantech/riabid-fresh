@@ -430,6 +430,7 @@ color: #000000;
     }
     li{
         margin-top:16px;
+        text-transform: lowercase;
         font-family: 'Loos Normal';
         font-style: normal;
         font-weight: 400;
@@ -450,10 +451,10 @@ color: #000000;
         border-bottom:1px solid #000;
         padding-right:20px;
         padding-bottom:9px;
-        width:20%;
+        width:16.66%;
     }
     .searchTitle{
-        width:40%;
+        width:33.32%;
         input{
             position:relative;
             top:82px;
@@ -481,6 +482,9 @@ color: #000000;
             margin-right:15px;
         }
     }
+    .searchYears{
+        width:25%;
+    }
 }
 .MuiSlider-thumb{
     border-radius:0px!important;
@@ -503,6 +507,7 @@ color: #000000;
     transform:translateX(-5px)!important;
     display:none;
 }
+
 .slider_values{
     span{
         top:22px;
@@ -1606,6 +1611,7 @@ font-feature-settings: 'salt' on;
     .shopSearching{
         flex-direction:column;
         align-items:start;
+   
     }
     .shopSearching .searchBox{
         width:100%;
