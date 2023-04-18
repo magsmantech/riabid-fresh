@@ -226,8 +226,8 @@ export default function ProductDet(props) {
               </div>
 
                 <ul>
-                    <li><a href="#" onClick={() => favoritesMutation.mutate(artwork.id)}><span className="frameIcon"></span>Save</a></li>
-                    <li><a href="#" onClick={() => setShareActive(!shareActive)}><span className="shareIcon"></span>Share</a></li>
+                    <li><a href="#" onClick={() => favoritesMutation.mutate(artwork.id)}><span className="frameIcon"></span>save</a></li>
+                    <li><a href="#" onClick={() => setShareActive(!shareActive)}><span className="shareIcon"></span>share</a></li>
                 </ul>
             </div>
             <div className="description" >
