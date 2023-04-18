@@ -228,9 +228,13 @@ function Dashboard(props) {
                 
             {cat == 4 && <div className="details">
 
-                <div className="deliveryDetails">
-                    <h1>delivery details</h1>
+              <div className='row'>
+                <div className='col-md-5'>
+                  <div className="deliveryDetails">
+                      <h1>delivery details</h1>
                   </div>
+                  </div>
+                  <div className="col-md-7">
                   <form onSubmit={handleSubmitDetails} className="contact-form dashboard">
                   <div className="form">
                   
@@ -300,6 +304,10 @@ function Dashboard(props) {
               value="UPDATE INFO"
             ></input>
                     </form>
+                  </div>
+           
+              </div>
+                  
               </div>}
       </div>
 

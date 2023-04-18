@@ -9,9 +9,7 @@ export default function PrimaryInput({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {formik.errors[id] && formik.touched[id] && (
-        <div style={{ color: "red" }}>{formik.errors[id]}</div>
-      )}
+     
       <input
         min={1}
         value={formik.values[id]}
@@ -22,6 +20,9 @@ export default function PrimaryInput({
         placeholder={placeholder}
         {...rest}
       ></input>
+       {formik.errors[id] && formik.touched[id] && (
+        <div className="formError">{formik.errors[id]}</div>
+      )}
     </div>
   );
 }

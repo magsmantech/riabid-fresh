@@ -1108,10 +1108,10 @@ p.no_page{
     }
 }
 .details{
-    display:flex;
-    justify-content: space-between;
+
     .deliveryDetails{
         h1{
+            text-align: left;
             font-family: 'MonumentGrotesk-Regular';
             font-style: normal;
             font-weight: 400;
@@ -1119,7 +1119,6 @@ p.no_page{
             line-height: 32px;
             font-feature-settings: 'salt' on;
             color: #000000;
-            padding-left:10px;
         }
   
     }
@@ -1133,11 +1132,11 @@ p.no_page{
     }
     
     .contact-form.dashboard{
-        width:80%;
+        width:100%;
         display:flex;
         justify-content: space-between;
         .form{
-            width:70%;
+            width:57%;
         }
         .updateAddress{
             border-width: 1px 0px;
@@ -1145,6 +1144,11 @@ p.no_page{
             border-color: #000000;
             width:228px;
             cursor:pointer;
+            transition:0.5s all;
+        }
+        .updateAddress:hover{
+            background:black;
+            color:white;
         }
     }
 }
