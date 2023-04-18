@@ -29,7 +29,7 @@ function ArtistsFull(props) {
   const [bioLenght, setbioLenght] = useState(60);
   const [showMore, setShowMore] = useState(false);
   const [show, setShow] = useState(3); 
-
+  const [total, setTotal] = useState(16);
   const descEl = React.useRef(null);
 
 
@@ -67,6 +67,7 @@ function ArtistsFull(props) {
         axios.get("artists/artworks-paginated/"+props.match.params.index+"/?limit=7&page="+page)
           .then((res) => {
                 let data = res.data;
+                setTotal = (data.data.length%4);
                 setData(data);
           });
   }
@@ -75,6 +76,7 @@ function ArtistsFull(props) {
     axios.get('artists/artworks-paginated/'+props.match.params.index+'/?limit=7')
       .then((res) => {
             let data = res.data;
+            setTotal(data.data.length%4);
             setData(data);
       });
   },[])
@@ -143,37 +145,55 @@ function ArtistsFull(props) {
 
             <div className='col-6 col-md-4'>
 
-            {data.data ? (
+            {total == 4 ? (data.data ? (
                     <ProductBlock
                     start={show == 3 ? 1 : 0}
                     limit={show == 3 ? 3 : 2}
                     data={data.data}
                     />
-                    ) : null}
+                    ) : null) : (data.data ? (
+                      <ProductBlock
+                      start={0}
+                      limit={1}
+                      data={data.data}
+                      />
+                      ) : null) }
 
             </div>
             
             <div className='col-6 col-md-4'>
 
-            {data.data ? (
+            { total == 4 ?  (data.data ? (
                     <ProductBlock
                     start={show == 3 ? 4 : 2}
                     limit={show == 3 ? 3 : 2}
                     data={data.data}
                     />
-                    ) : null}
+                    ) : null) : (data.data ? (
+                      <ProductBlock
+                      start={1}
+                      limit={1}
+                      data={data.data}
+                      />
+                      ) : null) }
 
             </div>
             
             <div className='hideLast col-md-4'>
 
-            {data.data ? (
+            { total == 4 ? (data.data ? (
                     <ProductBlock
                     start={2*show}
                     limit={show}
                     data={data.data}
                     />
-                    ) : null}
+                    ) : null) : (data.data ? (
+                      <ProductBlock
+                      start={2}
+                      limit={1}
+                      data={data.data}
+                      />
+                      ) : null) }
             </div>
 
 
