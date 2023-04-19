@@ -11,8 +11,10 @@ function Hero() {
   const coverData = coverImages.data ? coverImages.data.data : [];
   const [height, setHeight] = useState(162);
 
-  React.useEffect(() => {
-    handleResize();
+  React.useEffect(() => {    
+    setTimeout(() => {
+      handleResize();
+    }, 10);
     window.addEventListener('resize', handleResize)
     return () =>{
       window.removeEventListener('resize', handleResize)

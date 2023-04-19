@@ -17,15 +17,29 @@ function footer() {
     <div className='footerBg'>
     <footer>  
       <div className='row'>
-        <div className="col-md-5 footerPaddingRight footerLineMargin">
+        <div className="col-md-5 footerPaddingRight">
           <div className="maxWidth">
             <h2>Art for homes & organizations</h2>
             <p>
             We can talk in detail and analyze your needs. Our program for art house lovers, interior designers, hotels and architect companies can provide structured outlines according to your demands. 
             </p>
-            <a to="#" className='download'>download.pdf</a>          
+            <a to="#" className='download dispHide'>download.pdf</a>  
+                   
           </div>
         </div>
+
+        <div className='col-md-3 footerPaddingRight footerLineMargin downloadMobile'>
+        <div className="newsletterForm">
+          <div className="newsletterDiv">
+         
+              <div className="wrapper">
+                <div className="input-wrapper">
+                <a to="#" className='download'>download.pdf</a>  
+                </div>
+              </div></div>
+            </div>
+        </div>
+
         <div className='col-md-3 footerPaddingRight footerLineMargin'>
           <div className="newsletterForm">
             <h4>Newsletter</h4>

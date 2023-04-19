@@ -2,6 +2,7 @@
   padding-left:10px;
   padding-right:10px;
 }
+
 footer {
   margin-top:64px;
   width: 100%;
@@ -35,6 +36,8 @@ footer {
     font-size: 12px;
     color:#000;
     padding:4px 16px;
+    width:100%;
+    text-align: center;
   }
   .maxWidth{
     max-width:500px;
@@ -51,7 +54,7 @@ footer {
   .secondLine{
     margin-top:96px;
     border-top:1px solid black;
-    padding-top:20px;
+ 
     padding-bottom:10px;
     overflow: hidden;
     img{

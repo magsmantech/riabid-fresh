@@ -1542,6 +1542,12 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 991px) {
+    #galP{
+        padding-top:100px;
+    }
+    .row{
+        --bs-gutter-x:8px!important;
+    }
     .galleryPage .galleryItem .title{
         font-size:46px;
         line-height:46px;
@@ -1664,7 +1670,12 @@ font-feature-settings: 'salt' on;
         }
         .description{
             ul{
-                position:relative;
+                position:fixed;
+                bottom:16px;
+                left:0;
+                width:100%;
+                background: white;
+                z-index: 5;
                 overflow:hidden;
                 margin-top:64px;
                 .price{
@@ -1820,7 +1831,127 @@ footer .secondLine ul li a:hover{
         max-width:calc(100% - 75px)
     }
 }
+.closeMenu{
+    position:absolute;
+    cursor:pointer;
+    z-index:200;
+    right:15px;
+}
+.mobilePics,.downloadMobile{
+    display:none;
+}
+.secondLine{
+    padding-top:20px;
+}
 @media only screen and (max-width: 500px) {
+    .addPage{
+        flex-direction: column;
+    }
+    .submitArtwork.dashboard{
+        width:100%;
+        flex-direction: column;
+    }.submitArtwork.dashboard .firstForm{
+        width:100%;
+    }
+    .submitArtworkButton{
+        width:100%;
+        margin-left:0px;
+        height:30px;
+    }
+    .shopSearching li{
+        font-size:16px;
+        line-height: 16px;
+        margin-top:4px;
+    }
+    .slider_values span, .searchPrice input{
+        font-size:16px!important;
+    }
+    .MuiSlider-marked{
+        top:-3px!important;
+    }
+    .slider_values span{
+        top:10px;
+    }
+    .shopSearching .searchYears{
+        margin-top:0px;
+        height:45px;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    .searchBox.clear{
+        margin-top:40px;
+        width:100%!important;
+        padding-right:0px;
+    }
+    .MuiSlider-marked{
+        margin-left:0px!important;
+    }
+    .searchBox.clear button{
+        width:100%!important;
+    }
+    .shopSearching button.search{
+        top:11px;
+        width:14px;
+        height:14px;
+        background-size:14px 14px;
+    }
+    .shopSearching .searchTitle input{
+        font-size:16px;
+    }
+    .details .contact-form.dashboard{
+        flex-direction: column;
+        .form{
+            width:100%;
+        }
+        .updateAddress{
+            width:100%;
+            padding-top:12px;
+            padding-bottom:12px;
+        }
+    }
+    .addPage .addonImages.picBox .picture{
+        margin-left:0px;
+    }
+    .addPage .addonImages.picBox .picture a{
+        width:31%;
+    }
+    .addPage .picBox{
+        flex-direction: column;
+    }
+    
+    .artistFullPage .bio h1{
+        font-size:32px;
+        line-height:32px;
+    }
+    .secondLine{
+        padding-top:8px;
+    }
+    footer .secondLine .social-list{
+        top:4px;
+    }
+    .downloadMobile{
+        display:block;
+    }
+    .dispHide{
+        display:none;
+    }
+    .progress{
+        display:none!important;
+    }
+    .mobilePics{
+        padding-left:10px;
+        display:block;
+        .pic{
+            display:block;
+            margin-top:24px;
+        }
+        img{
+            max-width:188px;
+        }
+    }
+    .nonMobile{
+        display:none;
+    }
     .slide .cert a .text{
         max-width:161px;
     }
@@ -1829,5 +1960,40 @@ footer .secondLine ul li a:hover{
     }
     .square a:after{
         padding-top:5%;
+    }
+    .special_projects h3{
+        margin-bottom:0px;
+    }
+    .special_projects{
+        .slick-slide{
+            padding-top:10px;
+            padding-right:8px;
+        }
+    }
+    .trendMenu.allMenu{
+        width:calc(100% - 8px);
+        display:flex;
+        flex-direction: row;
+          flex-wrap: wrap;
+
+        justify-content: space-between;
+        margin-top:48px;
+        
+        div{
+            line-height:23px;
+            width:auto!important;
+            padding:auto!important;
+            flex: 1 0 20%;
+            padding-right:0px!important;
+        }      
+        div:nth-child(2),div:nth-child(3){
+            flex: 1 0 23%;
+        }   
+       div:nth-child(4){
+            flex: 17px;
+        }
+        div:nth-child(1){
+            flex: 50px;
+        }
     }
 }

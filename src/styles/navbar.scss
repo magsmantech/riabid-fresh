@@ -89,6 +89,7 @@ section{
   max-height:0px;
   transition:0.5s all;
   top:32px;
+  opacity:0;
   width:100%;
   padding-left:10px;
   padding-right:23px;
@@ -152,6 +153,7 @@ section{
 }
 .loginHeader.active{
   max-height:176px;
+  opacity:1;
 }
 .inputs{
   display:flex;
@@ -303,6 +305,13 @@ section{
   .loginHeader.active{
     max-height:360px;
   }
+  .navbar-nav li:first-child a{
+    padding-left:31px!important;
+  }
+  .navbar-nav a.nav-link{
+    text-align: right;
+    padding-right:8px!important;
+}
   .regPage{
     padding-top:0px;
     .loginInputs{

@@ -107,7 +107,7 @@ function Main() {
       ) :''}
       </div>
         
-      <div className="selectedFor logos">
+      <div className="selectedFor logos nonMobile">
  
         <Slider {...pressSliderSettings}>
           {pressData
@@ -122,6 +122,19 @@ function Main() {
               ))
             : null}
         </Slider>
+      </div>
+      <div className="mobilePics">
+        {pressData
+            ? pressData.map((e,i) => (
+                <div className='pic'><a href={e.press_link} target="_blank" key={i}>
+                  <img
+                  
+                  src={e.image_link}
+                    
+                   />
+                </a></div>
+              ))
+            : null}
       </div>
     </section>
   );

@@ -4,11 +4,11 @@
 }
 
 .slide { 
-  padding-left:10px;
   .cap{
     padding-right:10px;
     width:33.33%;
     float:left;
+    padding-left:10px;
     h1{
       font-family: 'Loos Normal';
       letter-spacing: -1px;
@@ -116,6 +116,7 @@
       max-width:125px;
     }
     span.icon{
+      width:18px;
       background:url('../assets/icons/delivery.svg') no-repeat;
     }
   }

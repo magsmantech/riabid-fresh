@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import ln from "../../assets/logo-new.svg";
 import chat from "../../assets/icons/chat.svg";
+import closeMenu from "../../assets/icons/closeMenu.svg";
 import { userProvider } from "../../store/store";
 import { logout } from "../../services/authService";
 import { useMutation } from "react-query";
@@ -154,7 +155,7 @@ const [email, setEmail] = useState("");
             </Link>
   </div>
 
-  <button className="mobile_menu" onClick={(e)=>{setMobileShow(!mobileShow)}}>MENU</button>
+  <button className="mobile_menu" onClick={(e)=>{setMobileShow(!mobileShow);setAuthActive(false);setSearchActive(false);}}>MENU</button>
 </nav>
 <div className={
                   authActive || searchActive
@@ -171,6 +172,7 @@ const [email, setEmail] = useState("");
                     : "loginHeader"
                 }
               >
+                <img src={closeMenu} className="closeMenu" onClick={(e) => { setAuthActive(false);setSearchActive(false);} } />
                 <div className="row">
                   <div className="col-md-2">
 <ul>
@@ -213,6 +215,7 @@ const [email, setEmail] = useState("");
                     : "loginHeader"
                 }
               >
+                <img src={closeMenu} className="closeMenu" onClick={(e) => { setAuthActive(false);setSearchActive(false);} } />
                 <div className="row">
                   <div className='col-md-5'>
 <ul>
