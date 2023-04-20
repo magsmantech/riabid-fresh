@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import editIcon from "../../assets/icons/edit.png";
 import removeIcon from "../../assets/icons/remove.png";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from 'react-toastify';
+
 import { createOrder, removeItem } from "../../services/dashboardService";
 import {
   deleteArtwork,
@@ -32,7 +33,7 @@ function ProductBlock({
       return { id: 1 };
     },
     onError: (error, variables, context) => {
-      toast.error(error.context);
+      //toast.error(error.context);
     },
     onSuccess: (data, variables, context) => {
       toast("You successfully removed item");
@@ -49,7 +50,7 @@ function ProductBlock({
       return { id: 1 };
     },
     onError: (error, variables, context) => {
-      toast.error(error.context);
+      //toast.error(error.context);
     },
     onSuccess: (data, variables, context) => {
       toast.dark("You successfully deleted artwork", {
@@ -110,6 +111,7 @@ function ProductBlock({
                       <span className="price">Contact for Price</span>                 
                      ):''}
                 </div></div>
+          
               }) : ''
         
   );

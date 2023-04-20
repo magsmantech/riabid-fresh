@@ -63,8 +63,8 @@ function footer() {
             <div className="col-md-2 comeSee">
               <h4>Contacts</h4>
               <div className="seeText">
-              <p>Email: help@riabid.ge<br/>
-              Phone: +995 599-200-535</p></div>
+              <p>Email: <a href="mailto:help@riabid.ge">help@riabid.ge</a><br/>
+              Phone: <a href="tel:+995599200535">+995 599-200-535</a></p></div>
             </div>
         </div>
         <div className="secondLine">
@@ -85,14 +85,14 @@ function footer() {
 
           <div className='col-6 col-md-2'>
           <div className="social-list">
-              <a to="https://instagram.com/ria.bid?igshid=1zjuzuv6w5pf">
+              <a href="https://instagram.com/ria.bid?igshid=1zjuzuv6w5pf" target="_BLANK">
                 <FaInstagram size="14px" />
               </a>
            
-              <a to="https://www.pinterest.com/ria_bid/">
+              <a href="https://www.pinterest.com/ria_bid/" target="_BLANK">
                 <FaPinterest size="14px" />
               </a>
-              <a to="https://twitter.com/bid_ria/">
+              <a href="https://twitter.com/bid_ria/" target="_BLANK">
                 <FaTwitter size="14px" />
               </a>
             </div>
