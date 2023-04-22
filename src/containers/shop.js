@@ -15,6 +15,7 @@ function Shop(props) {
   const [sort, setSort] = useState(false);
   const [data, setData] = useState({'data':[]});
   const [filterType, setFilterType] = useState(0);  
+  const [myMin,setMyMin] = useState(1600);
   const [filterPrice, setFilterPrice] = React.useState([0, 1000000]);
   const [filterYear, setFilterYear] = useState([0, 9999]);
   const myGrid = useRef(null);
@@ -110,7 +111,7 @@ function Shop(props) {
         <RangeSlider
                 value={filterYear}
                 setValue={setFilterYear}                          
-                min={1600}
+                min={myMin}
                 max={2023}
               ></RangeSlider>
       </div>
