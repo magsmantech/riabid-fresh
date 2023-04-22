@@ -157,7 +157,7 @@ span.shareIcon{
         font-family: 'MonumentGrotesk-Regular';
         font-style: normal;
         font-weight: 400;
-        font-size: 16px;
+        font-size: 12px;
         line-height: 20px;
         text-align: center;
         color: #000000;
@@ -208,6 +208,11 @@ span.shareIcon{
     div.frame{
         margin-right:0px;
         width:109px;
+    }
+    .productBlock{
+    span.price{
+        font-size:16px;
+    }
     }
 }
 .for3Col .productBlock div.author p{
