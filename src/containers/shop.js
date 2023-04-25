@@ -26,6 +26,14 @@ function Shop(props) {
             let data = res.data;
             setData(data);
       });
+
+
+      axios.get('get-lowest-year')
+      .then((res) => {
+            let {year} = res.data;
+            setMyMin(year);
+      });
+
   },[])
 
   var keys = Object.keys(data.data);
