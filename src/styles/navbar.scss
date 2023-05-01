@@ -163,7 +163,7 @@ section{
   display:none;
   padding-right:0px;
   padding-top:89px;
-  input{
+  input[type='text'],input[type='password']{
     border:0px;
     background:transparent;
     font-family: 'MonumentGrotesk-Regular';
@@ -207,6 +207,23 @@ section{
   
   }
 
+}
+.secondL{
+  margin-top:20px;
+  min-height:19px;
+}
+.regPage.regpagMarging{
+  padding-top:34px;
+  span{
+    margin-right:15px;
+    padding:5px 10px;
+    font-size:12px;
+    cursor:pointer;
+  }
+  .typeActive{
+    background: black;
+    color:white;
+  }
 }
 .loginHeader button.register, .loginHeader button.search{
   background:transparent;
@@ -303,7 +320,7 @@ section{
     padding-right:10px;    
   }
   .loginHeader.active{
-    max-height:470px;
+    max-height:700px;
   }
   .navbar-nav li:first-child a{
     padding-left:31px!important;
@@ -315,7 +332,7 @@ section{
   .regPage{
     padding-top:0px;
     .loginInputs{
-      input{
+      input[type='text'],input[type='password']{
       width:50%;
     }
     }

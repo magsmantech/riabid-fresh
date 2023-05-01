@@ -30,6 +30,8 @@ const [email, setEmail] = useState("");
     password: "",
   });
 
+  const [accountType, setAccountType] = useState("1");
+  const [userType, setUserType] = useState("1");
   const { currentUser, setCurrentUser } = userProvider();
   const [navActive, setNavActive] = useState(false);
   const [authActive, setAuthActive] = useState(false);
@@ -233,8 +235,69 @@ const [email, setEmail] = useState("");
 </ul>
 </div>
 
-<div className="regPage active col-md-6">
+<div className={regMode == 2 ? "regPage active col-md-6 regpagMarging" : "regPage active col-md-6"}>
+          <div className={regMode == 2 ? "regInputs" : "hide"}>
+              <div className='inputs'>
+                  <label htmlFor="option-1" className="option option-1">
+                  <input
+                      value="1"
+                      type="radio"
+                      onChange={(e) => setAccountType(e.target.value)}
+                      name="type"
+                      id="option-1"
+                      defaultChecked
+                    />
+                      <span className={accountType == 1 ? 'typeActive' : ''}>Buyer</span>
+                    </label>
 
+                  <label htmlFor="option-2" className="option option-2">
+                  <input
+                      value="2"
+                      type="radio"
+                      onChange={(e) => setAccountType(e.target.value)}
+                      name="type"
+                      id="option-2"                      
+                    />
+                      <span className={accountType == 2 ? 'typeActive' : ''}>Artist</span>
+                    </label>
+                    <label htmlFor="option-3" className="option option-3">
+                  <input
+                      value="3"
+                      type="radio"
+                      onChange={(e) => setAccountType(e.target.value)}
+                      name="type"
+                      id="option-3"                      
+                    />
+                      <span className={accountType == 3 ? 'typeActive' : ''}>Seller</span>
+                    </label>
+                </div>
+          </div>
+          <div className={regMode == 2 ? "regInputs secondL" : "secondL hide"}>
+              <div  className={accountType != 2 ? "inputs" : "hide"}>
+                  <label htmlFor="option-4" className="option option-4">
+                  <input
+                      value="1"
+                      type="radio"
+                      onChange={(e) => setUserType(1)}
+                      name="user_type"
+                      id="option-4"
+                      defaultChecked
+                    />
+                      <span className={userType == '1' ? 'typeActive' : ''}>Physical</span>
+                    </label>
+
+                  <label htmlFor="option-5" className="option option-5">
+                  <input
+                      value="2"
+                      type="radio"
+                      onChange={(e) => setUserType(2)}
+                      name="user_type"
+                      id="option-5"                      
+                    />
+                      <span className={userType == '2' ? 'typeActive' : ''}>Gallery</span>
+                    </label>                  
+                </div>
+          </div>
           <div className="regInputs">
             <div className={regMode == 1 ? "inputs loginInputs" : "inputs"}>
             <input
@@ -291,6 +354,8 @@ const [email, setEmail] = useState("");
                   data.append("name", name);
                   data.append("email", email);
                   data.append("password", password);
+                  data.append("account_type", accountType);
+                  data.append("user_type", userType);
                   registerMutation.mutate(data);               
               }}
             >

@@ -2,6 +2,9 @@
 ul{
     list-style:none;
 }
+.hide{
+    display:none;
+}
 .row{
     --bs-gutter-x:10px!important;
 }
@@ -1514,6 +1517,7 @@ p.no_page{
     font-feature-settings: 'salt' on;
     color: #000000;
 }
+
 @media only screen and (max-width: 1230px) {
     .fullgaller .text{
         width:55%;
