@@ -77,7 +77,7 @@ function Shop(props) {
 
   function handlePagination(e,page){
     e.preventDefault();   
-        axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories[]="+filterType+"&page="+page)
+        axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories="+filterType+"&page="+page)
           .then((res) => {
                 let data = res.data;
                 setData(data);
@@ -126,7 +126,7 @@ function Shop(props) {
       <div className="searchBox searchPrice">
           <input placeholder="price" />
       </div>
-      <div className="searchBox clear"><button onClick={() => {window.location.reload();}}>Clear</button>
+      <div className="searchBox clear"><button onClick={(e) => {handlePagination(e)}}>SEARCH</button>
       </div>
     </div>
     <div className="row shopG" ref={myGrid} >

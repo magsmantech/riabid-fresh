@@ -544,7 +544,7 @@ color: #000000;
         width:33.32%;
         input{
             position:relative;
-            top:82px;
+            top:2px;
             border:0px;
             font-family: 'Loos Normal';
             font-style: normal;
@@ -634,6 +634,7 @@ color: #000000;
 }
 .searchPrice{
     input{
+        width:100%;
         border:0px;
         font-family: 'Loos Normal';
         font-style: normal;
