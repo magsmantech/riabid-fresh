@@ -42,8 +42,10 @@ function Galleries(props) {
                 <p className="title">{item.gallery_title}</p>
            
                 <div className="text">
-                  <p className="desc">{item.gallery_description}</p>
-                  <p className="location">{item.location}</p>
+                  <div className='justify-content-center'>
+                    <p className="desc">{item.gallery_description}</p>
+                    <p className="location">{item.location}</p>
+                  </div>
                 </div>
                 <Link to={"/galleries/" + item.id}>
                   <button className="custom-button">VIEW GALLERY</button>

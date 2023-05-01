@@ -63,9 +63,9 @@ export default function ProductGrid(){
           var sticky2 = document.getElementById("galP2").offsetTop;
           
     
-          if (document.body.scrollTop > sticky-55) {
+          if (document.body.scrollTop > sticky-25) {
 
-            if(document.body.scrollTop > sticky2-55){              
+            if(document.body.scrollTop > sticky2-25){              
               document.getElementById("forStick2").classList.add("sticky");
               document.getElementById("forStickyPos").classList.remove("sticky");
             }else{

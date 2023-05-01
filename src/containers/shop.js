@@ -124,7 +124,7 @@ function Shop(props) {
               ></RangeSlider>
       </div>
       <div className="searchBox searchPrice">
-          <input placeholder="Price" />
+          <input placeholder="price" />
       </div>
       <div className="searchBox clear"><button onClick={() => {window.location.reload();}}>Clear</button>
       </div>

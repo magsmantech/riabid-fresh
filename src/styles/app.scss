@@ -13,6 +13,12 @@ ul{
     overflow:hidden;
     padding-left:0px;
     height:43px;
+    .lastPos{
+        letter-spacing: 1px;
+        span{
+            margin-left:15px;
+        }
+    }
     li,div{
         float:left;
         width:50%;
@@ -136,7 +142,7 @@ span.shareIcon{
             font-style: normal;
             font-weight: 400;
             font-size: 12px;
-            line-height: 20px;
+            line-height: 12px;
             color: #000000;
             margin:0px;
         }
@@ -230,9 +236,28 @@ span.shareIcon{
 #galP{
     padding-top:117px;
 }
+.nextPage{
+    a::after{
+        right:0;
+    }
+}
+.centerPage{
+    a::after{
+        left:calc(50% - 55px);
+    }
+    a:hover::after{
+        left:0;
+    }
+}
+.prevPage{
+    a::after{
+        left:0;
+    }
+}
 .productPaginate{
     a{
-        min-width:109px;
+        min-width:100%;
+        border-width:109px;
         text-align: left;
         font-family: 'MonumentGrotesk-Regular';
         font-style: normal;
@@ -243,12 +268,21 @@ span.shareIcon{
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: #000000;
-        border-bottom:1px solid #000;
         display:inline-block;
         transition: all 0.7s ease;
         padding:10px 38px;
+        position:relative;       
     }
-    a:hover{
+    a::after{
+        position:absolute;
+        transition: all 0.7s ease;
+        bottom:0;
+        min-width:109px;
+        content:' ';
+        border-bottom:1px solid #000;
+    }
+
+    a:hover::after{
         min-width:100%;
     }
     .prevPage a{
@@ -1731,6 +1765,7 @@ font-feature-settings: 'salt' on;
     }
     .lastPos{
         text-align: right;
+        
     }
     .hideLast{
         display:none;
