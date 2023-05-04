@@ -55,6 +55,15 @@ const [email, setEmail] = useState("");
     onError: (error, variables, context) => {
       // An error happened!
       setError(error.response.data);
+      if(error.response.data.email.length > 0){
+        toast.error(error.response.data.email[0]);
+      }
+      if(error.response.data.name.length > 0){
+        toast.error(error.response.data.name[0]);
+      }
+      if(error.response.data.password.length > 0){
+        toast.error(error.response.data.password[0]);
+      }
     },
     onSuccess: (data, variables, context) => {
       window.location.href = "/approveemail";
