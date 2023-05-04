@@ -143,10 +143,10 @@ export default function Cart() {
                       <h1>checkout</h1>
                       <p>artworks <span>{data.data.is_geo
                     ? `${data.data.total} ₾`
-                    : `${data.data.total_usd-35} $`}</span></p>
+                    : `${data.data.total_usd-70} $`}</span></p>
                       <p>shipping <span>{data.data.is_geo
                     ? `0 ₾`
-                    : `35 $`}</span></p>
+                    : `70 $`}</span></p>
 
                     <p className="total_amount">total amount <span>{data.data.is_geo
                     ? `${data.data.total} ₾`

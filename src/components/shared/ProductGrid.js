@@ -37,9 +37,14 @@ export default function ProductGrid(){
           axios.get('dashboard/curator-artworks?limit=7')
             .then((res) => {
                   let {artworks,curator} = res.data.data;
-                  setCurator({'id':curator.id, 'name':curator.name,'lastname':curator.lastname})
+                  if(curator){
+                    console.log('--------------')
+                    console.log(curator)
+                    setCurator({'id':curator.id, 'name':curator.name,'lastname':curator.lastname})
+                    setUrl("/curator/"+curator.id)
+                  }
                   setArtworks(artworks);            
-                  setUrl("/curator/"+curator.id)
+                  
             });
 
             axios.get('artworks-paginated?limit=16')

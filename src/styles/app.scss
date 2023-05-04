@@ -1201,7 +1201,7 @@ p.no_page{
     border-bottom:1px solid black;
 }
 .allMenu.inProfile li{
-    width:30%;
+    width:20%;
 }
 .allMenu.inProfile li:first-child,.allMenu.inProfile li:last-child{
     width:20%;
@@ -1839,8 +1839,11 @@ footer .secondLine ul li a:hover{
 }
 
 @media only screen and (max-width: 550px) {
+    .allMenu.inProfile li:first-child,.allMenu.inProfile li:last-child{
+        width:15%;
+    }
     .inProfile a{
-        font-size:18px!important;
+        font-size:12px!important;
     }
     .addArtwork a{
         padding-top:50px;

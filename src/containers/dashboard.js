@@ -14,7 +14,7 @@ import { useQuery, useMutation,useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 import { getBidHistory } from "../services/dashboardService";
 
-import { getJwt } from "../services/authService";
+import { getJwt,logout } from "../services/authService";
 import jwt_decode from "jwt-decode";
 import DashboardMenu from "../components/shared/dashboard-menu";
 
@@ -168,6 +168,8 @@ function Dashboard(props) {
           <li className={cat == 2 ? "active" : ""} ><a href="/" onClick={(e)=>{setCategory(e,2)}}>favorites</a></li>
           <li className={cat == 3 ? "active" : ""}><a href="/" onClick={(e)=>{setCategory(e,3)}}>order history</a></li>
           <li className={cat == 4 ? "active" : ""}><a href="/" onClick={(e)=>{setCategory(e,4)}}>details</a></li>
+          <li><a href="/" onClick={(e)=>{ logout();
+                    window.location.href = "/"; }}>log out</a></li>
         </ul>
       </div>
 
