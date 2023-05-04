@@ -424,9 +424,9 @@ function EditArtwork(props) {
                
           </div>
           <div className='col-md-9 relative'>
-          <p className='fees'>+25% riabid fees
+          <p className='fees'>+30% riabid fees
 
-            <span>{formik.values.buy_it_now * 1.25} GEL</span>
+            <span>{formik.values.buy_it_now * 1.30} GEL</span>
 
             <label className='cm totalText'>Total</label>
           </p>
