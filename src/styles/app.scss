@@ -1625,6 +1625,9 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .artistFullPage{
+        padding-top:140px;
+    }
     .fullgaller{
         flex-direction: column;
     }
@@ -1894,6 +1897,7 @@ footer .secondLine ul li a:hover{
     padding-top:20px;
 }
 @media only screen and (max-width: 500px) {
+
     .inputs{
         flex-direction: column;
     }

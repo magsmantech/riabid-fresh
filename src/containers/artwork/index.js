@@ -28,12 +28,46 @@ import { validationSchema } from "./validationSchema";
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
 import addIcon from "../../assets/icons/addIcon.png";
+import axios from "axios";
 
 function EditArtwork(props) {
   var { account_type } = jwt_decode(getJwt());
   const { id } = useParams();
 
   const [selectedFile, setSelectedFile] = useState([null,null,null,null]);
+  const [state, setState] = useState({
+    ip: "",
+    countryName: "",
+    countryCode: "",
+    city: "",
+    timezone: "",
+    country:''
+  });
+
+
+  const getGeoInfo = () => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        let data = response.data;
+        setState({
+          ...state,
+          ip: data.ip,
+          country:data.country,
+          countryName: data.country_name,
+          countryCode: data.country_calling_code,
+          city: data.city,
+          timezone: data.timezone
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getGeoInfo();
+  }, []);
 
   const [imageRef, setImageRef] = useState(null);
   const [preview, setPreview] = useState([null,null,null,null]);
@@ -417,16 +451,16 @@ function EditArtwork(props) {
                 <PrimaryInput
                   formik={formik}
                   id="buy_it_now"
-                  placeholder="Price GEL"
+                  placeholder={state?.country == 'GE' ? "Price GEL" : "Price USD"}
                   disabled={formik.values.request_price === 1 ? true : false}
                 />
-                 <label className='cm'>GEL</label>
+                 <label className='cm'>{state?.country == 'GE' ? "GEL" : "USD"}</label>
                
           </div>
           <div className='col-md-9 relative'>
           <p className='fees'>+30% riabid fees
 
-            <span>{formik.values.buy_it_now * 1.30} GEL</span>
+            <span>{(formik.values.buy_it_now * 1.30).toFixed(2)} {state?.country == 'GE' ? "GEL" : "USD"}</span>
 
             <label className='cm totalText'>Total</label>
           </p>

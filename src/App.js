@@ -403,7 +403,7 @@ function App() {
       <MessengerCustomerChat
         pageId="104344138618959"
         appId="248790890527668"
-        themeColor="#fbb03b"
+        themeColor="#F0F0DF"
       />
     </>
   );
