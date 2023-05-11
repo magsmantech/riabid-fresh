@@ -50,6 +50,7 @@ export default function ProductDet(props) {
   const { currentUser } = userProvider();
   const [artwork, setArtwork] = React.useState({});
   const [other_work, setOther] = React.useState([]);
+  const [images,setImages] = React.useState([]);
   const [shareActive, setShareActive] = useState(false);
   const [bidAmount, setBidAmount] = useState();
   const [comment, setComment] = useState("");
@@ -151,6 +152,7 @@ export default function ProductDet(props) {
     .then((res) => {
           let data = res.data;
           setArtwork(data.artwork);
+          setImages(JSON.parse(data.artwork.images));
           axios.get('artists/artworks-paginated/'+data.artwork.artist_id+'/?limit=8')
           .then((res) => {
                 let data = res.data;
@@ -163,8 +165,6 @@ export default function ProductDet(props) {
  
   },[props.match.params.index])
 
-
-  const images = artwork.images ? JSON.parse(artwork.images) : {};
   const time = new Date(artwork.end_time);
 
   return (
@@ -196,10 +196,13 @@ export default function ProductDet(props) {
           <div className="picsNum">
               1
               <span className="borderT"></span>
-              1
+              {images ? images.length : 1}
           </div>
           <div className="prodPic">
-            <img className="main-pic" src={artwork.image} />
+            <a data-fancybox="gallery" href={artwork.image}><img className="main-pic" src={artwork.image} /></a>
+            {images && images.map((item,i) => {
+               return i > 0 && <a data-fancybox="gallery" className="hide" href={item.url} key={i}><img src={item.url} /></a>
+            })}
           </div>
           <div className="prodDetails">
             <div className="title">
@@ -208,7 +211,7 @@ export default function ProductDet(props) {
               <div className="picsNum mobile">
                 <span>1</span>
                   <span className="borderT"></span>
-                  <span>1</span>
+                  <span>{images ? images.length : 1}</span>
           </div>
               </p>
               <p className="withoutMargin">by {artwork.display_name}</p>
