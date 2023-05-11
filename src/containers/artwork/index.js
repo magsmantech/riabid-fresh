@@ -188,11 +188,21 @@ function EditArtwork(props) {
 }
 
   useEffect(() => {
-    if (!isLoading && id)
+    if (!isLoading && id){
       formik.setValues({
         ...data.data.artwork,
         buy_it_now: data.data.artwork.artist_price,
       });
+      let images = JSON.parse(data.data.artwork.images);
+      let pr = [...preview];
+      for(let i=0;i<images.length;i++){
+                    if(images[i].url){                      
+                      pr[i] = images[i].url;                     
+                    }
+                  }
+                  setPreview(pr)
+                    
+    }
   }, [data]);
 
   if (isLoading || isLoadingArtists) return <Loading></Loading>;
