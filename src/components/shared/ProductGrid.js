@@ -131,7 +131,7 @@ export default function ProductGrid(){
     <div className="row" id='forStickyPos'>
       <div className="col-8 col-md-4">
       <ul className="trendMenu">
-                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >trending</a></li>
+                {/* <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >trending</a></li> */}
                 <li className={grid == 1 ? "active centerPos" : "centerPos"}><a href="#" onClick={e => {handleType(e,1,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >featured</a></li>
             </ul>
       </div>
