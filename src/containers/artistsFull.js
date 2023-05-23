@@ -26,7 +26,7 @@ function ArtistsFull(props) {
   const [bioData, setBioData] = useState(null);
   const [bioError, setBioError] = useState(null);
   const [bioLoading, setBioLoading] = useState(false);
-  const [bioLenght, setbioLenght] = useState(60);
+  const [bioLenght, setbioLenght] = useState(200);
   const [showMore, setShowMore] = useState(false);
   const [show, setShow] = useState(3); 
   const [total, setTotal] = useState(16);
@@ -98,27 +98,30 @@ function ArtistsFull(props) {
  
 
       {bioData && bioData.data && !bioError && !bioLoading && <>
-        <div className="bio">
-
-          <h1 className="name">{bioName}</h1>
-          <div className="bioText smallHide">        
+        <div className="row bio">
+          <div className='col-lg-4 col-8'>
+            <h1 className="name">{bioName}</h1>
+          </div>
+          <div className="offset-lg-1 col-lg-4 smallHide">
+          <div className="bioText ">        
             <div ref={descEl} >
-              {bioDescription}
+              {bioDescription &&   <div dangerouslySetInnerHTML={{__html: bioDescription}}></div>}
             </div>
           </div>
-
+          </div>
+          <div className='offset-lg-1 col-lg-1 col-4'>
           {bioImage && <img src={bioImage} className="bioImg"/>}
-         
+          </div>
       
         </div>
 
       <div className="bioText fullWidth">        
-        <div >
-          {bioDescription && bioDescription.length > bioLenght ? bioDescription.substring(0,bioLenght)+'...' : bioDescription}
+        <div className={showMore ? 'hidden' : ""}>
+          {bioDescription && bioDescription.length > bioLenght ? bioDescription.substring(0,bioLenght).replace(/(<([^>]+)>)/gi, "")+'...' : bioDescription.replace(/(<([^>]+)>)/gi, "")}
         </div>
 
         <div className={showMore ? 'active' : 'hidden'}>
-            {bioDescription && bioDescription.substring(bioLenght)}
+          <div dangerouslySetInnerHTML={{__html: bioDescription}}></div>
         </div>
         {bioDescription && bioDescription.length > bioLenght ? <button className={!showMore ? "showMore" : "showMore hidden"} onClick={(e)=>{setShowMore(!showMore)}}>Learn More</button> : ""}
       </div></>

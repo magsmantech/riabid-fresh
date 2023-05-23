@@ -465,8 +465,6 @@ color: #000000;
         color: #000000;
     }
     .bio{
-        display:flex;
-        justify-content: space-between;
         h1{
             font-family: 'Loos Normal';
             letter-spacing: -1px;
@@ -718,7 +716,7 @@ color: #000000;
         align-items: center;
     }
     .main-pic{
-        height:calc(100vh - 70px);
+        max-height:calc(100vh - 70px);
         max-width: 100%;
     }
     .picsNum{
@@ -1212,7 +1210,7 @@ p.no_page{
 .navbar-nav{
     li:first-child{
         a{
-            padding-left:0px!important;
+            padding-left:10px!important;
         }
     }
 }
@@ -1563,22 +1561,18 @@ p.no_page{
     .artistFullPage .bio .bioImg{
         margin-right:8px;
     }
-    .bioText.fullWidth{
-        display:block;
-        margin-top:33px;
-    }
+  
     .MuiSlider-markLabel{
         font-size:24px!important;
     }
 }
 
 @media only screen and (max-width: 1070px) {
+   
     .fullgaller .location{
         position: relative;
     }
-    .bioText.smallHide{
-        display: none;
-    }
+   
     .trendMenu li a, .trendMenu li span, .trendMenu div a, .trendMenu div span{
         font-size:24px;
     }
@@ -1587,6 +1581,17 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 991px) {
+    .bioText.fullWidth{
+        display:block;
+        margin-top:33px;
+        max-width:100%;
+    }
+    .bioImg{
+        float:right;
+    }
+    .smallHide{
+        display: none;
+    }
     #galP{
         padding-top:100px;
     }
@@ -1626,7 +1631,7 @@ p.no_page{
 }
 @media only screen and (max-width: 767px) {
     .artistFullPage{
-        padding-top:140px;
+        padding-top:48px;
     }
     .fullgaller{
         flex-direction: column;
