@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const axios = Axios.create({
-    baseURL: "https://api.riabid.ge/api/",
+    baseURL: "https://api.riabid.com/api/",
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
     }
