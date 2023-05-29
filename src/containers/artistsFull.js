@@ -30,6 +30,7 @@ function ArtistsFull(props) {
   const [showMore, setShowMore] = useState(false);
   const [show, setShow] = useState(3); 
   const [total, setTotal] = useState(16);
+  const [boxLength, setBoxLength] = useState([]);
   const descEl = React.useRef(null);
 
 
@@ -43,9 +44,9 @@ function ArtistsFull(props) {
 
   function handleResize() {
     if(window.innerWidth > 768)
-      setShow(2);
-    else 
       setShow(3);
+    else 
+      setShow(2);
   }
  
 
@@ -62,21 +63,29 @@ function ArtistsFull(props) {
       });
   }, []);
 
+  function divideBoxIntoColumns(boxWidth,columns) {
+    const columnWidth = Math.floor(boxWidth / columns);
+    const remainder = boxWidth % columns;
+    return [columnWidth + (remainder > 0 ? 1 : 0), columnWidth + (remainder > 1 ? 1 : 0), columnWidth];
+  }
+
   function handlePagination(e,page){
     e.preventDefault();   
-        axios.get("artists/artworks-paginated/"+props.match.params.index+"/?limit=7&page="+page)
+        axios.get("artists/artworks-paginated/"+props.match.params.index+"/&page="+page)
           .then((res) => {
                 let data = res.data;
+                
                 setTotal = (data.data.length%4);
                 setData(data);
           });
   }
 
   useEffect(function(){
-    axios.get('artists/artworks-paginated/'+props.match.params.index+'/?limit=7')
+    axios.get('artists/artworks-paginated/'+props.match.params.index+'/')
       .then((res) => {
             let data = res.data;
-            setTotal(data.data.length%4);
+            let arr = divideBoxIntoColumns(data.data.length,show);
+            setBoxLength(arr)
             setData(data);
       });
   },[])
@@ -89,7 +98,6 @@ function ArtistsFull(props) {
     bioImage = bioData.data.image;
     bioName = bioData.data.artist_name
     bioDescription = bioData.data.description;
-
   }
 
   return (
@@ -147,56 +155,27 @@ function ArtistsFull(props) {
             </div>
 
             <div className='col-6 col-md-4'>
-
-            {total == 4 ? (data.data ? (
-                    <ProductBlock
-                    start={show == 3 ? 1 : 0}
-                    limit={show == 3 ? 3 : 2}
+                    {data.data && boxLength.hasOwnProperty(0) && <ProductBlock
+                    start={show == 2 ? 1 : 0}
+                    limit={boxLength[0]}
                     data={data.data}
-                    />
-                    ) : null) : (data.data ? (
-                      <ProductBlock
-                      start={0}
-                      limit={1}
-                      data={data.data}
-                      />
-                      ) : null) }
-
+                    /> }
             </div>
             
             <div className='col-6 col-md-4'>
-
-            { total == 4 ?  (data.data ? (
-                    <ProductBlock
-                    start={show == 3 ? 4 : 2}
-                    limit={show == 3 ? 3 : 2}
+              {data.data && boxLength.hasOwnProperty(0) && <ProductBlock
+                    start={show == 2 ? boxLength[0]+1 : boxLength[0]}
+                    limit={boxLength[1]}
                     data={data.data}
-                    />
-                    ) : null) : (data.data ? (
-                      <ProductBlock
-                      start={1}
-                      limit={1}
-                      data={data.data}
-                      />
-                      ) : null) }
-
+                    /> }
             </div>
             
             <div className='hideLast col-md-4'>
-
-            { total == 4 ? (data.data ? (
-                    <ProductBlock
-                    start={2*show}
-                    limit={show}
+              {data.data && boxLength.hasOwnProperty(0) && <ProductBlock
+                    start={boxLength[0]+boxLength[1]}
+                    limit={boxLength[2]}
                     data={data.data}
-                    />
-                    ) : null) : (data.data ? (
-                      <ProductBlock
-                      start={2}
-                      limit={1}
-                      data={data.data}
-                      />
-                      ) : null) }
+                    /> }
             </div>
 
 
@@ -204,7 +183,7 @@ function ArtistsFull(props) {
 
 
         
-        <div className="row productPaginate">
+        {/* <div className="row productPaginate">
                 <div className='col-4 prevPage'>
                     <a to="#" onClick={e => { if(data.current_page -1 < data.last_page && data.current_page -1 != 0 ){  handlePagination(e,data.current_page-1);} myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'}) }}>PREV</a>
                 </div>
@@ -214,7 +193,7 @@ function ArtistsFull(props) {
                 <div className='col-4 nextPage'>
                 <a to="#" onClick={e => { if(data.current_page +1 < data.last_page){ handlePagination(e,data.current_page+1); } myGrid.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
                 </div>
-            </div>
+            </div> */}
 
       </div>
     </div>
