@@ -19,11 +19,15 @@ function Shop(props) {
   const [filterPrice, setFilterPrice] = React.useState([0, 1000000]);
   const [filterYear, setFilterYear] = useState([0, 9999]);
   const myGrid = useRef(null);
+  const [boxLength, setBoxLength] = useState([]);
+  const [show, setShow] = useState(4); 
 
   useEffect(function(){
     axios.get('artworks-paginated?limit=16')
       .then((res) => {
             let data = res.data;
+            let arr = divideBoxIntoColumns(data.data.length,show);
+            setBoxLength(arr)
             setData(data);
       });
 
@@ -76,16 +80,30 @@ function Shop(props) {
   }
 
   function handlePagination(e,page){
-    e.preventDefault();   
+    if(e)
+      e.preventDefault();   
+      setTimeout(() => {
         axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories="+filterType+"&page="+page)
-          .then((res) => {
-                let data = res.data;
-                setData(data);
-                if (data.data.length < 16){
-                  setLimitColumn(parseInt(data.data.length / 4))
-                }
-          });
+        .then((res) => {
+              let data = res.data;
+              setData(data);
+              let arr = divideBoxIntoColumns(data.data.length,show);
+              setBoxLength(arr)
+        }); 
+      }, 100);
+     
   }
+
+  useEffect(function(){
+    handlePagination(null,1);
+  },[filterType])
+
+  function divideBoxIntoColumns(boxWidth,columns) {
+    const columnWidth = Math.floor(boxWidth / columns);
+    const remainder = boxWidth % columns;
+    return [columnWidth + (remainder > 0 ? 1 : 0), columnWidth + (remainder > 1 ? 1 : 0), columnWidth + (remainder > 2 ? 1 : 0), columnWidth];
+  }
+
   
   return (
     <>
@@ -106,7 +124,7 @@ function Shop(props) {
       <div className="cats searchBox">
         <ul>
           {categories.map((item)=>{
-              return <li className={filterType == item.value ? "active" : ""} onClick={(e) => {setFilterType(item.value); handlePagination(e,1)}}>{item.label}</li>
+              return <li className={filterType == item.value ? "active" : ""} onClick={(e) => {setFilterType(item.value);}}>{item.label}</li>
           })}       
         </ul>
       </div>
@@ -131,40 +149,35 @@ function Shop(props) {
     </div>
     <div className="row shopG" ref={myGrid} >
             <div className='col-6 col-lg-3'>
-            {data.data ? (
-                    <ProductBlock
+
+
+
+              {data.data && boxLength.hasOwnProperty(0) && <ProductBlock
                     start={0}
-                    limit={limitColumn}
+                    limit={boxLength[0]}
                     data={data.data}
-                    />
-                    ) : null}
+                    /> }
             </div>
             <div className='col-6 col-lg-3'>
-            {data.data ? (
-                    <ProductBlock
-                    start={limitColumn}
-                    limit={limitColumn}
+            {data.data && boxLength.hasOwnProperty(1) && <ProductBlock
+                    start={boxLength[0]}
+                    limit={boxLength[1]}
                     data={data.data}
-                    />
-                    ) : null}
+                    /> }
             </div>
             <div className='col-6 col-lg-3'>
-            {data.data ? (
-                    <ProductBlock
-                    start={2*limitColumn}
-                    limit={limitColumn}
+            {data.data && boxLength.hasOwnProperty(2) && <ProductBlock
+                    start={boxLength[1]+boxLength[0]}
+                    limit={boxLength[2]}
                     data={data.data}
-                    />
-                    ) : null}
+                    /> }
             </div>
             <div className='col-6 col-lg-3'>
-            {data.data ? (
-                    <ProductBlock
-                    start={3*limitColumn}
-                    limit={limitColumn}
+            {data.data && boxLength.hasOwnProperty(3) && <ProductBlock
+                    start={boxLength[2] + +boxLength[1] + +boxLength[0]}
+                    limit={boxLength[3]}
                     data={data.data}
-                    />
-                    ) : null}
+                    /> }
             </div>
 
     </div>
