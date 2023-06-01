@@ -155,7 +155,7 @@ const [email, setEmail] = useState("");
           <Link  to="/dashboard?tab=4" >           
             <span className="frameIcon"></span>
           </Link>
-          <Link to="/cart">
+          <Link to="/cart" onClick={(e)=> {if(!currentUser.isAuthenticated){ e.preventDefault(); setAuthActive(!authActive);setSearchActive(false);}  }}>
               <span className='cart-btn'></span>
             </Link>
 
