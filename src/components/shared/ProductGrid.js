@@ -12,7 +12,7 @@ export default function ProductGrid(){
     const [category_products,setCategoryProducts] = useState({'data':[]});
     const [url,setUrl] = useState('');
     const [category,setCategory] = useState(0);
-    const [grid, setGrid] = useState(2);
+    const [grid, setGrid] = useState(1);
     const [show, setShow] = useState(4);  
     const myGrid = useRef(null);
     const myCats = useRef(null);
@@ -34,18 +34,18 @@ export default function ProductGrid(){
  
     
       useEffect(function(){
-          axios.get('dashboard/curator-artworks?limit=7')
+        let url;
+        url = 'categories/featured/artworks?limit=7'
+        setUrl("/store?page=featured")
+       
+        axios.get(url)
             .then((res) => {
-                  let {artworks,curator} = res.data.data;
-                  if(curator){
-                    console.log('--------------')
-                    console.log(curator)
-                    setCurator({'id':curator.id, 'name':curator.name,'lastname':curator.lastname})
-                    setUrl("/curator/"+curator.id)
-                  }
-                  setArtworks(artworks);            
-                  
-            });
+               
+                    let {data} = res;
+                    setArtworks(data);      
+                
+                           
+            })
 
             axios.get('artworks-paginated?limit=16')
             .then((res) => {
