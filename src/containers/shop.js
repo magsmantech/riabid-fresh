@@ -66,7 +66,7 @@ function Shop(props) {
 
 
   const categories = [
-    {'label':'Drawing','value':4},
+    {'label':'Textile','value':14},
     {'label':"Sculpture",'value':2},
     {'label':'Mixed Media','value':6},
     {'label':"Photography",'value':3},
