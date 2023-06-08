@@ -218,7 +218,7 @@ export default function ProductDet(props) {
               <h1>{artwork.title}</h1>
               <div className="size">
                 <p>Oil on canvas</p>
-                <p>{artwork.height} x {artwork.width} cm</p>
+                <p>{artwork.height} x {artwork.width} {artwork.depth ? " x "+artwork.depth : ''} {artwork.medium ? " x "+artwork.medium : ''} cm</p>
 
                 <p className='orig'>Original artwork</p>
               </div>
