@@ -217,8 +217,8 @@ export default function ProductDet(props) {
               <p className="withoutMargin">by {artwork.display_name}</p>
               <h1>{artwork.title}</h1>
               <div className="size">
-                <p>Oil on canvas</p>
-                <p>{artwork.height} x {artwork.width} {artwork.depth ? " x "+artwork.depth : ''} {artwork.medium ? " x "+artwork.medium : ''} cm</p>
+                <p>{artwork.medium ? ""+artwork.medium : ''}</p>
+                <p>{artwork.height} x {artwork.width} {artwork.depth ? " x "+artwork.depth : ''} cm</p>
 
                 <p className='orig'>Original artwork</p>
               </div>
