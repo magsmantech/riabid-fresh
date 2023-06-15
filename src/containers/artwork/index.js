@@ -107,7 +107,7 @@ function EditArtwork(props) {
     formData.append("title", title);
     formData.append("artist_id", artist_id);
     formData.append("product_type", product_type);
-    formData.append("buy_it_now", buy_it_now * 1.25);
+    formData.append("buy_it_now", buy_it_now * 1.3);
     formData.append("description", description);
     formData.append("year", year);
     formData.append("category_id", category_id);
