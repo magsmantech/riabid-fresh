@@ -72,6 +72,19 @@ function ProductBlock({
       toast.error("You need to login");
     },
     onSuccess: (data, variables, context) => {
+      let favorites = localStorage.getItem('favorites').split(',');
+      console.log(favorites);
+      console.log(variables);
+      let ind = favorites.indexOf(variables.toString());
+      console.log('found index --- '+ind)
+      if(ind == -1){
+        favorites.push(variables.toString());
+        console.log('added');
+        console.log(favorites);
+      }else{
+        favorites.splice(ind,1);
+      }
+      localStorage.setItem('favorites',favorites);
       toast.dark("Artwork added to favorites", {
         progress: undefined,
         hideProgressBar: true,
@@ -96,7 +109,7 @@ function ProductBlock({
                     <Link to={`/store/${item.id}`}><img src={item.front_thumbnail} className="productImage"/></Link>
                     
                     <div className={favorite ? "frame active "+frameMax : "frame "+frameMax } onClick={() => favoritesMutation.mutate(item.id)}>
-                        <span className="frameIcon"></span>
+                        <span className={localStorage.getItem('favorites').split(',').indexOf(item.id.toString()) > -1 ? "frameIcon active" : "frameIcon"}></span>
                         <span className="frametext">save</span>
                     </div>
                     <div className="author">

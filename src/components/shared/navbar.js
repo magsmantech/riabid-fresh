@@ -6,12 +6,13 @@ import closeMenu from "../../assets/icons/closeMenu.svg";
 import { userProvider } from "../../store/store";
 import { logout } from "../../services/authService";
 import { useMutation } from "react-query";
-import { change, login, register } from "../../services/authService";
+import { change, login, register,favorites } from "../../services/authService";
 import { toast } from "react-toastify";
 import { MetaTags } from "react-meta-tags";
 function Navbar() {
 
-  console.log('navbar mounted');
+
+  
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       window.location.href ='/search?search=' + searchValue;
@@ -40,6 +41,21 @@ const [email, setEmail] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [vW, setVW] = useState(0);
   const [regMode, setRegMode] = useState(2);
+
+  const favoriteMutation = useMutation(favorites, {             
+    onSuccess: (data) => {
+      localStorage.setItem('favorites',data.data);
+    }
+  });
+  useEffect(() => {
+    if(!localStorage.getItem('favorites')){
+      if(currentUser.isAuthenticated){
+        favoriteMutation.mutate();
+      }else{
+        localStorage.setItem('favorites',[]);
+      }
+    }
+  },[])
   
   const [authModalActive, setAuthModalActive] = useState({
     login: false,
@@ -98,6 +114,9 @@ const [email, setEmail] = useState("");
       // Error or success... doesn't matter!
     },
   });
+
+
+  
 
   const pathName = useLocation().pathname || null;
   const searchRef = useRef(null);

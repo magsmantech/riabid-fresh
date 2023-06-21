@@ -119,6 +119,12 @@ export function addOnline() {
   return http.post(apiUrl + "/addonline");
 }
 
+
+export const favorites = () => {
+  return http.get(`${apiUrl}/favorites/list`);
+};
+
+
 export function minusOnline() {
   return http.post(apiUrl + "/minusonline");
 }

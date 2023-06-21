@@ -1,4 +1,7 @@
 @import 'fonts.css';
+.Toastify{
+    display:none;
+}
 ul{
     list-style:none;
 }
@@ -72,6 +75,9 @@ span.frameIcon{
     cursor:pointer;
     background:url('../assets/icons/frame.svg');            
     transition: all 0.3s ease;
+}
+span.frameIcon.active{
+    background:url('../assets/icons/frameHover.svg');
 }
 span.shareIcon{
     width:14px;
