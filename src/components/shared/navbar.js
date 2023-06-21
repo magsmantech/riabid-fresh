@@ -8,6 +8,7 @@ import { logout } from "../../services/authService";
 import { useMutation } from "react-query";
 import { change, login, register } from "../../services/authService";
 import { toast } from "react-toastify";
+import { MetaTags } from "react-meta-tags";
 function Navbar() {
 
   console.log('navbar mounted');
