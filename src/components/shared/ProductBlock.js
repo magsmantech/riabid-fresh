@@ -25,7 +25,8 @@ function ProductBlock({
   edit=null,
   favorite=null,
   col=null,
-  remove=null
+  remove=null,
+  setFavores=null
 }) {
 
   const removeMutation = useMutation(removeItem, {
@@ -83,6 +84,8 @@ function ProductBlock({
         console.log(favorites);
       }else{
         favorites.splice(ind,1);
+        localStorage.setItem('favorites',favorites);
+        setFavores(favorites)
       }
       localStorage.setItem('favorites',favorites);
       toast.dark("Artwork added to favorites", {
@@ -110,7 +113,7 @@ function ProductBlock({
                     
                     <div className={favorite ? "frame active "+frameMax : "frame "+frameMax } onClick={() => favoritesMutation.mutate(item.id)}>
                         <span className={localStorage.getItem('favorites').split(',').indexOf(item.id.toString()) > -1 ? "frameIcon active" : "frameIcon"}></span>
-                        <span className="frametext">save</span>
+                        <span className="frametext">{localStorage.getItem('favorites').split(',').indexOf(item.id.toString()) > -1 ? 'remove' : 'save'}</span>
                     </div>
                     <div className="author">
                         <Link to={`/artists/${item.artist_id}`}>{item.display_name}</Link>

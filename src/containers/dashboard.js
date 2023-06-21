@@ -47,6 +47,8 @@ function Dashboard(props) {
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
   const [iban, setIban] = useState("");
+  const [boxLength, setBoxLength] = useState([]);
+  const [show, setShow] = useState(4); 
 
   const editMutation = useMutation(editAddress, {
     onMutate: (variables) => {
@@ -74,6 +76,8 @@ function Dashboard(props) {
       .then((res) => {
             let data = res.data;
             setArtworkData(data.unsold);
+            let arr = divideBoxIntoColumns(data.unsold.length,show);
+            setBoxLength(arr)
       
       });
       handleResize();
@@ -98,9 +102,10 @@ function Dashboard(props) {
  
   }
   function setCategory(e,category){
-    e.preventDefault();
+    if(e)
+      e.preventDefault();
     setCat(category);
-    
+    console.log('cat changed')
     let url = 'artworks/my-artworks';
     if(category == 1){
       url = 'artworks/my-artworks';
@@ -118,20 +123,35 @@ function Dashboard(props) {
     axios.get(url)
             .then((res) => {
               if(category == 1){
-                setArtworkData(res.data.unsold);                 
+                setArtworkData(res.data.unsold);     
+                let arr = divideBoxIntoColumns(res.data.unsold.length,show);
+                setBoxLength(arr)            
               }
               if(category == 2){
-                setArtworkData(res.data);                  
+                setArtworkData(res.data);   
+                let arr = divideBoxIntoColumns(res.data.length,show);
+                setBoxLength(arr)               
               }
               if(category == 3){
-                setArtworkData(res.data);                  
+                setArtworkData(res.data);            
+                let arr = divideBoxIntoColumns(res.data.length,show);
+                setBoxLength(arr)      
               }
               if(category == 4){
-                setArtworkData(res.data);                 
+                setArtworkData(res.data);      
+                let arr = divideBoxIntoColumns(res.data.length,show);
+                setBoxLength(arr)           
               }             
             })
 
   }
+
+  
+  function setFavores(){
+    setCategory(null,2)
+    console.log('favorites changed');
+  }
+
 
   const handleSubmitDetails = (e) => {
     e.preventDefault();
@@ -146,6 +166,12 @@ function Dashboard(props) {
     };
     editMutation.mutate(data);
   };
+
+  function divideBoxIntoColumns(boxWidth,columns) {
+    const columnWidth = Math.floor(boxWidth / columns);
+    const remainder = boxWidth % columns;
+    return [columnWidth + (remainder > 0 ? 1 : 0), columnWidth + (remainder > 1 ? 1 : 0), columnWidth + (remainder > 2 ? 1 : 0), columnWidth];
+  }
 
   return (
     <section className="paddingLeft">
@@ -190,33 +216,49 @@ function Dashboard(props) {
                     data={artworkData}
                     edit={cat == 1 ? true : false}
                     favorite={cat==2 ? true : false}
+                    setFavores={setFavores}
                     />
               ) : null}
+
+            {artworkData && boxLength.hasOwnProperty(0) && 
+                <ProductBlock
+                start={0}
+                limit={boxLength[0]}
+                data={artworkData}
+                edit={cat == 1 ? true : false}
+                favorite={cat==2 ? true : false}
+                setFavores={setFavores}
+                />
+             }
 
       </div>}
 
       
       {cat != 4  && <div className='col-6 col-lg-3'>
            
-              {artworkData ? (
+              {artworkData && boxLength.hasOwnProperty(1) ? (
                     <ProductBlock
-                    start={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
-                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
+                    start={boxLength[0]}
+                    limit={boxLength[1]}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
+                    setFavores={setFavores}
                     />
               ) : null}
+
+
       </div>}
 
          
       {cat != 4 && <div className='col-6 col-lg-3 hideLg'>
             
-              {artworkData ? (
+              {artworkData && boxLength.hasOwnProperty(2) ? (
                     <ProductBlock
-                    start={limitRow == 2 ? 2*(artworkData.length / 2) : 2*(artworkData.length / 4)}
-                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
+                    start={boxLength[1]+boxLength[0]}
+                    limit={boxLength[2]}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
+                    setFavores={setFavores}
                     />
               ) : null}
 
@@ -224,12 +266,13 @@ function Dashboard(props) {
 
       {cat != 4 && <div className='col-6 col-lg-3 hideLg'>
          
-              {artworkData ? (
+              {artworkData && boxLength.hasOwnProperty(3)  ? (
                     <ProductBlock
-                    start={limitRow == 2 ? 3*(artworkData.length / 2) : 3*(artworkData.length / 4)}
-                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
+                    start={boxLength[1]+boxLength[0] +boxLength[2]}
+                    limit={boxLength[3]}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
+                    setFavores={setFavores}
                     />
               ) : null}
 
