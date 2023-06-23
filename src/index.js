@@ -11,10 +11,10 @@ const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
   hydrate(
     <React.StrictMode>
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-    </React.StrictMode>,
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
+      </React.StrictMode>,
     rootElement
   );
   //hydrate(<App />, rootElement);
