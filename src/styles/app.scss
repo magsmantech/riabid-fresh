@@ -1,4 +1,7 @@
 @import 'fonts.css';
+.carousel-control-prev,.carousel-control-next,.carousel-indicators{
+    display:none;
+  }
 .Toastify{
     display:none;
 }
@@ -67,6 +70,7 @@ ul{
         width:100%;
     }
 }
+
 span.frameIcon{
     width:14px;
     height:14px;
@@ -904,7 +908,7 @@ color: #000000;
                 font-feature-settings: 'salt' on;
                 color: #000000;
                 padding-top:13px;
-                padding-bottom:12px;
+                padding-bottom:14px;
                 border-bottom:1px solid black;
                 .currency{
                     position: relative;

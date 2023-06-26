@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import small from "../assets/product/small-img.png";
 import main from "../assets/product/main.png";
 import clock from "../assets/product/clock.png";
@@ -11,6 +11,8 @@ import "react-fancybox/lib/fancybox.css";
 import ProductBlock from "../components/shared/ProductBlock";
 import { getArtwork } from "../services/artworksService";
 import Loading from "./loading";
+import Carousel from 'react-bootstrap/Carousel';
+
 import {
   addBag,
   addComment,
@@ -56,6 +58,22 @@ export default function ProductDet(props) {
   const [comment, setComment] = useState("");
   const [isGift, setIsGift] = useState(0);
   const [limitColumn, setLimitColumn] = useState(2);
+  const [active, setActive] = useState(0);
+  const ref = useRef(null);
+
+  const onPrevClick = () => {
+    console.log(ref.current);
+    ref.current.prev();
+  };
+  const onNextClick = () => {
+    ref.current.next();
+  };
+  const handleSelect = (selectedIndex, e) => {
+    setActive(selectedIndex);
+  };
+
+
+
   const addMutation = useMutation(addBag, {
     onMutate: (variables) => {
       return { id: 1 };
@@ -194,24 +212,28 @@ export default function ProductDet(props) {
     <section className="productShow">
       <div className="prod">
           <div className="picsNum">
-              <button onClick={(e)=>{e.preventDefault(); document.getElementsByClassName('main-pic')[0].click()}}>1</button>
+              <button onClick={onPrevClick} >{active+1}</button>
               <span className="borderT"></span>
-              <button onClick={(e)=>{e.preventDefault(); document.getElementsByClassName('main-pic')[0].click()}}>{images ? images.length : 1}</button>
+              <button onClick={onNextClick} >{images ? images.length : 1}</button>
           </div>
           <div className="prodPic">
-            <a data-fancybox="gallery" href={artwork.image}><img className="main-pic" src={artwork.image} /></a>
+          <Carousel ref={ref} onSelect={handleSelect}>
+            <Carousel.Item>
+                <img className="main-pic" src={artwork.image} />
+            </Carousel.Item>
             {images && images.map((item,i) => {
-               return i > 0 && <a data-fancybox="gallery" className="hide" href={item.url} key={i}><img src={item.url} /></a>
+               return i > 0 &&  <Carousel.Item key={i}><img src={item.url} className="main-pic" /></Carousel.Item>
             })}
+            </Carousel>
           </div>
           <div className="prodDetails">
             <div className="title">
               <p className="withoutMargin">Created in {artwork.year}
               
               <div className="picsNum mobile">
-                <span onClick={(e)=>{e.preventDefault(); document.getElementsByClassName('main-pic')[0].click()}}>1</span>
+                <span onClick={onPrevClick}>{active+1}</span>
                   <span className="borderT"></span>
-                  <span onClick={(e)=>{e.preventDefault(); document.getElementsByClassName('main-pic')[0].click()}}>{images ? images.length : 1}</span>
+                  <span onClick={onNextClick}>{images ? images.length : 1}</span>
           </div>
               </p>
               <p className="withoutMargin">by {artwork.display_name}</p>
