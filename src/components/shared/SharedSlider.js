@@ -48,7 +48,7 @@ const categories = [
   var settings = {
     draggable:true,
     dots: false,
-    infinite: true,
+    infinite: false,
     arrows:false,
     speed: 500,
     centerMode:true,
@@ -63,7 +63,6 @@ const categories = [
   }
   ]
   };
-  
   
   const items = data.map((item) => {
     
