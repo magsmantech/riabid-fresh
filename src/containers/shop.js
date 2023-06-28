@@ -62,18 +62,12 @@ function Shop(props) {
   function handlePagination(e,page){
     if(e)
       e.preventDefault();   
-      console.log('------------pagination')
-      setTimeout(() => {
-        axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories="+filterType+"&page="+page)
-        .then((res) => {
-              let data = res.data;
-              setData(data);
-              let arr = divideBoxIntoColumns(data.data.length,show);
-              setBoxLength(arr)
-        }); 
-      }, 100);
-     
+    fetchData(1);       
   }
+
+  useEffect(function(){
+    fetchData(1);   
+  },[filterType])
 
 
   function divideBoxIntoColumns(boxWidth,columns) {
@@ -92,17 +86,19 @@ function Shop(props) {
   };
 
   
-  useEffect(function(){
-    setPage(0);
-    fetchData(1);  
- 
-  },[filterType])
+
 
   function fetchData(type=0){
     if(!isLoading || type){
     setIsLoading(true);
-    setPage(prevPage => prevPage + 1);
-    axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories="+filterType+"&page="+page)
+    let paginate = page +1;
+    if(!type)
+      setPage(prevPage => prevPage + 1);
+    else {
+      setPage(1)
+      paginate=1;
+    }
+      axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories="+filterType+"&page="+paginate)
         .then((res) => {
               let addon_data = res.data;
               if(!type)
