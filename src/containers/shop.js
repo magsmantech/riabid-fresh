@@ -21,25 +21,9 @@ function Shop(props) {
   const myGrid = useRef(null);
   const [boxLength, setBoxLength] = useState([]);
   const [show, setShow] = useState(4); 
-
-  useEffect(function(){
-    axios.get('artworks-paginated?limit=16')
-      .then((res) => {
-            let data = res.data;
-            let arr = divideBoxIntoColumns(data.data.length,show);
-            setBoxLength(arr)
-            setData(data);
-      });
-
-
-      axios.get('get-lowest-year')
-      .then((res) => {
-            let {year} = res.data;
-            setMyMin(year);
-      });
-
-  },[])
-
+  const [page,setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  
   var keys = Object.keys(data.data);
   var min = data.data[keys[0]];
   var max = data.data[keys[0]];
@@ -74,14 +58,11 @@ function Shop(props) {
     {'label':"all",'value':0}
   ];
 
-  
-  function finishSlider(){
-    console.log('finished')
-  }
 
   function handlePagination(e,page){
     if(e)
       e.preventDefault();   
+      console.log('------------pagination')
       setTimeout(() => {
         axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories="+filterType+"&page="+page)
         .then((res) => {
@@ -94,16 +75,55 @@ function Shop(props) {
      
   }
 
-  useEffect(function(){
-    handlePagination(null,1);
-  },[filterType])
 
   function divideBoxIntoColumns(boxWidth,columns) {
     const columnWidth = Math.floor(boxWidth / columns);
     const remainder = boxWidth % columns;
     return [columnWidth + (remainder > 0 ? 1 : 0), columnWidth + (remainder > 1 ? 1 : 0), columnWidth + (remainder > 2 ? 1 : 0), columnWidth];
   }
+  const handleScroll = (event) => {
+    let scrollTop = document.querySelector('body').scrollTop;
+    let searchHeight = document.querySelector('.shopSearching').offsetHeight;
+    let shopHeight = document.querySelector('.shopG').offsetHeight;
+    let sum = shopHeight + searchHeight;
+      if(scrollTop > sum - 700 && !isLoading){
+            fetchData()
+      }    
+  };
 
+  
+  useEffect(function(){
+    setPage(0);
+    fetchData(1);  
+ 
+  },[filterType])
+
+  function fetchData(type=0){
+    if(!isLoading || type){
+    setIsLoading(true);
+    setPage(prevPage => prevPage + 1);
+    axios.get("artworks-paginated?limit=16&keyword="+search+"&year_from="+filterYear[0]+"&year_to="+filterYear[1]+"&categories="+filterType+"&page="+page)
+        .then((res) => {
+              let addon_data = res.data;
+              if(!type)
+                addon_data['data'] = [...data.data,...addon_data.data];       
+              
+              setData(addon_data);
+              let arr = divideBoxIntoColumns(addon_data.data.length,show);
+              setBoxLength(arr)
+              if(page < addon_data.last_page){
+                setIsLoading(false);
+              }
+        });      
+      }
+  }
+
+  useEffect(() => {    
+    document.querySelector('body').addEventListener('scroll', handleScroll);
+    return () => {
+      document.querySelector('body').removeEventListener('scroll', handleScroll);
+    };
+  }, [isLoading]);
   
   return (
     <>
@@ -147,7 +167,8 @@ function Shop(props) {
       <div className="searchBox clear"><button onClick={(e) => {handlePagination(e)}}>SEARCH</button>
       </div>
     </div>
-    <div className="row shopG" ref={myGrid} >
+    <div className="row shopG" ref={myGrid}  >
+
             <div className='col-6 col-lg-3'>
 
 
@@ -181,7 +202,7 @@ function Shop(props) {
             </div>
 
     </div>
-     
+{/*      
     <div className="row productPaginate marginsRight">
                 <div className='col-3 prevPage'>
                     <a to="#" onClick={e => { if(data.current_page -1 < data.last_page && data.current_page -1 != 0 ){  handlePagination(e,data.current_page-1);} myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'}) }}>PREV</a>
@@ -192,7 +213,7 @@ function Shop(props) {
                 <div className='col-3 nextPage'>
                 <a to="#" onClick={e => { if(data.current_page +1 < data.last_page){ handlePagination(e,data.current_page+1); } myGrid.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
                 </div>
-            </div>
+            </div> */}
        </>
   );
 }

@@ -185,6 +185,7 @@ export default function ProductDet(props) {
 
   const time = new Date(artwork.end_time);
 
+
   return (
     <>
   <Helmet>
