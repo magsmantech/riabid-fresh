@@ -42,6 +42,26 @@ const [email, setEmail] = useState("");
   const [vW, setVW] = useState(0);
   const [regMode, setRegMode] = useState(2);
 
+  useEffect(() => {    
+    document.querySelector('body').addEventListener('scroll', handleScroll);
+    return () => {
+      document.querySelector('body').removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = (event) => {
+    if(mobileShow){
+      setMobileShow(false);
+    }
+    if(authActive){
+      setAuthActive(false);
+    }
+    if(searchActive){
+    setSearchActive(false);
+    }
+  };
+
+
   const favoriteMutation = useMutation(favorites, {             
     onSuccess: (data) => {
       localStorage.setItem('favorites',data.data);
