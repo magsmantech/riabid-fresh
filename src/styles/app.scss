@@ -207,8 +207,11 @@ span.shareIcon{
     padding-right:10px;
 }
 #forStickyPos.row, #forStick2.row{
-    position:absolute;
-    width:100%;
+    position:sticky;
+    background:white;
+    z-index: 1;
+    top:0px;
+    width:calc(100% + 15px);
     padding-right:5px;
 }
 
