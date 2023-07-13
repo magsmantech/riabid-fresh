@@ -50,21 +50,44 @@ function Dashboard(props) {
   const [boxLength, setBoxLength] = useState([]);
   const [show, setShow] = useState(4); 
 
+  const [error, setError] = useState({});
+
   const editMutation = useMutation(editAddress, {
     onMutate: (variables) => {
       return { id: 1 };
     },
     onError: (error, variables, context) => {
-      toast.error(error.context);
+      let errors = {}
+      if(!variables.full_name){
+        errors['full_name'] = 'The full name field is required'
+      }
+      if(!variables.address_1){
+        errors['address_1'] = 'The address 1 field is required';
+      }
+      if(!variables.city){
+        errors['city'] = 'The city field is required';
+      }
+      if(!variables.country){
+        errors['country'] = 'The country field is required';
+      }
+      if(!variables.phone){
+        errors['phone'] = 'The phone number field is required';
+      }
+      if(!variables.zip){
+        errors['zip'] = 'The Zip field is required';
+      }
+      setError(errors)
     },
     onSuccess: (data, variables, context) => {
       toast.dark(data.data.success, {
         progress: undefined,
         hideProgressBar: true,
       });
-      window.location.href = "/dashboard/account";
+      //window.location.href = "/dashboard/account";
+      setError({});
     },
     onSettled: (data, error, variables, context) => {
+      
       // Error or success... doesn't matter!
     },
   });
@@ -138,9 +161,17 @@ function Dashboard(props) {
                 setBoxLength(arr)      
               }
               if(category == 4){
-                setArtworkData(res.data);      
-                let arr = divideBoxIntoColumns(res.data.length,show);
-                setBoxLength(arr)           
+                       console.log(res.data)
+                       if(res.data.addresses.length > 0){
+                         setName(res.data.addresses[0].full_name)
+                         setAddressOne(res.data.addresses[0].address_1)
+                         setAddressTwo(res.data.addresses[0].address_2)
+                         setCountry(res.data.addresses[0].country)
+                         setCity(res.data.addresses[0].city)
+                         setZip(res.data.addresses[0].zip)
+                         setPhone(res.data.addresses[0].mobile)
+                         setIban(res.data.iban)                        
+                        }
               }             
             })
 
@@ -164,6 +195,7 @@ function Dashboard(props) {
       zip,
       mobile: phone,
     };
+
     editMutation.mutate(data);
   };
 
@@ -298,6 +330,7 @@ function Dashboard(props) {
               name="full_name"
               placeholder={"Full Name"}
             ></input>
+            {error.full_name && <span class='red error'>{error.full_name}</span>}
             <input
               value={address_1}
               onChange={(e) => setAddressOne(e.target.value)}
@@ -305,6 +338,7 @@ function Dashboard(props) {
               name="address_one"
               placeholder={"Address Line 1"}
             ></input>
+            {error.address_1 && <span class='red error'>{error.address_1}</span>}
             <input
               value={address_2}
               onChange={(e) => setAddressTwo(e.target.value)}
@@ -319,6 +353,7 @@ function Dashboard(props) {
               name="country"
               placeholder={"Country"}
             ></input>
+            {error.country && <span class='red error'>{error.country}</span>}
             <input
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -326,6 +361,7 @@ function Dashboard(props) {
               name="city"
               placeholder={"City"}
             ></input>
+            {error.city && <span class='red error'>{error.city}</span>}
             <input
               value={zip}
               onChange={(e) => setZip(e.target.value)}
@@ -333,6 +369,7 @@ function Dashboard(props) {
               name="zip"
               placeholder={"Zip/Postal Code"}
             ></input>
+            {error.zip && <span class='red error'>{error.zip}</span>}
             <input
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -340,6 +377,7 @@ function Dashboard(props) {
               name="phone"
               placeholder={"Phone Number"}
             ></input>
+            {error.phone && <span class='red error'>{error.phone}</span>}
             <input
               value={iban}
               onChange={(e) => setIban(e.target.value)}
