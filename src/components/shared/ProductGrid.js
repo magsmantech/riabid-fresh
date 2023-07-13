@@ -53,7 +53,7 @@ export default function ProductGrid(){
                   setCategoryProducts(data);
             });
         },[])
-
+/*
         useEffect(() => {
        
           window.addEventListener('wheel', scrolling,false)
@@ -62,6 +62,7 @@ export default function ProductGrid(){
             window.removeEventListener('wheel', scrolling)
           }
         }, [])
+*/
         function scrolling() {      
        
           var sticky = document.getElementById("galP").offsetTop;
