@@ -442,7 +442,7 @@ span.shareIcon{
     padding-right:10px;
     padding-bottom:105px;
     .group{
-        margin-bottom:24px;
+        margin-bottom:0px;//24
     }
     a{
         text-decoration: none;
@@ -1867,6 +1867,16 @@ font-feature-settings: 'salt' on;
     }
     .newsletterForm{
         max-width: 100%;
+    }
+
+    .searchFArtist button{
+        width:14px;
+        height:15px;
+        background-size:14px;
+    }
+    .searchFArtist input{
+        font-size:16px;
+        line-height:27px;
     }
 }
 footer .secondLine ul li a:hover{
