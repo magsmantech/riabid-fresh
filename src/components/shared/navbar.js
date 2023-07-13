@@ -50,14 +50,8 @@ const [email, setEmail] = useState("");
   }, []);
 
   const handleScroll = (event) => {
-    if(mobileShow){
+    if(document.getElementsByClassName('collapse navbar-collapse show').length > 0){
       setMobileShow(false);
-    }
-    if(authActive){
-      setAuthActive(false);
-    }
-    if(searchActive){
-    setSearchActive(false);
     }
   };
 
