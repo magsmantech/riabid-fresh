@@ -461,16 +461,16 @@ function EditArtwork(props) {
                 <PrimaryInput
                   formik={formik}
                   id="buy_it_now"
-                  placeholder={state?.country == 'GE' ? "Price GEL" : "Price USD"}
+                  placeholder={"Price USD"}
                   disabled={formik.values.request_price === 1 ? true : false}
                 />
-                 <label className='cm'>{state?.country == 'GE' ? "GEL" : "USD"}</label>
+                 <label className='cm'>USD</label>
                
           </div>
           <div className='col-md-9 relative'>
           <p className='fees'>+30% riabid fees
 
-            <span>{(formik.values.buy_it_now * 1.30).toFixed(2)} {state?.country == 'GE' ? "GEL" : "USD"}</span>
+            <span>{(formik.values.buy_it_now * 1.30).toFixed(2)} USD</span>
 
             <label className='cm totalText'>Total</label>
           </p>
