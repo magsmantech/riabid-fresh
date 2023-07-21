@@ -260,11 +260,9 @@ export default function ProductDet(props) {
                 <div className="text" dangerouslySetInnerHTML={{ __html: artwork.description }}></div>
                 <ul>
                   <li><p className="price">
-                <span className="currency"> {artwork.is_geo ? `₾` : `$`}</span>
+                <span className="currency"> {artwork.buy_it_now && `$`}</span>
                
-                  {artwork.is_geo
-                    ? `${artwork.buy_it_now}`
-                    : `${artwork.price_usd}`}
+                  {artwork.buy_it_now &&  `${artwork.buy_it_now}`}
                 </p></li>
                 <li><button
                   onClick={() =>

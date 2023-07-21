@@ -120,8 +120,8 @@ function ProductBlock({
                         <p>{item.title}</p>
                         <p className='size'>{item.width} x {item.height} cm</p>
                     </div>
-                    {!item.request_price && <span className="price">
-                        {item.is_geo ? item.buy_it_now ? item.buy_it_now+' ₾': '' : item.price_usd+' $'}  
+                    {item.buy_it_now && <span className="price">
+                        {item.buy_it_now+' $'}  
                     </span> }
                     {item.request_price ? (             
                       <span className="price">Contact for Price</span>                 
