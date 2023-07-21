@@ -141,16 +141,10 @@ export default function Cart() {
 
                     <div className="checkout">
                       <h1>checkout</h1>
-                      <p>artworks <span>{data.data.is_geo
-                    ? `${data.data.total} ₾`
-                    : `${data.data.total_usd-70} $`}</span></p>
-                      <p>shipping <span>{data.data.is_geo
-                    ? `0 ₾`
-                    : `70 $`}</span></p>
+                      <p>artworks <span>{data.data.total} $</span></p>
+                      <p>shipping <span>70 $</span></p>
 
-                    <p className="total_amount">total amount <span>{data.data.is_geo
-                    ? `${data.data.total} ₾`
-                    : `${data.data.total_usd} $`}</span></p>
+                    <p className="total_amount">total amount <span>{data.data.total + 70} $</span></p>
 
                       <button className='payNow' onClick={() => orderMutation.mutate()}>PAY NOW</button>
                     </div>
