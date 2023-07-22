@@ -2,6 +2,9 @@
 .carousel-control-prev,.carousel-control-next,.carousel-indicators{
     display:none;
   }
+  .mobileView{
+    display:none;
+  }
 .Toastify{
     display:none;
 }
@@ -1089,61 +1092,177 @@ h1.related{
     }
 }
 .galleryShow{
-    padding-top:56px;
     h1{
+        color: #000;
+        font-feature-settings: 'salt' on;
         font-family: 'Loos Normal';
-        letter-spacing: -1px;
+        font-size: 72px;
         font-style: normal;
         font-weight: 400;
-        font-size: 72px;
-        line-height: 72px;
-        font-feature-settings: 'salt' on;
-        color: #000000;
+        line-height: 72px; /* 100% */
         text-align: left;
     }
-    h1.galleryArtworks{
-        margin-top:61px;
-        font-family: 'MonumentGrotesk-Regular';
+    .carousel.slide{
+        width:100%;
+    }
+    .carousel-indicators{
+        display:none;
+    }
+    .carousel-control-prev{
+        position: absolute;
+        left:0;
+        width:50%;
+        display: block;
+        background:rgba(0,0,0,0.1);
+        transition:0.5s all;
+        .carousel-control-prev-icon{
+            display:none;
+        }
+    }
+    .carousel-control-next{
+        transition:0.5s all;
+        position: absolute;
+        right:0;
+        width:50%;
+        display: block;
+        background:rgba(0,0,0,0.1);
+        .carousel-control-next-icon{
+            display:none;
+        }
+    }
+}
+.exhibition{
+    margin-bottom:64px;
+    padding-top:64px;
+    .flex{
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    h1{
+        color: #000;
+        font-feature-settings: 'salt' on;
+
+        /* h2-loos */
+        font-family: Loos Normal;
+        font-size: 32px;
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
-        line-height: 32px;
-        font-feature-settings: 'salt' on;
-        color: #000000;
-        margin-bottom:10px;
+        line-height: 32px; /* 100% */
+        margin-bottom:12px;
     }
-    .galPic{
-        margin-top:162px;
-        max-width: 80%;
-        opacity:0;
+    p{
+        color: var(--black, #000);
+        font-feature-settings: 'salt' on;
+        
+        /* artwork-text-12 */
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px; /* 133.333% */
+        margin-bottom:0px;
     }
     .text{
-        p{
-            font-family: 'MonumentGrotesk-Regular';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 20px;
-            font-feature-settings: 'salt' on;
-            color: #000000;
+        color: var(--black, #000);
+        font-feature-settings: 'salt' on;
+        margin-top:40px;
+
+        /* artwork-text-12 */
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px; /* 133.333% */
+    }
+    .link{
+        color:  #000;
+        text-align: center;
+        font-feature-settings: 'salt' on;
+        width:109px;
+        /* artwork-text-12 */
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px; /* 133.333% */
+        text-decoration:none;
+        border-top:1px solid #000;
+        border-bottom:1px solid #000;
+        transition:0.5s all;
+        padding:3px 16px;
+        &:hover{
+            background:#000;
+            color:#fff;
+        }
+    }
+    .cap{
+        position:absolute;
+        bottom:0;
+        right:5px;
+        padding: 4px 10px 4px 10.5px;
+        background: rgba(0, 0, 0, 0.30);
+        span{
+            display:block;
+            color: var(--white, #FFF);
+font-feature-settings: 'salt' on;
+
+/* artwork-text-12 */
+font-family: 'MonumentGrotesk-Regular';
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 16px; /* 133.333% */
         }
     }
 }
 .fullgaller{
-    display:flex;
-    .titlePage{
-        width:41.66%;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:34px;
+    border-bottom:1px solid #000;
+    padding-bottom:27px;
+    margin-left:10px;
+    margin-right:10px;
+    .flexDir{
+        flex-direction: column;
+        justify-content:space-between;
+        padding-left:0px;
     }
     .text{
-        position:relative;
-        width:40%;
+        color: #000;
+        font-feature-settings: 'salt' on;
+        /* text-16 */
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 125% */
+        p{
+            margin-bottom:0px;
+        }
     }
-    .location{
-        position:absolute;
-        bottom:0;
+    .link{
+        color: #000;
+        font-feature-settings: 'salt' on;
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 125% */
+    }
+    .socials{
+        margin:0px;
+        overflow:hidden;
+        padding:0px;
+        li{
+            float:left;
+            margin-right:12px;
+        }
+        li:last-child{
+            margin-right:0px;
+        }
     }
 }
-
 h1.not_found{
     font-family: 'Loos Normal';
     letter-spacing: -1px;
@@ -1666,9 +1785,7 @@ p.no_page{
 }
 
 @media only screen and (max-width: 1230px) {
-    .fullgaller .text{
-        width:55%;
-    }
+  
     .slide .cert a .text{
         max-width:160px;
     }
@@ -1683,9 +1800,6 @@ p.no_page{
 
 @media only screen and (max-width: 1070px) {
    
-    .fullgaller .location{
-        position: relative;
-    }
    
     .trendMenu li a, .trendMenu li span, .trendMenu div a, .trendMenu div span{
         font-size:24px;
@@ -1744,6 +1858,43 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .mobileView{
+        display:block;
+    }
+    .noMobile{
+        display:none;
+    }
+    .galleryShow{
+        .broch{
+            margin-top:74px;
+            padding-left:15px;
+            padding-right:15px;
+        }
+        .fullgaller{
+            padding-bottom:11px;
+        }
+        .mobileView{
+            margin-top:40px;
+        }
+        h1{
+            font-size:32px;
+        }
+        .socials{
+            float:right;
+            .link{
+                float:left;
+            }
+        }
+        .exhibition{
+            .flex{
+                display:block;
+            }
+            .link{
+                margin-top:20px;
+                float:right;
+            }
+        }
+    }
     .curator_page{
         padding-left:10px;
         padding-right:10px;
@@ -1764,21 +1915,8 @@ p.no_page{
     .artistFullPage{
         padding-top:48px;
     }
-    .fullgaller{
-        flex-direction: column;
-    }
-    .fullgaller .titlePage{
-        width:100%;
-        text-align: center;
-    }
-    .fullgaller .text{
-        width:100%;
-        margin-left:0px;
-    }
-    .galleryShow .galPic{
-        margin-top:20px;
-        margin-bottom: 20px;
-    }
+  
+   
     .galleryPage .galleryItem{
         flex-direction: column;
         .title,.text, a{
