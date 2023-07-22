@@ -817,6 +817,50 @@ color: #000000;
         color: #000000;
     }
 }
+.specialProjects{
+    padding-top:72px;
+    .forPad{
+        margin-bottom:100px;
+    }
+    h1{
+        color: var(--black, #000);
+font-feature-settings: 'salt' on;
+font-family: 'Loos Normal';
+font-size: 72px;
+font-style: normal;
+font-weight: 400;
+margin-bottom:7px;
+line-height: 72px; /* 100% */
+text-align: left;
+    }
+    p{
+        margin:0px;
+        color: #000;
+font-feature-settings: 'salt' on;
+
+/* text-16 */
+font-family: 'MonumentGrotesk-Regular';
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 125% */
+    }
+    .dir{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .text{
+        color:#000;
+font-feature-settings: 'salt' on;
+
+/* text-16 */
+font-family: 'MonumentGrotesk-Regular';
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 125% */
+    }
+}
 .productShow{
     padding-top:72px;
     padding-left:10px;
@@ -1858,6 +1902,18 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .specialProjects {
+        h1{
+            font-size:32px;
+        }
+        .text{
+            margin-top:24px;
+            margin-bottom:40px;
+        }
+        .forPad{
+            margin-bottom:63px;
+        }
+    }
     .mobileView{
         display:block;
     }
@@ -2320,6 +2376,7 @@ footer .secondLine ul li a:hover{
         margin-bottom:0px;
     }
     .special_projects{
+     
         .slick-slide{
             padding-top:10px;
             padding-right:8px;

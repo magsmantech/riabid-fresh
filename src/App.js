@@ -48,6 +48,7 @@ import Forgot from "./containers/forgot";
 import AllDashboard from "./containers/allDashboard";
 import Terms from "./containers/terms";
 import Pride from "./containers/pride";
+import Pride_html from "./containers/pride_html";
 import Nft from "./containers/nft";
 
 import ArtistBio from "./containers/artist-bio";
@@ -96,6 +97,10 @@ function App() {
               <Route
                 path="/special/:id"
                 render={(props) => <Pride {...props} />}
+              />
+              <Route
+                path="/special_html/:id"
+                render={(props) => <Pride_html {...props} />}
               />
               <Route exact path="/new" render={(props) => <New {...props} />} />
 
@@ -296,6 +301,10 @@ function App() {
               <Route
                 path="/special/:id"
                 render={(props) => <Pride {...props} />}
+              />
+              <Route
+                path="/special_html/:id"
+                render={(props) => <Pride_html {...props} />}
               />
 
           <Route
