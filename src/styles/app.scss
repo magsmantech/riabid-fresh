@@ -439,6 +439,92 @@ span.shareIcon{
         color: #000000;
     }
 }
+.curator_page{
+    padding-top:96px;
+    .links{
+        padding-top:37px;
+    }
+    h1{
+      color: #000;
+    font-feature-settings: 'salt' on;
+    font-family: 'Loos Normal';
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px;
+    text-align: left;
+    }
+    .text{
+        color: #000;
+        font-feature-settings: 'salt' on;
+        font-family:'MonumentGrotesk-Regular';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
+   
+    .statement{
+        color: #000;
+        text-align: center;
+        font-feature-settings: 'salt' on;
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        text-decoration:none;
+        border-top:1px solid #000;
+        display:block;
+        padding-top:4px;
+        padding-bottom:4px;
+        border-bottom:1px solid #000;
+        transition:0.5s all;
+        width:100%;
+    }
+    .statement:hover{
+        background:#000;
+        color:#fff;
+    }
+    .socials{
+        padding:0px;
+        display:block;
+        overflow:hidden;
+        margin:0px;
+        li{
+            float:left;
+            margin-right:12px;
+        }
+        li:last-child{
+            margin-right:0px;
+        }
+    }
+    .siteLink{
+        position: relative;
+        top:2px;
+        text-decoration: none;
+        color: #000;
+        font-feature-settings: 'salt' on;
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
+  }
+  .curatedArtworks{
+    padding-left:15px;
+    padding-right:15px;
+    h1{
+        color: #000;
+        font-feature-settings: 'salt' on;
+        font-family: 'MonumentGrotesk-Regular';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px;
+    }
+  }
 .artistsPage{
     padding-top:16px;
     padding-left:10px;
@@ -1658,6 +1744,23 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .curator_page{
+        padding-left:10px;
+        padding-right:10px;
+        padding-top:56px;
+        img.marginBottom{
+            margin-bottom:112px;
+        }
+        h1{
+            font-size:32px;
+            line-height: 32px;
+        }
+        .curatedArtworks{
+            padding-top:61px;
+            padding-left:0px;
+            padding-right:0px;
+        }
+    }
     .artistFullPage{
         padding-top:48px;
     }
