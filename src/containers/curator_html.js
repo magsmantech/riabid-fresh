@@ -31,15 +31,6 @@ function Curator_html(props) {
   const [activeItem, setActiveItem] = useState(0);
   const [prevItem, setPrevItem] = useState(0);
   const [dragging,setDragging] = useState(false);
-  const { isLoading, error, data } = useQuery(
-    "curator" + props.match.params.id,
-    () => getCurator(props.match.params.id),
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-  const curator = data ? data.data.data : [];
-
 
 
   var settings = {
