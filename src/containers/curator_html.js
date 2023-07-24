@@ -96,12 +96,9 @@ function Curator_html(props) {
 
 
 
-  if (isLoading) return <Loading></Loading>;
 
-  if (error) return "An error has occurred: " + error.message;
   return (
     
-        curator ? (
     <section className="curator_page">
 
 
@@ -183,8 +180,7 @@ function Curator_html(props) {
         </div>
 
      
-    </section>)
-    :null
+    </section>
     
     ) 
 
