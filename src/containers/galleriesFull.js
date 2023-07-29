@@ -65,9 +65,9 @@ function GalleriesFull(props) {
           {artworks && artworks?.collection_name && <h1>{artworks?.collection_name}</h1>}
           <div className="align-items-end noMobile">
             <ul className="socials">
-                        {artworks && artworks?.instagram && <li><a target="_BLANK" href={artworks?.instagram}><img src={instagram}/></a></li>}
-                        {artworks &&  artworks?.facebook && <li><a target="_BLANK" href={artworks?.facebook}><img src={facebook}/></a></li>}
-                        {artworks && artworks?.twitter && <li><a target="_BLANK" href={artworks?.twitter}><img src={twitter}/></a></li>}
+                        {artworks && artworks?.instagram_link && <li><a target="_BLANK" href={artworks?.instagram_link}><img src={instagram}/></a></li>}
+                        {artworks &&  artworks?.facebook_link && <li><a target="_BLANK" href={artworks?.facebook_link}><img src={facebook}/></a></li>}
+                        {artworks && artworks?.twitter_link && <li><a target="_BLANK" href={artworks?.twitter_link}><img src={twitter}/></a></li>}
             </ul>
             {artworks && artworks?.website && <a href={artworks?.website} className="link">{artworks?.website}</a>}
           </div>
@@ -103,9 +103,11 @@ function GalleriesFull(props) {
         <div className="offset-1 col-10 col-md-6 position-relative order-1 order-md-2">
           <img src={artworks.image} className="w-100"/>
           <div className="cap">
-            <span className="title">Keti Shapatava</span>
-            <span className="cat">Lighthouse</span>
-            <span className="year">2022</span>
+          {artworks && artworks?.author && <p><span className="title">{artworks?.author}</span></p>}
+          {artworks && artworks?.category && <p><span className="cat">{artworks?.category}</span></p>}
+          
+          {artworks && artworks?.year && <p><span className="year">{artworks?.year}</span></p>}
+       
           </div>
         </div>
       </div>
