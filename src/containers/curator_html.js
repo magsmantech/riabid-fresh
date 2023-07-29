@@ -38,18 +38,14 @@ function Curator_html(props) {
   const [artworks, setArtworks] = useState({'data':[]});
 
   useEffect(function(){
-    axios.get("/curator/"+props.match.params.id)
+    axios.get("/curators/"+props.match.params.id+"/artworks")
         .then((res) => {          
-              setArtworks(res.data);
-              console.log(res.data);
-              let arr = divideBoxIntoColumns(res.data.artworks.length,show);
+              setArtworks(res.data.data);
+              console.log(res.data.data);
+              let arr = divideBoxIntoColumns(res.data.data.artworks.length,show);
               setBoxLength(arr)
         });   
   },[])
-
-
-
-
 
   return (
     
@@ -74,24 +70,24 @@ function Curator_html(props) {
         
         <div className="row">
             <div className="offset-md-1 col-md-2">
-                <img src={author_photo} className='w-100 marginBottom'/>
+                <img src={artworks && artworks?.curator?.curator_biography?.image} className='w-100 marginBottom'/>
             </div>
             <div className="offset-md-2 col-md-5">
-                <h1 className="col-6 col-md-12">Guram Tsibakhashvili</h1>
+              {artworks &&  <h1 className="col-6 col-md-12">{artworks?.curator?.curator_biography?.curator_name}</h1>}
                 <div className="offset-1 offset-md-0 text">
-                Bugadze Gallery is an Art gallery based in Tbilisi, Georgia in the old, unique building, which is a cultural heritage of the country, both architecturally and historically. The house was built by the Zubalashvili brothers at the end of 19th century and a lot of famous figures from our history, lived here during different times: founder of the Georgian avant-garde Irakli Gamrekeli, Marjorie and Oliver Wardrop British scholars and translators, Pavle Ingorokva — the greatest researcher of Georgian history and literature, Shalva Alexi-Meskhishvili, the Minister of Justice of the First Republic of Georgia and Mikael Tariverdiev, one of the most popular composers of the Soviet period.
+                {artworks && ReactHtmlParser(artworks?.curator?.curator_biography?.curator_biography)}
                 </div>
                 <div className="row links">
                     <div className="col-8">
                         <ul className="socials">
-                            <li><a href="#"><img src={instagram}/></a></li>
-                            <li><a href="#"><img src={facebook}/></a></li>
-                            <li><a href="#"><img src={twitter}/></a></li>
+                          {artworks &&   <li><a href={artworks?.curator?.curator_biography?.instagram_link} target="_BLANK"><img src={instagram}/></a></li> }
+                          {artworks &&   <li><a href={artworks?.curator?.curator_biography?.facebook_link} ><img src={facebook}/></a></li>}
+                          {artworks &&   <li><a href={artworks?.curator?.curator_biography?.twitter_link}><img src={twitter}/></a></li>}
                         </ul>
-                        <a href="#" className="siteLink">myfirstwebsite.com</a>
+                       {artworks && artworks?.curator?.curator_biography?.website && <a href={artworks?.curator?.curator_biography?.website} className="siteLink">{artworks?.curator?.curator_biography?.website}</a>}
                     </div>
                     <div className="col-4 flex align-items-end">
-                        <a href="#" className='statement'>curatorial statement</a>
+                    {artworks && artworks?.curator?.curator_biography?.file && <a href={artworks?.curator?.curator_biography?.file} className='statement'>curatorial statement</a>}
                     </div>
                 </div>
             </div>
@@ -102,31 +98,31 @@ function Curator_html(props) {
 
 
 
-              {artworks.data && boxLength.hasOwnProperty(0) && <ProductBlock
+              {artworks.artworks && boxLength.hasOwnProperty(0) && <ProductBlock
                     start={0}
                     limit={boxLength[0]}
-                    data={artworks.data}
+                    data={artworks.artworks}
                     /> }
             </div>
             <div className='col-6 col-lg-3'>
-            {artworks.data && boxLength.hasOwnProperty(1) && <ProductBlock
+            {artworks.artworks && boxLength.hasOwnProperty(1) && <ProductBlock
                     start={boxLength[0]}
                     limit={boxLength[1]}
-                    data={artworks.data}
+                    data={artworks.artworks}
                     /> }
             </div>
             <div className='col-6 col-lg-3'>
-            {artworks.data && boxLength.hasOwnProperty(2) && <ProductBlock
+            {artworks.artworks && boxLength.hasOwnProperty(2) && <ProductBlock
                     start={boxLength[1]+boxLength[0]}
                     limit={boxLength[2]}
-                    data={artworks.data}
+                    data={artworks.artworks}
                     /> }
             </div>
             <div className='col-6 col-lg-3'>
-            {artworks.data && boxLength.hasOwnProperty(3) && <ProductBlock
+            {artworks.artworks && boxLength.hasOwnProperty(3) && <ProductBlock
                     start={boxLength[2] + +boxLength[1] + +boxLength[0]}
                     limit={boxLength[3]}
-                    data={artworks.data}
+                    data={artworks.artworks}
                     /> }
             </div>
 

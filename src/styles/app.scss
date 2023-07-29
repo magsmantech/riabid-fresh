@@ -99,6 +99,9 @@ span.shareIcon{
     position: relative;
     overflow:hidden;
     margin-bottom:24px;
+    a{
+        display:block;
+    }
     .edit, .remove{
         position:absolute;
         opacity:0;
@@ -155,7 +158,6 @@ span.shareIcon{
 
     div.author{
         position: relative;
-        top:-4px;
         float:left;
         max-width:calc(100% - 230px);
         p,a{
@@ -163,7 +165,7 @@ span.shareIcon{
             font-style: normal;
             font-weight: 400;
             font-size: 12px;
-            line-height: 12px;
+            line-height: 16px;
             color: #000000;
             margin:0px;
         }
@@ -174,6 +176,7 @@ span.shareIcon{
             text-decoration:underline;
         }
         p.size{
+            margin-top:2px;
             font-family: 'MonumentGrotesk-Regular';
             font-style: normal;
             font-weight: 400;
@@ -184,11 +187,11 @@ span.shareIcon{
     }
     span.price{
         float:right;
+        line-height: 16px;
         font-family: 'MonumentGrotesk-Regular';
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
-        line-height: 20px;
         text-align: center;
         color: #000000;
         min-width:109px;
@@ -245,14 +248,17 @@ span.shareIcon{
     .productBlock{
     span.price{
         font-size:16px;
+        line-height: 20px;
     }
     }
 }
 .for3Col .productBlock div.author p{
     font-size:16px;
+    line-height: 20px;
 }
 .for3Col .productBlock div.author p.size{
     font-size:12px;
+    line-height: 20px;
 }
 .stSecond{
     padding-top:110px;
@@ -797,6 +803,10 @@ color: #000000;
 .textPage{
     padding-top:88px;
     padding-left:8px;
+    min-height:calc(100vh - 350px);
+    ul{
+        padding:0px;
+    }
     h1{
         font-family: 'Loos Normal';
         font-style: normal;
@@ -807,6 +817,7 @@ color: #000000;
         font-feature-settings: 'salt' on;        
         color: #000000;
         text-align: left;
+        margin-bottom:41px;
     }
     .text, .text p, .text li{
         font-family: 'MonumentGrotesk-Regular';
@@ -2228,13 +2239,8 @@ footer .secondLine ul li a:hover{
     }
     .productBlock .price{
         position:relative;
-        top:-4px;
     }
-    .for3Col .productBlock{
-        .price{
-            top:-7px;
-        }
-    }
+ 
 }
 .closeMenu{
     position:absolute;

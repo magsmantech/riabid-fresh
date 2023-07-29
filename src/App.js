@@ -54,7 +54,6 @@ import ArtistBio from "./containers/artist-bio";
 import EditArtwork from "./containers/artwork";
 import Collection from "./containers/collection";
 import Curator from "./containers/curator";
-import Curator_html from "./containers/curator_html";
 import Organizations from "./containers/organizations";
 
 const queryClient = new QueryClient({
@@ -123,11 +122,7 @@ function App() {
                 path="/curator/:id"
                 render={(props) => <Curator {...props} />}
               />
-              <Route
-                exact
-                path="/curator_html/:id"
-                render={(props) => <Curator_html {...props} />}
-              />
+           
 
               <Route
                 exact
@@ -322,11 +317,7 @@ function App() {
                 path="/curator/:id"
                 render={(props) => <Curator {...props} />}
               />
-              <Route
-                exact
-                path="/curator_html/1"
-                render={(props) => <Curator_html {...props} />}
-              />
+          
 
               <Route
                 exact
