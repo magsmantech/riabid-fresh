@@ -99,7 +99,7 @@ function Curator(props) {
       </MetaTags>
         
         <h1 class='curators_choice'>CURATOR’S CHOICE</h1>
-        <img src={`${curator.curator.curator_biography.image}`} />
+        {/* <img src={`${curator.curator.curator_biography.image}`} /> */}
 
        <div class='text' dangerouslySetInnerHTML={{__html: curator.curator.curator_biography.curator_biography}} />
         <div className="selectedFor">

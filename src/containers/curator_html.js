@@ -27,68 +27,22 @@ import ProductBlock from "../components/shared/ProductBlock";
 
 function Curator_html(props) {
 
-  const sliderRef = useRef();
-  const [activeItem, setActiveItem] = useState(0);
-  const [prevItem, setPrevItem] = useState(0);
-  const [dragging,setDragging] = useState(false);
-
-
-  var settings = {
-    draggable:true,
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    initialSlide: 0,
-
-    beforeChange: (current, next) => {
-      setDragging(true);   
-      
-      setActiveItem(next);    
-    },
-    afterChange:()=>{
-      setDragging(false);   
-    },
- 
-    responsive: [
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 590,
-        settings: {
-          slidesToShow:1,
-          slidesToScroll: 1,
-        },
-      }
-    ],
-  };
-
   function divideBoxIntoColumns(boxWidth,columns) {
     const columnWidth = Math.floor(boxWidth / columns);
     const remainder = boxWidth % columns;
     return [columnWidth + (remainder > 0 ? 1 : 0), columnWidth + (remainder > 1 ? 1 : 0), columnWidth + (remainder > 2 ? 1 : 0), columnWidth];
   }
 
-
   const [boxLength, setBoxLength] = useState([]);
   const [show, setShow] = useState(4); 
   const [artworks, setArtworks] = useState({'data':[]});
 
   useEffect(function(){
-    axios.get("artworks-paginated?limit=16")
-        .then((res) => {
-              let addon_data = res.data;
-            
-              addon_data['data'] = [...addon_data.data];       
-              
-              setArtworks(addon_data);
-              let arr = divideBoxIntoColumns(addon_data.data.length,show);
+    axios.get("/curator/"+props.match.params.id)
+        .then((res) => {          
+              setArtworks(res.data);
+              console.log(res.data);
+              let arr = divideBoxIntoColumns(res.data.artworks.length,show);
               setBoxLength(arr)
         });   
   },[])

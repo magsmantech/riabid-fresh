@@ -74,14 +74,11 @@ function ProductBlock({
     },
     onSuccess: (data, variables, context) => {
       let favorites = localStorage.getItem('favorites').split(',');
-      console.log(favorites);
-      console.log(variables);
+
       let ind = favorites.indexOf(variables.toString());
-      console.log('found index --- '+ind)
       if(ind == -1){
         favorites.push(variables.toString());
-        console.log('added');
-        console.log(favorites);
+  
       }else{
         favorites.splice(ind,1);
         localStorage.setItem('favorites',favorites);

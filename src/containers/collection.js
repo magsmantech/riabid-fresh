@@ -60,7 +60,7 @@ function Collection(props) {
     </section>
     
     <div className='row curatedArtworks' >
-    <h1>event artworks</h1>
+    <h1>Selected artworks</h1>
 
 <div className='col-6 col-lg-3'>
 

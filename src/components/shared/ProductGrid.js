@@ -118,8 +118,9 @@ export default function ProductGrid(){
         axios.get(url)
             .then((res) => {
                   if(type == 2){
-                    let {artworks} = res.data.data;
-                    setArtworks(artworks);      
+                    let {artworks,curator} = res.data.data;
+                    setArtworks(artworks);     
+                    setCurator(curator); 
                   }
                   else{
                     let {data} = res;
@@ -138,7 +139,7 @@ export default function ProductGrid(){
       </div>
       <div className='col-4 col-md-4'>
         <ul className="trendMenu fullWidth">
-                <li className={grid == 2 ? "active lastPos" : "lastPos"}><a href="#" onClick={e => {handleType(e,2,1); myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >curators <span>choice made by <span classname='author'>{curator.name} {curator.lastname}</span></span></a></li>
+                <li className={grid == 2 ? "active lastPos" : "lastPos"}><a href="#" onClick={e => {handleType(e,2,1); myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >curators <span>choice made by <span className='author' onClick={e => {e.preventDefault(); window.location.href = "/curator/"+curator.id}}>{curator.name} {curator.lastname}</span></span></a></li>
             </ul>
       </div>
    

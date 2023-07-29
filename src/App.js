@@ -125,7 +125,7 @@ function App() {
               />
               <Route
                 exact
-                path="/curator_html/1"
+                path="/curator_html/:id"
                 render={(props) => <Curator_html {...props} />}
               />
 
