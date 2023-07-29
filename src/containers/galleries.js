@@ -1,16 +1,12 @@
 import React from "react";
-import Filter from "../components/shop/Filter";
-import CardGrid from "../components/shop/CardGrid";
-import { GoSettings } from "react-icons/go";
-import cardImg from "../assets/dummy/gallery.png";
 import { Link } from "react-router-dom";
 import { getGalleries } from "../services/galleriesService";
 import { useQuery } from "react-query";
 import Loading from "./loading";
 import { MetaTags } from "react-meta-tags";
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 function Galleries(props) {
-  const [filter, setFilter] = React.useState(false);
   const { isLoading, error, data } = useQuery("galleries", getGalleries, {
     refetchOnWindowFocus: false,
   });
@@ -38,12 +34,12 @@ function Galleries(props) {
           .map((item) => (
             <div key={item.id} className="galleryItem">
             
-                <p className="title">{item.gallery_title}</p>
+                <p className="title">{item.collection_name}</p>
            
                 <div className="text">
                   <div className='justify-content-center'>
-                    <p className="desc">{item.gallery_description}</p>
-                    <p className="location">{item.location}</p>
+                    <p className="desc">{item && ReactHtmlParser(item?.description)}</p>
+                    <p className="location">{item.address}</p>
                   </div>
                 </div>
                 <Link to={"/galleries/" + item.id}>

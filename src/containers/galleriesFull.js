@@ -1,35 +1,45 @@
-import React, {useRef} from "react";
+import React, {useRef,useState,useEffect} from "react";
 import Filter from "../components/shop/Filter";
 import CardGrid from "../components/shop/CardGrid";
 import { GoSettings } from "react-icons/go";
-import cardImg from "../assets/dummy/gallery-dummy.png";
-import cardImg2 from "../assets/dummy/gallery-dummy2.png";
+import Carousel from 'react-bootstrap/Carousel';
+import instagram from "../assets/images/instagram.svg";
+import facebook from "../assets/images/facebook.svg";
+import twitter from "../assets/images/twitter.svg";
+import exhibition from "../assets/images/exhibition.png";
 import ProductBlock from "../components/shared/ProductBlock";
 import { MetaTags } from "react-meta-tags";
-import { Link } from "react-router-dom";
-import { getGallery } from "../services/galleriesService";
-import { useQuery } from "react-query";
-import Loading from "./loading";
+import axios from '../lib/axios';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 function GalleriesFull(props) {
   const myGrid = useRef(null);
   const [filter, setFilter] = React.useState(false);
-  const { isLoading, error, data } = useQuery(
-    "gallery",
-    () => getGallery(props.match.params.index),
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
 
-  if (isLoading) return <Loading></Loading>;
+  function divideBoxIntoColumns(boxWidth,columns) {
+    const columnWidth = Math.floor(boxWidth / columns);
+    const remainder = boxWidth % columns;
+    return [columnWidth + (remainder > 0 ? 1 : 0), columnWidth + (remainder > 1 ? 1 : 0), columnWidth + (remainder > 2 ? 1 : 0), columnWidth];
+  }
 
-  if (error) return "An error has occurred: " + error.message;
-  const { gallery_title, location, legal_image, id, gallery_description } =
-    data.data.gallery;
+  const [boxLength, setBoxLength] = useState([]);
+  const [show, setShow] = useState(4); 
+  const [artworks, setArtworks] = useState({'slider_images':[]});
+
+  useEffect(function(){
+    axios.get("galleries/"+props.match.params.index)
+        .then((res) => {         
+            console.log(res.data);      
+              setArtworks(res.data);
+              let arr = divideBoxIntoColumns(res.data.artworks.length,show);
+              setBoxLength(arr)
+        });   
+  },[])
+
+
   return (
 
-    <section className="galleryShow paddingLeft">
+    <section className="galleryShow ">
     <MetaTags>
         <title>Art Galleries on Ria Bid</title>
         <meta
@@ -41,59 +51,102 @@ function GalleriesFull(props) {
           content="art gallery, art online, galleries, sell art, decorative art,Discover Contemporary Artists, contemporary artists from Georgia,georgian contemporary artists,"
         />
       </MetaTags>
-      <div className="fullgaller">
-        <div className='titlePage'>
-          <h1>{gallery_title}</h1>
-            <div className="pictures">
-             <img className="galPic" src={legal_image}></img>
+        {artworks &&
+        <Carousel>
+          {artworks?.slider_images.map(item =>{
+            return <Carousel.Item>
+            <img src={item} className="w-100"/>
+          </Carousel.Item>
+          })}          
+        </Carousel>}
+    
+      <div className="row fullgaller">
+        <div className="col-md-5 flex flexDir">
+          {artworks && artworks?.collection_name && <h1>{artworks?.collection_name}</h1>}
+          <div className="align-items-end noMobile">
+            <ul className="socials">
+                        {artworks && artworks?.instagram && <li><a target="_BLANK" href={artworks?.instagram}><img src={instagram}/></a></li>}
+                        {artworks &&  artworks?.facebook && <li><a target="_BLANK" href={artworks?.facebook}><img src={facebook}/></a></li>}
+                        {artworks && artworks?.twitter && <li><a target="_BLANK" href={artworks?.twitter}><img src={twitter}/></a></li>}
+            </ul>
+            {artworks && artworks?.website && <a href={artworks?.website} className="link">{artworks?.website}</a>}
           </div>
         </div>
+        <div className="offset-1 col-11 offset-md-0 col-md-5 text">
+          {artworks && ReactHtmlParser(artworks?.description)}
+        </div>
+        <div className="col-12 mobileView">
+          <ul className="socials">
+          {artworks && artworks?.instagram && <li><a target="_BLANK" href={artworks?.instagram}><img src={instagram}/></a></li>}
+                        {artworks &&  artworks?.facebook && <li><a target="_BLANK" href={artworks?.facebook}><img src={facebook}/></a></li>}
+                        {artworks && artworks?.twitter && <li><a target="_BLANK" href={artworks?.twitter}><img src={twitter}/></a></li>}
+            </ul>
+            {artworks && artworks?.website && <a href={artworks?.website} className="link">{artworks?.website}</a>}
+        </div>
+
+      </div>
+      <div className="row exhibition">
+        <div className="offset-md-1 col-md-3 flex order-2 order-md-1 broch">
+          <div>
+            {artworks && artworks?.collection_title && <h1>{artworks?.collection_title}</h1>}
+            {artworks && artworks?.date && <p>{artworks?.date}</p>}
+            {artworks && artworks?.address && <p>{artworks?.address}</p>}
       
-        <div className="text">        
-          <p>{gallery_description}</p>
-          <p className="location">{location}</p>
+
+          <div className="text">
+          {artworks && ReactHtmlParser(artworks?.description_2)}
+          </div>
+          </div>
+
+          {artworks && <a target="_BLANK" href={artworks?.file} className="link align-items-end">pdf brochure</a>}
+        </div>
+        <div className="offset-1 col-10 col-md-6 position-relative order-1 order-md-2">
+          <img src={artworks.image} className="w-100"/>
+          <div className="cap">
+            <span className="title">Keti Shapatava</span>
+            <span className="cat">Lighthouse</span>
+            <span className="year">2022</span>
+          </div>
         </div>
       </div>
-      <section >
-        <h1 className="galleryArtworks">gallery artworks</h1>
-      <div className="row" ref={myGrid} >
-            <div className='col-6 col-md-3'>
-            {data.data.artworks ? (
-                    <ProductBlock
+      <div className='row curatedArtworks' >
+                <h1>curated artworks</h1>
+
+            <div className='col-6 col-lg-3'>
+
+
+
+              {artworks.artworks && boxLength.hasOwnProperty(0) && <ProductBlock
                     start={0}
-                    limit={2}
-                    data={data.data.artworks}
-                    />
-                    ) : null}
+                    limit={boxLength[0]}
+                    data={artworks.artworks}
+                    /> }
             </div>
-            <div className='col-6 col-md-3'>
-            {data.data.artworks ? (
-                    <ProductBlock
-                    start={2}
-                    limit={2}
-                    data={data.data.artworks}
-                    />
-                    ) : null}
+            <div className='col-6 col-lg-3'>
+            {artworks.artworks && boxLength.hasOwnProperty(1) && <ProductBlock
+                    start={boxLength[0]}
+                    limit={boxLength[1]}
+                    data={artworks.artworks}
+                    /> }
             </div>
-            <div className='col-6 col-md-3'>
-            {data.data.artworks ? (
-                    <ProductBlock
-                    start={4}
-                    limit={2}
-                    data={data.data.artworks}
-                    />
-                    ) : null}
+            <div className='col-6 col-lg-3'>
+            {artworks.artworks && boxLength.hasOwnProperty(2) && <ProductBlock
+                    start={boxLength[1]+boxLength[0]}
+                    limit={boxLength[2]}
+                    data={artworks.artworks}
+                    /> }
             </div>
-            <div className='col-6 col-md-3'>
-            {data.data.artworks ? (
-                    <ProductBlock
-                    start={6}
-                    limit={2}
-                    data={data.data.artworks}
-                    />
-                    ) : null}
+            <div className='col-6 col-lg-3'>
+            {artworks.artworks && boxLength.hasOwnProperty(3) && <ProductBlock
+                    start={boxLength[2] + +boxLength[1] + +boxLength[0]}
+                    limit={boxLength[3]}
+                    data={artworks.artworks}
+                    /> }
             </div>
-        </div>
+
+            </div>
+      <section >
+   
       </section>
     </section>
   );

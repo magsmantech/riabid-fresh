@@ -28,7 +28,6 @@ import Buy from "./containers/buy";
 import Sell from "./containers/sell";
 import ArtistsFull from "./containers/artistsFull";
 import GalleriesFull from "./containers/galleriesFull";
-import GalleriesFull_html from "./containers/GalleriesFull_html";
 import Cart from "./containers/cart";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -235,11 +234,7 @@ function App() {
                 path="/galleries/:index"
                 render={(props) => <GalleriesFull {...props} />}
               />
-              <Route
-                exact
-                path="/galleries_html/1"
-                render={(props) => <GalleriesFull_html {...props} />}
-              />
+          
               <Route
                 exact
                 path="/auctions"
@@ -372,11 +367,7 @@ function App() {
                 path="/galleries/:index"
                 render={(props) => <GalleriesFull {...props} />}
               />
-              <Route
-                exact
-                path="/galleries_html/1"
-                render={(props) => <GalleriesFull_html {...props} />}
-              />
+            
               <Route
                 exact
                 path="/auctions"
