@@ -259,7 +259,7 @@ export default function ProductDet(props) {
               </div>
               <div className="size">
                 <p>ID: {artwork.id}</p>
-                <p className="curat">{artwork.curator_id && <>Curated by <a href="${`/curator/artwork.curator_id`}" className="underline">Ria Keburia</a></>}</p>
+                <p className="curat">{artwork.curator_id && <>Curated by <a href={`/curator/${artwork.curator_id}`} className="underline">{artwork?.display_name}</a></>}</p>
                 <p className='orig'>Certificate of Authenticity</p>
               </div>
 
