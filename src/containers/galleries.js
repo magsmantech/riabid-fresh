@@ -14,7 +14,7 @@ function Galleries(props) {
   const { isLoading, error, data } = useQuery("galleries", getGalleries, {
     refetchOnWindowFocus: false,
   });
-
+  
   if (isLoading) return <Loading></Loading>;
 
   if (error) return "An error has occurred: " + error.message;
@@ -35,7 +35,6 @@ function Galleries(props) {
    
       <div className="galleryPage">
         {data.data
-          .filter((item) => item.is_hidden === 0)
           .map((item) => (
             <div key={item.id} className="galleryItem">
             
@@ -53,7 +52,7 @@ function Galleries(props) {
              
             </div>
           ))}
-        {data.data.filter((item) => item.is_hidden === 0).length === 0
+        {data.data.length === 0
           ? "There are no galleries yet"
           : null}
       </div>

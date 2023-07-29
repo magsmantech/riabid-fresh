@@ -49,6 +49,10 @@ const [email, setEmail] = useState("");
     };
   }, []);
 
+  useEffect(() => {   
+    setMobileShow(false);
+  }, []);
+
   const handleScroll = (event) => {
     if(document.getElementsByClassName('collapse navbar-collapse show').length > 0){
       setMobileShow(false);

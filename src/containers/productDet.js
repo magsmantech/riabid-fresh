@@ -169,6 +169,7 @@ export default function ProductDet(props) {
     axios.get('artworks/'+props.match.params.index)
     .then((res) => {
           let data = res.data;
+
           setArtwork(data.artwork);
           setImages(JSON.parse(data.artwork.images));
           axios.get('artists/artworks-paginated/'+data.artwork.artist_id+'/?limit=8')
@@ -247,7 +248,7 @@ export default function ProductDet(props) {
               </div>
               <div className="size">
                 <p>ID: {artwork.id}</p>
-                <p>Curated by Ria Keburia</p>
+                <p className="curat">{artwork.curator_id && <>Curated by <a href="#" className="underline">Ria Keburia</a></>}</p>
                 <p className='orig'>Certificate of Authenticity</p>
               </div>
 
