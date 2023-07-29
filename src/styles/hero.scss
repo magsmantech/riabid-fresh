@@ -106,18 +106,57 @@
   }
   .certificate{
     float:left;
+    transition:0.5s all;
     span.icon{
+      transition:0.5s all;
       background:url('../assets/icons/certificate.svg') no-repeat;
+    }
+    span.learnMore{
+      transition:0.5s all;
+    }
+    &:hover{
+      padding-left:8px;
+      background:black;
+      color:white;
+      span.learnMore{
+        padding-left:8px;
+      }
+      span.icon{
+        background:url('../assets/icons/certificateHover.svg') no-repeat;
+      }
+      span{
+        color:white;
+      }
     }
   }
   .delivery{
     float:right;
+    transition:0.5s all;
     span.text{
       max-width:125px;
+      transition:0.5s all;
+    }
+    span.learnMore{
+      transition:0.5s all;
     }
     span.icon{
+      transition:0.5s all;
       width:18px;
       background:url('../assets/icons/delivery.svg') no-repeat;
+    }
+    &:hover{
+      padding-left:8px;
+      background:black;
+      color:white;
+      span.learnMore{
+        padding-left:8px;
+      }
+      span.icon{
+        background:url('../assets/icons/deliveryHover.svg') no-repeat;
+      }
+      span{
+        color:white;
+      }
     }
   }
 }

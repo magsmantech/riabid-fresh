@@ -138,6 +138,17 @@ export default function ProductDet(props) {
       toast.error("You need to login");
     },
     onSuccess: (data, variables, context) => {
+      let favorites = localStorage.getItem('favorites').split(',');
+
+      let ind = favorites.indexOf(variables.toString());
+      if(ind == -1){
+        favorites.push(variables.toString());
+  
+      }else{
+        favorites.splice(ind,1);
+        localStorage.setItem('favorites',favorites);
+      }
+      localStorage.setItem('favorites',favorites);
       toast.dark("Artwork added to favorites", {
         progress: undefined,
         hideProgressBar: true,
@@ -248,12 +259,12 @@ export default function ProductDet(props) {
               </div>
               <div className="size">
                 <p>ID: {artwork.id}</p>
-                <p className="curat">{artwork.curator_id && <>Curated by <a href="#" className="underline">Ria Keburia</a></>}</p>
+                <p className="curat">{artwork.curator_id && <>Curated by <a href="${`/curator/artwork.curator_id`}" className="underline">Ria Keburia</a></>}</p>
                 <p className='orig'>Certificate of Authenticity</p>
               </div>
 
                 <ul>
-                    <li><a href="#" onClick={() => favoritesMutation.mutate(artwork.id)}><span className="frameIcon"></span>save</a></li>
+                   <li><a href="#" onClick={(e) =>{ e.preventDefault(); favoritesMutation.mutate(artwork.id)}}><span className={localStorage.getItem('favorites') && localStorage.getItem('favorites').split(',').indexOf(props.match.params.index.toString()) > -1 ? "frameIcon active" : "frameIcon"}></span>save</a></li>
                     <li><a href="#" onClick={() => setShareActive(!shareActive)}><span className="shareIcon"></span>share</a></li>
                 </ul>
             </div>
