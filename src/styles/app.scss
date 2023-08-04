@@ -457,7 +457,9 @@ span.shareIcon{
         padding-top:37px;
     }
     h1{
-      color: #000;
+        
+    margin-bottom:15px;
+    color: #000;
     font-feature-settings: 'salt' on;
     font-family: 'Loos Normal';
     font-size: 72px;
@@ -875,6 +877,9 @@ font-style: normal;
 font-weight: 400;
 line-height: 20px; /* 125% */
     }
+}
+.galleryShow{
+    
 }
 .productShow{
     padding-top:72px;
