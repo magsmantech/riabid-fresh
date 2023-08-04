@@ -48,16 +48,18 @@ const categories = [
   var settings = {
     draggable:true,
     dots: false,
-    infinite: false,
+    infinite: true,
     arrows:false,
     speed: 500,
-    centerMode:true,
+    centerMode:false,
+    variableWidth:true,
     slidesToShow: 2,
-    slidesToScroll: 2,
-    initialSlide: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
     responsive:[{     
       breakpoint:768,   
       settings:{
+        variableWidth:false,
         slidesToShow:1
       }
   }

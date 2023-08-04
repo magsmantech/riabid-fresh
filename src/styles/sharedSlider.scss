@@ -18,8 +18,16 @@
 }
 .slickFull{
   img{
-    width:100%;
+    max-width:100%;
+    height:300px;
   }
-
 }
-.slick-list{padding:0 20% 0 0 !important;}
+@media only screen and (max-width: 768px) {
+  .slickFull{
+    img{
+      height:auto;
+      width:100%;
+    }
+  }
+}
+//.slick-list{padding:0 20% 0 0 !important;}
