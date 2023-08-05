@@ -878,11 +878,12 @@ font-weight: 400;
 line-height: 20px; /* 125% */
     }
 }
-.galleryShow{
+.galleryShow .carousel{
     img{
         height:calc(100vh - 150px);
         object-fit: cover;
-    }    
+    }   
+
 }
 .productShow{
     padding-top:72px;
