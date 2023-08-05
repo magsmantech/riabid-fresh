@@ -18,8 +18,9 @@
 }
 .slickFull{
   img{
-    max-width:100%;
-    height:300px;
+    width:100%;
+    height:350px;
+    object-fit: cover;
   }
 }
 @media only screen and (max-width: 768px) {

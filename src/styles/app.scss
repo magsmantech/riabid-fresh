@@ -879,7 +879,10 @@ line-height: 20px; /* 125% */
     }
 }
 .galleryShow{
-    
+    img{
+        height:calc(100vh - 150px);
+        object-fit: cover;
+    }    
 }
 .productShow{
     padding-top:72px;
@@ -1873,6 +1876,11 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 991px) {
+    .galleryShow{
+    img{
+        height:auto;
+    }    
+}
     .bioText.fullWidth{
         display:block;
         margin-top:33px;
