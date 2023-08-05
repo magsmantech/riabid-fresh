@@ -51,14 +51,23 @@ const categories = [
     infinite: false,
     arrows:false,
     speed: 500,
-    centerMode:false,
+    centerMode:true,
     variableWidth:true,
     slidesToShow: 2,
     slidesToScroll: 1,
-    initialSlide: 0,
-    responsive:[{     
+    initialSlide: 1,
+    responsive:[
+      {     
+        breakpoint:1067,   
+        settings:{
+          slidesToShow:1,
+          variableWidth:true,
+        }
+    },
+      {     
       breakpoint:768,   
       settings:{
+        centerMode:false,
         variableWidth:false,
         slidesToShow:1
       }
