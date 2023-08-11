@@ -39,7 +39,7 @@ export default function Cart() {
         progress: undefined,
         hideProgressBar: true,
       });
-      window.location.href = "https://api.riabid.ge/payorder/" + data.data.order_id;
+      window.location.href = "https://api.riabid.com/payorder/" + data.data.order_id;
     },
     onSettled: (data, error, variables, context) => {
       // Error or success... doesn't matter!
