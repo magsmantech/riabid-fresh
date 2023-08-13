@@ -125,7 +125,7 @@ span.shareIcon{
         float:left;
         margin-right:10px;
         cursor:pointer;
-        height:55px;
+        height:46px;
         position:relative;
         text-align: center;
         cursor:pointer;
@@ -168,6 +168,8 @@ span.shareIcon{
             font-style: normal;
             font-weight: 400;
             font-size: 12px;
+            height:15px;
+            overflow:hidden;
             line-height: 16px;
             color: #000000;
             margin:0px;
@@ -1412,6 +1414,11 @@ p.no_page{
             font-weight: 400;
             font-size: 12px;
             line-height: 16px;
+            transition:0.5s all;
+        }
+        button:hover,button.active{
+            background:black;
+            color:white;
         }
     }
 }

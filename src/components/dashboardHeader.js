@@ -107,8 +107,8 @@ export default function DashboardHeader(){
       <div className="bUpdate">
         <div className="img">
           
-        <img src={addIcon}/>
-        <input type="file" name="image" onChange={(e)=> setImage(e.target.files && e.target.files[0])}></input>
+          <img src={addIcon}/>
+          <input type="file" name="image" onChange={(e)=> setImage(e.target.files && e.target.files[0])}></input>
         </div>
 
         <button className="updateBio">UPDATE INFO</button>

@@ -218,8 +218,8 @@ function EditArtwork(props) {
       <div className='row'>
         <div className='col-12'>
           <ul class="trendMenu allMenu inProfile">
-            <li className="active"><a href="/dashboard">artworks</a></li>
-            <li  ><a href="/dashboard" >favorites</a></li>
+            <li className="active"><a href="/dashboard">my artworks</a></li>
+            <li  ><a href="/dashboard" >saved</a></li>
             <li ><a href="/dashboard">order history</a></li>
             <li ><a href="/dashboard">details</a></li>
           </ul>

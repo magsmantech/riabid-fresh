@@ -50,6 +50,8 @@ function Dashboard(props) {
   const [boxLength, setBoxLength] = useState([]);
   const [show, setShow] = useState(4); 
 
+  const [updated,setUpdated] = useState(false);
+
   const [error, setError] = useState({});
 
   const editMutation = useMutation(editAddress, {
@@ -85,6 +87,7 @@ function Dashboard(props) {
       });
       //window.location.href = "/dashboard/account";
       setError({});
+      setUpdated(true);
     },
     onSettled: (data, error, variables, context) => {
       
@@ -225,8 +228,8 @@ function Dashboard(props) {
     <div className="row">
       <div className='col-12'>
         <ul class="trendMenu allMenu inProfile">
-          <li className={cat == 1 ? "active" : ""} ><a href="/" onClick={(e)=>{setCategory(e,1)}}>artworks</a></li>
-          <li className={cat == 2 ? "active" : ""} ><a href="/" onClick={(e)=>{setCategory(e,2)}}>favorites</a></li>
+          <li className={cat == 1 ? "active" : ""} ><a href="/" onClick={(e)=>{setCategory(e,1)}}>my artworks</a></li>
+          <li className={cat == 2 ? "active" : ""} ><a href="/" onClick={(e)=>{setCategory(e,2)}}>saved</a></li>
           <li className={cat == 3 ? "active" : ""}><a href="/" onClick={(e)=>{setCategory(e,3)}}>order history</a></li>
           <li className={cat == 4 ? "active" : ""}><a href="/" onClick={(e)=>{setCategory(e,4)}}>details</a></li>
           <li><a href="/" onClick={(e)=>{ logout();
@@ -393,9 +396,9 @@ function Dashboard(props) {
         
                     </div>
                     <input
-                    className="updateAddress"
+                    className={updated ? "updateAddress active" : "updateAddress"}
               type="submit"
-              value="UPDATE INFO"
+              value={updated ? "UPDATED" : "UPDATE INFO"}
             ></input>
                     </form>
                   </div>
