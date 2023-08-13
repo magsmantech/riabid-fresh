@@ -199,7 +199,7 @@ const [email, setEmail] = useState("");
 
             <Link to="/dashboard" onClick={(e) =>{ if(!currentUser.isAuthenticated){ e.preventDefault(); setAuthActive(!authActive);setSearchActive(false);}  }}>
               <span className={
-                    authActive ? "user-btn active" : "user-btn"
+                    authActive || currentUser.isAuthenticated ? "user-btn active" : "user-btn"
                   } ></span>
             </Link>
   </div>

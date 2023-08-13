@@ -151,6 +151,7 @@ export default function ProductGrid(){
                     start={0}
                     limit={1}
                     data={artworks.data}
+                    type={1}
                     />
                     ) : null}
                              
@@ -161,6 +162,7 @@ export default function ProductGrid(){
                     start={show==4 ? 0 : 1}
                     limit={show==4 ? 2 : 3}
                     data={artworks.data}
+                    type={1}
                     />
                     ) : null}
                              
@@ -173,6 +175,7 @@ export default function ProductGrid(){
                     start={show==4 ? 2 : 4}
                     limit={show==4 ? 2 : 4}
                     data={artworks.data}
+                    type={1}
                     />
                     ) : null}
         
@@ -187,6 +190,7 @@ export default function ProductGrid(){
                     start={4}
                     limit={2}
                     data={artworks.data}
+                    type={1}
                     />
                     ) : null}
                

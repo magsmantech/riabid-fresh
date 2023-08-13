@@ -26,7 +26,8 @@ function ProductBlock({
   favorite=null,
   col=null,
   remove=null,
-  setFavores=null
+  setFavores=null,
+  type=null
 }) {
 
   const removeMutation = useMutation(removeItem, {
@@ -107,22 +108,38 @@ function ProductBlock({
                     {(edit || remove) && <img src={removeIcon} className='remove' onClick={() =>{if(!remove) { deleteMutation.mutate(item.id) } else { removeMutation.mutate(item.id) }}}/>}
 
                     <Link to={`/store/${item.id}`}><img src={item.front_thumbnail} className="productImage"/></Link>
-                    
-                    <div className={favorite ? "frame active "+frameMax : "frame "+frameMax } onClick={() => favoritesMutation.mutate(item.id)}>
-                        <span className={localStorage.getItem('favorites').split(',').indexOf(item.id.toString()) > -1 ? "frameIcon active" : "frameIcon"}></span>
-                        <span className="frametext">{localStorage.getItem('favorites').split(',').indexOf(item.id.toString()) > -1 ? 'remove' : 'save'}</span>
+                    <div className="row">
+                      <div className={type == 1 ? "col-4 order-last col-sm-3 order-sm-first" : "col-4 order-last order-sm-first col-sm-2"}>
+                        <div className="mMobile">
+                          {item.buy_it_now && <span className="price">
+                              {item.buy_it_now+' $'}  
+                          </span> }
+                          {item.request_price ? (             
+                            <span className="price">Contact for Price</span>                 
+                          ):''}
+                        </div>
+                        
+                        <div className={favorite ? "frame active "+frameMax : "frame "+frameMax } onClick={() => favoritesMutation.mutate(item.id)}>
+                            <span className={localStorage.getItem('favorites').split(',').indexOf(item.id.toString()) > -1 ? "frameIcon active" : "frameIcon"}></span>
+                            <span className="frametext">{localStorage.getItem('favorites').split(',').indexOf(item.id.toString()) > -1 ? 'remove' : 'save'}</span>
+                        </div>
+                      </div>
+                      <div className={type == 1 ? "col-8 col-sm-6" : "col-8 col-sm-8"}>
+                        <div className="author">
+                            <Link to={`/artists/${item.artist_id}`}>{item.display_name}</Link>
+                            <p>{item.title}</p>
+                            <p className='size'>{item.width} x {item.height} cm</p>
+                        </div>
+                      </div>
+                      <div className={type == 1 ? "nMobile col-sm-3" : "nMobile col-sm-2"}>
+                        {item.buy_it_now && <span className="price">
+                            {item.buy_it_now+' $'}  
+                        </span> }
+                        {item.request_price ? (             
+                          <span className="price">Contact for Price</span>                 
+                        ):''}
+                      </div>
                     </div>
-                    <div className="author">
-                        <Link to={`/artists/${item.artist_id}`}>{item.display_name}</Link>
-                        <p>{item.title}</p>
-                        <p className='size'>{item.width} x {item.height} cm</p>
-                    </div>
-                    {item.buy_it_now && <span className="price">
-                        {item.buy_it_now+' $'}  
-                    </span> }
-                    {item.request_price ? (             
-                      <span className="price">Contact for Price</span>                 
-                     ):''}
                 </div></div>
           
               }) : ''
