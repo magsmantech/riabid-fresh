@@ -108,9 +108,12 @@ function Dashboard(props) {
   },[])
 
   useEffect(function(){
+    
     const parsed = queryString.parse(props.location.search);
+    console.log(parsed.tab)
     if(parsed.tab){
-      setCat(4);
+      handleResize();
+      setCategory(null,2);
     }
   },[props.location.search])
 
