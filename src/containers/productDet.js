@@ -264,7 +264,7 @@ export default function ProductDet(props) {
               </div>
 
                 <ul>
-                   <li><a href="#" onClick={(e) =>{ e.preventDefault(); favoritesMutation.mutate(artwork.id)}}><span className={localStorage.getItem('favorites') && localStorage.getItem('favorites').split(',').indexOf(props.match.params.index.toString()) > -1 ? "frameIcon active" : "frameIcon"}></span>save</a></li>
+                   <li><a href="#" onClick={(e) =>{ e.preventDefault(); favoritesMutation.mutate(artwork.id)}}><span className={localStorage.getItem('favorites') && localStorage.getItem('favorites').split(',').indexOf(props.match.params.index.toString()) > -1 ? "frameIcon active" : "frameIcon"}></span>{localStorage.getItem('favorites') && localStorage.getItem('favorites').split(',').indexOf(props.match.params.index.toString()) > -1 ? "remove" : "save"}</a></li>
                     <li><a href="#" onClick={() => setShareActive(!shareActive)}><span className="shareIcon"></span>share</a></li>
                 </ul>
             </div>
