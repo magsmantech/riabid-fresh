@@ -225,18 +225,23 @@ function EditArtwork(props) {
           </ul>
         </div>
       </div>
+      <form
+            encType="multipart/form-data"
+            onSubmit={formik.handleSubmit}
+            className="submitArtwork dashboard"
+          >
+        <div className="row addPage">
+            <div className="col-md-4 pics">
+                  <div className="row picBox">
+                    <div className="col-md-4">
+                      <div className="labelName">Main image</div>
+                    </div>
+                    <div className="col-md-8 picture">
 
-        <div className="addPage">
-            <div className="pics">
-                  <div className="picBox">
-                    <div className="labelName">Main image</div>
-                    <div className="picture">
-                    <div className="pics">
-                    <a href="#" >
-                      <img src={preview[0] ? preview[0] : addArtworkIcon} />
-                     
-      
+                    <div className="plusHover">
+                   
               <input
+                className="hiddenInput"
                 onChange={(e) => {
                 selectedFile[0] = e.target.files[0];
                     setSelectedFile(selectedFile)                        
@@ -253,21 +258,32 @@ function EditArtwork(props) {
                 }}
                 type="file"
                 name="images"
-              />
+              /><div className="plus">
+
+                      {preview[0] ? <img src={preview[0]} /> :  <svg viewBox="0 0 110 110" fill="none">
+                        <rect width="100%" height="100%" fill="none"/>
+                        <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
+                        <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
+                      </svg> }
+              </div>
+                     
+      
      
             
-                    </a>
                     </div>
                   </div>  
                 </div>  
 
-                <div className="picBox addonImages">
-                    <div className="labelName">More images</div>
-                    <div className="picture">
-                      <div className="pics">
-                        <a href="#">
-                          <img src={preview[1] ? preview[1] : addIcon} />
+                <div className="row picBox addonImages">
+                    <div className="col-md-4">
+                      <div className="labelName">More images</div>
+                    </div>
+                    <div className="picture col-md-8">
+                      <div className="pics row">
+                          <div className="col-md-4">
+                          <div className="plus">
                           <input
+                          className="hiddenInput"
                 onChange={(e) => {
                 selectedFile[1] = e.target.files[0];
                     setSelectedFile(selectedFile)                        
@@ -285,11 +301,19 @@ function EditArtwork(props) {
                 type="file"
                 name="images"
               />
-                        </a>
+                          {preview[1] ? <img src={preview[1]} /> :  <svg viewBox="0 0 110 110" fill="none">
+                        <rect width="100%" height="100%" fill="none"/>
+                        <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
+                        <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
+                      </svg> }
 
-                        <a href="#">
-                          <img src={preview[2] ? preview[2] : addIcon} />
-                          <input
+                         </div>
+                          </div>
+                       
+                  <div className="col-md-4">
+                  <div className="plus">
+                  <input
+                          className="hiddenInput"
                 onChange={(e) => {
                 selectedFile[2] = e.target.files[0];
                     setSelectedFile(selectedFile)                        
@@ -307,11 +331,20 @@ function EditArtwork(props) {
                 type="file"
                 name="images"
               />
-                        </a>
+                          {preview[2] ? <img src={preview[2]} /> :  <svg viewBox="0 0 110 110" fill="none">
+                        <rect width="100%" height="100%" fill="none"/>
+                        <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
+                        <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
+                      </svg> }</div>
+                          
+                     
+                  </div>
 
-                        <a href="#" className="lastM">
-                          <img src={preview[3] ? preview[3] : addIcon} />
-                          <input
+                      <div className="col-md-4">
+
+                      <div className="plus">
+                      <input
+                          className="hiddenInput"
                 onChange={(e) => {
                 selectedFile[3] = e.target.files[0];
                     setSelectedFile(selectedFile)                        
@@ -329,18 +362,25 @@ function EditArtwork(props) {
                 type="file"
                 name="images"
               />
-                        </a>
+                          {preview[3] ? <img src={preview[3]} /> :  <svg viewBox="0 0 110 110" fill="none">
+                        <rect width="100%" height="100%" fill="none"/>
+                        <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
+                        <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
+                      </svg> }</div>
+
+                         
+                      </div>
+                   
+
+                    
                     </div>
                     <div className="labelName smallSize" >Please upload high-quality photos of the work's front and back with no frames.</div>
                   </div>  
                   
                 </div>              
             </div>
-            <form
-            encType="multipart/form-data"
-            onSubmit={formik.handleSubmit}
-            className="submitArtwork dashboard"
-          >
+            <div className="offset-md-1 col-md-4">
+           
         <div className="firstForm">
           <div className="row">
             <div className='col-md-6'>
@@ -529,11 +569,15 @@ function EditArtwork(props) {
             
           
         </div>
-        <button
-            className="submitArtworkButton"
-              type="submit"
-            >{id ? "UPDATE ARTWORK" : "SUBMIT ARTWORK"}</button>
-          </form></div>
+       
+          </div>
+          <div className="offset-md-1 col-md-2">
+            <button
+              className="submitArtworkButton"
+                type="submit"
+              >{id ? "UPDATE ARTWORK" : "SUBMIT ARTWORK"}</button>
+          </div>
+          </div></form>
      
     </section>
   );

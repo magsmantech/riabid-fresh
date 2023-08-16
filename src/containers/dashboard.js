@@ -239,11 +239,17 @@ function Dashboard(props) {
 
 
       {cat != 4 && <div className='col-6 col-lg-3'>
-       {cat == 1 && <div className="productBlock addArtwork square">
+       {cat == 1 && <div className="productBlock addArtwork ">
             
               <a href="/dashboard/addartwork">
-                <img src={addArtwork} />
+                <div className="plus">
+                <svg viewBox="0 0 110 110" fill="none">
+                  <rect width="100%" height="100%" fill="none"/>
+                  <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
+                  <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
+                </svg>
                 <span>Add new artwork</span>
+              </div>               
               </a>
               </div>
             }

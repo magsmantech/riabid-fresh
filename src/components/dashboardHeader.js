@@ -8,7 +8,8 @@ import Loading from "../containers/loading";
 export default function DashboardHeader(){
     const [text, setText] = useState('');
     const [image, setImage] = useState(null);
-    const [update, setUpdate]= useState(false);
+    const [update, setUpdate] = useState(false);
+    const [updated,setUpdated] = useState(true);
     const { isLoading, error, data } = useQuery("bio", getMyBiography, {refetchOnWindowFocus: false,});
 
     let name, description, img;
@@ -36,6 +37,7 @@ export default function DashboardHeader(){
             progress: undefined,
             hideProgressBar: true,
           });
+          setUpdated(true);
           //window.location.reload();
         },
         onSettled: (data, error, variables, context) => {
@@ -56,6 +58,8 @@ export default function DashboardHeader(){
         progress: undefined,
         hideProgressBar: true,
       });
+      
+      setUpdated(true);
       //window.location.reload();
     },
     onSettled: (data, error, variables, context) => {
@@ -102,16 +106,20 @@ export default function DashboardHeader(){
                 value={text}
               ></textarea>
       </div>
-      <div className='col-md-1'></div>
-      <div className='col-md-2'>
+      <div className='offset-md-1 col-md-1'>
       <div className="bUpdate">
-        <div className="img">
-          
-          <img src={addIcon}/>
-          <input type="file" name="image" onChange={(e)=> setImage(e.target.files && e.target.files[0])}></input>
+        <div className="img plusHover">
+        <input type="file" name="image" onChange={(e)=> setImage(e.target.files && e.target.files[0])} />
+          <div className="plus">
+            <svg viewBox="0 0 110 110" fill="none">
+              <rect width="100%" height="100%" fill="none"/>
+              <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
+              <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
+            </svg>
+          </div>          
         </div>
 
-        <button className="updateBio">UPDATE INFO</button>
+        <button className={updated ? "updateBio active" : "updateBio"}>{updated ? "UPDATED" : "UPDATE INFO"}</button>
         </div>
 
       </div>

@@ -112,7 +112,7 @@ function GalleriesFull(props) {
         </div>
       </div>
       <div className='row curatedArtworks' >
-                <h1>curated artworks</h1>
+                <h1 className="curatedArtworks">curated artworks</h1>
 
             <div className='col-6 col-lg-3'>
 

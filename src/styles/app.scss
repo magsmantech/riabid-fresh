@@ -28,6 +28,42 @@ ul{
     z-index: 6;
     background-color: white;
 }
+.plus {
+    span{
+        transition:0.5s all;
+    }
+    svg {
+        width:100%;
+        height:100%;
+      rect {
+        fill: #F7F7F7;
+        transition:0.5s all;
+      }
+      path{
+        stroke: black;
+        transition:0.5s all;
+      }
+    }
+  }
+.plusHover{
+    input:hover ~ .plus svg rect{
+        fill:black;
+    }
+    input:hover ~ .plus svg path{
+        stroke:white;
+    }
+}
+.plus:hover{
+    svg rect{
+        fill:black;
+    }
+    svg path{
+        stroke:white;
+    }
+    span{
+        color:white;
+    }
+}
 .trendMenu{
     margin-top:62px;
     overflow:hidden;
@@ -65,6 +101,9 @@ ul{
             opacity:1;
         }        
     }
+}
+.curatedArtworks{
+    font-size:32px!important;
 }
 .productGrid .col-4{
     padding-left:5px;
@@ -866,9 +905,9 @@ line-height: 20px; /* 125% */
     }
     .dir{
         flex-direction: column;
-        justify-content: space-between;
     }
     .text{
+        margin-top:48px;
         color:#000;
 font-feature-settings: 'salt' on;
 
@@ -1523,9 +1562,27 @@ p.no_page{
     }
 }
 .addPage{
-    display: flex;
-    justify-content: space-between;
- 
+    .firstForm{
+        padding-left:10px;
+    }
+    .plusHover{
+        position:relative;
+    }
+    .plus{
+        position:relative;
+        height:100%;
+        img{
+            max-width:100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .hiddenInput{
+        position:absolute;
+        width:100%;
+        height:100%;
+        opacity:0;
+    }
     .labelName{
         font-family: 'MonumentGrotesk-Regular';
         font-style: normal;
@@ -1536,11 +1593,7 @@ p.no_page{
         font-feature-settings: 'salt' on;
         color: #000000;
     }
-    .picBox{
-        display:flex;
-        justify-content: space-between;
-     
-    }
+
     .picture{
         
           
@@ -1548,10 +1601,7 @@ p.no_page{
             background:#F7F7F7; 
             position:relative;
             display:block;
-            width:372px;
-            height:352px;
             text-align: center;
-            line-height:352px;
             img{
                 max-width:372px;
                 max-height:352px;
@@ -1570,7 +1620,7 @@ p.no_page{
         justify-content: left;
         
         .picture{
-            margin-left:28px;
+            
          .pics{
             background:transparent;
          }
@@ -1597,16 +1647,11 @@ p.no_page{
     font-size:12px!important;
 }
 .submitArtwork.dashboard{
-    display:flex;
-    justify-content: space-between;
-    width:calc(100% - 629px);
     .labelName{
         margin-top:25px;
         margin-bottom:4px;
     }
-    .firstForm{
-        width:80%;
-    }
+   
     select{
         width:100%;
         border:0px;
@@ -1693,12 +1738,11 @@ p.no_page{
 }
 .submitArtworkButton{
     border:0px;
-      width: 228px;
-    height: 225px;
+    width: 100%;
+    height: 40%;
     border-top:1px solid #000000;
     border-bottom:1px solid #000000;
     background: transparent;
-    margin-left:129px;
 
     font-family: 'MonumentGrotesk-Regular';
     font-style: normal;
@@ -1710,6 +1754,11 @@ p.no_page{
     text-transform: uppercase;
     font-feature-settings: 'salt' on;
     color: #000000;
+    transition:0.5s all;
+}
+.submitArtworkButton:hover{
+    color:white;
+    background:black;
 }
 .noMargin{
     margin-top:0px!important;
@@ -1935,6 +1984,11 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .addPage{
+        .firstForm{
+            padding-left:0px;
+        }
+    }
     .specialProjects {
         h1{
             font-size:32px;
@@ -2354,9 +2408,7 @@ footer .secondLine ul li a:hover{
     .addPage .addonImages.picBox .picture a{
         width:31%;
     }
-    .addPage .picBox{
-        flex-direction: column;
-    }
+
     
     .artistFullPage .bio h1{
         font-size:32px;
