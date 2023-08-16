@@ -9,7 +9,7 @@ export default function DashboardHeader(){
     const [text, setText] = useState('');
     const [image, setImage] = useState(null);
     const [update, setUpdate] = useState(false);
-    const [updated,setUpdated] = useState(true);
+    const [updated,setUpdated] = useState(false);
     const { isLoading, error, data } = useQuery("bio", getMyBiography, {refetchOnWindowFocus: false,});
 
     let name, description, img;
