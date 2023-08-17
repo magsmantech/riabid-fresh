@@ -151,7 +151,7 @@ function EditArtwork(props) {
           hideProgressBar: true,
         }
       );
-      window.location.href = "/store";
+      window.location.href = "/dashboard";
     },
     onSettled: (data, error, variables, context) => {
       // Error or success... doesn't matter!
@@ -244,7 +244,7 @@ function EditArtwork(props) {
                <input
                 className="hiddenInput"
                 onChange={(e) => {
-                selectedFile[0] = e.target.files[0];
+                    selectedFile[0] = e.target.files[0];
                     setSelectedFile(selectedFile)                        
                     const file = e.target.files[0]
                     const fileReader = new FileReader()
@@ -260,11 +260,10 @@ function EditArtwork(props) {
                 type="file"
                 name="images"
               />
-                      {preview[0] ? <img src={preview[0]} /> :  <svg viewBox="0 0 110 110" fill="none">
-                        <rect width="100%" height="100%" fill="none"/>
-                        <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
-                        <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
-                      </svg> }
+                  <div className="customPl">    {preview[0] ? <img src={preview[0]} /> : <svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 112 112" fill="none">
+                  <path d="M55.7107 -0.000233345V111.421" stroke="black" stroke-linejoin="round"/>
+                  <path d="M1.71094 55.7104H111.422" stroke="black" stroke-linejoin="round"/>
+                </svg> }</div>
               </div>
                      
       
@@ -275,12 +274,12 @@ function EditArtwork(props) {
                 </div>  
 
                 <div className="row picBox addonImages">
-                    <div className="col-md-4">
+                    <div className="col-12 col-md-4">
                       <div className="labelName">More images</div>
                     </div>
-                    <div className="picture col-md-8">
+                    <div className="picture col-12 col-md-8">
                       <div className="pics row">
-                          <div className="col-md-4">
+                          <div className="col-4">
                           <div className="plus">
                           <input
                           className="hiddenInput"
@@ -310,7 +309,7 @@ function EditArtwork(props) {
                          </div>
                           </div>
                        
-                  <div className="col-md-4">
+                  <div className="col-4">
                   <div className="plus">
                   <input
                           className="hiddenInput"
@@ -340,7 +339,7 @@ function EditArtwork(props) {
                      
                   </div>
 
-                      <div className="col-md-4">
+                      <div className="col-4">
 
                       <div className="plus">
                       <input

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import editIcon from "../../assets/icons/edit.png";
-import removeIcon from "../../assets/icons/remove.png";
+import editIcon from "../../assets/icons/edit.svg";
+import removeIcon from "../../assets/icons/remove.svg";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast, ToastContainer } from 'react-toastify';
 

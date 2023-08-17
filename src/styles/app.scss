@@ -45,12 +45,45 @@ ul{
       }
     }
   }
-  .addArtworkbox{
+  .customPl{
+    height:352px;
+    transition:0.5s all;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     
     text-align: center;
+    background: #F7F7F7;
     svg{
         width:112px;
         height:112px;
+    }
+    &:hover{
+        background: black;
+    }
+  }
+  .addArtworkbox{
+    padding-top:112px;
+    padding-bottom:100px;
+    text-align: center;
+    transition:0.5s all;
+    svg{
+        width:112px;
+        height:112px;
+        path{
+            transition:0.5s all;
+        }
+    }
+    &:hover{
+        background:black;
+        span{
+            color:white;
+        }
+        svg{
+            path{
+                stroke:white;
+            }
+        }
     }
   }
 .plusHover{
@@ -60,6 +93,9 @@ ul{
     }
     input:hover ~ .plus svg path{
         stroke:white;
+    }
+    input:hover ~ .customPl{
+        background:black;
     }
 }
 .plus:hover{
@@ -118,6 +154,7 @@ ul{
     padding-left:5px;
     padding-right:5px;
 }
+
 .trendMenu.fullWidth{
     width:100%;
     li{
@@ -1543,6 +1580,8 @@ p.no_page{
             border-style: solid;
             border-color: #000000;
             width:228px;
+            max-height:224px;            
+            letter-spacing: 0.72px;
             cursor:pointer;
             transition:0.5s all;
         }
@@ -1608,7 +1647,10 @@ p.no_page{
         font-feature-settings: 'salt' on;
         color: #000000;
     }
-
+    .labelName.smallSize{
+        line-height: 16px;
+        font-size:12px!important;
+    }
     .picture{
         
           
@@ -2004,6 +2046,20 @@ p.no_page{
     }
 }
 @media only screen and (max-width: 767px) {
+    .addPage .addonImages{
+        margin-bottom:33px;
+    }
+    .profile .profileBioUp textarea{
+        margin-left:0px;
+    }
+    .addArtworkbox{
+        padding-top:40px;
+        padding-bottom:60px;
+        svg{
+            width:70px;
+            height:70px;
+        }
+    }
     .addPage{
         .firstForm{
             padding-left:0px;
@@ -2295,10 +2351,7 @@ footer .secondLine ul li a:hover{
     .inProfile a{
         font-size:12px!important;
     }
-    .addArtwork a{
-        padding-top:50px;
-        padding-bottom:50px;
-    }
+  
     .allMenu div{
         width:auto!important;
         padding-right:7px;
@@ -2417,6 +2470,7 @@ footer .secondLine ul li a:hover{
             width:100%;
         }
         .updateAddress{
+            max-height:224px;
             width:100%;
             padding-top:12px;
             padding-bottom:12px;
