@@ -2220,18 +2220,34 @@ font-feature-settings: 'salt' on;
         }
         .description{
             ul{
-                position:fixed;
-                bottom:16px;
-                left:0;
-                width:100%;
-                background: white;
-                z-index: 5;
-                overflow:hidden;
-                margin-top:64px;
-                .price{
-                    border-top:1px solid black;
+                position:relative;
+                margin-top:100px;
+                li:first-child,li:last-child{
+                    width:100%;
+                    display:block;
+                }
+                li:first-child{
+                    .price{
+                        border-bottom:0px;
+                        .currency{
+                            top:unset;
+                        }
+                    }
                 }
             }
+            // ul{
+            //     position:fixed;
+            //     bottom:16px;
+            //     left:0;
+            //     width:100%;
+            //     background: white;
+            //     z-index: 5;
+            //     overflow:hidden;
+            //     margin-top:64px;
+            //     .price{
+            //         border-top:1px solid black;
+            //     }
+            // }
         }
     }
 

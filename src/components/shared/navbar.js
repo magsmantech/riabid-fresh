@@ -53,7 +53,6 @@ const [email, setEmail] = useState("");
 
   useEffect(()=>{
       if(showMenu){
-        setRegMode(1);
         setAuthActive(true);
       }
   },[showMenu])
@@ -67,6 +66,10 @@ const [email, setEmail] = useState("");
       setShowMenu(true)
     }else{
       setShowMenu(false)
+    }
+
+    if(authActive && window.innerWidth < 769){
+      document.body.scrollTop = 0;
     }
   },[authActive])
 
