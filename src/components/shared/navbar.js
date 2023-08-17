@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import ln from "../../assets/logo-new.svg";
 import chat from "../../assets/icons/chat.svg";
@@ -9,11 +9,12 @@ import { useMutation } from "react-query";
 import { change, login, register,favorites } from "../../services/authService";
 import { toast } from "react-toastify";
 import { MetaTags } from "react-meta-tags";
+import { AppContext } from './../../App';
+
 function Navbar() {
+  const { showMenu,setShowMenu } = useContext(AppContext)
 
-
-  
-  const handleKeyDown = (e) => {
+   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       window.location.href ='/search?search=' + searchValue;
     }
@@ -49,9 +50,25 @@ const [email, setEmail] = useState("");
     };
   }, []);
 
+
+  useEffect(()=>{
+      if(showMenu){
+        setRegMode(1);
+        setAuthActive(true);
+      }
+  },[showMenu])
+
   useEffect(() => {   
     setMobileShow(false);
   }, []);
+
+  useEffect(()=>{
+    if(authActive){
+      setShowMenu(true)
+    }else{
+      setShowMenu(false)
+    }
+  },[authActive])
 
   const handleScroll = (event) => {
     if(document.getElementsByClassName('collapse navbar-collapse show').length > 0){

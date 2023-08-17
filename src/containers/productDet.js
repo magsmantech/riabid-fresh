@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useRef } from "react";
+import React, { useState,useEffect,useRef,useContext } from "react";
 import small from "../assets/product/small-img.png";
 import main from "../assets/product/main.png";
 import clock from "../assets/product/clock.png";
@@ -12,6 +12,7 @@ import ProductBlock from "../components/shared/ProductBlock";
 import { getArtwork } from "../services/artworksService";
 import Loading from "./loading";
 import Carousel from 'react-bootstrap/Carousel';
+import { AppContext } from './../App';
 
 import {
   addBag,
@@ -30,6 +31,11 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import axios from '../lib/axios';
+
+
+
+
+
 
 function MyTimer({ expiryTimestamp }) {
   const {
@@ -61,6 +67,8 @@ export default function ProductDet(props) {
   const [active, setActive] = useState(0);
   const ref = useRef(null);
 
+  const { showMenu,setShowMenu } = useContext(AppContext)
+
   const onPrevClick = () => {
     console.log(ref.current);
     ref.current.prev();
@@ -76,12 +84,17 @@ export default function ProductDet(props) {
 
   const addMutation = useMutation(addBag, {
     onMutate: (variables) => {
+      if(!currentUser.isAuthenticated){
+        setShowMenu(true);
+      }
       return { id: 1 };
     },
     onError: (error, variables, context) => {
       toast.error("You need to login");
     },
     onSuccess: (data, variables, context) => {
+      
+      
       toast.dark("Artwork added to bag", {
         progress: undefined,
         hideProgressBar: true,
@@ -277,6 +290,7 @@ export default function ProductDet(props) {
                   {artwork.buy_it_now &&  `${artwork.buy_it_now}`}
                 </p></li>
                 <li><button
+                className="addToCart"
                   onClick={() =>
                     addMutation.mutate({ id: artwork.id, is_gift: isGift })
                   }

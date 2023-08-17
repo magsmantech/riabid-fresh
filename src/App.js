@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,createContext} from "react";
 import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 
@@ -55,6 +55,9 @@ import Collection from "./containers/collection";
 import Curator from "./containers/curator";
 import Organizations from "./containers/organizations";
 
+
+export const AppContext = createContext(null)
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -74,9 +77,10 @@ persistQueryClient({
 
 function App() {
   const { currentUser, setCurrentUser } = userProvider();
-
+  const [showMenu, setShowMenu] = useState(false);
+  const appData = {showMenu,setShowMenu}
   return (
-    <>
+    <AppContext.Provider value={appData}>
       {currentUser.isAuthenticated ? (
         <QueryClientProvider client={queryClient}>
           <ToastContainer />
@@ -410,7 +414,7 @@ function App() {
         appId="248790890527668"
         themeColor="#000000"
       />
-    </>
+ </AppContext.Provider>
   );
 }
 

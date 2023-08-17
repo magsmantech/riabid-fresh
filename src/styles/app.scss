@@ -1591,6 +1591,13 @@ p.no_page{
         }
     }
 }
+.addToCart{
+    transition:0.5s all;
+}
+.addToCart:hover{
+    background:black!important;
+    color:white!important;
+}
 .allMenu.inProfile{
     padding-left:0px;
     border-bottom:1px solid black;
