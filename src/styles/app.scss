@@ -45,7 +45,16 @@ ul{
       }
     }
   }
+  .addArtworkbox{
+    
+    text-align: center;
+    svg{
+        width:112px;
+        height:112px;
+    }
+  }
 .plusHover{
+    cursor:pointer;
     input:hover ~ .plus svg rect{
         fill:black;
     }
@@ -207,7 +216,7 @@ span.shareIcon{
             font-style: normal;
             font-weight: 400;
             font-size: 12px;
-            height:15px;
+            height:16px;
             overflow:hidden;
             line-height: 16px;
             color: #000000;
@@ -1400,6 +1409,7 @@ p.no_page{
         position:relative;
         width:110px;
         input{
+            cursor: pointer;
             position:absolute;
             top:0;
             left:0;
@@ -1424,6 +1434,7 @@ p.no_page{
         }
         textarea{
             width:100%;
+            margin-left:10px;
             height:192px;
             resize:none;
             border:0px;
@@ -1566,10 +1577,14 @@ p.no_page{
         padding-left:10px;
     }
     .plusHover{
+        input{
+            cursor:pointer;
+        }
         position:relative;
     }
     .plus{
         position:relative;
+        cursor:pointer;
         height:100%;
         img{
             max-width:100%;
@@ -1665,6 +1680,11 @@ p.no_page{
         font-feature-settings: 'salt' on;
  
         color:black;
+    }
+    .plus{
+        input{
+            cursor:pointer;
+        }
     }
     select::placeholder, input::placeholder, textarea::placeholder {
         color: #B3B3B3;

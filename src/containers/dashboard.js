@@ -242,11 +242,11 @@ function Dashboard(props) {
        {cat == 1 && <div className="productBlock addArtwork ">
             
               <a href="/dashboard/addartwork">
-                <div className="plus">
-                <svg viewBox="0 0 110 110" fill="none">
-                  <rect width="100%" height="100%" fill="none"/>
-                  <path d="M54.6274 32V77.2549"  stroke-linejoin="round"/>
-                  <path d="M32 54.6274H77.2548"  stroke-linejoin="round"/>
+                <div className="addArtworkbox">
+                  
+                <svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 112 112" fill="none">
+                  <path d="M55.7107 -0.000233345V111.421" stroke="black" stroke-linejoin="round"/>
+                  <path d="M1.71094 55.7104H111.422" stroke="black" stroke-linejoin="round"/>
                 </svg>
                 <span>Add new artwork</span>
               </div>               
