@@ -1619,7 +1619,10 @@ p.no_page{
     }
 }
 .addPage{
-
+    .pics .plus{
+        text-align: center;
+        background:#f7f7f7
+    }
     .pics .plus img{
         max-height:98px;
     }
