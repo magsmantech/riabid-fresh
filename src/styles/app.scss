@@ -1618,6 +1618,7 @@ p.no_page{
         }
     }
 }
+
 .addPage{
     .addonImages{
     .pics .plus{
@@ -1860,7 +1861,7 @@ p.no_page{
 }
 .shipInfo{
     padding-top:92px;
-    input{
+    input[type='text']{
         width:100%;
         display:block;
         background:transparent;
@@ -1877,10 +1878,81 @@ p.no_page{
         padding-bottom:4px;
         border-bottom: 1px dashed #CCCCCC;
     }
-    input::placeholder{
+    input.shippingCheckbox{
+   
+        
+    }
+    input[type='text']::placeholder{
         opacity:0.2;
     }
 }
+
+.checkbox_container {
+    float:left;
+    padding-right: 35px;
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .checkbox_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmarkd {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .checkbox_container:hover input ~ .checkmarkd {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .checkbox_container input:checked ~ .checkmarkd {
+    background-color: black;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmarkd:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkbox_container input:checked ~ .checkmarkd:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .checkbox_container .checkmarkd:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 .checkout{
     padding-top:100px;
     h1{

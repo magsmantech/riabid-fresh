@@ -59,8 +59,8 @@ export function removeItem(id) {
   return http.post(apiUrl + "/bag/delete/" + id);
 }
 
-export function createOrder(id) {
-  return http.post(apiUrl + "/create-order");
+export function createOrder({props}) {
+  return http.post(apiUrl + "/create-order",{shipping:props.shipping});
 }
 
 export function getAddress() {

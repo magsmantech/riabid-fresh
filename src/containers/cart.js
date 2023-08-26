@@ -20,6 +20,7 @@ export default function Cart() {
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
   const [iban, setIban] = useState("");
+  const [shipping, setShipping] = useState(false);
   const queryClient = useQueryClient();
 
   let bio = useQuery("bio", getMyBiography, {refetchOnWindowFocus: false,});
@@ -142,11 +143,17 @@ export default function Cart() {
                     <div className="checkout">
                       <h1>checkout</h1>
                       <p>artworks <span>{data.data.total} $</span></p>
-                      <p>shipping <span>70 $</span></p>
+                      <p style={{height:'28px'}}> <label class="checkbox_container" onClick={e=>{
+                        e.preventDefault();
+                        setShipping(!shipping);
+                        }}>shipping
+  <input type="checkbox" value='1' checked={shipping}/>
+  <span class="checkmarkd"></span>
+</label> <span>{shipping ? 70 : 0 } $</span></p>
 
-                    <p className="total_amount">total amount <span>{data.data.total + 70} $</span></p>
+                    <p className="total_amount">total amount <span>{data.data.total + (shipping ? 70 : 0)} $</span></p>
 
-                      <button className='payNow' onClick={() => orderMutation.mutate()}>PAY NOW</button>
+                      <button className='payNow' onClick={() => orderMutation.mutate({shipping:shipping})}>PAY NOW</button>
                     </div>
                  
           </div>
