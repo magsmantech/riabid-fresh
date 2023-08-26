@@ -46,12 +46,21 @@ function Main() {
     ? collectionsResult.data.data
     : [];
 
+
+    const pressResult = useQuery("press", getPress, {
+      refetchOnWindowFocus: false,
+    });
+    const pressData = pressResult.data ? pressResult.data.data : [];
+
+
+
+
     const pressSliderSettings = {
       dots: false,
       infinite: true,
       draggable:true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: pressData?.length < 4 ? pressData?.length : 4,
       slidesToScroll: 1,
       accessibility: true,
       className: "press-slide",
@@ -59,21 +68,17 @@ function Main() {
         {     
           breakpoint:992,   
           settings:{
-            slidesToShow:3
+            slidesToShow:pressData?.length < 3 ? pressData?.length : 3
           }
       },
       {     
         breakpoint:768,   
         settings:{
-          slidesToShow:2
+          slidesToShow:pressData?.length < 2 ? pressData?.length : 2
         }
     },
       ]
     };
-    const pressResult = useQuery("press", getPress, {
-      refetchOnWindowFocus: false,
-    });
-    const pressData = pressResult.data ? pressResult.data.data : [];
 
    return (
     <section>
