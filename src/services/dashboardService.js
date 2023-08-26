@@ -59,7 +59,7 @@ export function removeItem(id) {
   return http.post(apiUrl + "/bag/delete/" + id);
 }
 
-export function createOrder({props}) {
+export function createOrder(props) {
   return http.post(apiUrl + "/create-order",{...props});
 }
 
