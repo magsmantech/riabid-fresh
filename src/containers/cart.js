@@ -153,7 +153,7 @@ export default function Cart() {
 
                     <p className="total_amount">total amount <span>{data.data.total + (shipping ? 70 : 0)} $</span></p>
 
-                      <button className='payNow' onClick={() => orderMutation.mutate({shipping:shipping})}>PAY NOW</button>
+                      <button className='payNow' onClick={() => orderMutation.mutate({shipping:shipping,full_name:title,address_one:address_1,address_two:address_2,country:country,city:city,zip:zip,phone:phone,iban:iban})}>PAY NOW</button>
                     </div>
                  
           </div>

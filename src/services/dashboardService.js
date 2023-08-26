@@ -60,7 +60,7 @@ export function removeItem(id) {
 }
 
 export function createOrder({props}) {
-  return http.post(apiUrl + "/create-order",{shipping:props.shipping});
+  return http.post(apiUrl + "/create-order",{...props});
 }
 
 export function getAddress() {
