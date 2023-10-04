@@ -64,7 +64,11 @@ function footer() {
               <h4>Contacts</h4>
               <div className="seeText">
               <p>Email: <a href="mailto:help@riabid.ge">help@riabid.ge</a><br/>
-              Phone: <a href="tel:+995599200535">+995 599-200-535</a></p></div>
+              Phone: <a href="tel:+995599200535">+995 599-200-535</a></p>
+              
+              Design By
+              <a href="https://tententen.xyz" className="tenten">Tententen</a>
+              </div>
             </div>
         </div>
         <div className="secondLine">
