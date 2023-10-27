@@ -93,7 +93,7 @@ function Main() {
 
         <meta
           name="description"
-          content="RiaBid is the art auctions online. Find artworks for sale, online auctions for contemporary art, top galleries, leading Georgian artists."
+          content="Explore our Georgian selection of original artworks for sale. Ria Bid is  showcasing contemporary artists from very emerging up to the grand creators.  Our artworks are passed from the local residency programmes, private collections and artist studios.  Curated selection includes everything from oil paintings , photography , graphics , ceramics , sculpture and more…"
         />
       </MetaTags>
       <Hero />
