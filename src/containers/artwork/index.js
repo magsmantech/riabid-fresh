@@ -102,7 +102,7 @@ function EditArtwork(props) {
     width,
   }) => {
     const formData = new FormData();
-    
+  
 
     formData.append("title", title);
     formData.append("artist_id", artist_id);
@@ -117,12 +117,16 @@ function EditArtwork(props) {
     formData.append("medium", medium);
     formData.append("units", units);
     formData.append("width", width);
-    if (!id) {
-      formData.append("image1", selectedFile[0]);
-      formData.append("image2", selectedFile[1]);
-      formData.append("image3", selectedFile[2]);
-      formData.append("image4", selectedFile[3]);                                         
-    }
+    //if (!id) {
+      if(selectedFile[0])
+        formData.append("image1", selectedFile[0]);
+      if(selectedFile[1])
+        formData.append("image2", selectedFile[1]);
+      if(selectedFile[2])
+        formData.append("image3", selectedFile[2]);
+      if(selectedFile[3])
+        formData.append("image4", selectedFile[3]);                                         
+    //}
     id
       ? updateMutation.mutate({ id, data: formData })
       : updateMutation.mutate(formData);
