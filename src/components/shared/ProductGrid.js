@@ -211,7 +211,7 @@ export default function ProductGrid(){
     </div>
         <div className="row for3Col" ref={myGrid} >
             <div className={grid == 0 ? "auctionPageShow col-12 forMobileBigArt" : "col-12 forMobileBigArt"}>
-                    {grid != 0 &&  artworks.data &&
+                    {grid != 0 &&  artworks?.data &&
                     <ProductBlock
                     start={0}
                     limit={1}
