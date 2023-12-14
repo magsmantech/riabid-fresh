@@ -256,7 +256,7 @@ export default function ProductGrid(){
                     type={1}
                     />}
 
-{grid == 0 && artworks.length && boxLengthSecond.hasOwnProperty(0) && <AuctionBlock
+{grid == 0 && artworks?.length && boxLengthSecond.hasOwnProperty(0) && <AuctionBlock
                     start={show ==4 ? boxLengthSecond[0] :  boxLengthSecond[0]+1 }
                     limit={boxLengthSecond[1]}
                     data={artworks}
