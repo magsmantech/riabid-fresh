@@ -3,12 +3,19 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import ln from "../../assets/logo-new.svg";
 import chat from "../../assets/icons/chat.svg";
 import closeMenu from "../../assets/icons/closeMenu.svg";
+import searchIcon from '../../assets/icons/search_icon.svg';
+import google from '../../assets/icons/google.svg';
+import apple from '../../assets/icons/apple.svg';
+import facebook from '../../assets/icons/facebook.svg';
+import closePopup from '../../assets/icons/close_popup.svg';
 import { userProvider } from "../../store/store";
 import { logout } from "../../services/authService";
 import { useMutation } from "react-query";
 import { change, login, register,favorites } from "../../services/authService";
 import { toast } from "react-toastify";
 import { MetaTags } from "react-meta-tags";
+import { getMyBiography } from "../../services/dashboardService";
+import { useQuery } from "react-query";
 import { AppContext } from './../../App';
 
 function Navbar() {
@@ -42,6 +49,13 @@ const [email, setEmail] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [vW, setVW] = useState(0);
   const [regMode, setRegMode] = useState(2);
+  const [loginPopup,setLoginPopup] = useState(false);
+  const [signUpPopup,setSignupPopup] = useState(false);
+  const [forgotPopup,setForgotPopup] = useState(false);
+  const [err,setErr] = useState("");
+
+  const { isLoading, errorBio, data } = useQuery("bio", getMyBiography, {refetchOnWindowFocus: false,});
+
 
   useEffect(() => {    
     document.querySelector('body').addEventListener('scroll', handleScroll);
@@ -112,12 +126,15 @@ const [email, setEmail] = useState("");
       setError(error.response.data);
       if(error.response.data.email.length > 0){
         toast.error(error.response.data.email[0]);
+        setErr(error.response.data.email[0])
       }
       if(error.response.data.name.length > 0){
         toast.error(error.response.data.name[0]);
+        setErr(error.response.data.name[0])
       }
       if(error.response.data.password.length > 0){
         toast.error(error.response.data.password[0]);
+        setErr(error.response.data.password[0])
       }
     },
     onSuccess: (data, variables, context) => {
@@ -137,9 +154,12 @@ const [email, setEmail] = useState("");
     },
     onError: (error, variables, context) => {
       toast.error(error.response.data.error);
+      console.log(error.response.data.error)
+      setErr(error.response.data.error)
       console.log(`rolling back optimistic update with id ${context.id}`);
     },
     onSuccess: (data, variables, context) => {
+      setErr("");
       setCurrentUser({
         isAuthenticated: true,
         token: data,
@@ -154,6 +174,33 @@ const [email, setEmail] = useState("");
   });
 
 
+  const forgotMutation = useMutation(change, {
+    onMutate: (variables) => {
+      // A mutation is about to happen!
+
+      // Optionally return a context containing data to use when for example rolling back
+      return { id: 1 };
+    },
+    onError: (error, variables, context) => {
+      //toast.error(error.response.data.error);
+      console.log(error.response.data.email)
+      console.log(error.response.data.error)
+      setErr(error.response.data.email)
+      //console.log(`rolling back optimistic update with id ${context.id}`);
+    },
+    onSuccess: (data, variables, context) => {
+      //setErr("");
+      console.log(data);
+      setErr(data.message);
+      setEmail('');
+    },
+    onSettled: (data, error, variables, context) => {
+      // Error or success... doesn't matter!
+    },
+  });
+  
+
+
   
 
   const pathName = useLocation().pathname || null;
@@ -162,12 +209,32 @@ const [email, setEmail] = useState("");
   return (   
     <>
     <nav className="navbar navbar-expand-lg">
-    <Link className="logo-container navbar-brand col-md-5" to="/">
+    <Link className="logo-container navbar-brand col-md-2" to="/">
           <img className="logo" src={ln} alt="logo" />
     </Link>
+    <div className='col-md-2 searchInput'>
+      <input className="search" name="search" onChange={(e) => setSearchValue(e.target.value)}  placeholder="Search by artist or artwork" />
+      <img src={searchIcon} className="icon" onClick={(e) => {
+              redirect(e);
+            }}/>
+    </div>
+    <div className="col-md-1 navOffsetHide"></div>
 
   <div className={mobileShow ? "collapse navbar-collapse show" : "collapse navbar-collapse"} >
     <ul className="navbar-nav mr-auto"> 
+    <li className="nav-item">
+                <NavLink
+                className="nav-link"
+                  to={`/auctions`}
+                  activeClassName="active-item"
+                  // style={{
+                  //   color: pathName == "/artists" ? "#fbb03b " : "black",
+                  // }}
+                >
+                  AUCTIONS
+                </NavLink>
+              </li>
+
       <li className="nav-item">
                 <NavLink
                 className="nav-link"
@@ -206,23 +273,194 @@ const [email, setEmail] = useState("");
               </li>   
     </ul>
   </div>
-  <div className="ml-auto groupItems">
-
-            <span className="searchIcon" onClick={(e) =>{  e.preventDefault(); setSearchActive(!searchActive); setAuthActive(false);  }}></span>
-      
-          <Link  to="/dashboard?tab=4" >           
+  <div className="col-md-2 groupItems">
+      <div className="row">
+           
+      <div className='col-md-6'>
+          <Link className="frameBtn" to="/dashboard?tab=4" >           
             <span className="frameIcon"></span>
           </Link>
-          <Link to="/cart" onClick={(e)=> {if(!currentUser.isAuthenticated){ e.preventDefault(); setAuthActive(!authActive);setSearchActive(false);}  }}>
+          <Link className="cartBtn" to="/cart" onClick={(e)=> {if(!currentUser.isAuthenticated){ e.preventDefault(); setAuthActive(!authActive);setSearchActive(false);}  }}>
               <span className='cart-btn'></span>
             </Link>
 
-            <Link to="/dashboard" onClick={(e) =>{ if(!currentUser.isAuthenticated){ e.preventDefault(); setAuthActive(!authActive);setSearchActive(false);}  }}>
+            <Link className={!currentUser.isAuthenticated ? "oLogIn decorationNone " : " decorationNone "} to="/dashboard" onClick={(e) =>{ if(!currentUser.isAuthenticated){ e.preventDefault(); setLoginPopup(true);  }  }}>
               <span className={
                     authActive || currentUser.isAuthenticated ? "user-btn active" : "user-btn"
                   } ></span>
+
+                   <span className="profileName">{data?.data?.artist_name}</span>
             </Link>
+    
+       </div>     
+ 
+
+      <div className={!currentUser.isAuthenticated ? 'col-md-6 flexing' : 'col-md-6 flexing flexEnd'} >
+      {!currentUser.isAuthenticated ? 
+        <>
+          <button className="actionButtons signUpButton" onClick={(e) =>{ setSignupPopup(true); setLoginPopup(false); }}>Sign up</button>
+          <button className="actionButtons logInBtn" onClick={(e) =>{ setLoginPopup(true); setSignupPopup(false) }}>Log In</button>
+        </>
+      :
+        <button className="actionButtons LogOut" onClick={(e) =>{  logout(); window.location.href = "/"; }}>Log out</button>
+      }
+      </div>
+
+    </div>
+
+
+    <div className={loginPopup ? "loginPopup active" : "loginPopup"}>
+                  <div className="popupHead">
+                    <h1>Log in to collect art by Georgian artists <img src={closePopup} className="closePopup" onClick={(e)=>setLoginPopup(false)}  /></h1>
+                    <input name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}
+/>
+                    <input name="password" type='password' placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <a href="#" className="forgot" onClick={(e)=>{e.preventDefault(); setLoginPopup(false); setForgotPopup(true)}}>Forgot Password?</a>
+                  </div>
+
+                  <div>
+                    <p className={err.length > 0 ? "text red" : "text"}>{err}</p>
+                    <button className="submit"       onClick={() => {
+              loginMutation.mutate({ email, password });
+            }}
+>LOG IN</button>
+
+
+                    <p className="dontH">Don’t have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setLoginPopup(false);setSignupPopup(true)}}>Sign up</a></p>
+                    <p className="or">Or continue with</p>
+                    <ul>
+                      <li><a href="#"><img src={google} /></a></li>
+                      <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li>
+                    </ul>
+                  </div>
+      </div>
+
+
+      <div className={forgotPopup ? "forgotPopup active" : "forgotPopup"}>
+                  <div className="popupHead">
+                    <h1>Forgot Password <img src={closePopup} className="closePopup" onClick={(e)=>setForgotPopup(false)}  /></h1>
+                    <input name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}
+/>
+                  
+                  </div>
+
+                  <div>
+                    <p className={err.length > 0 ? "text red" : "text"}>{err}</p>
+                    <button className="submit"       onClick={(e) => { e.preventDefault();
+              forgotMutation.mutate({ email });
+            }}
+>RESET</button>
+
+
+                    <p className="dontH">Don’t have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setForgotPopup(false);setSignupPopup(true)}}>Sign up</a></p>
+              
+                  </div>
+      </div>
+
+
+
+      
+    <div className={signUpPopup ? "signUpPopup active" : "signUpPopup"}>
+                  <div className="popupHead">
+                    <h1>Sign up to collect art by Georgian artists <img src={closePopup} className="closePopup" onClick={(e)=>setSignupPopup(false)}  /></h1>
+
+                    <div className="regPage regpagMarging">
+         
+                  <label htmlFor="option-1" className="option option-1">
+                  <input
+                      value="1"
+                      type="radio"
+                      onChange={(e) => setAccountType(e.target.value)}
+                      name="type"
+                      id="option-1"
+                      defaultChecked
+                    />
+                      <span className={accountType == 1 ? 'typeActive' : ''}>Buyer</span>
+                    </label>
+
+                  <label htmlFor="option-2" className="option option-2">
+                  <input
+                      value="2"
+                      type="radio"
+                      onChange={(e) => setAccountType(e.target.value)}
+                      name="type"
+                      id="option-2"                      
+                    />
+                      <span className={accountType == 2 ? 'typeActive' : ''}>Artist</span>
+                    </label>
+                    <label htmlFor="option-3" className="option option-3">
+                  <input
+                      value="3"
+                      type="radio"
+                      onChange={(e) => setAccountType(e.target.value)}
+                      name="type"
+                      id="option-3"                      
+                    />
+                      <span className={accountType == 3 ? 'typeActive' : ''}>Seller</span>
+                    </label>
+            
+          </div>
+
+          <div className="regPage regpagMarging  ">
+             
+                  <label htmlFor="option-4" className="option option-4">
+                  <input
+                      value="1"
+                      type="radio"
+                      onChange={(e) => setUserType(1)}
+                      name="user_type"
+                      id="option-4"
+                      defaultChecked
+                    />
+                      <span className={userType == '1' ? 'typeActive' : ''}>Physical</span>
+                    </label>
+
+                  <label htmlFor="option-5" className="option option-5">
+                  <input
+                      value="2"
+                      type="radio"
+                      onChange={(e) => setUserType(2)}
+                      name="user_type"
+                      id="option-5"                      
+                    />
+                      <span className={userType == '2' ? 'typeActive' : ''}>Gallery</span>
+                    </label>                  
+              
+          </div>
+
+
+                    <input name="name" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} />
+                    <input name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                    <input name="password" placeholder="Password" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    
+                  </div>
+
+                  <div>
+                    <p className={err.length > 0 ? "text red" : 'text'}>{err ? err : "By clicking Sign Up you agree to RIABID’S Terms of Use and Privacy Policy and to receiving emails from RIABID" }</p>
+                    <button className="submit" onClick={() => {               
+                  const data = new FormData();        
+                  data.append("name", name);
+                  data.append("email", email);
+                  data.append("password", password);
+                  data.append("account_type", accountType);
+                  data.append("user_type", userType);
+                  registerMutation.mutate(data);               
+              }}>SIGN UP</button>
+                    <p className="dontH">Already have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setSignupPopup(false);setLoginPopup(true)}}>Log in</a></p>
+                    <p className="or">Or continue with</p>
+                    <ul>
+                      <li><a href="#"><img src={google} /></a></li>
+                      <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li>
+                    </ul>
+                  </div>
+      </div>
+
+
   </div>
+
+
 
   <button className="mobile_menu" onClick={(e)=>{setMobileShow(!mobileShow);setAuthActive(false);setSearchActive(false);}}>MENU</button>
 </nav>
@@ -235,46 +473,7 @@ const [email, setEmail] = useState("");
               ></div>
 
 
-<div className={
-                  searchActive
-                    ? "loginHeader active"
-                    : "loginHeader"
-                }
-              >
-                <img src={closeMenu} className="closeMenu" onClick={(e) => { setAuthActive(false);setSearchActive(false);} } />
-                <div className="row">
-                  <div className="col-md-2">
-<ul>
-  <li></li>
-  <li className='active' >Search</li> 
-  <li></li>
-</ul>
-</div>
 
-
-<div className="offset-md-3 col-md-6 regPage searchPage active">       
-              <input
-                  type="text"
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                  name="search"
-                  id="search"
-                  placeholder="Search"
-                />     
-                </div>       
-            <div className='col-md-1'>
-            <button
-            className="search"
-            onClick={(e) => {
-              redirect(e);
-            }}
-            >
-              Search
-            </button>
-            </div>
-
-</div>
-</div>
 
 
 
@@ -443,6 +642,10 @@ const [email, setEmail] = useState("");
             </button>
 </div>
 </div>
+
+
+
+
 </div>
 
 

@@ -19,6 +19,7 @@ import HistoryDashboard from "./containers/historyDashboard";
 import Galleries from "./containers/galleries";
 import Contact from "./containers/contact";
 import Auctions from "./containers/auctions";
+import AuctionsView from "./containers/auctionsView";
 import Text from "./containers/text";
 import ProductDet from "./containers/productDet";
 import NotFound404 from "./components/shared/404";
@@ -244,6 +245,11 @@ function App() {
                 path="/auctions"
                 render={(props) => <Auctions {...props} />}
               />
+               <Route
+                exact
+                path="/auctions/:index"
+                render={(props) => <AuctionsView {...props} />}
+              />
               <Route
                 exact
                 path="/contact"
@@ -376,6 +382,11 @@ function App() {
                 exact
                 path="/auctions"
                 render={(props) => <Auctions {...props} />}
+              />
+                <Route
+                exact
+                path="/auctions/:index"
+                render={(props) => <AuctionsView {...props} />}
               />
               <Route
                 exact

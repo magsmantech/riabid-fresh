@@ -21,8 +21,10 @@ function Auctions(props) {
 
   if (error) return "An error has occurred: " + error.message;
 
+  console.log(data.data);
+
   return (
-    <section id="shop" className="container auctions">
+    <section className="auctionPage">
       <MetaTags>
         <title>
           Buy and Sell Contemporary and Modern Art | Ria Bid Auctions
@@ -36,52 +38,52 @@ function Auctions(props) {
           content="Georgian painters,artwork for sale, art from georgia,  Tbilisi art, Landing Pages, artists from Tbilisi, contemporary artists from Georgia,Georgian artist works,i wants see georgian contemporary artists,"
         />
       </MetaTags>
-      <ul className="breadcrumb">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/auctions">Auctions ({data.data.length})</Link>
-        </li>
-      </ul>
-      <div className="grid-container-auctions">
-        {data.data.map((item) => (
-          <div key={item.id} className="product flex column">
-            <Link to={"/store/" + item.id}>
-              <div className="img">
-                <div className="group">
-                <img src={item.image}></img>
+  
+    <div className="auctionTitle">      
+        <h1>Auctions</h1>      
+    </div>
+
+    <div className="auctionBlocks upcomingBlock">
+      <h2>upcoming</h2>
+      <div className="row">
+      {data.data.upcoming.map((item,key)=>{
+        return <div className="col-md-6" key={key}><Link to={`/auctions/${item.id}`} className="aucBlock upComing">
+                <img src={item.image} className="w-100" />
+                <div className="row">
+                  <div className="col-md-9">
+                    <span className="auctionTitle">{item.name}</span>
+                    <span className="date">{item.city} {item.date_formatted}</span>
+                  </div>
+                  <div className="col-md-3">
+                    <span className="arrow">→</span>
+                  </div>
                 </div>
-              </div>
-            <div className="title_tag">
-              <p className="title">
-                <i>{item.title}</i>
-              </p>
-              <p className="title2">{item.display_name}</p>
-              </div>
-            </Link>
-            {item.is_geo ? (
-            <div className="flex space-between price_tag">
-              <div className="flex">
-                <p className="price auc-red">₾{item.current_bid}</p>
-                <p className="price gray">₾{item.buy_it_now}</p>
-                <img src={clock} className="clc" alt="Clock" />
-              </div>
-            </div>
-            ):
-            (
-              <div className="flex space-between price_tag">
-              <div className="flex">
-                <p className="price auc-red">${item.current_bid_usd}</p>
-                <p className="price gray">${item.buy_it_now_usd}</p>
-                <img src={clock} className="clc" alt="Clock" />
-              </div>
-            </div>
-            )}
-            <p className="time gray">End time: {item.end_time}</p>
-          </div>
-        ))}
+                </Link></div>
+      })}
       </div>
+    </div>
+
+    <div className="auctionBlocks">
+      <h2>previous</h2>
+      <div className="row">
+      {data.data.previous.map((item,key)=>{
+        return <div className="col-md-4" key={key}><Link to={`/auctions/${item.id}`} className="aucBlock previousBlock">
+                <img src={item.image} className="w-100" />
+                <div className="row">
+                  <div className="col-md-9">
+                    <span className="auctionTitle">{item.name}</span>
+                    <span className="date">{item.city} {item.date_formatted}</span>
+                  </div>
+                  <div className="col-md-3">
+                    <span className="arrow">→</span>
+                  </div>
+                </div>
+                </Link></div>
+      })}
+      </div>
+    </div>
+      
+      
     </section>
   );
 }
