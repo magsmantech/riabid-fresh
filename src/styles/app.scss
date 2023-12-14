@@ -887,6 +887,9 @@ font-weight: 500;
 }
 
 @media only screen and (max-width: 991px) {
+    .forgotPopup, .loginPopup, .signUpPopup{
+        height:auto;
+    }
     .auctionPage h1{
         margin-bottom:238px;
     }
