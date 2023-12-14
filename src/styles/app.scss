@@ -3164,6 +3164,9 @@ footer .secondLine ul li a:hover{
     .regPage input{
         width:100%!important;
     }
+    .regPage input[type='radio']{
+        width:1px !important;
+    }
     .addPage{
         flex-direction: column;
     }
