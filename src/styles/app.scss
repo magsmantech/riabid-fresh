@@ -496,7 +496,7 @@ font-weight: 500;
             right:0;
         }
     }
-    input{
+    input[type!='radio']{
         color: #000;
         margin-top:12px;
         font-feature-settings: 'salt' on;
