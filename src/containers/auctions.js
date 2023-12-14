@@ -43,7 +43,7 @@ function Auctions(props) {
         <h1>Auctions</h1>      
     </div>
 
-    <div className="auctionBlocks upcomingBlock">
+    {data.data.upcoming.length > 0 &&<div className="auctionBlocks upcomingBlock">
       <h2>upcoming</h2>
       <div className="row">
       {data.data.upcoming.map((item,key)=>{
@@ -61,7 +61,7 @@ function Auctions(props) {
                 </Link></div>
       })}
       </div>
-    </div>
+    </div>}
 
     <div className="auctionBlocks">
       <h2>previous</h2>
