@@ -107,8 +107,8 @@ function Auctions(props) {
             <div className="auctionTitleShow">      
                 <h1>{data.data.current[0].name}</h1>      
                 <div className="location mobLocation">
-                {data.data.current[0].city} {data.data.current[0].date_formatted}<br/>
-                  {data.data.current[0].address}
+                {data.data.current[0].date_formatted}  {data.data.current[0].address}<br/>
+                  {data.data.current[0].city}
                 </div>
 
                 <div className="text" dangerouslySetInnerHTML={{__html: data.data.current[0].description}}>
@@ -116,7 +116,7 @@ function Auctions(props) {
             </div>
         </div>
         <div className="offset-md-1 col-md-2 location mobHide">
-        {data.data.current[0].city} {data.data.current[0].date_formatted}<br/>
+     {data.data.current[0].date_formatted}     {data.data.current[0].city}<br/>
         {data.data.current[0].address}
         </div>
         <div className="offset-md-1 col-md-1">
