@@ -103,7 +103,7 @@ function AuctionBlock({
                 <img src={item.image} className="artworkAuction w-100"/>
                <div className="row mobHide">
                    <div className="col-md-4">
-                       <span className="lotNum">№ {item.lot_number}</span>
+                       <span className="lotNum"># {item.lot_number}</span>
                        <span className="author">{item.display_name}</span>
                        <span className="artworkName">{item.title}</span>
                    </div>
@@ -120,9 +120,9 @@ function AuctionBlock({
                </div>
                <div className="row displayHide">
                   <div className="col-12">
-                    <span className="author">{item.display_name} <span className="lotNum">№ {item.lot_number}</span></span>
+                    <span className="author">{item.display_name} <span className="lotNum"># {item.lot_number}</span></span>
                     <span className="artworkName">{item.title}</span>
-                    <span className="estimate">Estimate <span className="price">{item.buy_it_now} $</span></span>
+                    <span className="estimate">Starting <span className="price">{item.buy_it_now} $</span></span>
                     <span className="sold lastBlockSold">Sold for <span className="onSale">{item.sold_for == 0 ?  "On sale" : item.sold_for+" $"}</span></span>
                   </div>
                </div>
