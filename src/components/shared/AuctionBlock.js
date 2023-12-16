@@ -108,7 +108,7 @@ function AuctionBlock({
                        <span className="artworkName">{item.title}</span>
                    </div>
                    <div className='col-md-4'>
-                       <span className="estimate">Estimate</span>
+                       <span className="estimate">Starting</span>
                        <span className="bullet">•</span>
                        <span className="price">{item.buy_it_now} $</span>
                    </div>
