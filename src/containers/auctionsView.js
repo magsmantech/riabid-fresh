@@ -126,7 +126,7 @@ function Auctions(props) {
 
     <div className="row auctionMargin">
         <div className="col-md-3 mobHide">
-          <span className="desc">artworks on sale</span>
+          <span className="desc">artworks</span>
           
           <span className="prevCols">previous</span>
 
