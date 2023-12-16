@@ -116,8 +116,8 @@ function Auctions(props) {
             </div>
         </div>
         <div className="offset-md-1 col-md-2 location mobHide">
-     {data.data.current[0].date_formatted}     {data.data.current[0].city}<br/>
-        {data.data.current[0].address}
+     {data.data.current[0].date_formatted}  {data.data.current[0].address}   <br/>
+        {data.data.current[0].city}
         </div>
         <div className="offset-md-1 col-md-1">
             <a href={data.data.current[0].additional_file} target="_BLANK" className="download">download pdf</a>
