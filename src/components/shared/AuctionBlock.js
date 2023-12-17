@@ -100,7 +100,7 @@ function AuctionBlock({
       data.length > 0 ? data.slice(start,start+limit).map(function(item, i){
           
                 return <div key={i}>
-                <img src={item.image} className="artworkAuction w-100"/>
+                <img src={item.image} className="artworkAuction w-100" data-id={item.id}/>
                <div className="row mobHide">
                    <div className="col-md-4">
                        <span className="lotNum"># {item.lot_number}</span>

@@ -192,12 +192,12 @@ export default function ProductGrid(){
     <div className="row" id='forStickyPos'>
     <div className="col-4 col-md-4">
       <ul className="trendMenu fullWidth">
-                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >auction results <span>{data?.data?.previous[0]?.date_formatted}</span></a></li>
+                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >Auctions<span>{data?.data?.previous[0]?.date_formatted}</span></a></li>
             </ul>
       </div>
       <div className='col-4 col-md-2'>
         <ul className="trendMenu fullWidth">
-                <li className={grid == 2 ? "active lastPos" : "lastPos"}><a href="#" onClick={e => {handleType(e,2,1); myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >curators <span className="curatorChoiceHide">choice made by <span className='author' onClick={e => {e.preventDefault(); window.location.href = "/curator/"+curator.id}}>{curator.name} {curator.lastname}</span></span></a></li>
+                <li className={grid == 2 ? "active lastPos" : "lastPos"}><a href="#" className="mobCenter" onClick={e => {handleType(e,2,1); myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >curators <span className="curatorChoiceHide">choice made by <span className='author' onClick={e => {e.preventDefault(); window.location.href = "/curator/"+curator.id}}>{curator.name} {curator.lastname}</span></span></a></li>
             </ul>
       </div>
       <div className="col-4 col-md-2">
@@ -240,7 +240,7 @@ export default function ProductGrid(){
 {grid == 0 &&  artworks?.length && boxLengthSecond.hasOwnProperty(0)  &&
                     <AuctionBlock
                     start={show==4 ? 0 : 1}
-                    limit={ boxLengthSecond[1] }
+                    limit={ boxLengthSecond[0] }
                     data={artworks}
                     />
                    }
@@ -279,8 +279,8 @@ export default function ProductGrid(){
 
 
 {grid == 0 && artworks?.length && boxLengthSecond.hasOwnProperty(0) && <AuctionBlock
-                    start={boxLengthSecond[2]}
-                    limit={boxLengthSecond[3]}
+                    start={boxLengthSecond[0]+boxLengthSecond[1]}
+                    limit={boxLengthSecond[2]}
                     data={artworks}
                     /> }
                

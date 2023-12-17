@@ -308,6 +308,9 @@ span.shareIcon{
     width:calc(100% + 15px);
     padding-right:5px;
 }
+.productGrid .auctionPageShow{
+    padding-top:0px;
+}
 
 #forStickyPos.row.sticky, #forStick2.row.sticky{
     width:100%;
@@ -3167,7 +3170,10 @@ footer .secondLine ul li a:hover{
     padding-top:20px;
 }
 @media only screen and (max-width: 500px) {
-
+.mobCenter{
+    display:block;
+    text-align: center;
+}
     .inputs{
         flex-direction: column;
     }
