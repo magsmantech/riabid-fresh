@@ -192,7 +192,7 @@ export default function ProductGrid(){
     <div className="row" id='forStickyPos'>
     <div className="col-4 col-md-4">
       <ul className="trendMenu fullWidth">
-                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >Auctions<span>{data?.data?.previous[0]?.date_formatted}</span></a></li>
+                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >Auctions <span>{data?.data?.previous[0]?.date_formatted}</span></a></li>
             </ul>
       </div>
       <div className='col-4 col-md-2'>
