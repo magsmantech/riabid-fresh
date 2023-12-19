@@ -31,6 +31,7 @@ function Navbar() {
    }
 
    const [mobileShow, setMobileShow] = useState(false);
+   const [isShown, setIsShown] = useState(false);
    const [name, setName] = useState("");
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -298,8 +299,9 @@ const [email, setEmail] = useState("");
       <div className={!currentUser.isAuthenticated ? 'col-md-6 flexing' : 'col-md-6 flexing flexEnd'} >
       {!currentUser.isAuthenticated ? 
         <>
-          <button className="actionButtons signUpButton" onClick={(e) =>{ setSignupPopup(true); setLoginPopup(false); }}>Sign up</button>
-          <button className="actionButtons logInBtn" onClick={(e) =>{ setLoginPopup(true); setSignupPopup(false) }}>Log In</button>
+          <button className={isShown || loginPopup ? "actionButtons signUpButton singupInactive" : "actionButtons signUpButton" } id="signUpButton" onClick={(e) =>{ setSignupPopup(true); setLoginPopup(false); }}>Sign up</button>
+          <button className={loginPopup ? "actionButtons logInBtn loginActive" : 'actionButtons logInBtn'} id="logInBtn" onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)} onClick={(e) =>{ setLoginPopup(true); setSignupPopup(false) }}>Log In</button>
         </>
       :
         <button className="actionButtons LogOut" onClick={(e) =>{  logout(); window.location.href = "/"; }}>Log out</button>
@@ -327,12 +329,12 @@ const [email, setEmail] = useState("");
 
 
                     <p className="dontH">Don’t have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setLoginPopup(false);setSignupPopup(true)}}>Sign up</a></p>
-                    <p className="or">Or continue with</p>
+                    {/* <p className="or">Or continue with</p>
                     <ul>
                       <li><a href="#"><img src={google} /></a></li>
                       <li><a href="#"><img src={apple} /></a></li>
                       <li><a href="#"><img src={facebook} /></a></li>
-                    </ul>
+                    </ul> */}
                   </div>
       </div>
 
@@ -365,7 +367,7 @@ const [email, setEmail] = useState("");
                   <div className="popupHead">
                     <h1>Sign up to collect art by Georgian artists <img src={closePopup} className="closePopup" onClick={(e)=>setSignupPopup(false)}  /></h1>
 
-                    <div className="regPage regpagMarging">
+                    {/* <div className="regPage regpagMarging">
          
                   <label htmlFor="option-1" className="option option-1">
                   <input
@@ -400,9 +402,9 @@ const [email, setEmail] = useState("");
                       <span className={accountType == 3 ? 'typeActive' : ''}>Seller</span>
                     </label>
             
-          </div>
+          </div> */}
 
-          <div className="regPage regpagMarging  ">
+          {/* <div className="regPage regpagMarging  ">
              
                   <label htmlFor="option-4" className="option option-4">
                   <input
@@ -427,7 +429,7 @@ const [email, setEmail] = useState("");
                       <span className={userType == '2' ? 'typeActive' : ''}>Gallery</span>
                     </label>                  
               
-          </div>
+          </div> */}
 
 
                     <input name="name" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} />
@@ -448,12 +450,12 @@ const [email, setEmail] = useState("");
                   registerMutation.mutate(data);               
               }}>SIGN UP</button>
                     <p className="dontH">Already have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setSignupPopup(false);setLoginPopup(true)}}>Log in</a></p>
-                    <p className="or">Or continue with</p>
+                    {/* <p className="or">Or continue with</p>
                     <ul>
                       <li><a href="#"><img src={google} /></a></li>
                       <li><a href="#"><img src={apple} /></a></li>
                       <li><a href="#"><img src={facebook} /></a></li>
-                    </ul>
+                    </ul> */}
                   </div>
       </div>
 

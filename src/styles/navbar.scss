@@ -108,6 +108,9 @@ line-height: 16px; /* 133.333% */
     display:none;
   }
 }
+.actionButtons{
+  transition:0.5s all;
+}
 .actionButtons.LogOut{
   color: #B3B3B3;
   text-align: center;
@@ -117,6 +120,15 @@ line-height: 16px; /* 133.333% */
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 133.333% */
+}
+.logInBtn:hover,.loginActive{
+  color: #fff;
+  background:black;
+}
+
+.singupInactive{
+  color:black;
+  background: transparent;
 }
 
 .chatIcon{

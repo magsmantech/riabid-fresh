@@ -20,14 +20,11 @@ export default function ProductGrid(){
     const [showSecond, setShowSecond] = useState(3);  
     const myGrid = useRef(null);
     const myCats = useRef(null); 
+    const [auction,setAuction] = useState({});
 
 
     const [boxLength, setBoxLength] = React.useState([]);
     const [boxLengthSecond, setBoxLengthSecond] = React.useState([]);
-
-    const { isLoading, error, data } = useQuery("auctions", getAuctions, {
-      refetchOnWindowFocus: false,
-    });
 
     
     function handleResize() {
@@ -76,7 +73,16 @@ export default function ProductGrid(){
     
       useEffect(function(){
 
-       
+        axios.get('previous-auctions?limit=10')
+        .then((res) => {
+              let data = res.data;
+              console.log(data)
+              let arr = divideBoxIntoColumns(data[0]?.artworks?.data?.length,showSecond);
+              setAuction(data[0])
+              setBoxLengthSecond(arr)
+              setArtworks(data[0]?.artworks);
+              setUrl("/auctions/"+data[0]?.id)
+        });
 
             axios.get('artworks-paginated?limit=16')
             .then((res) => {
@@ -88,14 +94,6 @@ export default function ProductGrid(){
             });
         },[])
 
-        useEffect(()=>{
-          if(data?.data){
-            
-          let arr = divideBoxIntoColumns(data?.data?.previous[0]?.artworks?.length,showSecond);
-          setBoxLengthSecond(arr)
-          setArtworks(data?.data?.previous[0]?.artworks);
-        }
-        },[data?.data])
 
 /*
         useEffect(() => {
@@ -152,11 +150,13 @@ export default function ProductGrid(){
         e.preventDefault();
         setGrid(type);
         let url;
-        if (type == 0){
-            
-          let arr = divideBoxIntoColumns(data?.data?.previous[0]?.artworks?.length,showSecond);
-          setBoxLengthSecond(arr)
-          setArtworks(data?.data?.previous[0]?.artworks);
+
+        console.log(page);
+        console.log(type);
+  
+        if (type == 0){            
+          url = 'previous-auctions?limit=10&page='+page;
+          setUrl("/auctions/"+auction?.id)
 
         }else if(type == 1){
             url = 'categories/featured/artworks?limit=7&page='+page
@@ -172,18 +172,20 @@ export default function ProductGrid(){
                     setArtworks(artworks);     
                     setCurator(curator); 
                   }
-                  else{
+                  else if(type == 1){
                     let {data} = res;
                     setArtworks(data);      
+                  }else{
+                    let {data} = res;
+                     let arr = divideBoxIntoColumns(data[0]?.artworks?.data?.length,showSecond);
+               
+                     setBoxLengthSecond(arr)
+                    setArtworks(data[0]?.artworks);
                   }
                            
             });
     }
 
-
-    if (isLoading) return <Loading></Loading>;
-
-    if (error) return "An error has occurred: " + error.message;
 
 
 
@@ -192,7 +194,7 @@ export default function ProductGrid(){
     <div className="row" id='forStickyPos'>
     <div className="col-4 col-md-4">
       <ul className="trendMenu fullWidth">
-                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >Auctions <span>{data?.data?.previous[0]?.date_formatted}</span></a></li>
+                <li className={grid == 0 ? "active" : ""}><a href="#" onClick={e => {handleType(e,0,1);myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'})}} >Auctions <span>{auction?.date_formatted}</span></a></li>
             </ul>
       </div>
       <div className='col-4 col-md-2'>
@@ -209,7 +211,8 @@ export default function ProductGrid(){
    
    
     </div>
-        <div className="row for3Col" ref={myGrid} >
+    <div id="new_row" class='row' ref={myGrid}></div>
+        <div className="row for3Col"  id="">
             <div className={grid == 0 ? "auctionPageShow col-12 forMobileBigArt" : "col-12 forMobileBigArt"}>
                     {grid != 0 &&  artworks?.data &&
                     <ProductBlock
@@ -219,11 +222,11 @@ export default function ProductGrid(){
                     type={1}
                     /> }
 
-{grid == 0 &&  artworks?.length &&
+{grid == 0 &&  artworks?.data?.length &&
                     <AuctionBlock
                     start={0}
                     limit={1}
-                    data={artworks}
+                    data={artworks?.data}
                     />
                     }
                              
@@ -237,11 +240,11 @@ export default function ProductGrid(){
                     type={1}
                     />}
 
-{grid == 0 &&  artworks?.length && boxLengthSecond.hasOwnProperty(0)  &&
+{grid == 0 &&  artworks?.data?.length && boxLengthSecond.hasOwnProperty(0)  &&
                     <AuctionBlock
                     start={show==4 ? 0 : 1}
                     limit={ boxLengthSecond[0] }
-                    data={artworks}
+                    data={artworks?.data}
                     />
                    }
                              
@@ -256,10 +259,10 @@ export default function ProductGrid(){
                     type={1}
                     />}
 
-{grid == 0 && artworks?.length && boxLengthSecond.hasOwnProperty(0) && <AuctionBlock
+{grid == 0 && artworks?.data?.length && boxLengthSecond.hasOwnProperty(0) && <AuctionBlock
                     start={show ==4 ? boxLengthSecond[0] :  boxLengthSecond[0]+1 }
                     limit={boxLengthSecond[1]}
-                    data={artworks}
+                    data={artworks?.data}
                     /> }
         
                
@@ -278,10 +281,10 @@ export default function ProductGrid(){
                  }
 
 
-{grid == 0 && artworks?.length && boxLengthSecond.hasOwnProperty(0) && <AuctionBlock
+{grid == 0 && artworks?.data?.length && boxLengthSecond.hasOwnProperty(0) && <AuctionBlock
                     start={boxLengthSecond[0]+boxLengthSecond[1]}
                     limit={boxLengthSecond[2]}
-                    data={artworks}
+                    data={artworks?.data}
                     /> }
                
             </div>
@@ -296,7 +299,7 @@ export default function ProductGrid(){
                 <Link to={url}>ALL ARTWORKS</Link>
                 </div>
                 <div className='col-4 nextPage'>
-                <a to="#" onClick={e => { if(artworks.current_page +1 < artworks.last_page){ handleType(e,grid,artworks.current_page+1); } myGrid.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
+                <a to="#" onClick={e => { if(artworks.current_page +1 <= artworks.last_page){ handleType(e,grid,artworks.current_page+1); } myGrid.current.scrollIntoView({behavior: 'smooth'})}}>NEXT</a>
                 </div>
             </div>
 
