@@ -367,6 +367,41 @@ const [email, setEmail] = useState("");
                   <div className="popupHead">
                     <h1>Sign up to collect art by Georgian artists <img src={closePopup} className="closePopup" onClick={(e)=>setSignupPopup(false)}  /></h1>
 
+
+          {/* <div className="regPage regpagMarging  ">
+             
+                  <label htmlFor="option-4" className="option option-4">
+                  <input
+                      value="1"
+                      type="radio"
+                      onChange={(e) => setUserType(1)}
+                      name="user_type"
+                      id="option-4"
+                      defaultChecked
+                    />
+                      <span className={userType == '1' ? 'typeActive' : ''}>Physical</span>
+                    </label>
+
+                  <label htmlFor="option-5" className="option option-5">
+                  <input
+                      value="2"
+                      type="radio"
+                      onChange={(e) => setUserType(2)}
+                      name="user_type"
+                      id="option-5"                      
+                    />
+                      <span className={userType == '2' ? 'typeActive' : ''}>Gallery</span>
+                    </label>                  
+              
+          </div> */}
+
+
+                    <input name="name" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} />
+                    <input name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                    <input name="password" placeholder="Password" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    
+
+                    
                     <div className="regPage regpagMarging">
          
                   <label htmlFor="option-1" className="option option-1">
@@ -403,39 +438,7 @@ const [email, setEmail] = useState("");
                     </label>
             
           </div>
-
-          {/* <div className="regPage regpagMarging  ">
-             
-                  <label htmlFor="option-4" className="option option-4">
-                  <input
-                      value="1"
-                      type="radio"
-                      onChange={(e) => setUserType(1)}
-                      name="user_type"
-                      id="option-4"
-                      defaultChecked
-                    />
-                      <span className={userType == '1' ? 'typeActive' : ''}>Physical</span>
-                    </label>
-
-                  <label htmlFor="option-5" className="option option-5">
-                  <input
-                      value="2"
-                      type="radio"
-                      onChange={(e) => setUserType(2)}
-                      name="user_type"
-                      id="option-5"                      
-                    />
-                      <span className={userType == '2' ? 'typeActive' : ''}>Gallery</span>
-                    </label>                  
-              
-          </div> */}
-
-
-                    <input name="name" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} />
-                    <input name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
-                    <input name="password" placeholder="Password" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                    
+          
                   </div>
 
                   <div>
