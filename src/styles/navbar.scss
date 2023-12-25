@@ -270,12 +270,24 @@ line-height: 16px; /* 133.333% */
   min-height:19px;
 }
 .regPage.regpagMarging{
-
+  display:flex;
+  flex-grow: 1;
+  padding-top:21px;
+  gap:3px;
+  label{
+    display: flex;
+    width: 33%;
+  }
   span{
-    margin-right:15px;
-    padding:5px 10px;
+    display: block;
+    width: 100%;
     font-size:12px;
+    text-align: center;
     cursor:pointer;
+    background:#E6E6E6;
+    line-height: 20px;
+    color:rgba(0, 0, 0, 0.2);
+    height:20px;
   }
   .typeActive{
     background: black;

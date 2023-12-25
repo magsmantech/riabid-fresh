@@ -367,7 +367,7 @@ const [email, setEmail] = useState("");
                   <div className="popupHead">
                     <h1>Sign up to collect art by Georgian artists <img src={closePopup} className="closePopup" onClick={(e)=>setSignupPopup(false)}  /></h1>
 
-                    {/* <div className="regPage regpagMarging">
+                    <div className="regPage regpagMarging">
          
                   <label htmlFor="option-1" className="option option-1">
                   <input
@@ -402,7 +402,7 @@ const [email, setEmail] = useState("");
                       <span className={accountType == 3 ? 'typeActive' : ''}>Seller</span>
                     </label>
             
-          </div> */}
+          </div>
 
           {/* <div className="regPage regpagMarging  ">
              
