@@ -98,6 +98,8 @@ function ProductBlock({
 
   return (
       data.length > 0 ? data.slice(start,start+limit).map(function(item, i){
+        if(item.id == 4973)
+              console.log(item);
                 let frameMax = '';
                 if(item.price_usd == 0 && !item.request_price)
                   frameMax = 'forTop';
