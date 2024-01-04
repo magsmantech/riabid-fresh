@@ -17,7 +17,7 @@ function Auctions(props) {
   const [show, setShow] = React.useState(3); 
   const [boxLength, setBoxLength] = React.useState([]);
   const [artworks, setArtworks] = React.useState(false);
-  const [sort,setSort] = React.useState({'sort':'lot','price_order':'desc','lot_order':'asc'});
+  const [sort,setSort] = React.useState({'sort':'lot','price_order':'asc','lot_order':'desc'});
 
   function handleResize() {
     if(window.innerWidth > 768)
