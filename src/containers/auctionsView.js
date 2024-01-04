@@ -46,9 +46,28 @@ function Auctions(props) {
     if(data?.data){
       let arr = divideBoxIntoColumns(data?.data?.current[0]?.artworks?.length,show);
       setBoxLength(arr)
-      setArtworks(data?.data?.current[0]?.artworks);
+      let arts = [...data?.data?.current[0]?.artworks];
+
+          if (sort.sort == 'lot'){
+            if(sort.lot_order == 'desc'){ 
+              arts.sort((a, b) => a.lot_number - b.lot_number);
+            }else{
+              arts.sort((a, b) => b.lot_number - a.lot_number);
+            }
+          }else{
+            if(sort.price_order == 'desc'){ 
+              arts.sort((a, b) => a.sold_for - b.sold_for);
+            }else{
+              arts.sort((a, b) => b.sold_for - a.sold_for);
+            }
+          }
+
+
+      setArtworks(arts);
+   
     }
   },[data])
+
 
 
   if (isLoading) return <Loading></Loading>;
@@ -83,7 +102,6 @@ function Auctions(props) {
       }
     }
     setSort({'sort':name,'price_order':price_order,'lot_order':lot_order})
-
   }
 
 
