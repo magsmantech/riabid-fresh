@@ -56,9 +56,9 @@ function Auctions(props) {
             }
           }else{
             if(sort.price_order == 'desc'){ 
-              arts.sort((a, b) => a.sold_for - b.sold_for);
+              arts.sort((a, b) => a.buy_it_now - b.buy_it_now);
             }else{
-              arts.sort((a, b) => b.sold_for - a.sold_for);
+              arts.sort((a, b) => b.buy_it_now - a.buy_it_now);
             }
           }
 
@@ -95,10 +95,10 @@ function Auctions(props) {
     }else{
       if(sort.price_order == 'asc'){
         price_order = 'desc';        
-        artworks.sort((a, b) => a.sold_for - b.sold_for);
+        artworks.sort((a, b) => a.buy_it_now - b.buy_it_now);
       }else{
         price_order = 'asc';
-        artworks.sort((a, b) => b.sold_for - a.sold_for);
+        artworks.sort((a, b) => b.buy_it_now - a.buy_it_now);
       }
     }
     setSort({'sort':name,'price_order':price_order,'lot_order':lot_order})
