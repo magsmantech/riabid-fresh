@@ -124,9 +124,11 @@ function Dashboard(props) {
   function handleResize() {
     if(window.innerWidth > 991){
       setLimitRow(4);
+      setShow(4);
     }
     else {
       setLimitRow(2);
+      setShow(2);
     }
  
   }
@@ -159,6 +161,10 @@ function Dashboard(props) {
               if(category == 2){
                 setArtworkData(res.data);   
                 let arr = divideBoxIntoColumns(res.data.length,show);
+                console.log(res.data.length)
+                console.log(show)
+                console.log(arr)
+                console.log('------')
                 setBoxLength(arr)               
               }
               if(category == 3){
@@ -256,7 +262,7 @@ function Dashboard(props) {
               {artworkData ? (
                     <ProductBlock
                     start={0}
-                    limit={limitRow == 2 ? artworkData.length / 2 : artworkData.length / 4}
+                    limit={boxLength[0]}
                     data={artworkData}
                     edit={cat == 1 ? true : false}
                     favorite={cat==2 ? true : false}
@@ -264,31 +270,23 @@ function Dashboard(props) {
                     />
               ) : null}
 
-            {artworkData && boxLength.hasOwnProperty(0) && 
-                <ProductBlock
-                start={0}
-                limit={boxLength[0]}
-                data={artworkData}
-                edit={cat == 1 ? true : false}
-                favorite={cat==2 ? true : false}
-                setFavores={setFavores}
-                />
-             }
+           
 
       </div>}
 
       
       {cat != 4  && <div className='col-6 col-lg-3'>
            
-              {artworkData && boxLength.hasOwnProperty(1) ? (
-                    <ProductBlock
-                    start={boxLength[0]}
-                    limit={boxLength[1]}
-                    data={artworkData}
-                    edit={cat == 1 ? true : false}
-                    setFavores={setFavores}
-                    />
-              ) : null}
+      {artworkData && boxLength.hasOwnProperty(0) && 
+                <ProductBlock
+                start={boxLength[0]}
+                limit={boxLength[1]}
+                data={artworkData}
+                edit={cat == 1 ? true : false}
+                favorite={cat==2 ? true : false}
+                setFavores={setFavores}
+                />
+             }
 
 
       </div>}
