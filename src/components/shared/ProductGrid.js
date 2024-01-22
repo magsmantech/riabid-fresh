@@ -73,15 +73,16 @@ export default function ProductGrid(){
     
       useEffect(function(){
 
-        axios.get('previous-auctions?limit=10')
+        axios.get('main-auction?limit=10')
         .then((res) => {
+          console.log('-----')
               let data = res.data;
-              console.log(data)
-              let arr = divideBoxIntoColumns(data[0]?.artworks?.data?.length,showSecond);
-              setAuction(data[0])
+              let arr = divideBoxIntoColumns(data?.artworks_on_front?.length,showSecond);
+     
+              setAuction(data)
               setBoxLengthSecond(arr)
-              setArtworks(data[0]?.artworks);
-              setUrl("/auctions/"+data[0]?.id)
+              setArtworks({data:data?.artworks_on_front});
+              setUrl("/auctions/"+data?.id)
         });
 
             axios.get('artworks-paginated?limit=16')
@@ -155,7 +156,7 @@ export default function ProductGrid(){
         console.log(type);
   
         if (type == 0){            
-          url = 'previous-auctions?limit=10&page='+page;
+          url = 'main-auction?limit=10&page='+page;
           setUrl("/auctions/"+auction?.id)
 
         }else if(type == 1){
@@ -177,10 +178,10 @@ export default function ProductGrid(){
                     setArtworks(data);      
                   }else{
                     let {data} = res;
-                     let arr = divideBoxIntoColumns(data[0]?.artworks?.data?.length,showSecond);
+                     let arr = divideBoxIntoColumns(data?.artworks_on_front?.length,showSecond);
                
                      setBoxLengthSecond(arr)
-                    setArtworks(data[0]?.artworks);
+                     setArtworks({data:data?.artworks_on_front});
                   }
                            
             });
