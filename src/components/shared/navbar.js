@@ -226,6 +226,7 @@ const [email, setEmail] = useState("");
     <li className="nav-item">
                 <NavLink
                 className="nav-link"
+                onClick={()=>{setMobileShow(false)}}
                   to={`/auctions`}
                   activeClassName="active-item"
                   // style={{
@@ -239,6 +240,8 @@ const [email, setEmail] = useState("");
       <li className="nav-item">
                 <NavLink
                 className="nav-link"
+                
+                onClick={()=>{setMobileShow(false)}}
                   to={`/artists`}
                   activeClassName="active-item"
                   // style={{
@@ -253,6 +256,8 @@ const [email, setEmail] = useState("");
                 className="nav-link"
                   to={`/store`}
                   activeClassName="active-item"
+                  
+                onClick={()=>{setMobileShow(false)}}
                   // style={{
                   //   color: pathName == "/store" ? "#fbb03b " : "black",
                   // }}
@@ -264,6 +269,8 @@ const [email, setEmail] = useState("");
                 <NavLink
                 className="nav-link"
                   to={`/galleries`}
+                  
+                onClick={()=>{setMobileShow(false)}}
                   activeClassName="active-item"
                   // style={{
                   //   color: pathName == "/galleries" ? "#fbb03b " : "black",
