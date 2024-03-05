@@ -104,7 +104,8 @@ function AuctionBlock({
                <div className="row mobHide">
                    <div className="col-md-4">
                        <span className="lotNum"># {item.lot_number}</span>
-                       <span className="author">{item.display_name}</span>
+                     
+                       <span className="author"><Link to={`/artists/${item.artist_id}`}>{item.display_name}</Link></span>
                        <span className="artworkName">{item.title}</span>
                    </div>
                    <div className='col-md-4'>
