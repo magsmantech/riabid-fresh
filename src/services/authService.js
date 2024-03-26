@@ -65,6 +65,12 @@ export async function changeEmail({ email }) {
   });
 }
 
+export async function googleAuth(token) {
+  const { data } = await http.post(apiUrl + "/socials/google", {token:token});
+  return data;
+}
+
+
 export async function register(dt) {
   const { data } = await http.post(apiUrl + "/user/register", dt);
 

@@ -11,7 +11,7 @@ import closePopup from '../../assets/icons/close_popup.svg';
 import { userProvider } from "../../store/store";
 import { logout } from "../../services/authService";
 import { useMutation } from "react-query";
-import { change, login, register,favorites } from "../../services/authService";
+import { change, login, register,favorites, googleAuth } from "../../services/authService";
 import { toast } from "react-toastify";
 import { getMyBiography } from "../../services/dashboardService";
 import { useQuery } from "react-query";
@@ -25,7 +25,14 @@ function Navbar() {
 
   const googleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      console.log('Google login successful', tokenResponse);
+      if(tokenResponse?.code){
+      console.log('Google login successful', tokenResponse?.code);
+
+      googleAuth(tokenResponse?.code).then(res =>{
+        console.log('received from server')
+        console.log(res)
+      });
+    }
 
       // axios
       //               .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
