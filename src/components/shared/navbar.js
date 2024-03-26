@@ -17,9 +17,24 @@ import { MetaTags } from "react-meta-tags";
 import { getMyBiography } from "../../services/dashboardService";
 import { useQuery } from "react-query";
 import { AppContext } from './../../App';
+import { useGoogleLogin  } from '@react-oauth/google';
+
 
 function Navbar() {
   const { showMenu,setShowMenu } = useContext(AppContext)
+
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      console.log('Google login successful', tokenResponse);
+      // You can now use the tokenResponse to authenticate the user in your app
+    },
+    onError: () => {
+      console.error('Google login failed');
+      // Handle login errors here
+    },
+    flow: 'auth-code', // Use 'auth-code' for the authorization code flow
+  });
 
    const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -29,6 +44,14 @@ function Navbar() {
   const redirect = (e) => { 
       window.location.href ='/search?search=' + searchValue;    
    }
+
+   const responseMessage = (response) => {
+    console.log(response);
+};
+const errorMessage = (error) => {
+    console.log(error);
+};
+
 
    const [mobileShow, setMobileShow] = useState(false);
    const [isShown, setIsShown] = useState(false);
@@ -336,12 +359,12 @@ const [email, setEmail] = useState("");
 
 
                     <p className="dontH">Don’t have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setLoginPopup(false);setSignupPopup(true)}}>Sign up</a></p>
-                    {/* <p className="or">Or continue with</p>
+                     <p className="or">Or continue with</p>
                     <ul>
-                      <li><a href="#"><img src={google} /></a></li>
-                      <li><a href="#"><img src={apple} /></a></li>
-                      <li><a href="#"><img src={facebook} /></a></li>
-                    </ul> */}
+                      <li><a href="#" onClick={()=>{googleLogin()}}><img src={google} /></a></li>
+                      {/* <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li> */}
+                    </ul> 
                   </div>
       </div>
 
@@ -460,12 +483,12 @@ const [email, setEmail] = useState("");
                   registerMutation.mutate(data);               
               }}>SIGN UP</button>
                     <p className="dontH">Already have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setSignupPopup(false);setLoginPopup(true)}}>Log in</a></p>
-                    {/* <p className="or">Or continue with</p>
+                     <p className="or">Or continue with</p>
                     <ul>
                       <li><a href="#"><img src={google} /></a></li>
-                      <li><a href="#"><img src={apple} /></a></li>
-                      <li><a href="#"><img src={facebook} /></a></li>
-                    </ul> */}
+                      {/* <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li> */}
+                    </ul> 
                   </div>
       </div>
 

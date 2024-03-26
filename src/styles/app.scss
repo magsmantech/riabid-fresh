@@ -589,7 +589,8 @@ font-weight: 500;
         list-style:none;
         display:flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
+        //justify-content: space-between;
     }
 
     p.text{
