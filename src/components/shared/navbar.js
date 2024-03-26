@@ -48,8 +48,8 @@ function Navbar() {
           isAuthenticated: true,
           token: res,
         });
-  
-        //window.location.reload();
+        localStorage.setItem('token',res);
+        window.location.reload();
       });
       
     }
