@@ -17,6 +17,7 @@ import { getMyBiography } from "../../services/dashboardService";
 import { useQuery } from "react-query";
 import { AppContext } from './../../App';
 import { useGoogleLogin  } from '@react-oauth/google';
+import axios from 'axios';
 
 
 function Navbar() {
@@ -25,29 +26,31 @@ function Navbar() {
 
   const googleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      if(tokenResponse?.code){
-      console.log('Google login successful', tokenResponse?.code);
+      if(tokenResponse){
+      console.log('Google login successful', tokenResponse);
 
-      googleAuth(tokenResponse?.code).then(res =>{
+
+      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenResponse?.code}`, {
+                        headers: {
+                            Authorization: `Bearer ${tokenResponse?.code}`,
+                            Accept: 'application/json'
+                        }
+                    })
+                    .then((res) => {
+                        console.log(res.data)
+                    })
+                    .catch((err) => console.log(err));
+
+   /*   googleAuth(tokenResponse?.access_token).then(res =>{
         console.log('received from server')
         console.log(res)
       });
+      */
     }
 
-      // axios
-      //               .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-      //                   headers: {
-      //                       Authorization: `Bearer ${user.access_token}`,
-      //                       Accept: 'application/json'
-      //                   }
-      //               })
-      //               .then((res) => {
-      //                   setProfile(res.data);
-      //               })
-      //               .catch((err) => console.log(err));
+      
 
 
-      // You can now use the tokenResponse to authenticate the user in your app
     },
     onError: () => {
       console.error('Google login failed');
