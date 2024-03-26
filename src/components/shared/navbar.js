@@ -27,23 +27,21 @@ function Navbar() {
   const googleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       if(tokenResponse){
-      console.log('Google login successful', tokenResponse);
-
-
-      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenResponse?.access_token}`, {
-                        headers: {
-                            Authorization: `Bearer ${tokenResponse?.access_token}`,
-                            Accept: 'application/json'
-                        }
-                    })
-                    .then((res) => {
-                        console.log(res.data)
-                    })
-                    .catch((err) => console.log(err));
+      //console.log('Google login successful', tokenResponse);
+      // axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenResponse?.access_token}`, {
+      //                   headers: {
+      //                       Authorization: `Bearer ${tokenResponse?.access_token}`,
+      //                       Accept: 'application/json'
+      //                   }
+      //               })
+      //               .then((res) => {
+      //                   console.log(res.data)
+      //               })
+      //               .catch((err) => console.log(err));
 
       googleAuth(tokenResponse?.access_token).then(res =>{
-        console.log('res')
-        console.log(res)
+        // console.log('res')
+        // console.log(res)
         setCurrentUser({
           isAuthenticated: true,
           token: res,
