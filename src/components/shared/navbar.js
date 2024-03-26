@@ -13,7 +13,6 @@ import { logout } from "../../services/authService";
 import { useMutation } from "react-query";
 import { change, login, register,favorites } from "../../services/authService";
 import { toast } from "react-toastify";
-import { MetaTags } from "react-meta-tags";
 import { getMyBiography } from "../../services/dashboardService";
 import { useQuery } from "react-query";
 import { AppContext } from './../../App';
@@ -27,6 +26,20 @@ function Navbar() {
   const googleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       console.log('Google login successful', tokenResponse);
+
+      // axios
+      //               .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+      //                   headers: {
+      //                       Authorization: `Bearer ${user.access_token}`,
+      //                       Accept: 'application/json'
+      //                   }
+      //               })
+      //               .then((res) => {
+      //                   setProfile(res.data);
+      //               })
+      //               .catch((err) => console.log(err));
+
+
       // You can now use the tokenResponse to authenticate the user in your app
     },
     onError: () => {
@@ -359,12 +372,12 @@ const [email, setEmail] = useState("");
 
 
                     <p className="dontH">Don’t have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setLoginPopup(false);setSignupPopup(true)}}>Sign up</a></p>
-                     {/* <p className="or">Or continue with</p>
+                     <p className="or">Or continue with</p>
                     <ul>
                       <li><a href="#" onClick={()=>{googleLogin()}}><img src={google} /></a></li>
-                       <li><a href="#"><img src={apple} /></a></li>
-                      <li><a href="#"><img src={facebook} /></a></li>
-                    </ul>  */}
+                 {/*      <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li> */ }
+                    </ul>  
                   </div>
       </div>
 
@@ -483,12 +496,12 @@ const [email, setEmail] = useState("");
                   registerMutation.mutate(data);               
               }}>SIGN UP</button>
                     <p className="dontH">Already have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setSignupPopup(false);setLoginPopup(true)}}>Log in</a></p>
-                     {/* <p className="or">Or continue with</p>
+                     <p className="or">Or continue with</p>
                     <ul>
-                      <li><a href="#"><img src={google} /></a></li>
-                      <li><a href="#"><img src={apple} /></a></li>
-                      <li><a href="#"><img src={facebook} /></a></li> 
-                    </ul>  */}
+                      <li><a href="#" onClick={()=>{googleLogin()}}><img src={google} /></a></li>
+                     {/*  <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li>  */}
+                    </ul> 
                   </div>
       </div>
 
