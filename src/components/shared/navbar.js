@@ -359,12 +359,12 @@ const [email, setEmail] = useState("");
 
 
                     <p className="dontH">Don’t have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setLoginPopup(false);setSignupPopup(true)}}>Sign up</a></p>
-                     <p className="or">Or continue with</p>
+                     {/* <p className="or">Or continue with</p>
                     <ul>
                       <li><a href="#" onClick={()=>{googleLogin()}}><img src={google} /></a></li>
-                      {/* <li><a href="#"><img src={apple} /></a></li>
-                      <li><a href="#"><img src={facebook} /></a></li> */}
-                    </ul> 
+                       <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li>
+                    </ul>  */}
                   </div>
       </div>
 
@@ -483,12 +483,12 @@ const [email, setEmail] = useState("");
                   registerMutation.mutate(data);               
               }}>SIGN UP</button>
                     <p className="dontH">Already have an account? <a href="#" onClick={(e)=>{e.preventDefault(); setSignupPopup(false);setLoginPopup(true)}}>Log in</a></p>
-                     <p className="or">Or continue with</p>
+                     {/* <p className="or">Or continue with</p>
                     <ul>
                       <li><a href="#"><img src={google} /></a></li>
-                      {/* <li><a href="#"><img src={apple} /></a></li>
-                      <li><a href="#"><img src={facebook} /></a></li> */}
-                    </ul> 
+                      <li><a href="#"><img src={apple} /></a></li>
+                      <li><a href="#"><img src={facebook} /></a></li> 
+                    </ul>  */}
                   </div>
       </div>
 
