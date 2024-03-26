@@ -30,9 +30,9 @@ function Navbar() {
       console.log('Google login successful', tokenResponse);
 
 
-      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenResponse?.code}`, {
+      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenResponse?.access_token}`, {
                         headers: {
-                            Authorization: `Bearer ${tokenResponse?.code}`,
+                            Authorization: `Bearer ${tokenResponse?.access_token}`,
                             Accept: 'application/json'
                         }
                     })
@@ -41,11 +41,17 @@ function Navbar() {
                     })
                     .catch((err) => console.log(err));
 
-   /*   googleAuth(tokenResponse?.access_token).then(res =>{
-        console.log('received from server')
+      googleAuth(tokenResponse?.access_token).then(res =>{
+        console.log('res')
         console.log(res)
+        setCurrentUser({
+          isAuthenticated: true,
+          token: res,
+        });
+  
+        //window.location.reload();
       });
-      */
+      
     }
 
       
@@ -56,7 +62,6 @@ function Navbar() {
       console.error('Google login failed');
       // Handle login errors here
     },
-    flow: 'auth-code', // Use 'auth-code' for the authorization code flow
   });
 
    const handleKeyDown = (e) => {
