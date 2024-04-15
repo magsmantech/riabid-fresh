@@ -30,6 +30,7 @@ function Galleries(props) {
       </MetaTags>
    
       <div className="galleryPage">
+        
         {data.data
           .map((item) => (
             <div key={item.id} className="galleryItem">

@@ -3,7 +3,175 @@
   text-decoration: underline;
 }
 
+.subscribePage{
+  h1{
+    font-family: 'Loos Normal';
+    text-align: left;
+    margin-top:74px;
+    font-weight:400;
+    font-size:72px;
+    margin-bottom:0px;
+  }
+  .subscribeText{
+    p{
+      margin-top:22px;
+      margin-bottom:0px;
+      color:#000;
+      font-size:32px;
+      font-weight:400;
+      font-family: 'MonumentGrotesk-Regular';
+    }
+    p.secondText{
+      margin-top:5px;
+    }
+  }
+  .subscribeRow{
+    margin-top:84px;
+  }
+  .subscribeBox{
+    position: relative;
+    border-top:1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    .inputsF{
+      width:65%;
+      p{
+        font-size:16px;
+        font-weight:400;
+        font-family: 'MonumentGrotesk-Regular';
+      }
+      input{
+        width:100%;
+        border:0px;
+        border-bottom:1px dashed #B3B3B3;
+        font-weight:400;
+        font-size:16px;
+        height:23px;
+        font-family: 'MonumentGrotesk-Regular';
+        margin-bottom:24px;
+      }
+    }
+    .subForm{
+      margin-top:30px;
+      width:50%;
+    }
+    ul,ol{
+      padding-left:30px;
+    }
+    h2{
+      font-size:32px;
+      margin-top:16px;
+      font-weight:500;
+      font-family: 'MonumentGrotesk-Regular';
+      margin-bottom:11px;
+    }
+    .description{
+      width:65%;
+      p{
+        font-weight:400;
+        font-size:16px;
+        font-family: 'MonumentGrotesk-Regular';
+      }
+      li{
+        font-family:'MonumentGrotesk-Regular';
+        font-size:16px;
+        font-weight:400;
+      }
+    }
+    .padL{
+      margin-bottom:77px;
+    }
+    .padL.withoutMarg{
+      margin-bottom:0px;
+    }
+    .price{
+      p{
+        font-size:16px;
+        margin-bottom:0px;
+        color:black;
+        font-weight:400;
+        font-family: 'MonumentGrotesk-Regular';
+      }
+      span{
+        font-weight:500;
+        font-family: 'MonumentGrotesk-Regular';
+        font-size:32px;
+        line-height: 32px;
+      }
+    }
+    button{
+      transition:0.5s all;
+      margin-top:9px;
+      width:100%;
+      height:48px;
+      line-height: 50px;
+      display:block;
+      border:1px solid black;
+      background:transparent;
+      color:black;
+      font-weight:500;
+      font-size:12px;
+      font-family: 'MonumentGrotesk-Regular';
+      &:hover{
+        background:black;
+        color:white;
+      }
+    }
+    button.activeSub{
+      background:black;
+      color:white;
+    }
+    .closeActiveSub{
+      float:right;
+    }
+  }
+  .subscribeBox.active{
+    background:black;
+    .padL{
+      padding-left:10px;
+    }
+    h2,.description p,.price span{
+      color:white;
+    }
+    .price span{
+      padding-left:10px;
+    }
+    button{
+      color:white;
+      border-top:1px solid white;
+    }
+  }
+  .opacityH{
+    position:absolute;
+    top:-1px;
+    left:0;
+    width:100%;
+    height:calc(100% + 1px);
+    background:rgba(255,255,255,0.9);
+  }
+}
 
+@media screen and (max-width: 500px) {
+  .subscribePage .subscribeBox .description,.subscribePage .subscribeBox .inputsF{
+    width:80%;
+  }
+  .subscribePage .subscribeText p{
+    margin-top:10px;
+    font-size: 16px;
+  }
+  .subscribePage .subscribeRow{
+    margin-top:28px;
+  }
+  .subscribePage .subscribeBox{
+    margin-bottom:40px;
+    height:unset;
+  }
+  .subscribePage .subscribeBox .padL{
+    margin-bottom:37px;
+  }
+}
 @media screen and (max-width: 600px) {
   #main .info-section .info-wrapper .info-row{
     display:block;

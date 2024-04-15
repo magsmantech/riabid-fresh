@@ -19,6 +19,7 @@ import HistoryDashboard from "./containers/historyDashboard";
 import Galleries from "./containers/galleries";
 import Contact from "./containers/contact";
 import Auctions from "./containers/auctions";
+import Subscribe from "./containers/subscribe";
 import AuctionsView from "./containers/auctionsView";
 import Text from "./containers/text";
 import ProductDet from "./containers/productDet";
@@ -242,6 +243,11 @@ function App() {
           
               <Route
                 exact
+                path="/subscribe"
+                render={(props) => <Subscribe {...props} />}
+              />
+               <Route
+                exact
                 path="/auctions"
                 render={(props) => <Auctions {...props} />}
               />
@@ -377,7 +383,12 @@ function App() {
                 path="/galleries/:index"
                 render={(props) => <GalleriesFull {...props} />}
               />
-            
+               
+               <Route
+                exact
+                path="/subscribe"
+                render={(props) => <Subscribe {...props} />}
+              />
               <Route
                 exact
                 path="/auctions"
