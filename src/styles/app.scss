@@ -1717,7 +1717,40 @@ h1.related{
     padding-left:10px;
 }
 .galleryPage{
-    padding-top:55px;
+    padding-top:74px;
+
+    .galleryDesc{
+        h1{
+            text-align: left;
+            font-weight: 400;
+            font-size:72px;
+            line-height: 72px;
+            font-family: 'Loos Normal';
+            margin-bottom:6px;
+        }
+        p{
+            max-width: 877px;
+            font-weight:400;
+            font-size:32px;
+            line-height: 32px;
+            font-family: 'MonumentGrotesk-Regular';
+        }
+        h2{
+            font-weight:400;
+            font-size:32px;
+            line-height:32px;
+            font-family: 'MonumentGrotesk-Regular';
+        }
+        .subSide{
+            p{
+                font-weight: 400px;
+                font-size:16px;
+                line-height: 20px;
+                font-family: 'MonumentGrotesk-Regular';
+            }
+        }
+    }
+
     .galleryItem{
         border-top:1px solid black;
         padding-bottom:72px;      

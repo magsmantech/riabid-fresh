@@ -182,7 +182,7 @@ function Dashboard(props) {
                          setCity(res.data.addresses[0].city)
                          setZip(res.data.addresses[0].zip)
                          setPhone(res.data.addresses[0].mobile)
-                         setIban(res.data.iban)                        
+                         setIban(res.data.addresses[0].iban)                        
                         }
               }             
             })
@@ -206,6 +206,7 @@ function Dashboard(props) {
       city,
       zip,
       mobile: phone,
+      iban:iban
     };
 
     editMutation.mutate(data);
