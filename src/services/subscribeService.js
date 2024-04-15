@@ -15,5 +15,5 @@ export function getSubscribe(id) {
   return http.get(apiEndpoint + "/" + id);
 }
 export function createPackagePayment(props) {
-  return http.post(apiUrl + "/packages/order/"+props.id,{...props});
+  return http.post(apiUrl + "/packages/orders/create/"+props.id,{...props});
 }

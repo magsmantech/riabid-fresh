@@ -34,7 +34,7 @@ function Subscribe(props) {
     },
     onSuccess: (data, variables, context) => {
       console.log(data)
-        window.location.href = "https://api.riabid.com/packages/"+data.data.order_id+"/pay";
+        window.location.href = "https://api.riabid.com/api/packages/payorder/"+data.data.transaction.id;
     },
     onSettled: (data, error, variables, context) => {
  
