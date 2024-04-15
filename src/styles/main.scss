@@ -131,10 +131,19 @@
       float:right;
     }
   }
-  .subscribeBox.active{
+  .subscribeBox{
+    transition:0.5s all;
+  }
+  .subscribeBox.active,.subscribeBox:hover{
     background:black;
     .padL{
       padding-left:10px;
+    }
+    .price p{
+      padding-left:10px;
+    }
+    li,.price p{
+      color:white;
     }
     h2,.description p,.price span{
       color:white;
