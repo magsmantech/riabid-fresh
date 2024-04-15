@@ -4,6 +4,7 @@
 }
 
 .subscribePage{
+  padding-bottom:56px;
   h1{
     font-family: 'Loos Normal';
     text-align: left;
@@ -15,6 +16,7 @@
   .subscribeText{
     p{
       margin-top:22px;
+      line-height: 32px;
       margin-bottom:0px;
       color:#000;
       font-size:32px;
@@ -22,7 +24,7 @@
       font-family: 'MonumentGrotesk-Regular';
     }
     p.secondText{
-      margin-top:5px;
+      margin-top:10px;
     }
   }
   .subscribeRow{
