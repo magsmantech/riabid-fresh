@@ -1718,8 +1718,9 @@ h1.related{
 }
 .galleryPage{
     padding-top:74px;
-
+    padding-bottom:8px;
     .galleryDesc{
+        margin-bottom:112px;
         h1{
             text-align: left;
             font-weight: 400;
@@ -1738,83 +1739,97 @@ h1.related{
         h2{
             font-weight:400;
             font-size:32px;
-            line-height:32px;
+            line-height:80px;
             font-family: 'MonumentGrotesk-Regular';
+            height:72px;
         }
         .subSide{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             p{
+                max-width: 75%;
                 font-weight: 400px;
                 font-size:16px;
                 line-height: 20px;
                 font-family: 'MonumentGrotesk-Regular';
             }
+            a{
+                display: block;
+                text-align: center;
+              text-decoration: none;
+                border:1px solid black;
+                height:48px;
+                font-family: 'MonumentGrotesk-Regular';
+                font-size:12px;
+                font-weight:500;
+                line-height:48px;
+                transition:0.5s all;
+                &:hover{
+                    background:black;
+                    color:white;
+                }
+            }
         }
     }
 
-    .galleryItem{
-        border-top:1px solid black;
-        padding-bottom:72px;      
-        display:flex;
+    .galleryItem{ 
+        margin-bottom:60px;
         justify-content: space-between;
-        .text{
-            padding-top:19px;
-            width:33.33%;
+        display: flex;
+        flex-direction: column;
+        img{
+            height:20vw;
         }
         .title{
-            padding-top:19px;
-            font-family: 'Loos Normal';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 72px;
-            line-height: 72px;
-            font-feature-settings: 'salt' on;
-            color: #000000;
-            width:33.33%;
+            margin-top:21px;
+            margin-bottom:15px;
+            font-weight:400;
+            font-size:32px;
+            line-height:32px;
+            font-family: 'Loos Normal';            
         }
         p{
+            font-weight:400;
+            font-size:16px;
+            line-height:20px;
             font-family: 'MonumentGrotesk-Regular';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 20px;            
-            font-feature-settings: 'salt' on;
-            color: #000000;
+            max-width: 95%;
         }
-        p.location{
-            margin-top:20px;
+        p.date,p.location,p.website{
+            font-weight:400;
+            font-size:16px;
+            line-height:20px;
+            margin-bottom:0px;
+            font-family: 'MonumentGrotesk-Regular';
         }
+        p.website{
+            overflow:hidden;
+        }
+      
         a{
-            width:16.66%;
-            text-decoration: none;
-        }
-        .custom-button{
-            border:0px;
-            background:transparent;
+            margin-top:16px;
             display:block;
-
-            font-family: 'MonumentGrotesk-Regular';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 43px;
             text-align: center;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-feature-settings: 'salt' on;
-            color: #000000;
-            width:100%;
-            border-bottom:1px solid black;
-            height:40px;
-            transition:all 0.5s;
-        }
-        .custom-button:hover{
-            background:black;
-            color:white;
+            border:1px solid black;
+            text-decoration:none;
+            height:56px;
+            font-size:12px;
+            line-height:56px;
+            font-weight: 500;
+            font-family: 'MonumentGrotesk-Regular';
+            transition:0.5s all;
+            &:hover{
+                background:black;
+                color:white;
+            }
         }
     }
 }
 .galleryShow{
+    padding-left:5px;
     h1{
+        margin-bottom:63px;
         color: #000;
         font-feature-settings: 'salt' on;
         font-family: 'Loos Normal';
@@ -1823,6 +1838,26 @@ h1.related{
         font-weight: 400;
         line-height: 72px; /* 100% */
         text-align: left;
+    }
+    .img{
+        height:28px;
+    }
+    .socials{
+        overflow:hidden;
+        padding:0px;
+    }
+    .socials li{
+        margin-right:11px;
+        float:left;
+    }
+    .text{
+        padding-left:5px;
+    }
+    .text p{
+        font-weight:400;
+        font-size:32px;
+        line-height:32px;
+        font-family: 'MonumentGrotesk-Regular';
     }
     .carousel.slide{
         width:100%;
@@ -1851,6 +1886,39 @@ h1.related{
         .carousel-control-next-icon{
             display:none;
         }
+    }
+}
+.galleryArtworks{
+    margin-top:64px;
+    h1{
+        font-family: Loos Normal;
+        font-weight:400;
+        font-size:32px;
+        line-height: 32px;
+        margin-bottom:10px;
+    }
+}
+.leftD{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.galleryShow .bottomBorder{
+    border-bottom:1px solid black;
+    height: 100%;
+    img,.socials{
+        margin-bottom:8px;
+    }
+    a,p{
+        margin-bottom:0px;
+        text-decoration: none;
+        font-size:16px;
+        line-height: 20px;
+        font-weight:400;
+        font-family: 'MonumentGrotesk-Regular';;
+    }
+    a:hover{
+        color:black;
     }
 }
 .exhibition{
@@ -3212,7 +3280,73 @@ footer .secondLine ul li a:hover{
 .secondLine{
     padding-top:20px;
 }
+
+.mobileText,.mobileSub{
+    display:none;
+}
+
 @media only screen and (max-width: 500px) {
+    .galleryShow{
+        padding-left:0px;
+    }
+    .galleryShow .galleryArtworks h1{
+        margin-top:0px;
+    }
+    .galleryShow h1{
+        line-height:32px;
+        margin-top:24px;
+        padding-left:10px;
+        margin-bottom:17px;
+    }
+    .galleryShow .text p{
+        font-size:16px;
+        line-height:20px;
+    }
+    .galleryShow .mobPad{
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .galleryPage .galleryItem .title{
+        margin-top:12px;
+        font-size:24px;
+        line-height:24px;
+        font-weight:500;
+    }
+    .galleryPage .galleryItem p{
+        max-width: unset;
+    }
+    .galleryPage .galleryDesc{
+        margin-bottom:64px;
+    }
+    .galleryPage .galleryItem img{
+        height:unset;
+        width:100%;
+    }
+    .mobileText,.mobileSub{
+        display:block;
+    }
+    .desktopText,.desktopSub{
+        display:none;
+    }
+    .galleryPage .galleryDesc h1{
+        margin-bottom:10px;
+    }
+    .galleryPage .galleryDesc p{
+        font-size:16px;
+        line-height: 20px;
+    }
+    .galleryPage .galleryDesc h2{
+        height:unset;
+        font-size:32px;
+        line-height: 32px;
+        margin-top:24px;
+        margin-bottom:9px;
+    }
+    .galleryPage .galleryDesc .subSide p{
+        max-width: unset;
+        margin-bottom:20px;
+    }
+
 .mobCenter{
     display:block;
     text-align: center;

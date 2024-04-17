@@ -51,72 +51,54 @@ function GalleriesFull(props) {
           content="art gallery, art online, galleries, sell art, decorative art,Discover Contemporary Artists, contemporary artists from Georgia,georgian contemporary artists,"
         />
       </MetaTags>
-        {artworks &&
-        <Carousel>
-          {artworks?.slider_images.map(item =>{
-            return <Carousel.Item>
-            <img src={item} className="w-100"/>
-          </Carousel.Item>
-          })}          
-        </Carousel>}
-    
-      <div className="row fullgaller">
-        <div className="col-md-5 flex flexDir">
-          {artworks && artworks?.collection_name && <h1>{artworks?.collection_name}</h1>}
-          <div className="align-items-end noMobile">
-            <ul className="socials">
-                        {artworks && artworks?.instagram_link && <li><a target="_BLANK" href={artworks?.instagram_link}><img src={instagram}/></a></li>}
-                        {artworks &&  artworks?.facebook_link && <li><a target="_BLANK" href={artworks?.facebook_link}><img src={facebook}/></a></li>}
-                        {artworks && artworks?.twitter_link && <li><a target="_BLANK" href={artworks?.twitter_link}><img src={twitter}/></a></li>}
-            </ul>
-            {artworks && artworks?.website && <a href={artworks?.website} className="link">{artworks?.website}</a>}
-          </div>
-        </div>
-        <div className="offset-1 col-11 offset-md-0 col-md-5 text">
-          {artworks && ReactHtmlParser(artworks?.description)}
-        </div>
-        <div className="col-12 mobileView">
-          <ul className="socials">
-          {artworks && artworks?.instagram && <li><a target="_BLANK" href={artworks?.instagram}><img src={instagram}/></a></li>}
-                        {artworks &&  artworks?.facebook && <li><a target="_BLANK" href={artworks?.facebook}><img src={facebook}/></a></li>}
-                        {artworks && artworks?.twitter && <li><a target="_BLANK" href={artworks?.twitter}><img src={twitter}/></a></li>}
-            </ul>
-            {artworks && artworks?.website && <a href={artworks?.website} className="link">{artworks?.website}</a>}
-        </div>
+        
 
-      </div>
-      <div className="row exhibition">
-        <div className="offset-md-1 col-md-3 flex order-2 order-md-1 broch">
-          <div>
-            {artworks && artworks?.collection_title && <h1>{artworks?.collection_title}</h1>}
-            {artworks && artworks?.date && <p>{artworks?.date}</p>}
-            {artworks && artworks?.address && <p>{artworks?.address}</p>}
-      
+        <div className="row">
+          <div className="col-md-4 leftD  order-2 order-md-1">
+            {artworks && artworks?.collection_name && <h1>{artworks?.collection_name}</h1>}
+
 
           <div className="text">
-          {artworks && ReactHtmlParser(artworks?.description_2)}
-          </div>
+            {artworks && ReactHtmlParser(artworks?.description)}
           </div>
 
-          {artworks && <a target="_BLANK" href={artworks?.file} className="link align-items-end">pdf brochure</a>}
-        </div>
-        <div className="offset-1 col-10 col-md-6 position-relative order-1 order-md-2">
-          <img src={artworks.image} className="w-100"/>
-          <div className="cap">
-          {artworks && artworks?.author && <p><span className="title">{artworks?.author}</span></p>}
-          {artworks && artworks?.category && <p><span className="cat">{artworks?.category}</span></p>}
-          
-          {artworks && artworks?.year && <p><span className="year">{artworks?.year}</span></p>}
-       
+          <div className="row mobPad">
+            <div className="col-6">
+              <div className="bottomBorder">
+              {artworks.logo && <img src={artworks.logo} className="img"/>}
+               {artworks && artworks?.address && <p>{artworks?.address}</p>}
+               </div>
+            </div>
+            <div className="col-6">
+              <div className='bottomBorder'>
+              {artworks?.instagram_link || artworks?.facebook_link || artworks?.twitter_link && (<ul className="socials">
+                          {artworks?.instagram_link && <li><a target="_BLANK" href={artworks?.instagram_link}><img src={instagram}/></a></li>}
+                          {artworks?.facebook_link && <li><a target="_BLANK" href={artworks?.facebook_link}><img src={facebook}/></a></li>}
+                          {artworks?.twitter_link && <li><a target="_BLANK" href={artworks?.twitter_link}><img src={twitter}/></a></li>}
+              </ul>)}
+              {artworks && artworks?.website && <a href={artworks?.website} className="link">{artworks?.website}</a>}
+              </div>
+            </div>
+          </div>
+
+          </div>
+          <div className="col-md-8 order-1 order-md-2">
+          {artworks &&
+        <Carousel>
+            {artworks?.slider_images.map(item =>{
+              return <Carousel.Item>
+              <img src={item} className="w-100"/>
+            </Carousel.Item>
+            })}          
+          </Carousel>}
           </div>
         </div>
-      </div>
-      <div className='row curatedArtworks' >
-                <h1 className="curatedArtworks">curated artworks</h1>
+    
+ 
+      <div className='row galleryArtworks' >
+                <h1 >gallery artworks</h1>
 
             <div className='col-6 col-lg-3'>
-
-
 
               {artworks.artworks && boxLength.hasOwnProperty(0) && <ProductBlock
                     start={0}
