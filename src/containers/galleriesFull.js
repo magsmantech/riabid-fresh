@@ -55,12 +55,13 @@ function GalleriesFull(props) {
 
         <div className="row">
           <div className="col-md-4 leftD  order-2 order-md-1">
+            <div>
             {artworks && artworks?.collection_name && <h1>{artworks?.collection_name}</h1>}
 
 
           <div className="text">
             {artworks && ReactHtmlParser(artworks?.description)}
-          </div>
+          </div></div>
 
           <div className="row mobPad">
             <div className="col-6">
@@ -76,7 +77,7 @@ function GalleriesFull(props) {
                           {artworks?.facebook_link && <li><a target="_BLANK" href={artworks?.facebook_link}><img src={facebook}/></a></li>}
                           {artworks?.twitter_link && <li><a target="_BLANK" href={artworks?.twitter_link}><img src={twitter}/></a></li>}
               </ul>)}
-              {artworks && artworks?.website && <a href={artworks?.website} className="link">{artworks?.website}</a>}
+              {artworks && artworks?.website && <a href={"https://"+artworks?.website} className="link">{artworks?.website}</a>}
               </div>
             </div>
           </div>

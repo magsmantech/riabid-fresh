@@ -35,7 +35,8 @@ function Galleries(props) {
           <div className="col-md-8">
             <h1>Galleries</h1>
             <p className="desktopText">Our team is excited to announce a new annual subscription option for the local and international galleries! Enjoy full access to the Georgian art scene. Become a devoted member of Ria Keburia Foundation and get the best privileges for your Gallery. Sell, share, admire Georgian art on Ria Bid! </p>
-            <p className="mobileText">Artsy also follows a typical profit-based model in terms of its pricing. Artists can get set up for free, but after that they pay a monthly fee of $425 for the privilege of being represented on the platform. What's more, Artsy collects a 10% commission on each sale made through the platform.</p>
+            <p className="mobileText">Our team is excited to announce a new annual subscription option for the local and international galleries! Enjoy full access to the Georgian art scene. Become a devoted member of Ria Keburia Foundation and get the best privileges for your Gallery. </p>
+            <p className="mobileText">Sell, share, admire Georgian art on Ria Bid!</p>
           </div>
           <div className="col-md-4 subSide">
               <div>
@@ -62,10 +63,10 @@ function Galleries(props) {
                           <p className="location">{item.address}</p>     
                         </div>
                       <div className="col-6">
-                      <p className="website">{item.website}</p>     
+                      <a className="website" href={"https://"+item.website} target="blank">{item.website}</a>     
                         </div>
                     </div>
-                    <Link to={"/galleries/" + item.id}>VIEW GALLERY</Link>
+                    <Link to={"/galleries/" + item.id} className="full">VIEW GALLERY</Link>
                 </div>
                 
              

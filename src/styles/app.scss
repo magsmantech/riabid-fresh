@@ -1732,8 +1732,8 @@ h1.related{
         p{
             max-width: 877px;
             font-weight:400;
-            font-size:32px;
-            line-height: 32px;
+            font-size:16px;
+            line-height: 20px;
             font-family: 'MonumentGrotesk-Regular';
         }
         h2{
@@ -1796,18 +1796,18 @@ h1.related{
             font-family: 'MonumentGrotesk-Regular';
             max-width: 95%;
         }
-        p.date,p.location,p.website{
+        p.date,p.location,a.website{
             font-weight:400;
             font-size:16px;
             line-height:20px;
             margin-bottom:0px;
             font-family: 'MonumentGrotesk-Regular';
         }
-        p.website{
-            overflow:hidden;
+        a.website{
+            text-decoration: none;
         }
       
-        a{
+        a.full{
             margin-top:16px;
             display:block;
             text-align: center;
@@ -1855,8 +1855,8 @@ h1.related{
     }
     .text p{
         font-weight:400;
-        font-size:32px;
-        line-height:32px;
+        font-size:16px;
+        line-height:20px;
         font-family: 'MonumentGrotesk-Regular';
     }
     .carousel.slide{
