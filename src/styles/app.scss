@@ -1625,7 +1625,16 @@ line-height: 20px; /* 125% */
             font-feature-settings: 'salt' on;
             color: #000000;
             text-align: left;
-            margin-bottom:12px;
+            margin-bottom:2px;
+        }
+        a.galleryTitle{
+            font-size:12px;
+            line-height: 16px;
+            display: block;
+            text-decoration: none;
+            color:#B3B3B3;
+            font-family: 'MonumentGrotesk-Regular';
+            margin-bottom:8px;
         }
         .size{
             float:left;
@@ -3301,6 +3310,15 @@ footer .secondLine ul li a:hover{
 }
 
 @media only screen and (max-width: 500px) {
+    .productShow .prodDetails a.galleryTitle{
+        background:black;
+        color:white;
+        display:inline-block;
+        font-weight: 500;
+        height:16px;
+        padding-left:4px;
+        padding-right:4px;
+    }
     .galleryShow{
         padding-left:0px;
     }
