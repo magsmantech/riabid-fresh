@@ -1315,6 +1315,21 @@ color: #000000;
     }
 }
 
+.collectionNameforArt{
+    position:absolute;
+    top:5px;
+    left:5px;
+    color:black;
+    font-size:12px;
+    font-weight:500;
+    background:white;
+    padding-left:4px;
+    padding-right:4px;
+    font-family:'MonumentGrotesk-Regular';
+    line-height: 16px;
+    height:16px;
+}
+
 .MuiSlider-thumb{
     border-radius:0px!important;
     width:1px!important;

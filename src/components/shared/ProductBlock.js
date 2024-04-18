@@ -98,7 +98,7 @@ function ProductBlock({
 
   return (
       data.length > 0 ? data.slice(start,start+limit).map(function(item, i){
-        if(item.id == 4973)
+        //if(item.id == 4973)
               console.log(item);
                 let frameMax = '';
                 if(item.price_usd == 0 && !item.request_price)
@@ -110,7 +110,9 @@ function ProductBlock({
                     {(edit || remove) && <img src={removeIcon} className='remove' onClick={() =>{if(!remove) { deleteMutation.mutate(item.id) } else { removeMutation.mutate(item.id) }}}/>}
 
                     <Link to={`/store/${item.id}`}>
-                     
+                      {item?.gallery_name && <div className="collectionNameforArt">
+                        {item?.gallery_name}
+                      </div>}
                       <img src={item.front_thumbnail} className="productImage"/></Link>
                     <div className="row">
                       <div className={type == 1 ? "col-4 order-last col-sm-3 order-sm-first" : "col-4 order-last order-sm-first col-sm-2"}>
