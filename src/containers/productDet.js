@@ -264,7 +264,7 @@ export default function ProductDet(props) {
               </p>
               <p className="withoutMargin">by {artwork.display_name}</p>
               <h1>{artwork.title}</h1>
-              {artwork?.gallery_name && <Link to={"/galleries/"+artwork?.collection_id} className="galleryTitle">gallery: {artwork?.gallery_name}</Link>}
+              {artwork?.gallery_name && <Link to={"/galleries/"+artwork?.collection_id} className="galleryTitle">{artwork?.gallery_name}</Link>}
               <div className="clear"></div>
               <div className="size">
                 <p>{artwork.medium ? ""+artwork.medium : ''}</p>
