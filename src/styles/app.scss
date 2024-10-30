@@ -834,6 +834,13 @@ font-weight: 500;
         font-style: normal;
         font-weight: 500;
         line-height: 16px; /* 133.333% */
+        a{
+            text-decoration: none;
+            &:hover{
+                color:black;
+                text-decoration: underline;
+            }
+        }
     }
     .artworkName{
         display:block;
