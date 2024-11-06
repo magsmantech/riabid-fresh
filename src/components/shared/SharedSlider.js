@@ -48,7 +48,7 @@ const categories = [
   var settings = {
     draggable:true,
     dots: false,
-    infinite: false,
+    infinite: true,
     arrows:false,
     speed: 500,
     centerMode:true,
@@ -129,6 +129,20 @@ const categories = [
       <Slider {...settings} ref={sliderRef} >
       {items}
       </Slider>
+
+      <div className="row productPaginate">
+             
+             <div className='col-4 prevPage'>
+                 <a to="#" onClick={e => { e.preventDefault(); sliderRef.current.slickPrev() }}>PREV</a>
+             </div>
+             <div className='col-4 centerPage'>
+         
+             </div>
+             <div className='col-4 nextPage'>
+               <a to="#" onClick={e => { e.preventDefault(); sliderRef.current.slickNext() }}>NEXT</a>
+             </div>
+  </div>
+
       <div class='progress' role='progressbar' style={{'backgroundSize':progress+'% 100%'}}>
         <span class='slider__label sr-only'></span>
       </div>

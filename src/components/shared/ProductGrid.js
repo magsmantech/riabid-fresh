@@ -293,6 +293,7 @@ export default function ProductGrid(){
             </div>
 
              <div className="row productPaginate">
+             
                 <div className='col-4 prevPage'>
                     <a to="#" onClick={e => { if(artworks.current_page -1 < artworks.last_page && artworks.current_page -1 != 0 ){  handleType(e,grid,artworks.current_page-1);} myGrid.current.scrollIntoView({behavior: 'smooth', block: 'center'}) }}>PREV</a>
                 </div>
