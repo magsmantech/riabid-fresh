@@ -162,9 +162,6 @@ export default function ProductGrid(){
         }else if(type == 1){
             url = 'categories/featured/artworks?limit=7&page='+page
             setUrl("/store?page=featured")
-        }else{
-            url = 'dashboard/curator-artworks?limit=7&page='+page;
-            setUrl("/curator/"+curator.id);
         }
         axios.get(url)
             .then((res) => {
@@ -172,6 +169,8 @@ export default function ProductGrid(){
                     let {artworks,curator} = res.data.data;
                     setArtworks(artworks);     
                     setCurator(curator); 
+                    url = 'dashboard/curator-artworks?limit=7&page='+page;
+                    setUrl("/curator/"+curator.id);
                   }
                   else if(type == 1){
                     let {data} = res;
